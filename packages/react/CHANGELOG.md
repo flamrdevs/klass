@@ -1,5 +1,16 @@
 # @klass/react
 
+## 0.2.0
+
+### Minor Changes
+
+- ae0421f: Alpha Release
+
+### Patch Changes
+
+- Updated dependencies [ae0421f]
+  - @klass/core@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes
