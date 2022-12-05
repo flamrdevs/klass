@@ -1,5 +1,12 @@
 # @klass/core
 
+## 0.2.1
+
+### Patch Changes
+
+- 1438368: Fix jsx
+- 994e70c: Fix jsx import source
+
 ## 0.2.0
 
 ### Minor Changes

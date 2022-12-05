@@ -1,5 +1,15 @@
 # @klass/react
 
+## 0.2.1
+
+### Patch Changes
+
+- 1438368: Fix jsx
+- 994e70c: Fix jsx import source
+- Updated dependencies [1438368]
+- Updated dependencies [994e70c]
+  - @klass/core@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes
