@@ -1,0 +1,36 @@
+{
+  "name": "@klass/core",
+  "version": "0.0.0",
+  "description": "class variant utility",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.modern.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.modern.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "microbundle -i src/index.ts -o dist/index.js -f modern,cjs --target node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flamrdevs/klass.git"
+  },
+  "author": "flamrdevs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flamrdevs/klass/issues"
+  },
+  "homepage": "https://github.com/flamrdevs/klass#readme",
+  "dependencies": {
+    "clsx": "^1.2.1"
+  }
+}

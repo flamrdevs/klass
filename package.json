@@ -1,0 +1,30 @@
+{
+  "name": "@klass/workspace",
+  "version": "0.0.0",
+  "description": "class variant utility",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flamrdevs/klass.git"
+  },
+  "author": "flamrdevs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flamrdevs/klass/issues"
+  },
+  "homepage": "https://github.com/flamrdevs/klass#readme",
+  "devDependencies": {
+    "@changesets/cli": "^2.25.2",
+    "microbundle": "^0.15.1",
+    "turbo": "^1.6.3"
+  }
+}
