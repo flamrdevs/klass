@@ -12,9 +12,6 @@ A class variant utility library.
 
 - [@klass/core](./packages/core) - core api
 - [@klass/react](./packages/react) - react package
-- @klass/vue - coming soon
-- @klass/svelte - coming soon
-- @klass/solid - coming soon
 
 # Roadmap
 
