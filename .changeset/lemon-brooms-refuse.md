@@ -3,4 +3,4 @@
 "@klass/react": minor
 ---
 
-Initial release
+Alpha Release

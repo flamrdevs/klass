@@ -1,13 +1,13 @@
 {
   "name": "@klass/core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "class variant utility",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "module": "./dist/index.modern.js",
+  "module": "./dist/index.m.js",
   "exports": {
     ".": {
-      "import": "./dist/index.modern.js",
+      "import": "./dist/index.m.js",
       "require": "./dist/index.js"
     }
   },
@@ -18,7 +18,11 @@
     "access": "public"
   },
   "scripts": {
-    "build": "microbundle -i src/index.ts -o dist/index.js -f modern,cjs --target node"
+    "clean": "rimraf dist",
+    "build": "microbundle -i src/index.ts -o dist/index.js -f esm,cjs --target node",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui"
   },
   "repository": {
     "type": "git",

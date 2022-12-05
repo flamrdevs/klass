@@ -7,8 +7,11 @@
     "packages/*"
   ],
   "scripts": {
+    "clean": "turbo run clean",
     "build": "turbo run build",
     "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "test:ui": "turbo run test:ui",
     "lint": "turbo run lint",
     "dev": "turbo run dev"
   },
@@ -24,7 +27,14 @@
   "homepage": "https://github.com/flamrdevs/klass#readme",
   "devDependencies": {
     "@changesets/cli": "^2.25.2",
+    "@testing-library/react": "^13.4.0",
+    "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/ui": "^0.25.3",
+    "jsdom": "^20.0.3",
     "microbundle": "^0.15.1",
-    "turbo": "^1.6.3"
+    "react-dom": "^18.2.0",
+    "rimraf": "^3.0.2",
+    "turbo": "^1.6.3",
+    "vitest": "^0.25.3"
   }
 }
