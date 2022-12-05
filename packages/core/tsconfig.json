@@ -5,6 +5,7 @@
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "node",
+    "removeComments": true,
     "allowSyntheticDefaultImports": true
   }
 }

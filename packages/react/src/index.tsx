@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import React from "react";
 import type { ComponentProps, ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType, ForwardRefExoticComponent } from "react";
 
 import { klass } from "@klass/core";
@@ -46,9 +46,11 @@ function klassed<E extends ElementType, T extends VariantsSchema>(Element: E, op
   const klassy = klass<T>(options);
   const keys = Object.keys(options.variants) as unknown as keyof T[];
 
-  const Component = forwardRef((props: ComponentPropsWithoutRef<E> & VariantsOf<KlassFn<T>>, ref?: ComponentPropsWithRef<E>["ref"]) => {
-    return <Element {...(withKlassProps(klassy, props, keys) as unknown as any)} ref={ref} />;
-  });
+  const Component = React.forwardRef(
+    (props: ComponentPropsWithoutRef<E> & VariantsOf<KlassFn<T>>, ref?: ComponentPropsWithRef<E>["ref"]) => {
+      return <Element {...(withKlassProps(klassy, props, keys) as unknown as any)} ref={ref} />;
+    }
+  );
 
   (Component as KlassedComponent<E, T>).klass = klassy;
 

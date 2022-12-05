@@ -5,10 +5,10 @@
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "node",
+    "removeComments": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "jsxFactory": "React.createElement",
-    "jsxFragmentFactory": "React.Fragment",
-    "jsxImportSource": "react"
+    "jsxFragmentFactory": "React.Fragment"
   }
 }
