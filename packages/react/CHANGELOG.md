@@ -1,5 +1,13 @@
 # @klass/react
 
+## 0.2.2
+
+### Patch Changes
+
+- 29c9214: Improve
+- Updated dependencies [29c9214]
+  - @klass/core@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes

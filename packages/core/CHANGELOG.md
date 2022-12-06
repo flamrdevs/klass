@@ -1,5 +1,11 @@
 # @klass/core
 
+## 0.2.2
+
+### Patch Changes
+
+- 29c9214: Improve
+
 ## 0.2.1
 
 ### Patch Changes
