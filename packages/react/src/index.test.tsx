@@ -60,13 +60,13 @@ describe("klassed", async () => {
     expect(Div.klass({ enable: true })).toEqual("div enable-true display-block");
     expect(Div.klass({ display: "none" })).toEqual("div display-none");
 
-    expect(Div.klass.variants).toBeTypeOf("object");
-    expect(Div.klass.variants.enable).toBeTypeOf("function");
-    expect(Div.klass.variants.display).toBeTypeOf("function");
-    expect(Div.klass.variants.enable()).toBeUndefined();
-    expect(Div.klass.variants.display()).toEqual("display-block");
-    expect(Div.klass.variants.enable(true)).toEqual("enable-true");
-    expect(Div.klass.variants.display("block")).toEqual("display-block");
+    expect(Div.klass.variant).toBeTypeOf("object");
+    expect(Div.klass.variant.enable).toBeTypeOf("function");
+    expect(Div.klass.variant.display).toBeTypeOf("function");
+    expect(Div.klass.variant.enable()).toBeUndefined();
+    expect(Div.klass.variant.display()).toEqual("display-block");
+    expect(Div.klass.variant.enable(true)).toEqual("enable-true");
+    expect(Div.klass.variant.display("block")).toEqual("display-block");
   });
 
   it("basic", async () => {
@@ -80,6 +80,9 @@ describe("klassed", async () => {
           block: "display-block",
           none: "display-none",
         },
+        className: {
+          test: "yeah",
+        },
       },
       defaultVariants: {
         display: "block",
@@ -87,7 +90,7 @@ describe("klassed", async () => {
     });
 
     render(
-      <Div enable className="extra-class">
+      <Div enable className="test">
         hello world
       </Div>
     );
