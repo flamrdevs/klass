@@ -113,13 +113,13 @@ describe("klass", async () => {
       },
     });
 
-    expect(klassy.variants).toBeTypeOf("object");
-    expect(klassy.variants.size).toBeTypeOf("function");
-    expect(klassy.variants.disable).toBeTypeOf("function");
-    expect(klassy.variants.size()).toBeUndefined();
-    expect(klassy.variants.disable()).toBeUndefined();
-    expect(klassy.variants.size("md")).toEqual("size-md");
-    expect(klassy.variants.disable(true)).toEqual("disable-true");
+    expect(klassy.variant).toBeTypeOf("object");
+    expect(klassy.variant.size).toBeTypeOf("function");
+    expect(klassy.variant.disable).toBeTypeOf("function");
+    expect(klassy.variant.size()).toBeUndefined();
+    expect(klassy.variant.disable()).toBeUndefined();
+    expect(klassy.variant.size("md")).toEqual("size-md");
+    expect(klassy.variant.disable(true)).toEqual("disable-true");
   });
 
   it("basic", async () => {

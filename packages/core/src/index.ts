@@ -23,7 +23,7 @@ type VariantFn<T extends VariantsSchema[string]> = {
   (value?: BooleanKey<keyof T>): string | undefined;
 };
 
-type Variants<T extends VariantsSchema> = {
+type VariantGroup<T extends VariantsSchema> = {
   [K in keyof T]: VariantFn<T[K]>;
 };
 
@@ -38,9 +38,9 @@ type KlassOptions<T extends VariantsSchema> = {
 };
 
 type KlassFn<T extends VariantsSchema> = {
-  (props?: KlassProps<T>, className?: ClassValue): string;
+  (props?: KlassProps<T>, classes?: ClassValue): string;
 } & {
-  variants: Variants<T>;
+  variant: VariantGroup<T>;
 };
 
 type VariantsOf<T extends (...args: any[]) => any> = Exclude<Parameters<T>[0], undefined>;
@@ -68,25 +68,25 @@ function variant<T extends VariantsSchema[string]>(options: VariantOptions<T>): 
 function klass<T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> {
   const { base, variants, defaultVariants } = options;
 
-  const $variants = Object.entries(variants).reduce((obj, [key, value]) => {
+  const variantFn = Object.entries(variants).reduce((obj, [key, value]) => {
     obj[key as keyof typeof obj] = variant({
       variant: value,
       defaultVariant: defaultVariants?.[key] as keyof typeof value,
-    }) as Variants<T>[string];
+    }) as VariantGroup<T>[string];
     return obj;
-  }, {} as Variants<T>);
+  }, {} as VariantGroup<T>);
 
   const keys = Object.keys(variants) as (keyof T)[];
 
-  const instance = (props?: KlassProps<T>, className?: ClassValue) => {
+  const instance = (props?: KlassProps<T>, classes?: ClassValue) => {
     return clsx(
       base,
-      keys.map((key) => $variants[key](props?.[key])),
-      className
+      keys.map((key) => variantFn[key](props?.[key])),
+      classes
     );
   };
 
-  (instance as KlassFn<T>).variants = $variants;
+  (instance as KlassFn<T>).variant = variantFn;
 
   return instance as KlassFn<T>;
 }
