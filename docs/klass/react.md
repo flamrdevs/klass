@@ -1,16 +1,10 @@
-<p align="center">
-  <h1 align="center">klass</h1>
+<p>
+  <a href="https://www.npmjs.com/package/@klass/react" style="display: inline-block; margin: 0px 4px;"><img src="https://badgen.net/npm/v/@klass/react"></a>
+  <a href="https://bundlephobia.com/package/@klass/react" style="display: inline-block; margin: 0px 4px;"><img src="https://badgen.net/bundlephobia/minzip/@klass/react"></a>
+  <a href="https://www.npmjs.com/package/@klass/react" style="display: inline-block; margin: 0px 4px;"><img src="https://badgen.net/npm/license/@klass/react"></a>
 </p>
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/@klass/react"><img src="https://badgen.net/npm/v/@klass/react"></a>
-  <a href="https://bundlephobia.com/package/@klass/react"><img src="https://badgen.net/bundlephobia/minzip/@klass/react"></a>
-  <a href="https://www.npmjs.com/package/@klass/react"><img src="https://badgen.net/npm/license/@klass/react"></a>
-</p>
-
-🚧 UNDER DEVELOPMENT 🚧
-
-# Introduction
+# Introduction <Badge type="warning" text="beta" />
 
 A class variant utility library for react.
 
@@ -76,11 +70,3 @@ Button.klass.variant.size("sm");
 Button.klass.variant.loading(true);
 // button--loading-true
 ```
-
-# Authors
-
-- [flamrdevs](https://github.com/flamrdevs)
-
-# License
-
-[MIT License](./../../LICENSE)

@@ -13,7 +13,10 @@
     "test:watch": "turbo run test:watch",
     "test:ui": "turbo run test:ui",
     "lint": "turbo run lint",
-    "dev": "turbo run dev"
+    "dev": "turbo run dev",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "repository": {
     "type": "git",
@@ -35,6 +38,8 @@
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
     "turbo": "^1.6.3",
-    "vitest": "^0.25.3"
+    "vitepress": "^1.0.0-alpha.30",
+    "vitest": "^0.25.3",
+    "vue": "^3.2.45"
   }
 }
