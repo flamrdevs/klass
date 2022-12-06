@@ -1,5 +1,13 @@
 # @klass/react
 
+## 0.2.3
+
+### Patch Changes
+
+- dbca76a: Update docs
+- Updated dependencies [dbca76a]
+  - @klass/core@0.2.3
+
 ## 0.2.2
 
 ### Patch Changes
