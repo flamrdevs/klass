@@ -21,6 +21,8 @@ type VariantOptions<T extends VariantsSchema[string]> = {
 
 type VariantFn<T extends VariantsSchema[string]> = {
   (value?: BooleanKey<keyof T>): string | undefined;
+} & {
+  options: VariantOptions<T>;
 };
 
 type VariantGroup<T extends VariantsSchema> = {
@@ -40,6 +42,7 @@ type KlassOptions<T extends VariantsSchema> = {
 type KlassFn<T extends VariantsSchema> = {
   (props?: KlassProps<T>, classes?: ClassValue): string;
 } & {
+  options: KlassOptions<T>;
   variant: VariantGroup<T>;
 };
 
@@ -62,17 +65,19 @@ function variant<T extends VariantsSchema[string]>(options: VariantOptions<T>): 
     return undefined;
   };
 
-  return instance;
+  (instance as VariantFn<T>).options = options;
+
+  return instance as VariantFn<T>;
 }
 
 function klass<T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> {
   const { base, variants, defaultVariants } = options;
 
   const variantFn = Object.entries(variants).reduce((obj, [key, value]) => {
-    obj[key as keyof typeof obj] = variant({
-      variant: value,
-      defaultVariant: defaultVariants?.[key] as keyof typeof value,
-    }) as VariantGroup<T>[string];
+    obj[key as keyof typeof obj] = variant<T[keyof T]>({
+      variant: value as any,
+      defaultVariant: defaultVariants?.[key] as any,
+    });
     return obj;
   }, {} as VariantGroup<T>);
 
@@ -86,6 +91,7 @@ function klass<T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> {
     );
   };
 
+  (instance as KlassFn<T>).options = options;
   (instance as KlassFn<T>).variant = variantFn;
 
   return instance as KlassFn<T>;

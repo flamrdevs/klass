@@ -14,6 +14,24 @@ describe("variant", async () => {
     expect(variant({ variant: {} })).toBeTypeOf("function");
   });
 
+  it("compund", async () => {
+    const size = variant({
+      variant: {
+        sm: "size-sm",
+        md: "size-md",
+        lg: "size-lg",
+      },
+    });
+
+    expect(size.options).toEqual({
+      variant: {
+        sm: "size-sm",
+        md: "size-md",
+        lg: "size-lg",
+      },
+    });
+  });
+
   it("basic string", async () => {
     const size = variant({
       variant: {
@@ -113,11 +131,38 @@ describe("klass", async () => {
       },
     });
 
+    expect(klassy.options).toEqual({
+      base: "base",
+      variants: {
+        size: {
+          sm: "size-sm",
+          md: "size-md",
+          lg: "size-lg",
+        },
+        disable: {
+          true: "disable-true",
+          false: "disable-false",
+        },
+      },
+    });
     expect(klassy.variant).toBeTypeOf("object");
     expect(klassy.variant.size).toBeTypeOf("function");
     expect(klassy.variant.disable).toBeTypeOf("function");
     expect(klassy.variant.size()).toBeUndefined();
+    expect(klassy.variant.size.options).toEqual({
+      variant: {
+        sm: "size-sm",
+        md: "size-md",
+        lg: "size-lg",
+      },
+    });
     expect(klassy.variant.disable()).toBeUndefined();
+    expect(klassy.variant.disable.options).toEqual({
+      variant: {
+        true: "disable-true",
+        false: "disable-false",
+      },
+    });
     expect(klassy.variant.size("md")).toEqual("size-md");
     expect(klassy.variant.disable(true)).toEqual("disable-true");
   });
