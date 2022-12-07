@@ -2,23 +2,7 @@ import React from "react";
 import type { ComponentProps, ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType, ForwardRefExoticComponent } from "react";
 
 import { klass } from "@klass/core";
-import type { ClassValue, VariantsSchema, KlassProps, KlassOptions, KlassFn, VariantsOf } from "@klass/core";
-
-function omit<T extends {}, K extends keyof T>(target: T, keys: K[]): Omit<T, K> {
-  return {
-    ...keys.reduce((obj, key) => {
-      return (({ [key]: _, ...rest }) => rest)(obj);
-    }, target as object),
-  } as Omit<T, K>;
-}
-
-function pick<T extends {}, K extends keyof T>(target: T, keys: K[]): Pick<T, K> {
-  return {
-    ...keys.reduce((obj, key) => {
-      return key in target ? { [key]: target[key], ...obj } : obj;
-    }, {} as object),
-  } as Pick<T, K>;
-}
+import type { ClassValue, VariantsSchema, KlassOptions, KlassFn, VariantsOf } from "@klass/core";
 
 function withKlassProps<T extends VariantsSchema, P extends { className?: ClassValue } & VariantsOf<KlassFn<T>>>(
   klassFn: KlassFn<T>,
@@ -27,9 +11,17 @@ function withKlassProps<T extends VariantsSchema, P extends { className?: ClassV
 ) {
   const { className, ...rest } = props;
 
+  let omited: Record<string, any> = {};
+  let picked: Record<string, any> = {};
+
+  Object.entries(rest).forEach(([key, value]) => {
+    if (keys.includes(key)) picked[key] = value;
+    else omited[key] = value;
+  });
+
   return {
-    ...omit(rest, keys as any),
-    className: klassFn(pick(rest, keys as any) as unknown as KlassProps<T>, className),
+    ...omited,
+    className: klassFn(picked, className),
   } as Omit<P, "className" | keyof Omit<VariantsOf<KlassFn<T>>, "className">> & { className: string };
 }
 

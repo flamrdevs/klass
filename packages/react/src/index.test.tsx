@@ -60,11 +60,38 @@ describe("klassed", async () => {
     expect(Div.klass({ enable: true })).toEqual("div enable-true display-block");
     expect(Div.klass({ display: "none" })).toEqual("div display-none");
 
+    expect(Div.klass.options).toEqual({
+      base: "div",
+      variants: {
+        enable: {
+          true: "enable-true",
+        },
+        display: {
+          block: "display-block",
+          none: "display-none",
+        },
+      },
+      defaultVariants: {
+        display: "block",
+      },
+    });
     expect(Div.klass.variant).toBeTypeOf("object");
     expect(Div.klass.variant.enable).toBeTypeOf("function");
     expect(Div.klass.variant.display).toBeTypeOf("function");
     expect(Div.klass.variant.enable()).toBeUndefined();
+    expect(Div.klass.variant.enable.options).toEqual({
+      variant: {
+        true: "enable-true",
+      },
+    });
     expect(Div.klass.variant.display()).toEqual("display-block");
+    expect(Div.klass.variant.display.options).toEqual({
+      variant: {
+        block: "display-block",
+        none: "display-none",
+      },
+      defaultVariant: "block",
+    });
     expect(Div.klass.variant.enable(true)).toEqual("enable-true");
     expect(Div.klass.variant.display("block")).toEqual("display-block");
   });
@@ -81,7 +108,10 @@ describe("klassed", async () => {
           none: "display-none",
         },
         className: {
-          test: "yeah",
+          will: "not-work",
+        },
+        children: {
+          haha: "lol",
         },
       },
       defaultVariants: {
@@ -89,13 +119,9 @@ describe("klassed", async () => {
       },
     });
 
-    render(
-      <Div enable className="test">
-        hello world
-      </Div>
-    );
+    render(<Div data-testid="div" enable className="extra class" {...{ out1: "out1", out2: "out2", out3: "out3" }} children="haha" />);
 
-    expect(screen.getByText(/hello world/i)).toBeDefined();
-    expect(screen.getByText(/hello world/i).classList.toString()).toEqual("div enable-true display-block extra-class");
+    expect(screen.getByTestId(/div/i)).toBeDefined();
+    expect(screen.getByTestId(/div/i).classList.toString()).toEqual("div enable-true display-block lol extra class");
   });
 });
