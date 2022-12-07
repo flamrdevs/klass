@@ -19,11 +19,11 @@ A class variant utility library for react.
 ## Installation
 
 ```bash
-npm install @klass/react
+npm install @klass/core @klass/react
 # or
-yarn add @klass/react
+yarn add @klass/core @klass/react
 # or
-pnpm add @klass/react
+pnpm add @klass/core @klass/react
 ```
 
 ## Usage
@@ -45,6 +45,7 @@ const Button = klassed("button", {
       true: "button--loading-true",
       false: "button--loading-false",
     },
+    // this variant will not work
     className: {
       will: "not-work",
     },
@@ -58,7 +59,7 @@ const Button = klassed("button", {
 function App() {
   return (
     <div>
-      <Button size="md" loading className="Extra classes">
+      <Button size="md" loading className="extra classes">
         klassed button
       </Button>
     </div>
@@ -68,8 +69,11 @@ function App() {
 Button.klass();
 // "button--base"
 
-Button.klass({ size: "sm", loading: true } /*, "Extra classes" */);
+Button.klass({ size: "sm", loading: true } /*, "extra classes" */);
 // "button--base button--size-sm button--loading-true"
+
+Button.klass.options;
+// klass options param
 
 Button.klass.variant.size("sm");
 // button--size-sm
@@ -83,4 +87,4 @@ Button.klass.variant.loading(true);
 
 # License
 
-[MIT License](./../../LICENSE)
+MIT License

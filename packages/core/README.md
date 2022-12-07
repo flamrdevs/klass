@@ -58,6 +58,9 @@ button();
 button({ size: "sm", loading: true } /*, "Extra classes" */);
 // "button--base button--size-sm button--loading-true"
 
+button.options;
+// klass options param
+
 button.variant.size("sm");
 // button--size-sm
 button.variant.loading(true);
@@ -83,6 +86,9 @@ size();
 
 size("sm");
 // "size-sm"
+
+size.options;
+// variant options param
 ```
 
 # Authors
@@ -91,4 +97,4 @@ size("sm");
 
 # License
 
-[MIT License](./../../LICENSE)
+MIT License

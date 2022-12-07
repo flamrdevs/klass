@@ -1,5 +1,11 @@
 # @klass/core
 
+## 0.3.0
+
+### Minor Changes
+
+- d41f1da: Compound options
+
 ## 0.2.3
 
 ### Patch Changes

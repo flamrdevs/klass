@@ -1,5 +1,16 @@
 # @klass/react
 
+## 0.3.0
+
+### Minor Changes
+
+- d41f1da: Compound options
+
+### Patch Changes
+
+- Updated dependencies [d41f1da]
+  - @klass/core@0.3.0
+
 ## 0.2.3
 
 ### Patch Changes
