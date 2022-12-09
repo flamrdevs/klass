@@ -23,18 +23,9 @@ describe("klassed", async () => {
     const Div = klassed("div", {
       base: "div",
       variants: {
-        enable: {
-          true: "enable-true",
-        },
-        display: {
-          block: "display-block",
-          none: "display-none",
-        },
-        order: {
-          1: "order-1",
-          2: "order-2",
-          3: "order-3",
-        },
+        enable: { true: "enable-true" },
+        display: { block: "display-block", none: "display-none" },
+        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
       },
       defaultVariants: {
         display: "block",
@@ -47,18 +38,9 @@ describe("klassed", async () => {
     const Div = klassed("div", {
       base: "div",
       variants: {
-        enable: {
-          true: "enable-true",
-        },
-        display: {
-          block: "display-block",
-          none: "display-none",
-        },
-        order: {
-          1: "order-1",
-          2: "order-2",
-          3: "order-3",
-        },
+        enable: { true: "enable-true" },
+        display: { block: "display-block", none: "display-none" },
+        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
       },
       defaultVariants: {
         display: "block",
@@ -73,18 +55,9 @@ describe("klassed", async () => {
     expect(Div.klass.options).toEqual({
       base: "div",
       variants: {
-        enable: {
-          true: "enable-true",
-        },
-        display: {
-          block: "display-block",
-          none: "display-none",
-        },
-        order: {
-          1: "order-1",
-          2: "order-2",
-          3: "order-3",
-        },
+        enable: { true: "enable-true" },
+        display: { block: "display-block", none: "display-none" },
+        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
       },
       defaultVariants: {
         display: "block",
@@ -95,16 +68,11 @@ describe("klassed", async () => {
     expect(Div.klass.variant.display).toBeTypeOf("function");
     expect(Div.klass.variant.enable()).toBeUndefined();
     expect(Div.klass.variant.enable.options).toEqual({
-      variant: {
-        true: "enable-true",
-      },
+      variant: { true: "enable-true" },
     });
     expect(Div.klass.variant.display()).toEqual("display-block");
     expect(Div.klass.variant.display.options).toEqual({
-      variant: {
-        block: "display-block",
-        none: "display-none",
-      },
+      variant: { block: "display-block", none: "display-none" },
       defaultVariant: "block",
     });
     expect(Div.klass.variant.enable(true)).toEqual("enable-true");
@@ -115,21 +83,10 @@ describe("klassed", async () => {
     const Div = klassed("div", {
       base: "div",
       variants: {
-        enable: {
-          true: "enable-true",
-        },
-        display: {
-          block: "display-block",
-          none: "display-none",
-        },
-        order: {
-          1: "order-1",
-          2: "order-2",
-          3: "order-3",
-        },
-        className: {
-          will: "not-work",
-        },
+        enable: { true: "enable-true" },
+        display: { block: "display-block", none: "display-none" },
+        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
+        className: { will: "not-work" },
       },
       defaultVariants: {
         display: "block",
@@ -141,40 +98,16 @@ describe("klassed", async () => {
       {
         base: "btn",
         variants: {
-          color: {
-            red: "btn--red",
-            green: "btn--green",
-            blue: "btn--blue",
-          },
-          outline: {
-            true: "btn--outline",
-          },
+          color: { red: "btn--red", green: "btn--green", blue: "btn--blue" },
+          outline: { true: "btn--outline" },
         },
         defaultVariants: {
           color: "blue",
         },
         compoundVariants: [
-          {
-            variant: {
-              color: "red",
-              outline: true,
-            },
-            classes: "btn--outline-red",
-          },
-          {
-            variant: {
-              color: "green",
-              outline: true,
-            },
-            classes: "btn--outline-green",
-          },
-          {
-            variant: {
-              color: "blue",
-              outline: true,
-            },
-            classes: "btn--outline-blue",
-          },
+          { variant: { color: "red", outline: true }, classes: "btn--outline-red" },
+          { variant: { color: "green", outline: true }, classes: "btn--outline-green" },
+          { variant: { color: "blue", outline: true }, classes: "btn--outline-blue" },
         ],
       },
       {
@@ -189,9 +122,10 @@ describe("klassed", async () => {
 
     render(
       <>
-        <Div data-testid="div" enable className="extra class">
+        <Div data-testid="div" enable className={["extra", "class"]}>
           div
         </Div>
+
         <Button data-testid="btn-red" color="red" outline>
           btn-red
         </Button>

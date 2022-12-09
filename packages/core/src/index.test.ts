@@ -15,31 +15,13 @@ describe("variant", async () => {
   });
 
   it("compund", async () => {
-    const size = variant({
-      variant: {
-        sm: "size-sm",
-        md: "size-md",
-        lg: "size-lg",
-      },
-    });
+    const size = variant({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" } });
 
-    expect(size.options).toEqual({
-      variant: {
-        sm: "size-sm",
-        md: "size-md",
-        lg: "size-lg",
-      },
-    });
+    expect(size.options).toEqual({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" } });
   });
 
   it("basic string", async () => {
-    const size = variant({
-      variant: {
-        sm: "size-sm",
-        md: "size-md",
-        lg: "size-lg",
-      },
-    });
+    const size = variant({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" } });
 
     expect(size()).toBeUndefined();
     expect(size("unknown" as any)).toBeUndefined();
@@ -47,14 +29,7 @@ describe("variant", async () => {
   });
 
   it("basic string with default variant", async () => {
-    const size = variant({
-      variant: {
-        sm: "size-sm",
-        md: "size-md",
-        lg: "size-lg",
-      },
-      defaultVariant: "md",
-    });
+    const size = variant({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" }, defaultVariant: "md" });
 
     expect(size()).toEqual("size-md");
     expect(size("unknown" as any)).toBeUndefined();
@@ -62,30 +37,19 @@ describe("variant", async () => {
   });
 
   it("basic boolean", async () => {
-    const disable = variant({
-      variant: {
-        true: "disable-true",
-        false: "disable-false",
-      },
-    });
+    const loading = variant({ variant: { true: "loading-true", false: "loading-false" } });
 
-    expect(disable()).toBeUndefined();
-    expect(disable("unknown" as any)).toBeUndefined();
-    expect(disable(true)).toEqual("disable-true");
+    expect(loading()).toBeUndefined();
+    expect(loading("unknown" as any)).toBeUndefined();
+    expect(loading(true)).toEqual("loading-true");
   });
 
   it("basic boolean with default variant", async () => {
-    const disable = variant({
-      variant: {
-        true: "disable-true",
-        false: "disable-false",
-      },
-      defaultVariant: false,
-    });
+    const loading = variant({ variant: { true: "loading-true", false: "loading-false" }, defaultVariant: false });
 
-    expect(disable()).toEqual("disable-false");
-    expect(disable("unknown" as any)).toBeUndefined();
-    expect(disable(true)).toEqual("disable-true");
+    expect(loading()).toEqual("loading-false");
+    expect(loading("unknown" as any)).toBeUndefined();
+    expect(loading(true)).toEqual("loading-true");
   });
 
   it("mix practice", async () => {
@@ -119,172 +83,64 @@ describe("klass", async () => {
     const klassy = klass({
       base: "base",
       variants: {
-        size: {
-          sm: "size-sm",
-          md: "size-md",
-          lg: "size-lg",
-        },
-        disable: {
-          true: "disable-true",
-          false: "disable-false",
-        },
-        order: {
-          1: "order-1",
-          2: "order-2",
-          3: "order-3",
-        },
+        size: { sm: "size-sm", md: "size-md", lg: "size-lg" },
+        loading: { true: "loading-true", false: "loading-false" },
+        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
       },
-      defaultVariants: {
-        size: "md",
-        disable: false,
-        order: 1,
-      },
+      defaultVariants: { size: "md", loading: false, order: 1 },
       compoundVariants: [
-        {
-          variant: { size: "sm", disable: true },
-          classes: "size-sm---disable-true",
-        },
-        {
-          variant: { size: "md", disable: true },
-          classes: "size-md---disable-true",
-        },
-        {
-          variant: { size: "lg", disable: true },
-          classes: "size-lg---disable-true",
-        },
-        {
-          variant: { disable: true, order: 1 },
-          classes: "disable-true---order-1",
-        },
-        {
-          variant: { disable: true, order: 2 },
-          classes: "disable-true---order-2",
-        },
-        {
-          variant: { disable: true, order: 3 },
-          classes: "disable-true---order-3",
-        },
+        { variant: { size: "sm", loading: true }, classes: "size-sm---loading-true" },
+        { variant: { size: "md", loading: true }, classes: "size-md---loading-true" },
+        { variant: { size: "lg", loading: true }, classes: "size-lg---loading-true" },
+        { variant: { loading: true, order: 1 }, classes: "loading-true---order-1" },
+        { variant: { loading: true, order: 2 }, classes: "loading-true---order-2" },
+        { variant: { loading: true, order: 3 }, classes: "loading-true---order-3" },
       ],
     });
 
     expect(klassy.options).toEqual({
       base: "base",
       variants: {
-        size: {
-          sm: "size-sm",
-          md: "size-md",
-          lg: "size-lg",
-        },
-        disable: {
-          true: "disable-true",
-          false: "disable-false",
-        },
-        order: {
-          1: "order-1",
-          2: "order-2",
-          3: "order-3",
-        },
+        size: { sm: "size-sm", md: "size-md", lg: "size-lg" },
+        loading: { true: "loading-true", false: "loading-false" },
+        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
       },
-      defaultVariants: {
-        size: "md",
-        disable: false,
-        order: 1,
-      },
+      defaultVariants: { size: "md", loading: false, order: 1 },
       compoundVariants: [
-        {
-          variant: { size: "sm", disable: true },
-          classes: "size-sm---disable-true",
-        },
-        {
-          variant: { size: "md", disable: true },
-          classes: "size-md---disable-true",
-        },
-        {
-          variant: { size: "lg", disable: true },
-          classes: "size-lg---disable-true",
-        },
-        {
-          variant: { disable: true, order: 1 },
-          classes: "disable-true---order-1",
-        },
-        {
-          variant: { disable: true, order: 2 },
-          classes: "disable-true---order-2",
-        },
-        {
-          variant: { disable: true, order: 3 },
-          classes: "disable-true---order-3",
-        },
+        { variant: { size: "sm", loading: true }, classes: "size-sm---loading-true" },
+        { variant: { size: "md", loading: true }, classes: "size-md---loading-true" },
+        { variant: { size: "lg", loading: true }, classes: "size-lg---loading-true" },
+        { variant: { loading: true, order: 1 }, classes: "loading-true---order-1" },
+        { variant: { loading: true, order: 2 }, classes: "loading-true---order-2" },
+        { variant: { loading: true, order: 3 }, classes: "loading-true---order-3" },
       ],
     });
     expect(klassy.variant).toBeTypeOf("object");
     expect(klassy.variant.size).toBeTypeOf("function");
-    expect(klassy.variant.disable).toBeTypeOf("function");
+    expect(klassy.variant.loading).toBeTypeOf("function");
     expect(klassy.variant.size()).toEqual("size-md");
-    expect(klassy.variant.size.options).toEqual({
-      variant: {
-        sm: "size-sm",
-        md: "size-md",
-        lg: "size-lg",
-      },
-      defaultVariant: "md",
-    });
-    expect(klassy.variant.disable()).toEqual("disable-false");
-    expect(klassy.variant.disable.options).toEqual({
-      variant: {
-        true: "disable-true",
-        false: "disable-false",
-      },
-      defaultVariant: false,
-    });
+    expect(klassy.variant.size.options).toEqual({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" }, defaultVariant: "md" });
+    expect(klassy.variant.loading()).toEqual("loading-false");
+    expect(klassy.variant.loading.options).toEqual({ variant: { true: "loading-true", false: "loading-false" }, defaultVariant: false });
     expect(klassy.variant.size("md")).toEqual("size-md");
-    expect(klassy.variant.disable(true)).toEqual("disable-true");
+    expect(klassy.variant.loading(true)).toEqual("loading-true");
   });
 
   it("basic", async () => {
     const klassy = klass({
       base: "base",
       variants: {
-        size: {
-          sm: "size-sm",
-          md: "size-md",
-          lg: "size-lg",
-        },
-        disable: {
-          true: "disable-true",
-          false: "disable-false",
-        },
-        order: {
-          1: "order-1",
-          2: "order-2",
-          3: "order-3",
-        },
+        size: { sm: "size-sm", md: "size-md", lg: "size-lg" },
+        loading: { true: "loading-true", false: "loading-false" },
+        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
       },
       compoundVariants: [
-        {
-          variant: { size: "sm", disable: true },
-          classes: "size-sm---disable-true",
-        },
-        {
-          variant: { size: "md", disable: true },
-          classes: "size-md---disable-true",
-        },
-        {
-          variant: { size: "lg", disable: true },
-          classes: "size-lg---disable-true",
-        },
-        {
-          variant: { disable: true, order: 1 },
-          classes: "disable-true---order-1",
-        },
-        {
-          variant: { disable: true, order: 2 },
-          classes: "disable-true---order-2",
-        },
-        {
-          variant: { disable: true, order: 3 },
-          classes: "disable-true---order-3",
-        },
+        { variant: { size: "sm", loading: true }, classes: "size-sm---loading-true" },
+        { variant: { size: "md", loading: true }, classes: "size-md---loading-true" },
+        { variant: { size: "lg", loading: true }, classes: "size-lg---loading-true" },
+        { variant: { loading: true, order: 1 }, classes: "loading-true---order-1" },
+        { variant: { loading: true, order: 2 }, classes: "loading-true---order-2" },
+        { variant: { loading: true, order: 3 }, classes: "loading-true---order-3" },
       ],
     });
 
@@ -292,101 +148,68 @@ describe("klass", async () => {
     // size first
     expect(klassy({ size: "unknown" as any })).toEqual("base");
     expect(klassy({ size: "md" })).toEqual("base size-md");
-    expect(klassy({ size: "unknown" as any, disable: true })).toEqual("base disable-true");
-    expect(klassy({ size: "md", disable: false })).toEqual("base size-md disable-false");
-    // disable first
-    expect(klassy({ disable: "unknown" as any })).toEqual("base");
-    expect(klassy({ disable: false })).toEqual("base disable-false");
-    expect(klassy({ disable: "unknown" as any, size: "sm" })).toEqual("base size-sm");
-    expect(klassy({ disable: false, size: "lg" })).toEqual("base size-lg disable-false");
+    expect(klassy({ size: "unknown" as any, loading: true })).toEqual("base loading-true");
+    expect(klassy({ size: "md", loading: false })).toEqual("base size-md loading-false");
+    // loading first
+    expect(klassy({ loading: "unknown" as any })).toEqual("base");
+    expect(klassy({ loading: false })).toEqual("base loading-false");
+    expect(klassy({ loading: "unknown" as any, size: "sm" })).toEqual("base size-sm");
+    expect(klassy({ loading: false, size: "lg" })).toEqual("base size-lg loading-false");
     // order first
     expect(klassy({ order: 1 })).toEqual("base order-1");
     expect(klassy({ order: 2 })).toEqual("base order-2");
     expect(klassy({ order: 3 })).toEqual("base order-3");
     expect(klassy({ order: "unknown" as any })).toEqual("base");
     // compound
-    expect(klassy({ size: "sm", disable: true })).toEqual("base size-sm disable-true size-sm---disable-true");
-    expect(klassy({ size: "md", disable: true })).toEqual("base size-md disable-true size-md---disable-true");
-    expect(klassy({ size: "lg", disable: true })).toEqual("base size-lg disable-true size-lg---disable-true");
+    expect(klassy({ size: "sm", loading: true })).toEqual("base size-sm loading-true size-sm---loading-true");
+    expect(klassy({ size: "md", loading: true })).toEqual("base size-md loading-true size-md---loading-true");
+    expect(klassy({ size: "lg", loading: true })).toEqual("base size-lg loading-true size-lg---loading-true");
   });
 
   it("basic with default variants", async () => {
     const klassy = klass({
       base: "base",
       variants: {
-        size: {
-          sm: "size-sm",
-          md: "size-md",
-          lg: "size-lg",
-        },
-        disable: {
-          true: "disable-true",
-          false: "disable-false",
-        },
-        order: {
-          1: "order-1",
-          2: "order-2",
-          3: "order-3",
-        },
+        size: { sm: "size-sm", md: "size-md", lg: "size-lg" },
+        loading: { true: "loading-true", false: "loading-false" },
+        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
       },
-      defaultVariants: {
-        size: "md",
-        disable: false,
-        order: 1,
-      },
+      defaultVariants: { size: "md", loading: false, order: 1 },
       compoundVariants: [
-        {
-          variant: { size: "sm", disable: true },
-          classes: "size-sm---disable-true",
-        },
-        {
-          variant: { size: "md", disable: true },
-          classes: "size-md---disable-true",
-        },
-        {
-          variant: { size: "lg", disable: true },
-          classes: "size-lg---disable-true",
-        },
-        {
-          variant: { disable: true, order: 1 },
-          classes: "disable-true---order-1",
-        },
-        {
-          variant: { disable: true, order: 2 },
-          classes: "disable-true---order-2",
-        },
-        {
-          variant: { disable: true, order: 3 },
-          classes: "disable-true---order-3",
-        },
+        { variant: { size: "sm", loading: true }, classes: "size-sm---loading-true" },
+        { variant: { size: "md", loading: true }, classes: "size-md---loading-true" },
+        { variant: { size: "lg", loading: true }, classes: "size-lg---loading-true" },
+        { variant: { loading: true, order: 1 }, classes: "loading-true---order-1" },
+        { variant: { loading: true, order: 2 }, classes: "loading-true---order-2" },
+        { variant: { loading: true, order: 3 }, classes: "loading-true---order-3" },
       ],
     });
 
-    expect(klassy()).toEqual("base size-md disable-false order-1");
+    expect(klassy()).toEqual("base size-md loading-false order-1");
     // size first
-    expect(klassy({ size: "unknown" as any })).toEqual("base disable-false order-1");
-    expect(klassy({ size: "md" })).toEqual("base size-md disable-false order-1");
-    expect(klassy({ size: "unknown" as any, disable: true })).toEqual("base disable-true order-1 disable-true---order-1");
-    expect(klassy({ size: "md", disable: false })).toEqual("base size-md disable-false order-1");
-    // disable first
-    expect(klassy({ disable: "unknown" as any })).toEqual("base size-md order-1");
-    expect(klassy({ disable: false })).toEqual("base size-md disable-false order-1");
-    expect(klassy({ disable: "unknown" as any, size: "sm" })).toEqual("base size-sm order-1");
-    expect(klassy({ disable: false, size: "lg" })).toEqual("base size-lg disable-false order-1");
+    expect(klassy({ size: "unknown" as any })).toEqual("base loading-false order-1");
+    expect(klassy({ size: "md" })).toEqual("base size-md loading-false order-1");
+    expect(klassy({ size: "unknown" as any, loading: true })).toEqual("base loading-true order-1 loading-true---order-1");
+    expect(klassy({ size: "md", loading: false })).toEqual("base size-md loading-false order-1");
+    // loading first
+    expect(klassy({ loading: "unknown" as any })).toEqual("base size-md order-1");
+    expect(klassy({ loading: false })).toEqual("base size-md loading-false order-1");
+    expect(klassy({ loading: "unknown" as any, size: "sm" })).toEqual("base size-sm order-1");
+    expect(klassy({ loading: false, size: "lg" })).toEqual("base size-lg loading-false order-1");
     // order first
-    expect(klassy({ order: 1 })).toEqual("base size-md disable-false order-1");
-    expect(klassy({ order: 2 })).toEqual("base size-md disable-false order-2");
-    expect(klassy({ order: 3 })).toEqual("base size-md disable-false order-3");
-    expect(klassy({ order: "unknown" as any })).toEqual("base size-md disable-false");
+    expect(klassy({ order: 1 })).toEqual("base size-md loading-false order-1");
+    expect(klassy({ order: 2 })).toEqual("base size-md loading-false order-2");
+    expect(klassy({ order: 3 })).toEqual("base size-md loading-false order-3");
+    expect(klassy({ order: "unknown" as any })).toEqual("base size-md loading-false");
     // compound
-    expect(klassy({ size: "sm", disable: true })).toEqual(
-      "base size-sm disable-true order-1 size-sm---disable-true disable-true---order-1"
+    expect(klassy({ size: "sm", loading: true })).toEqual(
+      "base size-sm loading-true order-1 size-sm---loading-true loading-true---order-1"
     );
-    expect(klassy({ size: "md", disable: true })).toEqual(
-      "base size-md disable-true order-1 size-md---disable-true disable-true---order-1"
+    expect(klassy({ size: "md", loading: true })).toEqual(
+      "base size-md loading-true order-1 size-md---loading-true loading-true---order-1"
     );
-    expect(klassy({ size: "lg", disable: true })).toEqual(
-      "base size-lg disable-true order-1 size-lg---disable-true disable-true---order-1"
+    expect(klassy({ size: "lg", loading: true })).toEqual(
+      "base size-lg loading-true order-1 size-lg---loading-true loading-true---order-1"
     );
   });
 });

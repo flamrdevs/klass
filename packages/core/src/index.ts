@@ -94,12 +94,13 @@ function klass<T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> {
     return obj;
   }, {} as VariantGroup<T>);
 
-  const keys = Object.keys(variants) as (keyof T)[];
+  const stringifiedBase = clsx(base);
+  const keyofVariants = Object.keys(variants) as (keyof T)[];
 
   const instance: Omit<KlassFn<T>, "options" | "variant"> = (props?: KlassProps<T>, classes?: ClassValue) => {
     return clsx(
-      base,
-      keys.map((key) => variantGroup[key](props?.[key])),
+      stringifiedBase,
+      keyofVariants.map((key) => variantGroup[key](props?.[key])),
       compoundVariants?.map(({ variant, classes }) => {
         return Object.keys(variant).every((vkey) => {
           if (typeof variant[vkey] === "undefined") return false;

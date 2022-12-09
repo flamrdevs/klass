@@ -38,7 +38,7 @@ function withKlassProps<T extends VariantsSchema, P extends { className?: ClassV
 
 type KlassedComponent<E extends ElementType, T extends VariantsSchema> = {
   <C extends ElementType = E>(
-    props: PolymorphicComponentPropWithRef<C, Omit<VariantsOf<KlassFn<T>>, "className">> & { className?: ClassValue }
+    props: PolymorphicComponentPropWithRef<C, Omit<VariantsOf<KlassFn<T>>, "className"> & { className?: ClassValue }>
   ): ReactElement | null;
 } & {
   klass: KlassFn<T>;
@@ -47,7 +47,9 @@ type KlassedComponent<E extends ElementType, T extends VariantsSchema> = {
 function klassed<E extends ElementType, T extends VariantsSchema>(
   element: E,
   options: KlassOptions<T>,
-  setup?: { defaultProps: PolymorphicComponentPropWithRef<E, {}> }
+  setup?: {
+    defaultProps?: PolymorphicComponentPropWithRef<E, {}>;
+  }
 ): KlassedComponent<E, T> {
   const klassFn = klass<T>(options);
   const keys = Object.keys(options.variants).filter((el) => el !== "className") as unknown as (keyof Exclude<T, "className">)[];
@@ -55,7 +57,7 @@ function klassed<E extends ElementType, T extends VariantsSchema>(
   const defaultProps = setup?.defaultProps || ({} as PolymorphicComponentPropWithRef<E, {}>);
 
   const Component = <C extends ElementType = E>(
-    props: PolymorphicComponentPropWithRef<C, Omit<VariantsOf<KlassFn<T>>, "className">> & { className?: ClassValue },
+    props: PolymorphicComponentPropWithRef<C, Omit<VariantsOf<KlassFn<T>>, "className"> & { className?: ClassValue }>,
     ref?: PolymorphicRef<C>
   ) => {
     const { as: As = element, ...rest } = props;
