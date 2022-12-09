@@ -1,5 +1,11 @@
 # @klass/core
 
+## 0.4.1
+
+### Patch Changes
+
+- 72a5b70: Fix types
+
 ## 0.4.0
 
 ### Minor Changes

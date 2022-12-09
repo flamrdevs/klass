@@ -1,5 +1,13 @@
 # @klass/react
 
+## 0.4.1
+
+### Patch Changes
+
+- 72a5b70: Fix types
+- Updated dependencies [72a5b70]
+  - @klass/core@0.4.1
+
 ## 0.4.0
 
 ### Minor Changes
