@@ -33,10 +33,16 @@ type KlassProps<T extends VariantsSchema> = {
   [K in keyof T]?: BooleanKey<keyof T[K]>;
 };
 
+type CompoundVariant<T extends VariantsSchema> = {
+  variant: KlassProps<T>;
+  classes?: ClassValue;
+};
+
 type KlassOptions<T extends VariantsSchema> = {
   base?: string;
   variants: T;
   defaultVariants?: KlassProps<T>;
+  compoundVariants?: CompoundVariant<T>[];
 };
 
 type KlassFn<T extends VariantsSchema> = {
@@ -48,21 +54,28 @@ type KlassFn<T extends VariantsSchema> = {
 
 type VariantsOf<T extends (...args: any[]) => any> = Exclude<Parameters<T>[0], undefined>;
 
-function isPropertyKey(value: unknown): value is string | number | symbol {
+function isTypeofPropertyKey(value: unknown): value is string | number | symbol {
   return typeof value === "string" || typeof value === "number" || typeof value === "symbol";
+}
+
+function transformKey<T extends VariantsSchema[string]>(value?: BooleanKey<keyof T>): string | (BooleanKey<keyof T> & symbol) {
+  return typeof value === "symbol" ? value : String(value);
+}
+
+function getKey<T extends VariantsSchema[string]>(value?: BooleanKey<keyof T>, defaultValue?: BooleanKey<keyof T>) {
+  return typeof value !== "undefined" ? transformKey(value) : transformKey(defaultValue);
 }
 
 function variant<T extends VariantsSchema[string]>(options: VariantOptions<T>): VariantFn<T> {
   const { variant, defaultVariant } = options;
 
-  const instance = (props?: VariantProps<T>) => {
-    const valueKey = typeof props === "symbol" ? props : String(props);
-    if (isPropertyKey(valueKey) && valueKey in variant) return clsx(variant[valueKey]);
+  function inVariant(value: unknown) {
+    return isTypeofPropertyKey(value) && value in variant;
+  }
 
-    const defaultVariantKey = typeof defaultVariant === "symbol" ? defaultVariant : String(defaultVariant);
-    if (isPropertyKey(defaultVariantKey) && defaultVariantKey in variant) return clsx(variant[defaultVariantKey]);
-
-    return undefined;
+  let key: string | (BooleanKey<keyof T> & symbol);
+  const instance: Omit<VariantFn<T>, "options"> = (props?: VariantProps<T>) => {
+    return inVariant((key = getKey(props, defaultVariant))) ? clsx(variant[key]) : undefined;
   };
 
   (instance as VariantFn<T>).options = options;
@@ -71,9 +84,9 @@ function variant<T extends VariantsSchema[string]>(options: VariantOptions<T>): 
 }
 
 function klass<T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> {
-  const { base, variants, defaultVariants } = options;
+  const { base, variants, defaultVariants, compoundVariants } = options;
 
-  const variantFn = Object.entries(variants).reduce((obj, [key, value]) => {
+  const variantGroup = Object.entries(variants).reduce((obj, [key, value]) => {
     obj[key as keyof typeof obj] = variant<T[keyof T]>({
       variant: value as any,
       defaultVariant: defaultVariants?.[key] as any,
@@ -83,16 +96,25 @@ function klass<T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> {
 
   const keys = Object.keys(variants) as (keyof T)[];
 
-  const instance = (props?: KlassProps<T>, classes?: ClassValue) => {
+  const instance: Omit<KlassFn<T>, "options" | "variant"> = (props?: KlassProps<T>, classes?: ClassValue) => {
     return clsx(
       base,
-      keys.map((key) => variantFn[key](props?.[key])),
+      keys.map((key) => variantGroup[key](props?.[key])),
+      compoundVariants?.map(({ variant, classes }) => {
+        return Object.keys(variant).every((vkey) => {
+          if (typeof variant[vkey] === "undefined") return false;
+          if (typeof props?.[vkey] !== "undefined") return props?.[vkey] === variant[vkey];
+          return defaultVariants?.[vkey] === variant[vkey];
+        })
+          ? classes
+          : undefined;
+      }),
       classes
     );
   };
 
   (instance as KlassFn<T>).options = options;
-  (instance as KlassFn<T>).variant = variantFn;
+  (instance as KlassFn<T>).variant = variantGroup;
 
   return instance as KlassFn<T>;
 }
