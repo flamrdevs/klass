@@ -10,13 +10,15 @@
 
 🚧 UNDER DEVELOPMENT 🚧
 
-# Introduction
+# klass core
+
+## Introduction
 
 A class variant utility library.
 
-# Quick Start
+## Quick Start
 
-## Installation
+### Installation
 
 ```bash
 npm install @klass/core
@@ -26,12 +28,28 @@ yarn add @klass/core
 pnpm add @klass/core
 ```
 
-## Usage
+### Usage
 
-### Klass
+#### Klass
 
 ```typescript
 import { klass } from "@klass/core";
+
+const box = klass({
+  base: "block",
+  variants: {
+    m: {
+      sm: "m-2",
+      md: "m-4",
+      lg: "m-8",
+    },
+    p: {
+      sm: "p-2",
+      md: "p-4",
+      lg: "p-8",
+    },
+  },
+});
 
 const button = klass({
   base: "button--base",
@@ -41,33 +59,56 @@ const button = klass({
       md: "button--size-md",
       lg: "button--size-lg",
     },
+    outline: {
+      true: "button--outline-true",
+    },
     loading: {
       true: "button--loading-true",
-      false: "button--loading-false",
     },
   },
   defaultVariants: {
     // size: "md",
-    // loading: false,
   },
+  compoundVariants: [
+    {
+      variant: { size: "sm", outline: true },
+      classes: "button--size-sm-&-outline-true",
+    },
+    {
+      variant: { size: "md", outline: true },
+      classes: "button--size-md-&-outline-true",
+    },
+    {
+      variant: { size: "lg", outline: true },
+      classes: "button--size-lg-&-outline-true",
+    },
+  ],
 });
+
+box();
+// "block"
+
+box({ m: "md", p: "md" });
+// "block m-4 p-4"
 
 button();
 // "button--base"
 
-button({ size: "sm", loading: true } /*, "Extra classes" */);
-// "button--base button--size-sm button--loading-true"
+button({ size: "sm", outline: true, loading: true } /*, "extra classes" */);
+// "button--base button--size-sm button--outline-true button--loading-true button--size-sm-&-outline-true"
 
 button.options;
 // klass options param
 
 button.variant.size("sm");
-// button--size-sm
+// "button--size-sm"
+button.variant.outline(true);
+// "button--outline-true"
 button.variant.loading(true);
-// button--loading-true
+// "button--loading-true"
 ```
 
-### Variant
+#### Variant
 
 ```typescript
 import { variant } from "@klass/core";
@@ -91,10 +132,10 @@ size.options;
 // variant options param
 ```
 
-# Authors
+## Authors
 
 - [flamrdevs](https://github.com/flamrdevs)
 
-# License
+## License
 
 MIT License
