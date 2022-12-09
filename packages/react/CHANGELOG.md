@@ -1,5 +1,16 @@
 # @klass/react
 
+## 0.4.0
+
+### Minor Changes
+
+- 5bb7d55: New features
+
+### Patch Changes
+
+- Updated dependencies [5bb7d55]
+  - @klass/core@0.4.0
+
 ## 0.3.0
 
 ### Minor Changes
