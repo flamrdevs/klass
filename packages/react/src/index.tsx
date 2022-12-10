@@ -15,27 +15,6 @@ type PolymorphicRef<C extends ElementType> = ComponentPropsWithRef<C>["ref"];
 
 type PolymorphicComponentPropWithRef<C extends ElementType, Props = {}> = PolymorphicComponentProp<C, Props> & { ref?: PolymorphicRef<C> };
 
-function withKlassProps<T extends VariantsSchema, P extends { className?: ClassValue } & VariantsOf<KlassFn<T>>>(
-  klassFn: KlassFn<T>,
-  props: Omit<P, "as">,
-  keys: (keyof Exclude<T, "className">)[]
-) {
-  const { className, ...rest } = props;
-
-  let omited: Record<string, any> = {};
-  let picked: Record<string, any> = {};
-
-  Object.entries(rest).forEach(([key, value]) => {
-    if (keys.includes(key)) picked[key] = value;
-    else omited[key] = value;
-  });
-
-  return {
-    ...omited,
-    className: klassFn(picked, className),
-  } as Omit<P, "className" | keyof Omit<VariantsOf<KlassFn<T>>, "className">> & { className: string };
-}
-
 type KlassedComponent<E extends ElementType, T extends VariantsSchema> = {
   <C extends ElementType = E>(
     props: PolymorphicComponentPropWithRef<C, Omit<VariantsOf<KlassFn<T>>, "className"> & { className?: ClassValue }>
@@ -54,15 +33,30 @@ function klassed<E extends ElementType, T extends VariantsSchema>(
   const klassFn = klass<T>(options);
   const keys = Object.keys(options.variants).filter((el) => el !== "className") as unknown as (keyof Exclude<T, "className">)[];
 
-  const defaultProps = setup?.defaultProps || ({} as PolymorphicComponentPropWithRef<E, {}>);
+  const { className: defaultClassNameProps, ...defaultProps } =
+    setup?.defaultProps || ({} as PolymorphicComponentPropWithRef<E, { className?: string }>);
 
   const Component = <C extends ElementType = E>(
     props: PolymorphicComponentPropWithRef<C, Omit<VariantsOf<KlassFn<T>>, "className"> & { className?: ClassValue }>,
     ref?: PolymorphicRef<C>
   ) => {
-    const { as: As = element, ...rest } = props;
+    const { as: As = element, className, ...rest } = props;
 
-    return <As {...defaultProps} {...(withKlassProps(klassFn, rest, keys) as unknown as any)} ref={ref} />;
+    let omited: Record<string, any> = {};
+    let picked: Record<string, any> = {};
+
+    Object.entries(rest).forEach(([key, value]) => {
+      if (keys.includes(key)) picked[key] = value;
+      else omited[key] = value;
+    });
+
+    let mergedProps = {
+      ...defaultProps,
+      ...omited,
+      className: klassFn(picked, typeof defaultClassNameProps === "string" ? defaultClassNameProps : className),
+    };
+
+    return <As {...(mergedProps as any)} ref={ref} />;
   };
 
   const ComponentWithRef: Omit<KlassedComponent<E, T>, "klass"> = React.forwardRef<any, any>(Component);

@@ -3,7 +3,7 @@ import { afterEach } from "vitest";
 
 import React from "react";
 
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 
 import { klassed } from "./index";
 
@@ -93,6 +93,67 @@ describe("klassed", async () => {
       },
     });
 
+    const { getByTestId } = render(
+      <>
+        <Div data-testid="div" enable className={["extra", "class"]}>
+          div
+        </Div>
+      </>
+    );
+
+    expect(getByTestId("div")).toBeDefined();
+    expect(getByTestId("div").tagName).toEqual("DIV");
+    expect(getByTestId("div").classList.toString()).toEqual("div enable-true display-block extra class");
+    expect(getByTestId("div").textContent).toEqual("div");
+  });
+
+  it("reactive", async () => {
+    const Div = klassed("div", {
+      base: "div",
+      variants: {
+        enable: { true: "enable-true" },
+        display: { block: "display-block", none: "display-none" },
+        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
+        className: { will: "not-work" },
+      },
+      defaultVariants: {
+        display: "block",
+      },
+    });
+
+    const Reactive = () => {
+      const [extra, setExtra] = React.useState<string | undefined>();
+
+      return (
+        <Div
+          data-testid="div"
+          enable
+          className={["extra", "class", extra]}
+          onClick={() => {
+            setExtra("reactive");
+          }}
+        >
+          div
+        </Div>
+      );
+    };
+
+    const { getByTestId } = render(
+      <>
+        <Reactive />
+      </>
+    );
+
+    expect(getByTestId("div")).toBeDefined();
+    expect(getByTestId("div").tagName).toEqual("DIV");
+    expect(getByTestId("div").classList.toString()).toEqual("div enable-true display-block extra class");
+    expect(getByTestId("div").textContent).toEqual("div");
+
+    fireEvent.click(getByTestId("div"));
+    expect(getByTestId("div").classList.toString()).toEqual("div enable-true display-block extra class reactive");
+  });
+
+  it("polymorphic", async () => {
     const Button = klassed(
       "button",
       {
@@ -120,12 +181,8 @@ describe("klassed", async () => {
     const LinkComponent = React.forwardRef<HTMLAnchorElement, JSX.IntrinsicElements["a"]>((props, ref) => <a {...props} ref={ref} />);
     const ButtonLink = klassed(LinkComponent, Button.klass.options, { defaultProps: { href: "/" } });
 
-    render(
+    const { getByTestId } = render(
       <>
-        <Div data-testid="div" enable className={["extra", "class"]}>
-          div
-        </Div>
-
         <Button data-testid="btn-red" color="red" outline>
           btn-red
         </Button>
@@ -158,13 +215,8 @@ describe("klassed", async () => {
       </>
     );
 
-    expect(screen.getByTestId("div")).toBeDefined();
-    expect(screen.getByTestId("div").tagName).toEqual("DIV");
-    expect(screen.getByTestId("div").classList.toString()).toEqual("div enable-true display-block extra class");
-    expect(screen.getByTestId("div").textContent).toEqual("div");
-
     function expectButton(color: string) {
-      const element = screen.getByTestId(`btn-${color}`);
+      const element = getByTestId(`btn-${color}`);
       expect(element).toBeDefined();
       expect(element.tagName).toEqual("BUTTON");
       expect(element.classList.toString()).toEqual(`btn btn--${color} btn--outline btn--outline-${color}`);
@@ -176,7 +228,7 @@ describe("klassed", async () => {
     expectButton("blue");
 
     function expectButtonAsA(color: string) {
-      const element = screen.getByTestId(`btn-${color}-as-a`);
+      const element = getByTestId(`btn-${color}-as-a`);
       expect(element).toBeDefined();
       expect(element.tagName).toEqual("A");
       expect(element.classList.toString()).toEqual(`btn btn--${color} btn--outline btn--outline-${color}`);
@@ -188,7 +240,7 @@ describe("klassed", async () => {
     expectButtonAsA("blue");
 
     function expectButtonLink(color: string) {
-      const element = screen.getByTestId(`btn-link-${color}`);
+      const element = getByTestId(`btn-link-${color}`);
       expect(element).toBeDefined();
       expect(element.tagName).toEqual("A");
       expect(element.classList.toString()).toEqual(`btn btn--${color} btn--outline btn--outline-${color}`);

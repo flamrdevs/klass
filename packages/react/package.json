@@ -19,7 +19,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "microbundle -i src/index.tsx -o dist/index.js -f esm,cjs --target node",
+    "build": "microbundle -i src/index.tsx -o dist/index.js -f esm,cjs --target node --jsx react --jsxImportSource react",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui"
