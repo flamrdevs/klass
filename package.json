@@ -30,16 +30,18 @@
   "homepage": "https://github.com/flamrdevs/klass#readme",
   "devDependencies": {
     "@changesets/cli": "^2.25.2",
+    "@solidjs/testing-library": "^0.5.1",
     "@testing-library/react": "^13.4.0",
-    "@vitejs/plugin-react": "^2.2.0",
-    "@vitest/ui": "^0.25.3",
+    "@vitejs/plugin-react": "^3.0.0",
+    "@vitest/ui": "^0.25.6",
     "jsdom": "^20.0.3",
     "microbundle": "^0.15.1",
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
     "turbo": "^1.6.3",
+    "vite-plugin-solid": "^2.5.0",
     "vitepress": "^1.0.0-alpha.30",
-    "vitest": "^0.25.3",
+    "vitest": "^0.25.6",
     "vue": "^3.2.45"
   }
 }

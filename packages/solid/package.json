@@ -1,0 +1,41 @@
+{
+  "name": "@klass/solid",
+  "version": "0.4.1",
+  "description": "class variant utility for solid",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.m.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.m.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "microbundle -i src/index.tsx -o dist/index.js -f esm,cjs --target node --jsx preserve --jsxImportSource solid-js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flamrdevs/klass.git"
+  },
+  "author": "flamrdevs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flamrdevs/klass/issues"
+  },
+  "homepage": "https://github.com/flamrdevs/klass#readme",
+  "dependencies": {
+    "@klass/core": "*",
+    "solid-js": "^1.6.4"
+  }
+}
