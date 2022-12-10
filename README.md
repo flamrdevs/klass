@@ -2,7 +2,7 @@
   <h1 align="center">klass</h1>
 </p>
 
-<img src="https://hiiits.deta.dev/hits/flamrdevs/klass?" width="100%" heigth="10px" />
+<img src="https://hiiits.deta.dev/hit/flamrdevs/klass?" width="100%" heigth="10px" />
 
 🚧 UNDER DEVELOPMENT 🚧
 
