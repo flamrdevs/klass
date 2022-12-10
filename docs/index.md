@@ -15,6 +15,8 @@ hero:
 features:
   - icon: ⚡️
     title: Fast development
+    details: Build component faster
   - icon: 🚀
     title: Framework integration
+    details: Integrate with React and Solid
 ---

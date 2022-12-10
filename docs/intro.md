@@ -8,6 +8,7 @@ A class variant utility library.
 
 - [@klass/core](./klass/core) - core api
 - [@klass/react](./klass/react) - react package
+- [@klass/solid](./klass/solid) - solid package
 
 ## Roadmap
 
@@ -43,6 +44,28 @@ const box = klass({
 
 ```tsx
 import { klassed } from "@klass/react";
+
+const Box = klassed("div", {
+  base: "block",
+  variants: {
+    m: {
+      sm: "m-2",
+      md: "m-4",
+      lg: "m-8",
+    },
+    p: {
+      sm: "p-2",
+      md: "p-4",
+      lg: "p-8",
+    },
+  },
+});
+```
+
+### Solid
+
+```tsx
+import { klassed } from "@klass/solid";
 
 const Box = klassed("div", {
   base: "block",

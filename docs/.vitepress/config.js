@@ -24,6 +24,10 @@ export default {
             text: "@klass/react",
             link: "/klass/react",
           },
+          {
+            text: "@klass/solid",
+            link: "/klass/solid",
+          },
         ],
       },
     ],
