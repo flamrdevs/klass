@@ -2,13 +2,12 @@
   "compilerOptions": {
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "declaration": true,
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "node",
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
-    "jsxFactory": "React.createElement",
-    "jsxFragmentFactory": "React.Fragment"
+    "jsx": "react-jsxdev"
   }
 }

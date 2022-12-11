@@ -35,7 +35,6 @@
     "@vitejs/plugin-react": "^3.0.0",
     "@vitest/ui": "^0.25.6",
     "jsdom": "^20.0.3",
-    "microbundle": "^0.15.1",
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
     "turbo": "^1.6.3",

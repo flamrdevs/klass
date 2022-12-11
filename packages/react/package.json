@@ -4,10 +4,10 @@
   "description": "class variant utility for react",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "module": "./dist/index.m.js",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "import": "./dist/index.m.js",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     }
   },
@@ -19,7 +19,8 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "microbundle -i src/index.tsx -o dist/index.js -f esm,cjs --target node --jsx react --jsxImportSource react",
+    "build": "vite build && yarn run declare",
+    "declare": "tsc src/index.tsx --declaration --emitDeclarationOnly --esModuleInterop --outDir dist --jsx react-jsxdev",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui"
