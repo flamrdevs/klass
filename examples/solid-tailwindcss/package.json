@@ -10,8 +10,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@klass/core": "^0.5.0",
-    "@klass/solid": "^0.5.0",
+    "@klass/core": "^0.5.1",
+    "@klass/solid": "^0.5.1",
     "solid-js": "^1.6.4"
   },
   "devDependencies": {

@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@klass/core': ^0.5.0
-  '@klass/solid': ^0.5.0
+  '@klass/core': ^0.5.1
+  '@klass/solid': ^0.5.1
   autoprefixer: ^10.4.13
   postcss: ^8.4.19
   solid-js: ^1.6.4
@@ -12,8 +12,8 @@ specifiers:
   vite-plugin-solid: ^2.5.0
 
 dependencies:
-  '@klass/core': 0.5.0
-  '@klass/solid': 0.5.0
+  '@klass/core': 0.5.1
+  '@klass/solid': 0.5.1
   solid-js: 1.6.4
 
 devDependencies:
@@ -597,16 +597,16 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@klass/core/0.5.0:
-    resolution: {integrity: sha512-6YjM/sNNovl5Hcp6rzzlTQKalhi8hjHDrE+koBa5bEuX02CoOb/mP0fRv3dXwZzgNnw3ocQsPHAHzS3cD7nUsw==}
+  /@klass/core/0.5.1:
+    resolution: {integrity: sha512-Q+JQlt1Ecprgue/pg+KTTfe3sK36zjh8qDAhosCkMIGOuWx22/wR0jzgYBjOYxb6A72ygfWBnSl5IxqGN2GhNg==}
     dependencies:
       clsx: 1.2.1
     dev: false
 
-  /@klass/solid/0.5.0:
-    resolution: {integrity: sha512-w+2RJIuMcA7Th/GZleq7lyOtJrIATkgfnn4lfGPCpgjq1byjYhj+YezX+g0Xwjj5tR9P9uxtuXdB4tGmjnaJOA==}
+  /@klass/solid/0.5.1:
+    resolution: {integrity: sha512-Q54Jaot+APDMK2NeRyAC9Ah8GpIPKW+uWe0bQas2Dx9Unb1uLsSIbxluSlNbl3fNqAJWElMWUcAhygR3/TPB5A==}
     dependencies:
-      '@klass/core': 0.5.0
+      '@klass/core': 0.5.1
       solid-js: 1.6.4
     dev: false
 
