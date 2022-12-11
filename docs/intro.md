@@ -84,6 +84,8 @@ const Box = klassed("div", {
 });
 ```
 
+More [examples](https://github.com/flamrdevs/klass/tree/main/examples)
+
 ## Inspiration
 
 Some of the core concepts and designs are inspired by

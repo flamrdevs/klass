@@ -92,6 +92,8 @@ const Box = klassed("div", {
 });
 ```
 
+More [examples](./examples)
+
 ## Inspiration
 
 Some of the core concepts and designs are inspired by
