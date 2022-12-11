@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@klass/core': ^0.4.1
-  '@klass/react': ^0.4.1
+  '@klass/core': ^0.5.0
+  '@klass/react': ^0.5.0
   '@types/react': ^18.0.26
   '@types/react-dom': ^18.0.9
   '@vitejs/plugin-react': ^3.0.0
@@ -15,8 +15,8 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
-  '@klass/core': 0.4.1
-  '@klass/react': 0.4.1
+  '@klass/core': 0.5.0
+  '@klass/react': 0.5.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
 
@@ -494,16 +494,16 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@klass/core/0.4.1:
-    resolution: {integrity: sha512-ZZtYp8btkkGSTwZswgwlkR97RG0oacirNjCaYNe3rTJdmKVb43zYsGCz5AX97/yibd49XJt4NY0SsaSP2rAYlQ==}
+  /@klass/core/0.5.0:
+    resolution: {integrity: sha512-6YjM/sNNovl5Hcp6rzzlTQKalhi8hjHDrE+koBa5bEuX02CoOb/mP0fRv3dXwZzgNnw3ocQsPHAHzS3cD7nUsw==}
     dependencies:
       clsx: 1.2.1
     dev: false
 
-  /@klass/react/0.4.1:
-    resolution: {integrity: sha512-LyZ87NnwpC1C9LN3Ve1t+TMh+1dHSwQLxCMkHssRjns4DvoX8+wa/a3bvcnvQd6iW5feaIQ4BgurUfiOF6/tmA==}
+  /@klass/react/0.5.0:
+    resolution: {integrity: sha512-4ft3x1kz65/nVRfWmyFL055rOhIRWlJpsXLkyf1Ef30DliALB7fGQbuAcAFyJP9py/cfRfdJwlZRBn1FsxzFSA==}
     dependencies:
-      '@klass/core': 0.4.1
+      '@klass/core': 0.5.0
       react: 18.2.0
     dev: false
 
