@@ -23,9 +23,6 @@
     "deploy": {
       "dependsOn": ["build", "test", "lint"],
       "outputs": []
-    },
-    "docs:build": {
-      "cache": false
     }
   }
 }
