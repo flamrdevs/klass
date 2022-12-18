@@ -39,7 +39,7 @@ type CompoundVariant<T extends VariantsSchema> = {
 };
 
 type KlassOptions<T extends VariantsSchema> = {
-  base?: string;
+  base?: ClassValue;
   variants: T;
   defaultVariants?: KlassProps<T>;
   compoundVariants?: CompoundVariant<T>[];
