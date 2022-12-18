@@ -86,12 +86,12 @@ const Box = klassed("div", {
 
 ### More examples
 
-- [React Router Tailwind CSS](./examples/react-router-tailwindcss/)
-- [React Tailwind CSS](./examples/react-tailwindcss/)
-- [React Tailwind CSS Daisy UI](./examples/react-tailwindcss-daisy-ui/)
-- [Solid Router Tailwind CSS](./examples/solid-router-tailwindcss/)
-- [Solid Tailwind CSS](./examples/solid-tailwindcss/)
-- [Solid Tailwind CSS Daisy UI](./examples/solid-tailwindcss-daisy-ui/)
+- [React Router Tailwind CSS](https://github.com/flamrdevs/klass/tree/main/examples/react-router-tailwindcss/)
+- [React Tailwind CSS](https://github.com/flamrdevs/klass/tree/main/examples/react-tailwindcss/)
+- [React Tailwind CSS Daisy UI](https://github.com/flamrdevs/klass/tree/main/examples/react-tailwindcss-daisy-ui/)
+- [Solid Router Tailwind CSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-router-tailwindcss/)
+- [Solid Tailwind CSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-tailwindcss/)
+- [Solid Tailwind CSS Daisy UI](https://github.com/flamrdevs/klass/tree/main/examples/solid-tailwindcss-daisy-ui/)
 
 ## Inspiration
 
