@@ -158,6 +158,54 @@ const Button = klassed("button", {
 });
 ```
 
+#### Polymorphic
+
+##### use 'as' prop
+
+```tsx
+import YourKlassedButton from "./YourKlassedButton";
+
+import Link from "some-link-component-library";
+
+function App() {
+  return (
+    <nav>
+      <YourKlassedButton as={Link} href="/">
+        Home
+      </YourKlassedButton>
+      <YourKlassedButton as={Link} href="/about">
+        About
+      </YourKlassedButton>
+      <YourKlassedButton as={Link} href="/contact">
+        Contact
+      </YourKlassedButton>
+    </nav>
+  );
+}
+```
+
+##### use klassed
+
+```tsx
+import { klassed } from "@klass/solid";
+
+import YourKlassedButton from "./YourKlassedButton";
+
+import Link from "some-link-component-library";
+
+const YourKlassedButtonLink = klassed(YourKlassedButton, YourKlassedButton.klass.options);
+
+function App() {
+  return (
+    <nav>
+      <YourKlassedButtonLink href="/">Home</YourKlassedButtonLink>
+      <YourKlassedButtonLink href="/about">About</YourKlassedButtonLink>
+      <YourKlassedButtonLink href="/contact">Contact</YourKlassedButtonLink>
+    </nav>
+  );
+}
+```
+
 ## Authors
 
 - [flamrdevs](https://github.com/flamrdevs)

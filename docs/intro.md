@@ -84,7 +84,14 @@ const Box = klassed("div", {
 });
 ```
 
-More [examples](https://github.com/flamrdevs/klass/tree/main/examples)
+### More examples
+
+- [React Router Tailwind CSS](./examples/react-router-tailwindcss/)
+- [React Tailwind CSS](./examples/react-tailwindcss/)
+- [React Tailwind CSS Daisy UI](./examples/react-tailwindcss-daisy-ui/)
+- [Solid Router Tailwind CSS](./examples/solid-router-tailwindcss/)
+- [Solid Tailwind CSS](./examples/solid-tailwindcss/)
+- [Solid Tailwind CSS Daisy UI](./examples/solid-tailwindcss-daisy-ui/)
 
 ## Inspiration
 
