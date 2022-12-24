@@ -39,7 +39,7 @@ const App: Component = () => {
     <>
       <header class="container mx-auto my-4 max-w-screen-xl">
         <div class="px-8 py-4 flex justify-between items-center gap-4">
-          <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold">solid tailwindcss daisy ui + klass</h1>
+          <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold">solid tailwindcss daisy ui</h1>
           <div>
             <button
               type="button"

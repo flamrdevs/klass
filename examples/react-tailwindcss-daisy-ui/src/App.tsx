@@ -37,7 +37,7 @@ function App() {
     <>
       <header className="container mx-auto my-4 max-w-screen-xl">
         <div className="px-8 py-4 flex justify-between items-center gap-4">
-          <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold">react tailwindcss daisy ui + klass</h1>
+          <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold">react tailwindcss daisy ui</h1>
           <div>
             <button
               type="button"

@@ -3,10 +3,14 @@ import type { Component, JSX } from "solid-js";
 
 import { Link, Outlet, useLocation } from "@solidjs/router";
 
+import { klassed } from "@klass/solid";
+
 import Box from "./components/ui/Box";
 import Button from "./components/ui/Button";
 
 type Theme = "light" | "dark";
+
+const ButtonLink = klassed(Link, Button.klass.options);
 
 const App: Component = () => {
   const [theme, setTheme] = createSignal<Theme>("dark");
@@ -24,8 +28,8 @@ const App: Component = () => {
   return (
     <>
       <header class="container mx-auto my-4 max-w-screen-xl">
-        <div class="px-8 py-4 flex justify-start items-center gap-4">
-          <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold">solid router tailwindcss + klass</h1>
+        <div class="px-8 py-4 flex flex-col lg:flex-row justify-start items-center flex-wrap gap-4">
+          <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold">solid router tailwindcss</h1>
 
           <div class="flex-grow" />
 
@@ -36,9 +40,9 @@ const App: Component = () => {
             <Button as={Link} href="/about" class={{ "opacity-50": location.pathname !== "/about" }}>
               About
             </Button>
-            <Button as={Link} href="/contact" class={{ "opacity-50": location.pathname !== "/contact" }}>
+            <ButtonLink href="/contact" class={{ "opacity-50": location.pathname !== "/contact" }}>
               Contact
-            </Button>
+            </ButtonLink>
           </div>
           <div>
             <button

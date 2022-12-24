@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 
 import { Link, Outlet, useLocation } from "react-router-dom";
 
+import { klassed } from "@klass/react";
+
 import Box from "./components/ui/Box";
 import Button from "./components/ui/Button";
 
 type Theme = "light" | "dark";
+
+const ButtonLink = klassed(Link, Button.klass.options);
 
 function App() {
   const [theme, setTheme] = useState<Theme>("dark");
@@ -23,8 +27,8 @@ function App() {
   return (
     <>
       <header className="container mx-auto my-4 max-w-screen-xl">
-        <div className="px-8 py-4 flex justify-start items-center gap-4">
-          <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold">react router tailwindcss + klass</h1>
+        <div className="px-8 py-4 flex flex-col lg:flex-row justify-start items-center flex-wrap gap-4">
+          <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold">react router tailwindcss</h1>
 
           <div className="flex-grow" />
 
@@ -35,9 +39,9 @@ function App() {
             <Button as={Link} to="/about" className={{ "opacity-50": location.pathname !== "/about" }}>
               About
             </Button>
-            <Button as={Link} to="/contact" className={{ "opacity-50": location.pathname !== "/contact" }}>
+            <ButtonLink to="/contact" className={{ "opacity-50": location.pathname !== "/contact" }}>
               Contact
-            </Button>
+            </ButtonLink>
           </div>
           <div>
             <button
