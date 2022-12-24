@@ -16,6 +16,11 @@ export default {
             text: "intro",
             link: "/intro",
           },
+        ],
+      },
+      {
+        text: "Packages",
+        items: [
           {
             text: "@klass/core",
             link: "/klass/core",
@@ -27,6 +32,35 @@ export default {
           {
             text: "@klass/solid",
             link: "/klass/solid",
+          },
+        ],
+      },
+      {
+        text: "Examples",
+        items: [
+          {
+            text: "React Router + TailwindCSS",
+            link: "/example/react-router-tailwindcss",
+          },
+          {
+            text: "React TailwindCSS",
+            link: "/example/react-tailwindcss",
+          },
+          {
+            text: "React TailwindCSS + DaisyUI",
+            link: "/example/react-tailwindcss-daisy-ui",
+          },
+          {
+            text: "Solid Router + TailwindCSS",
+            link: "/example/solid-router-tailwindcss",
+          },
+          {
+            text: "Solid TailwindCSS",
+            link: "/example/solid-tailwindcss",
+          },
+          {
+            text: "Solid TailwindCSS + DaisyUI",
+            link: "/example/solid-tailwindcss-daisy-ui",
           },
         ],
       },
