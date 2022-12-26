@@ -1,4 +1,4 @@
-# Solid Tailwind CSS
+# Solid Windi CSS
 
 ## Quick Start
 

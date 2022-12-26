@@ -1,4 +1,4 @@
-# Solid Tailwind CSS
+# Solid Uno CSS
 
 ## Quick Start
 

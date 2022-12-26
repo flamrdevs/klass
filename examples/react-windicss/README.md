@@ -1,4 +1,4 @@
-# React Tailwind CSS
+# React Windi CSS
 
 ## Quick Start
 

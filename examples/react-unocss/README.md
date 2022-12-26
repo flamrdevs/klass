@@ -1,4 +1,4 @@
-# React Tailwind CSS
+# React Uno CSS
 
 ## Quick Start
 
