@@ -187,7 +187,7 @@ import YourKlassedButton from "./YourKlassedButton";
 
 import Link from "some-link-component-library";
 
-const YourKlassedButtonLink = klassed(YourKlassedButton, YourKlassedButton.klass.options);
+const YourKlassedButtonLink = klassed(Link, YourKlassedButton.klass.options);
 
 function App() {
   return (
