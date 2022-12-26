@@ -62,6 +62,22 @@ export default {
             text: "Solid TailwindCSS + DaisyUI",
             link: "/example/solid-tailwindcss-daisy-ui",
           },
+          {
+            text: "React UnoCSS",
+            link: "/example/react-unocss",
+          },
+          {
+            text: "Solid UnoCSS",
+            link: "/example/solid-unocss",
+          },
+          {
+            text: "React WindiCSS",
+            link: "/example/react-windicss",
+          },
+          {
+            text: "Solid WindiCSS",
+            link: "/example/solid-windicss",
+          },
         ],
       },
     ],

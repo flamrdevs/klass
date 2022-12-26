@@ -4,6 +4,12 @@
 
 A class variant utility library.
 
+## Features
+
+- Typescript support
+- Styled component like API (React & Solid)
+- Polymorphic component (React & Solid)
+
 ## Packages
 
 - [@klass/core](./klass/core) - core api
@@ -12,9 +18,9 @@ A class variant utility library.
 
 ## Roadmap
 
-- :heavy_check_mark: Variants - basic variant
-- :heavy_check_mark: Compounds variants - apply variant when multiple variant are match
-- :construction: Conditions variants - apply variant when match with input condition
+- :heavy_check_mark: Variants
+- :heavy_check_mark: Compounds variants
+- :construction: Conditions variants
 
 ## Examples
 
@@ -38,6 +44,8 @@ const box = klass({
     },
   },
 });
+
+box({ m: "md", p: "md" }, ["extra", { classes: true }]); // "block m-4 p-4 extra classes"
 ```
 
 ### React
@@ -60,6 +68,14 @@ const Box = klassed("div", {
     },
   },
 });
+
+function App() {
+  return (
+    <Box m="md" p="md" className={["extra", { classes: true }]}>
+      App
+    </Box>
+  );
+}
 ```
 
 ### Solid
@@ -82,6 +98,14 @@ const Box = klassed("div", {
     },
   },
 });
+
+function App() {
+  return (
+    <Box m="md" p="md" class={["extra", { classes: true }]}>
+      App
+    </Box>
+  );
+}
 ```
 
 ### More examples
@@ -92,6 +116,12 @@ const Box = klassed("div", {
 - [Solid Router Tailwind CSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-router-tailwindcss/)
 - [Solid Tailwind CSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-tailwindcss/)
 - [Solid Tailwind CSS Daisy UI](https://github.com/flamrdevs/klass/tree/main/examples/solid-tailwindcss-daisy-ui/)
+
+- [React Uno CSS](https://github.com/flamrdevs/klass/tree/main/examples/react-unocss/)
+- [Solid Uno CSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-unocss/)
+
+- [React Windi CSS](https://github.com/flamrdevs/klass/tree/main/examples/react-windicss/)
+- [Solid Windi CSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-windicss/)
 
 ## Inspiration
 
