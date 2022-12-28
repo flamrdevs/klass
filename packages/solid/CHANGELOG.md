@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 0.5.2
+
+### Patch Changes
+
+- Fix type
+- Updated dependencies
+  - @klass/core@0.5.2
+
 ## 0.5.1
 
 ### Patch Changes
