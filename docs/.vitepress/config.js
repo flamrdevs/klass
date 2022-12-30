@@ -30,6 +30,10 @@ export default {
             link: "/klass/react",
           },
           {
+            text: "@klass/preact",
+            link: "/klass/preact",
+          },
+          {
             text: "@klass/solid",
             link: "/klass/solid",
           },

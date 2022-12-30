@@ -15,13 +15,14 @@ A class variant utility library.
 ## Features
 
 - Typescript support
-- Styled component like API (React & Solid)
-- Polymorphic component (React & Solid)
+- Styled component like API (React & Preact & Solid)
+- Polymorphic component (React & Preact & Solid)
 
 ## Packages
 
 - [@klass/core](./packages/core) - core api
 - [@klass/react](./packages/react) - react package
+- [@klass/preact](./packages/preact) - preact package
 - [@klass/solid](./packages/solid) - solid package
 
 ## Roadmap
@@ -79,9 +80,47 @@ const Box = klassed("div", {
 
 function App() {
   return (
-    <Box m="md" p="md" className={["extra", { classes: true }]}>
-      App
-    </Box>
+    <>
+      <Box m="md" p="md" className={["extra", { classes: true }]}>
+        Box
+      </Box>
+
+      <Box as="a">Box Link</Box>
+    </>
+  );
+}
+```
+
+### Preact
+
+```tsx
+import { klassed } from "@klass/preact";
+
+const Box = klassed("div", {
+  base: "block",
+  variants: {
+    m: {
+      sm: "m-2",
+      md: "m-4",
+      lg: "m-8",
+    },
+    p: {
+      sm: "p-2",
+      md: "p-4",
+      lg: "p-8",
+    },
+  },
+});
+
+function App() {
+  return (
+    <>
+      <Box m="md" p="md" class={["extra", { classes: true }]}>
+        Box
+      </Box>
+
+      <Box as="a">Box Link</Box>
+    </>
   );
 }
 ```
@@ -109,9 +148,13 @@ const Box = klassed("div", {
 
 function App() {
   return (
-    <Box m="md" p="md" class={["extra", { classes: true }]}>
-      App
-    </Box>
+    <>
+      <Box m="md" p="md" class={["extra", { classes: true }]}>
+        Box
+      </Box>
+
+      <Box as="a">Box Link</Box>
+    </>
   );
 }
 ```

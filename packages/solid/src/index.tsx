@@ -7,7 +7,7 @@ import type { ComponentProps, JSX, ValidComponent } from "solid-js";
 import { klass } from "@klass/core";
 import type { ClassValue, VariantsSchema, KlassOptions, KlassFn, VariantsOf } from "@klass/core";
 
-type PropsWithChildren<P extends {} = {}> = { children?: JSX.Element } & P;
+import type { PropsWithChildren } from "./types";
 
 type AsProp<C extends ValidComponent> = { as?: C };
 
@@ -24,7 +24,7 @@ type PolymorphicComponentProp<C extends ValidComponent, Props = {}> = PropsWithC
 
 type KlassedComponent<E extends ValidComponent, T extends VariantsSchema> = {
   <C extends ValidComponent = E>(
-    props: PolymorphicComponentProp<C, Omit<VariantsOf<KlassFn<T>>, "class"> & { class?: ClassValue }>
+    props: PolymorphicComponentProp<C, Omit<VariantsOf<KlassFn<T>>, "class" | "classList"> & { class?: ClassValue; classList?: ClassValue }>
   ): JSX.Element | null;
 } & {
   klass: KlassFn<T>;
@@ -38,17 +38,24 @@ const klassed = <E extends ValidComponent, T extends VariantsSchema>(
   }
 ): KlassedComponent<E, T> => {
   const klassFn = klass<T>(options);
-  const keys = Object.keys(options.variants).filter((el) => el !== "class") as unknown as (keyof Exclude<T, "class">)[];
+  const keys = Object.keys(options.variants).filter((el) => el !== "class" && el !== "classList") as unknown as (keyof Exclude<
+    T,
+    "class" | "classList"
+  >)[];
 
-  const { class: defaultClassProps, ...defaultProps } = setup?.defaultProps || ({} as PolymorphicComponentProp<E, { class?: string }>);
+  const {
+    class: defaultClassProps,
+    classList: defaultClassListProps,
+    ...defaultProps
+  } = (setup?.defaultProps || {}) as PolymorphicComponentProp<E, { class?: string; classList?: { [k: string]: boolean | undefined } }>;
 
   const Component = <C extends ValidComponent = E>(
-    props: PolymorphicComponentProp<C, Omit<VariantsOf<KlassFn<T>>, "class"> & { class?: ClassValue }>
+    props: PolymorphicComponentProp<C, Omit<VariantsOf<KlassFn<T>>, "class" | "classList"> & { class?: ClassValue; classList?: ClassValue }>
   ) => {
-    const [local, picked, omited] = splitProps(props, ["as", "class"], keys as any);
+    const [local, picked, omited] = splitProps(props, ["as", "class", "classList"], keys as any);
 
     const mergedProps = mergeProps(defaultProps, omited, () => ({
-      class: klassFn(picked as any, typeof defaultClassProps === "string" ? defaultClassProps : local.class),
+      class: klassFn(picked as any, local.class ?? defaultClassProps ?? local.classList ?? defaultClassListProps),
     }));
 
     return <Dynamic component={local.as || element} {...(mergedProps as any)} />;

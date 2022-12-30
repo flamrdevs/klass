@@ -2,6 +2,24 @@ import { describe, it, expect } from "vitest";
 
 import { variant, klass } from "./index";
 
+import {
+  PaddingVariant,
+  PaddingVariantOptions,
+  SizeVariant,
+  SizeVariantOptions,
+  LoadingVariant,
+  LoadingVariantOptions,
+  DisableVariant,
+  DisableVariantOptions,
+  MixedVariant_SymbolVariant,
+  MixedVariant,
+  MixedVariantOptions,
+  BoxKlass,
+  BoxKlassOptions,
+  ButtonKlass,
+  ButtonKlassOptions,
+} from "./index.test.shared";
+
 describe("@klass/core", async () => {
   it("work", async () => {
     expect(true).toBeTruthy();
@@ -15,61 +33,44 @@ describe("variant", async () => {
   });
 
   it("compund", async () => {
-    const size = variant({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" } });
-
-    expect(size.options).toEqual({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" } });
+    expect(PaddingVariant.options).toEqual(PaddingVariantOptions);
+    expect(SizeVariant.options).toEqual(SizeVariantOptions);
+    expect(LoadingVariant.options).toEqual(LoadingVariantOptions);
+    expect(DisableVariant.options).toEqual(DisableVariantOptions);
+    expect(MixedVariant.options).toEqual(MixedVariantOptions);
   });
 
   it("basic string", async () => {
-    const size = variant({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" } });
-
-    expect(size()).toBeUndefined();
-    expect(size("unknown" as any)).toBeUndefined();
-    expect(size("md")).toEqual("size-md");
+    expect(PaddingVariant()).toBeUndefined();
+    expect(PaddingVariant("unknown" as any)).toBeUndefined();
+    expect(PaddingVariant("md")).toEqual("padding-md");
   });
 
   it("basic string with default variant", async () => {
-    const size = variant({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" }, defaultVariant: "md" });
-
-    expect(size()).toEqual("size-md");
-    expect(size("unknown" as any)).toBeUndefined();
-    expect(size("md")).toEqual("size-md");
+    expect(SizeVariant()).toEqual("size-md");
+    expect(SizeVariant("unknown" as any)).toBeUndefined();
+    expect(SizeVariant("md")).toEqual("size-md");
   });
 
   it("basic boolean", async () => {
-    const loading = variant({ variant: { true: "loading-true", false: "loading-false" } });
-
-    expect(loading()).toBeUndefined();
-    expect(loading("unknown" as any)).toBeUndefined();
-    expect(loading(true)).toEqual("loading-true");
+    expect(LoadingVariant()).toBeUndefined();
+    expect(LoadingVariant("unknown" as any)).toBeUndefined();
+    expect(LoadingVariant(true)).toEqual("loading-true");
   });
 
   it("basic boolean with default variant", async () => {
-    const loading = variant({ variant: { true: "loading-true", false: "loading-false" }, defaultVariant: false });
-
-    expect(loading()).toEqual("loading-false");
-    expect(loading("unknown" as any)).toBeUndefined();
-    expect(loading(true)).toEqual("loading-true");
+    expect(DisableVariant()).toEqual("disable-false");
+    expect(DisableVariant("unknown" as any)).toBeUndefined();
+    expect(DisableVariant(true)).toEqual("disable-true");
   });
 
   it("mix practice", async () => {
-    const A = Symbol("hahaha");
-
-    const mix = variant({
-      variant: {
-        "": "mix-",
-        true: "mix-true",
-        1: "mix-1",
-        [A]: "mix-symbol(A)",
-      },
-    });
-
-    expect(mix()).toBeUndefined();
-    expect(mix("unknown" as any)).toBeUndefined();
-    expect(mix("")).toEqual("mix-");
-    expect(mix(true)).toEqual("mix-true");
-    expect(mix(1)).toEqual("mix-1");
-    expect(mix(A)).toEqual("mix-symbol(A)");
+    expect(MixedVariant()).toBeUndefined();
+    expect(MixedVariant("unknown" as any)).toBeUndefined();
+    expect(MixedVariant("")).toEqual("mix-");
+    expect(MixedVariant(true)).toEqual("mix-true");
+    expect(MixedVariant(1)).toEqual("mix-1");
+    expect(MixedVariant(MixedVariant_SymbolVariant)).toEqual("mix-symbol(SYMBOL)");
   });
 });
 
@@ -80,136 +81,52 @@ describe("klass", async () => {
   });
 
   it("compund", async () => {
-    const klassy = klass({
-      base: "base",
-      variants: {
-        size: { sm: "size-sm", md: "size-md", lg: "size-lg" },
-        loading: { true: "loading-true", false: "loading-false" },
-        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
-      },
-      defaultVariants: { size: "md", loading: false, order: 1 },
-      compoundVariants: [
-        { variant: { size: "sm", loading: true }, classes: "size-sm---loading-true" },
-        { variant: { size: "md", loading: true }, classes: "size-md---loading-true" },
-        { variant: { size: "lg", loading: true }, classes: "size-lg---loading-true" },
-        { variant: { loading: true, order: 1 }, classes: "loading-true---order-1" },
-        { variant: { loading: true, order: 2 }, classes: "loading-true---order-2" },
-        { variant: { loading: true, order: 3 }, classes: "loading-true---order-3" },
-      ],
+    expect(BoxKlass.options).toEqual(BoxKlassOptions);
+    expect(BoxKlass.variant).toBeTypeOf("object");
+    expect(BoxKlass.variant.m).toBeTypeOf("function");
+    expect(BoxKlass.variant.p).toBeTypeOf("function");
+    expect(BoxKlass.variant.m.options).toEqual({
+      variant: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
+    });
+    expect(BoxKlass.variant.p.options).toEqual({
+      variant: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
     });
 
-    expect(klassy.options).toEqual({
-      base: "base",
-      variants: {
-        size: { sm: "size-sm", md: "size-md", lg: "size-lg" },
-        loading: { true: "loading-true", false: "loading-false" },
-        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
-      },
-      defaultVariants: { size: "md", loading: false, order: 1 },
-      compoundVariants: [
-        { variant: { size: "sm", loading: true }, classes: "size-sm---loading-true" },
-        { variant: { size: "md", loading: true }, classes: "size-md---loading-true" },
-        { variant: { size: "lg", loading: true }, classes: "size-lg---loading-true" },
-        { variant: { loading: true, order: 1 }, classes: "loading-true---order-1" },
-        { variant: { loading: true, order: 2 }, classes: "loading-true---order-2" },
-        { variant: { loading: true, order: 3 }, classes: "loading-true---order-3" },
-      ],
+    expect(ButtonKlass.options).toEqual(ButtonKlassOptions);
+    expect(ButtonKlass.variant).toBeTypeOf("object");
+    expect(ButtonKlass.variant.color).toBeTypeOf("function");
+    expect(ButtonKlass.variant.variant).toBeTypeOf("function");
+    expect(ButtonKlass.variant.full).toBeTypeOf("function");
+    expect(ButtonKlass.variant.color.options).toEqual({
+      variant: { red: null, green: null, blue: null },
+      defaultVariant: "red",
     });
-    expect(klassy.variant).toBeTypeOf("object");
-    expect(klassy.variant.size).toBeTypeOf("function");
-    expect(klassy.variant.loading).toBeTypeOf("function");
-    expect(klassy.variant.size()).toEqual("size-md");
-    expect(klassy.variant.size.options).toEqual({ variant: { sm: "size-sm", md: "size-md", lg: "size-lg" }, defaultVariant: "md" });
-    expect(klassy.variant.loading()).toEqual("loading-false");
-    expect(klassy.variant.loading.options).toEqual({ variant: { true: "loading-true", false: "loading-false" }, defaultVariant: false });
-    expect(klassy.variant.size("md")).toEqual("size-md");
-    expect(klassy.variant.loading(true)).toEqual("loading-true");
+    expect(ButtonKlass.variant.variant.options).toEqual({
+      variant: { filled: "text-white", outline: "bg-transparent border" },
+      defaultVariant: "filled",
+    });
+    expect(ButtonKlass.variant.full.options).toEqual({
+      variant: { true: "w-full h-full", width: "w-full", height: "h-full" },
+    });
   });
 
   it("basic", async () => {
-    const klassy = klass({
-      base: "base",
-      variants: {
-        size: { sm: "size-sm", md: "size-md", lg: "size-lg" },
-        loading: { true: "loading-true", false: "loading-false" },
-        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
-      },
-      compoundVariants: [
-        { variant: { size: "sm", loading: true }, classes: "size-sm---loading-true" },
-        { variant: { size: "md", loading: true }, classes: "size-md---loading-true" },
-        { variant: { size: "lg", loading: true }, classes: "size-lg---loading-true" },
-        { variant: { loading: true, order: 1 }, classes: "loading-true---order-1" },
-        { variant: { loading: true, order: 2 }, classes: "loading-true---order-2" },
-        { variant: { loading: true, order: 3 }, classes: "loading-true---order-3" },
-      ],
-    });
+    expect(BoxKlass()).toEqual("block");
 
-    expect(klassy()).toEqual("base");
-    // size first
-    expect(klassy({ size: "unknown" as any })).toEqual("base");
-    expect(klassy({ size: "md" })).toEqual("base size-md");
-    expect(klassy({ size: "unknown" as any, loading: true })).toEqual("base loading-true");
-    expect(klassy({ size: "md", loading: false })).toEqual("base size-md loading-false");
-    // loading first
-    expect(klassy({ loading: "unknown" as any })).toEqual("base");
-    expect(klassy({ loading: false })).toEqual("base loading-false");
-    expect(klassy({ loading: "unknown" as any, size: "sm" })).toEqual("base size-sm");
-    expect(klassy({ loading: false, size: "lg" })).toEqual("base size-lg loading-false");
-    // order first
-    expect(klassy({ order: 1 })).toEqual("base order-1");
-    expect(klassy({ order: 2 })).toEqual("base order-2");
-    expect(klassy({ order: 3 })).toEqual("base order-3");
-    expect(klassy({ order: "unknown" as any })).toEqual("base");
-    // compound
-    expect(klassy({ size: "sm", loading: true })).toEqual("base size-sm loading-true size-sm---loading-true");
-    expect(klassy({ size: "md", loading: true })).toEqual("base size-md loading-true size-md---loading-true");
-    expect(klassy({ size: "lg", loading: true })).toEqual("base size-lg loading-true size-lg---loading-true");
+    expect(BoxKlass({ m: "1" })).toEqual("block m-1");
+    expect(BoxKlass({ m: "2", p: "1" })).toEqual("block m-2 p-1");
+    expect(BoxKlass({ p: "2" })).toEqual("block p-2");
   });
 
   it("basic with default variants", async () => {
-    const klassy = klass({
-      base: "base",
-      variants: {
-        size: { sm: "size-sm", md: "size-md", lg: "size-lg" },
-        loading: { true: "loading-true", false: "loading-false" },
-        order: { 1: "order-1", 2: "order-2", 3: "order-3" },
-      },
-      defaultVariants: { size: "md", loading: false, order: 1 },
-      compoundVariants: [
-        { variant: { size: "sm", loading: true }, classes: "size-sm---loading-true" },
-        { variant: { size: "md", loading: true }, classes: "size-md---loading-true" },
-        { variant: { size: "lg", loading: true }, classes: "size-lg---loading-true" },
-        { variant: { loading: true, order: 1 }, classes: "loading-true---order-1" },
-        { variant: { loading: true, order: 2 }, classes: "loading-true---order-2" },
-        { variant: { loading: true, order: 3 }, classes: "loading-true---order-3" },
-      ],
-    });
+    expect(ButtonKlass()).toEqual("inline-block outline-none text-white bg-red-600");
 
-    expect(klassy()).toEqual("base size-md loading-false order-1");
-    // size first
-    expect(klassy({ size: "unknown" as any })).toEqual("base loading-false order-1");
-    expect(klassy({ size: "md" })).toEqual("base size-md loading-false order-1");
-    expect(klassy({ size: "unknown" as any, loading: true })).toEqual("base loading-true order-1 loading-true---order-1");
-    expect(klassy({ size: "md", loading: false })).toEqual("base size-md loading-false order-1");
-    // loading first
-    expect(klassy({ loading: "unknown" as any })).toEqual("base size-md order-1");
-    expect(klassy({ loading: false })).toEqual("base size-md loading-false order-1");
-    expect(klassy({ loading: "unknown" as any, size: "sm" })).toEqual("base size-sm order-1");
-    expect(klassy({ loading: false, size: "lg" })).toEqual("base size-lg loading-false order-1");
-    // order first
-    expect(klassy({ order: 1 })).toEqual("base size-md loading-false order-1");
-    expect(klassy({ order: 2 })).toEqual("base size-md loading-false order-2");
-    expect(klassy({ order: 3 })).toEqual("base size-md loading-false order-3");
-    expect(klassy({ order: "unknown" as any })).toEqual("base size-md loading-false");
-    // compound
-    expect(klassy({ size: "sm", loading: true })).toEqual(
-      "base size-sm loading-true order-1 size-sm---loading-true loading-true---order-1"
-    );
-    expect(klassy({ size: "md", loading: true })).toEqual(
-      "base size-md loading-true order-1 size-md---loading-true loading-true---order-1"
-    );
-    expect(klassy({ size: "lg", loading: true })).toEqual(
-      "base size-lg loading-true order-1 size-lg---loading-true loading-true---order-1"
+    expect(ButtonKlass({ full: true })).toEqual("inline-block outline-none text-white w-full h-full bg-red-600");
+
+    expect(ButtonKlass({ color: "green" })).toEqual("inline-block outline-none text-white bg-green-600");
+
+    expect(ButtonKlass({ color: "blue", variant: "outline" })).toEqual(
+      "inline-block outline-none bg-transparent border text-blue-600 border-blue-600"
     );
   });
 });

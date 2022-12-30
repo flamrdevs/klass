@@ -1,7 +1,9 @@
 import { describe, it, expect } from "vitest";
 import { afterEach } from "vitest";
 
-import { cleanup, fireEvent, render } from "@solidjs/testing-library";
+import { isValidElement } from "preact";
+
+import { cleanup, fireEvent, render } from "@testing-library/preact";
 
 import { klassed } from "./index";
 
@@ -13,7 +15,7 @@ afterEach(() => {
   cleanup();
 });
 
-describe("@klass/solid", async () => {
+describe("@klass/preact", async () => {
   it("work", async () => {
     expect(true).toBeTruthy();
   });
@@ -22,7 +24,7 @@ describe("@klass/solid", async () => {
 describe("klassed", async () => {
   it("type of", async () => {
     expect(klassed).toBeTypeOf("function");
-    expect(() => <BoxKlassed />).toBeTypeOf("function");
+    expect(isValidElement(<BoxKlassed />)).toBeTruthy();
   });
 
   it("compund", async () => {
@@ -56,7 +58,7 @@ describe("klassed", async () => {
   });
 
   it("basic", async () => {
-    const { getByTestId } = render(() => (
+    const { getByTestId } = render(
       <>
         <BoxKlassed data-testid="box" class={["extra-box", "classes"]}>
           box
@@ -66,7 +68,7 @@ describe("klassed", async () => {
           button
         </ButtonKlassed>
       </>
-    ));
+    );
 
     const box = getByTestId("box");
     expect(box).toBeDefined();
@@ -82,7 +84,7 @@ describe("klassed", async () => {
   });
 
   it("reactive", async () => {
-    const { getByTestId } = render(() => <Reactive />);
+    const { getByTestId } = render(<Reactive />);
 
     const reactive = getByTestId("reactive");
 
@@ -98,7 +100,7 @@ describe("klassed", async () => {
   it("polymorphic", async () => {
     const ButtonKlassedLink = klassed(LinkComponent, ButtonKlassed.klass.options, { defaultProps: { href: "/" } });
 
-    const { getByTestId } = render(() => (
+    const { getByTestId } = render(
       <>
         <ButtonKlassed data-testid="button-red" color="red">
           button-red
@@ -112,7 +114,7 @@ describe("klassed", async () => {
           button-link-blue
         </ButtonKlassedLink>
       </>
-    ));
+    );
 
     const buttonNormal = getByTestId("button-red");
     expect(buttonNormal).toBeDefined();

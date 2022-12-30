@@ -1,0 +1,42 @@
+{
+  "name": "@klass/preact",
+  "version": "0.5.2",
+  "description": "class variant utility for preact",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "vite build && yarn run declare",
+    "declare": "tsc src/index.tsx --declaration --emitDeclarationOnly --esModuleInterop --outDir dist --jsx preserve --jsxImportSource preact",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flamrdevs/klass.git"
+  },
+  "author": "flamrdevs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flamrdevs/klass/issues"
+  },
+  "homepage": "https://github.com/flamrdevs/klass#readme",
+  "dependencies": {
+    "@klass/core": "*",
+    "preact": "^10.11.3"
+  }
+}

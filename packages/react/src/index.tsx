@@ -33,8 +33,10 @@ function klassed<E extends ElementType, T extends VariantsSchema>(
   const klassFn = klass<T>(options);
   const keys = Object.keys(options.variants).filter((el) => el !== "className") as unknown as (keyof Exclude<T, "className">)[];
 
-  const { className: defaultClassNameProps, ...defaultProps } =
-    setup?.defaultProps || ({} as PolymorphicComponentPropWithRef<E, { className?: string }>);
+  const { className: defaultClassNameProps, ...defaultProps } = (setup?.defaultProps || {}) as PolymorphicComponentPropWithRef<
+    E,
+    { className?: string }
+  >;
 
   const Component = <C extends ElementType = E>(
     props: PolymorphicComponentPropWithRef<C, Omit<VariantsOf<KlassFn<T>>, "className"> & { className?: ClassValue }>,
@@ -53,7 +55,7 @@ function klassed<E extends ElementType, T extends VariantsSchema>(
     let mergedProps = {
       ...defaultProps,
       ...omited,
-      className: klassFn(picked, typeof defaultClassNameProps === "string" ? defaultClassNameProps : className),
+      className: klassFn(picked, className ?? defaultClassNameProps),
     };
 
     return <As {...(mergedProps as any)} ref={ref} />;

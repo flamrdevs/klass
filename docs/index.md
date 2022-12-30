@@ -18,5 +18,5 @@ features:
     details: Build component faster
   - icon: 🚀
     title: Framework integration
-    details: Integrate with React and Solid
+    details: Integrate with React, Preact and Solid
 ---
