@@ -1,5 +1,11 @@
 # @klass/core
 
+## 0.5.3
+
+### Patch Changes
+
+- a8c59d7: New package
+
 ## 0.5.2
 
 ### Patch Changes
