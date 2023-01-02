@@ -1,6 +1,18 @@
 export default {
   title: "klass",
   description: "class variant utility.",
+  head: [
+    ["meta", { property: "og:type", content: "website" }],
+    ["meta", { property: "og:url", content: "https://klass-style.vercel.app/" }],
+    ["meta", { property: "og:title", content: "klass | klass" }],
+    ["meta", { property: "og:description", content: "class variant utility." }],
+    ["meta", { property: "og:image", content: "https://github.com/flamrdevs/klass/tree/main/public/cover.png" }],
+    ["meta", { property: "twitter:card", content: "summary_large_image" }],
+    ["meta", { property: "twitter:url", content: "https://klass-style.vercel.app/" }],
+    ["meta", { property: "twitter:title", content: "klass | klass" }],
+    ["meta", { property: "twitter:description", content: "class variant utility." }],
+    ["meta", { property: "twitter:image", content: "https://github.com/flamrdevs/klass/tree/main/public/cover.png" }],
+  ],
   themeConfig: {
     socialLinks: [
       {
