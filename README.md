@@ -1,4 +1,4 @@
-<img src="https://github.com/flamrdevs/klass/tree/main/public/cover.png" />
+<img src="./public/cover.png" />
 
 <img src="https://hiiits.deta.dev/hit/flamrdevs/klass?" width="100%" heigth="10px" />
 
