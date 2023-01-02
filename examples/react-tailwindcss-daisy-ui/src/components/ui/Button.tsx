@@ -9,17 +9,19 @@ const Button = klassed(
     base: "btn",
     variants: {
       color: {
-        primary: "btn-primary",
-        secondary: "btn-secondary",
-        accent: "btn-accent",
-        info: "btn-info",
-        success: "btn-success",
-        warning: "btn-warning",
-        error: "btn-error",
+        default: "",
+        primary: "",
+        secondary: "",
+        accent: "",
+        info: "",
+        success: "",
+        warning: "",
+        error: "",
       },
       variant: {
+        default: "",
+        outline: "btn-outline",
         ghost: "btn-ghost",
-        link: "btn-link",
       },
       size: {
         xs: "btn-xs",
@@ -27,23 +29,94 @@ const Button = klassed(
         md: "btn-md",
         lg: "btn-lg",
       },
+      block: {
+        true: "btn-block",
+      },
       wide: {
         true: "btn-wide",
       },
-      block: {
-        true: "btn-block",
+      glass: {
+        true: "glass",
+      },
+      loading: {
+        true: "loading",
+      },
+      isActive: {
+        true: "btn-active",
+      },
+      isDisabled: {
+        true: "btn-disabled",
+      },
+      noAnimation: {
+        true: "no-animation",
       },
       ratio: {
         circle: "btn-circle",
         square: "btn-square",
       },
-      noAnimation: {
-        true: "no-animation",
-      },
     },
+    compoundVariants: [
+      {
+        variant: { color: "primary", variant: "default" },
+        classes: "btn-primary",
+      },
+      {
+        variant: { color: "secondary", variant: "default" },
+        classes: "btn-secondary",
+      },
+      {
+        variant: { color: "accent", variant: "default" },
+        classes: "btn-accent",
+      },
+      {
+        variant: { color: "info", variant: "default" },
+        classes: "btn-info",
+      },
+      {
+        variant: { color: "success", variant: "default" },
+        classes: "btn-success",
+      },
+      {
+        variant: { color: "warning", variant: "default" },
+        classes: "btn-warning",
+      },
+      {
+        variant: { color: "error", variant: "default" },
+        classes: "btn-error",
+      },
+      {
+        variant: { color: "primary", variant: "outline" },
+        classes: "btn-outline-primary",
+      },
+      {
+        variant: { color: "secondary", variant: "outline" },
+        classes: "btn-outline-secondary",
+      },
+      {
+        variant: { color: "accent", variant: "outline" },
+        classes: "btn-outline-accent",
+      },
+      {
+        variant: { color: "info", variant: "outline" },
+        classes: "btn-outline-info",
+      },
+      {
+        variant: { color: "success", variant: "outline" },
+        classes: "btn-outline-success",
+      },
+      {
+        variant: { color: "warning", variant: "outline" },
+        classes: "btn-outline-warning",
+      },
+      {
+        variant: { color: "error", variant: "outline" },
+        classes: "btn-outline-error",
+      },
+    ],
     defaultVariants: {
-      color: "primary",
-      size: "sm",
+      color: "default",
+      variant: "default",
+      size: "md",
     },
   },
   {

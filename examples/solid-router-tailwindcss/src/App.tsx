@@ -29,7 +29,7 @@ const App: Component = () => {
     <>
       <header class="container mx-auto my-4 max-w-screen-xl">
         <div class="px-8 py-4 flex flex-col lg:flex-row justify-start items-center flex-wrap gap-4">
-          <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold">solid router tailwindcss</h1>
+          <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold">Solid Router TailwindCSS</h1>
 
           <div class="flex-grow" />
 

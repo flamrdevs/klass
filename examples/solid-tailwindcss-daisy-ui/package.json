@@ -1,5 +1,5 @@
 {
-  "name": "solid-tailwindcss-daisyui",
+  "name": "solid-tailwindcss-daisy-ui",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,13 +8,13 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
-  "license": "MIT",
   "dependencies": {
-    "@klass/core": "^0.5.1",
-    "@klass/solid": "^0.5.1",
+    "@klass/core": "^0.5.3",
+    "@klass/solid": "^0.5.3",
     "solid-js": "^1.6.4"
   },
   "devDependencies": {
+    "@types/babel__core": "^7.1.20",
     "autoprefixer": "^10.4.13",
     "daisyui": "^2.43.0",
     "postcss": "^8.4.19",

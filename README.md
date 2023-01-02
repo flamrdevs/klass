@@ -15,8 +15,8 @@ A class variant utility library.
 ## Features
 
 - Typescript support
-- Styled component like API (React & Preact & Solid)
-- Polymorphic component (React & Preact & Solid)
+- Styled component like API (React, Preact & Solid)
+- Polymorphic component (React, Preact & Solid)
 
 ## Packages
 
@@ -80,13 +80,13 @@ const Box = klassed("div", {
 
 function App() {
   return (
-    <>
+    <Box>
       <Box m="md" p="md" className={["extra", { classes: true }]}>
         Box
       </Box>
 
       <Box as="a">Box Link</Box>
-    </>
+    </Box>
   );
 }
 ```
@@ -114,13 +114,13 @@ const Box = klassed("div", {
 
 function App() {
   return (
-    <>
+    <Box>
       <Box m="md" p="md" class={["extra", { classes: true }]}>
         Box
       </Box>
 
       <Box as="a">Box Link</Box>
-    </>
+    </Box>
   );
 }
 ```
@@ -148,31 +148,39 @@ const Box = klassed("div", {
 
 function App() {
   return (
-    <>
+    <Box>
       <Box m="md" p="md" class={["extra", { classes: true }]}>
         Box
       </Box>
 
       <Box as="a">Box Link</Box>
-    </>
+    </Box>
   );
 }
 ```
 
 ### More examples
 
-- [React Router Tailwind CSS](./examples/react-router-tailwindcss/)
-- [React Tailwind CSS](./examples/react-tailwindcss/)
-- [React Tailwind CSS Daisy UI](./examples/react-tailwindcss-daisy-ui/)
-- [Solid Router Tailwind CSS](./examples/solid-router-tailwindcss/)
-- [Solid Tailwind CSS](./examples/solid-tailwindcss/)
-- [Solid Tailwind CSS Daisy UI](./examples/solid-tailwindcss-daisy-ui/)
+- [React Router TailwindCSS](https://github.com/flamrdevs/klass/tree/main/examples/react-router-tailwindcss/)
+- [React TailwindCSS](https://github.com/flamrdevs/klass/tree/main/examples/react-tailwindcss/)
+- [React TailwindCSS DaisyUI](https://github.com/flamrdevs/klass/tree/main/examples/react-tailwindcss-daisy-ui/)
+- [React TailwindCSS RippleUI](https://github.com/flamrdevs/klass/tree/main/examples/react-tailwindcss-ripple-ui/)
+- [Preact Router TailwindCSS](https://github.com/flamrdevs/klass/tree/main/examples/preact-router-tailwindcss/)
+- [Preact TailwindCSS](https://github.com/flamrdevs/klass/tree/main/examples/preact-tailwindcss/)
+- [Preact TailwindCSS DaisyUI](https://github.com/flamrdevs/klass/tree/main/examples/preact-tailwindcss-daisy-ui/)
+- [Preact TailwindCSS RippleUI](https://github.com/flamrdevs/klass/tree/main/examples/preact-tailwindcss-ripple-ui/)
+- [Solid Router TailwindCSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-router-tailwindcss/)
+- [Solid TailwindCSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-tailwindcss/)
+- [Solid TailwindCSS DaisyUI](https://github.com/flamrdevs/klass/tree/main/examples/solid-tailwindcss-daisy-ui/)
+- [Solid TailwindCSS RippleUI](https://github.com/flamrdevs/klass/tree/main/examples/solid-tailwindcss-ripple-ui/)
 
-- [React Uno CSS](https://github.com/flamrdevs/klass/tree/main/examples/react-unocss/)
-- [Solid Uno CSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-unocss/)
+- [React UnoCSS](https://github.com/flamrdevs/klass/tree/main/examples/react-unocss/)
+- [Preact UnoCSS](https://github.com/flamrdevs/klass/tree/main/examples/preact-unocss/)
+- [Solid UnoCSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-unocss/)
 
-- [React Windi CSS](https://github.com/flamrdevs/klass/tree/main/examples/react-windicss/)
-- [Solid Windi CSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-windicss/)
+- [React WindiCSS](https://github.com/flamrdevs/klass/tree/main/examples/react-windicss/)
+- [Preact WindiCSS](https://github.com/flamrdevs/klass/tree/main/examples/preact-windicss/)
+- [Solid WindiCSS](https://github.com/flamrdevs/klass/tree/main/examples/solid-windicss/)
 
 ## Inspiration
 

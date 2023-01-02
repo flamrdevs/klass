@@ -55,6 +55,26 @@ export default {
             link: "/example/react-tailwindcss-daisy-ui",
           },
           {
+            text: "React TailwindCSS + RippleUI",
+            link: "/example/react-tailwindcss-ripple-ui",
+          },
+          {
+            text: "Preact Router + TailwindCSS",
+            link: "/example/preact-router-tailwindcss",
+          },
+          {
+            text: "Preact TailwindCSS",
+            link: "/example/preact-tailwindcss",
+          },
+          {
+            text: "Preact TailwindCSS + DaisyUI",
+            link: "/example/preact-tailwindcss-daisy-ui",
+          },
+          {
+            text: "Preact TailwindCSS + RippleUI",
+            link: "/example/preact-tailwindcss-ripple-ui",
+          },
+          {
             text: "Solid Router + TailwindCSS",
             link: "/example/solid-router-tailwindcss",
           },
@@ -67,8 +87,16 @@ export default {
             link: "/example/solid-tailwindcss-daisy-ui",
           },
           {
+            text: "Solid TailwindCSS + RippleUI",
+            link: "/example/solid-tailwindcss-ripple-ui",
+          },
+          {
             text: "React UnoCSS",
             link: "/example/react-unocss",
+          },
+          {
+            text: "Preact UnoCSS",
+            link: "/example/preact-unocss",
           },
           {
             text: "Solid UnoCSS",
@@ -77,6 +105,10 @@ export default {
           {
             text: "React WindiCSS",
             link: "/example/react-windicss",
+          },
+          {
+            text: "Preact WindiCSS",
+            link: "/example/preact-windicss",
           },
           {
             text: "Solid WindiCSS",

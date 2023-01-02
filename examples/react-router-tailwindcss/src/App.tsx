@@ -28,7 +28,7 @@ function App() {
     <>
       <header className="container mx-auto my-4 max-w-screen-xl">
         <div className="px-8 py-4 flex flex-col lg:flex-row justify-start items-center flex-wrap gap-4">
-          <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold">react router tailwindcss</h1>
+          <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold">React Router TailwindCSS</h1>
 
           <div className="flex-grow" />
 

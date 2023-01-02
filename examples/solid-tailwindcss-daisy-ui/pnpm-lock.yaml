@@ -1,8 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@klass/core': ^0.5.1
-  '@klass/solid': ^0.5.1
+  '@klass/core': ^0.5.3
+  '@klass/solid': ^0.5.3
+  '@types/babel__core': ^7.1.20
   autoprefixer: ^10.4.13
   daisyui: ^2.43.0
   postcss: ^8.4.19
@@ -13,11 +14,12 @@ specifiers:
   vite-plugin-solid: ^2.5.0
 
 dependencies:
-  '@klass/core': 0.5.1
-  '@klass/solid': 0.5.1
+  '@klass/core': 0.5.3
+  '@klass/solid': 0.5.3
   solid-js: 1.6.4
 
 devDependencies:
+  '@types/babel__core': 7.1.20
   autoprefixer: 10.4.13_postcss@8.4.19
   daisyui: 2.43.0_2lwn2upnx27dqeg6hqdu7sq75m
   postcss: 8.4.19
@@ -612,16 +614,16 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@klass/core/0.5.1:
-    resolution: {integrity: sha512-Q+JQlt1Ecprgue/pg+KTTfe3sK36zjh8qDAhosCkMIGOuWx22/wR0jzgYBjOYxb6A72ygfWBnSl5IxqGN2GhNg==}
+  /@klass/core/0.5.3:
+    resolution: {integrity: sha512-ljCyOzQZ/l4O/qTnRur0iD8VHGNnZ9XuB2NHFtdU0k15mKukr/avPUC5Feqz7o87XGTkLQw5kfP6NflY8ODP3w==}
     dependencies:
       clsx: 1.2.1
     dev: false
 
-  /@klass/solid/0.5.1:
-    resolution: {integrity: sha512-Q54Jaot+APDMK2NeRyAC9Ah8GpIPKW+uWe0bQas2Dx9Unb1uLsSIbxluSlNbl3fNqAJWElMWUcAhygR3/TPB5A==}
+  /@klass/solid/0.5.3:
+    resolution: {integrity: sha512-E5U/j8NcBYWaalu1Nr/UTc/HuRXS3GR1sSx1Xth3rckrEpQRQQWkXAdDmW1MT1yu2kpgBF4xaW7hkHw5IYssEw==}
     dependencies:
-      '@klass/core': 0.5.1
+      '@klass/core': 0.5.3
       solid-js: 1.6.4
     dev: false
 
@@ -644,6 +646,35 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.14.0
+    dev: true
+
+  /@types/babel__core/7.1.20:
+    resolution: {integrity: sha512-PVb6Bg2QuscZ30FvOU7z4guG6c926D9YRvOxEaelzndpMsvP+YM74Q/dAFASpg2l6+XLalxSGxcq/lrgYWZtyQ==}
+    dependencies:
+      '@babel/parser': 7.20.5
+      '@babel/types': 7.20.5
+      '@types/babel__generator': 7.6.4
+      '@types/babel__template': 7.4.1
+      '@types/babel__traverse': 7.18.3
+    dev: true
+
+  /@types/babel__generator/7.6.4:
+    resolution: {integrity: sha512-tFkciB9j2K755yrTALxD44McOrk+gfpIpvC3sxHjRawj6PfnQxrse4Clq5y/Rq+G3mrBurMax/lG8Qn2t9mSsg==}
+    dependencies:
+      '@babel/types': 7.20.5
+    dev: true
+
+  /@types/babel__template/7.4.1:
+    resolution: {integrity: sha512-azBFKemX6kMg5Io+/rdGT0dkGreboUVR0Cdm3fz9QJWpaQGJRQXl7C+6hOTCZcMll7KFyEQpgbYI2lHdsS4U7g==}
+    dependencies:
+      '@babel/parser': 7.20.5
+      '@babel/types': 7.20.5
+    dev: true
+
+  /@types/babel__traverse/7.18.3:
+    resolution: {integrity: sha512-1kbcJ40lLB7MHsj39U4Sh1uTd2E7rLEa79kmDpI6cy+XiXsteB3POdQomoq4FxszMrO3ZYchkhYJw7A2862b3w==}
+    dependencies:
+      '@babel/types': 7.20.5
     dev: true
 
   /acorn-node/1.8.2:

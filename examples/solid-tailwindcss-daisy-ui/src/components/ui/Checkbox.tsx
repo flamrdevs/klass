@@ -9,6 +9,7 @@ const Checkbox = klassed(
     base: "checkbox",
     variants: {
       color: {
+        default: "",
         primary: "checkbox-primary",
         secondary: "checkbox-secondary",
         accent: "checkbox-accent",
@@ -25,7 +26,7 @@ const Checkbox = klassed(
       },
     },
     defaultVariants: {
-      color: "primary",
+      color: "default",
       size: "sm",
     },
   },

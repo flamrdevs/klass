@@ -1,30 +1,17 @@
 import { createEffect, createSignal } from "solid-js";
-import type { Component, JSX } from "solid-js";
+import type { ParentProps } from "solid-js";
 
 import Box from "./components/ui/Box";
 import Button from "./components/ui/Button";
-import Checkbox from "./components/ui/Checkbox";
-import Link from "./components/ui/Link";
-import Radio from "./components/ui/Radio";
-import Range from "./components/ui/Range";
 import TextInput from "./components/ui/TextInput";
+import Checkbox from "./components/ui/Checkbox";
 import Toggle from "./components/ui/Toggle";
 
-type PropsWithChildren<P = unknown> = P & { children?: JSX.Element };
+const Header = () => {
+  type Theme = "light" | "dark";
 
-function Section(props: PropsWithChildren<{ title: string }>) {
-  return (
-    <div class="px-8 py-4 bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50 rounded-lg shadow-lg">
-      <h2 class="text-md md:text-lg xl:text-xl font-bold">{props.title}</h2>
+  const title = "Solid TailwindCSS DaisyUI";
 
-      <div class="p-2">{props.children}</div>
-    </div>
-  );
-}
-
-type Theme = "light" | "dark";
-
-const App: Component = () => {
   const [theme, setTheme] = createSignal<Theme>("dark");
 
   function toggleTheme() {
@@ -33,172 +20,406 @@ const App: Component = () => {
 
   createEffect(() => {
     document.documentElement.dataset.theme = theme();
-  });
+  }, [theme]);
 
   return (
-    <>
-      <header class="container mx-auto my-4 max-w-screen-xl">
-        <div class="px-8 py-4 flex justify-between items-center gap-4">
-          <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold">solid tailwindcss daisy ui</h1>
-          <div>
-            <button
-              type="button"
-              class="px-3 py-1 outline-none bg-neutral-50 hover:bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-50 rounded-lg shadow-lg text-base font-medium"
-              onClick={toggleTheme}
-            >
-              {theme() === "dark" ? "light" : "dark"} mode
-            </button>
-          </div>
+    <header class="container mx-auto mb-2 max-w-screen-lg">
+      <div class="p-8 flex justify-between items-center gap-4">
+        <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold">{title}</h1>
+        <div>
+          <button
+            type="button"
+            class="px-3 py-1 outline-none bg-base-100 hover:bg-base-200 text-base-content rounded-lg shadow-lg text-base font-medium"
+            onClick={toggleTheme}
+          >
+            {theme() === "dark" ? "light" : "dark"} mode
+          </button>
         </div>
-      </header>
-
-      <main class="container mx-auto my-4 max-w-screen-xl space-y-4">
-        <Section title="Box">
-          <div class="space-y-2">
-            <div class="space-x-2">
-              <Box p="sm">Box</Box>
-              <Box p="sm">Box</Box>
-              <Box p="sm">Box</Box>
-            </div>
-          </div>
-        </Section>
-
-        <Section title="Button">
-          <div class="space-y-2">
-            <div class="space-x-2 space-y-2">
-              <Button color="primary">Primary Button</Button>
-              <Button color="secondary">Secondary Button</Button>
-              <Button color="accent">Accent Button</Button>
-              <Button color="info">Info Button</Button>
-              <Button color="success">Success Button</Button>
-              <Button color="warning">Warning Button</Button>
-              <Button color="error">Error Button</Button>
-            </div>
-            <div class="space-x-2 space-y-2">
-              <Button size="xs">Extra Small Button</Button>
-              <Button size="sm">Small Button</Button>
-              <Button size="md">Medium Button</Button>
-              <Button size="lg">Large Button</Button>
-            </div>
-          </div>
-        </Section>
-
-        <Section title="Checkbox">
-          <div class="space-y-2">
-            <div class="space-x-2 space-y-2">
-              <Checkbox color="primary" checked />
-              <Checkbox color="secondary" checked />
-              <Checkbox color="accent" checked />
-              <Checkbox color="info" checked />
-              <Checkbox color="success" checked />
-              <Checkbox color="warning" checked />
-              <Checkbox color="error" checked />
-            </div>
-            <div class="space-x-2 space-y-2">
-              <Checkbox size="xs" checked />
-              <Checkbox size="sm" checked />
-              <Checkbox size="md" checked />
-              <Checkbox size="lg" checked />
-            </div>
-          </div>
-        </Section>
-
-        <Section title="Link">
-          <div class="space-y-2">
-            <div class="space-x-2 space-y-2">
-              <Link color="primary">Primary Link</Link>
-              <Link color="secondary">Secondary Link</Link>
-              <Link color="accent">Accent Link</Link>
-              <Link color="info">Info Link</Link>
-              <Link color="success">Success Link</Link>
-              <Link color="warning">Warning Link</Link>
-              <Link color="error">Error Link</Link>
-            </div>
-          </div>
-        </Section>
-
-        <Section title="Radio">
-          <div class="space-y-2">
-            <div class="space-x-2 space-y-2">
-              <Radio color="primary" name="radio-color" checked />
-              <Radio color="secondary" name="radio-color" />
-              <Radio color="accent" name="radio-color" />
-              <Radio color="info" name="radio-color" />
-              <Radio color="success" name="radio-color" />
-              <Radio color="warning" name="radio-color" />
-              <Radio color="error" name="radio-color" />
-            </div>
-            <div class="space-x-2 space-y-2">
-              <Radio size="xs" name="radio-size" checked />
-              <Radio size="sm" name="radio-size" />
-              <Radio size="md" name="radio-size" />
-              <Radio size="lg" name="radio-size" />
-            </div>
-          </div>
-        </Section>
-
-        <Section title="Range">
-          <div class="space-y-2">
-            <div class="space-x-2 space-y-2">
-              <Range color="primary" min={0} max={100} value={40} class="max-w-xs" />
-              <Range color="secondary" min={0} max={100} value={40} class="max-w-xs" />
-              <Range color="accent" min={0} max={100} value={40} class="max-w-xs" />
-              <Range color="info" min={0} max={100} value={40} class="max-w-xs" />
-              <Range color="success" min={0} max={100} value={40} class="max-w-xs" />
-              <Range color="warning" min={0} max={100} value={40} class="max-w-xs" />
-              <Range color="error" min={0} max={100} value={40} class="max-w-xs" />
-            </div>
-            <div class="space-x-2 space-y-2">
-              <Range size="xs" min={0} max={100} value={40} class="max-w-xs" />
-              <Range size="sm" min={0} max={100} value={40} class="max-w-xs" />
-              <Range size="md" min={0} max={100} value={40} class="max-w-xs" />
-              <Range size="lg" min={0} max={100} value={40} class="max-w-xs" />
-            </div>
-          </div>
-        </Section>
-
-        <Section title="TextInput">
-          <div class="space-y-2">
-            <div class="space-x-2 space-y-2">
-              <TextInput color="primary" placeholder="..." />
-              <TextInput color="secondary" placeholder="..." />
-              <TextInput color="accent" placeholder="..." />
-              <TextInput color="info" placeholder="..." />
-              <TextInput color="success" placeholder="..." />
-              <TextInput color="warning" placeholder="..." />
-              <TextInput color="error" placeholder="..." />
-            </div>
-            <div class="space-x-2 space-y-2">
-              <TextInput size="xs" placeholder="..." />
-              <TextInput size="sm" placeholder="..." />
-              <TextInput size="md" placeholder="..." />
-              <TextInput size="lg" placeholder="..." />
-            </div>
-          </div>
-        </Section>
-
-        <Section title="Toggle">
-          <div class="space-y-2">
-            <div class="space-x-2 space-y-2">
-              <Toggle color="primary" checked />
-              <Toggle color="secondary" checked />
-              <Toggle color="accent" checked />
-              <Toggle color="info" checked />
-              <Toggle color="success" checked />
-              <Toggle color="warning" checked />
-              <Toggle color="error" checked />
-            </div>
-            <div class="space-x-2 space-y-2">
-              <Toggle size="xs" checked />
-              <Toggle size="sm" checked />
-              <Toggle size="md" checked />
-              <Toggle size="lg" checked />
-            </div>
-          </div>
-        </Section>
-      </main>
-    </>
+      </div>
+    </header>
   );
 };
+
+function Section(props: ParentProps<{ title: string }>) {
+  return (
+    <div class="p-8 bg-base-100 text-base-content rounded-lg shadow-lg">
+      <h2 class="text-xl md:text-2xl xl:text-3xl font-bold">{props.title}</h2>
+
+      <div class="p-2">{props.children}</div>
+    </div>
+  );
+}
+
+Section.Group = (props: ParentProps<{ title: string }>) => {
+  return (
+    <div class="space-y-2 p-4">
+      <div class="text-md md:text-lg xl:text-xl font-medium">{props.title}</div>
+      <div class="p-1">{props.children}</div>
+    </div>
+  );
+};
+
+const Main = () => {
+  return (
+    <main class="container mx-auto my-2 p-4 max-w-screen-lg space-y-4">
+      <Section title="Box">
+        <Section.Group title="Padding">
+          <Box p="sm" class="border border-base-300">
+            p=sm
+          </Box>
+          <Box px="md" class="border border-base-300">
+            px=md
+          </Box>
+          <Box py="lg" class="border border-base-300">
+            py=lg
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Margin">
+          <Box m="sm" class="border border-base-300">
+            m=sm
+          </Box>
+          <Box mx="md" class="border border-base-300">
+            mx=md
+          </Box>
+          <Box my="lg" class="border border-base-300">
+            my=lg
+          </Box>
+        </Section.Group>
+      </Section>
+
+      <Section title="Button">
+        <Section.Group title="Default">
+          <Box display="inline-block" m="xs">
+            <Button>Default Button</Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Color">
+          <Box display="inline-block" m="xs">
+            <Button color="primary">Primary Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button color="secondary">Secondary Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button color="accent">Accent Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button color="info">Info Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button color="success">Success Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button color="warning">Warning Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button color="error">Error Button</Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Variant">
+          <Box display="inline-block" m="xs">
+            <Button variant="default">Default Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button variant="outline">Outline Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button variant="ghost">Ghost Button</Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Disabled">
+          <Box display="inline-block" m="xs">
+            <Button variant="default" disabled>
+              Default Button
+            </Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button variant="outline" disabled>
+              Outline Button
+            </Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button variant="ghost" disabled>
+              Ghost Button
+            </Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Size">
+          <Box display="inline-block" m="xs">
+            <Button size="xs">Extra Small Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button size="sm">Small Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button size="md">Medium Button</Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button size="lg">Large Button</Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Ratio">
+          <Box display="inline-block" m="xs">
+            <Button ratio="square"></Button>
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Button ratio="circle"></Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Block">
+          <Box display="inline-block" m="xs">
+            <Button block>Block Button</Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Wide">
+          <Box display="inline-block" m="xs">
+            <Button wide>Wide Button</Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Glass">
+          <Box display="inline-block" m="xs">
+            <Button glass>Glass Button</Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Loading">
+          <Box display="inline-block" m="xs">
+            <Button loading>Loading Button</Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="No Animation">
+          <Box display="inline-block" m="xs">
+            <Button noAnimation>No Animation Button</Button>
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Button Anchor">
+          <Box display="inline-block" m="xs">
+            <Button as="a" href="/#">
+              Button Anchor
+            </Button>
+          </Box>
+        </Section.Group>
+      </Section>
+
+      <Section title="TextInput">
+        <Section.Group title="Default">
+          <Box display="inline-block" m="xs">
+            <TextInput placeholder="Default TextInput" />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Color">
+          <Box display="inline-block" m="xs">
+            <TextInput color="primary" placeholder="Primary TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="secondary" placeholder="Secondary TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="accent" placeholder="Accent TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="info" placeholder="Info TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="success" placeholder="Success TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="warning" placeholder="Warning TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="error" placeholder="Error TextInput" />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Variant">
+          <Box display="inline-block" m="xs">
+            <TextInput variant="default" placeholder="Default TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="primary" variant="bordered" placeholder="Bordered TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="primary" variant="ghost" placeholder="Ghost TextInput" />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Disabled">
+          <Box display="inline-block" m="xs">
+            <TextInput variant="default" disabled placeholder="Default TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="primary" variant="bordered" disabled placeholder="Bordered TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput color="primary" variant="ghost" disabled placeholder="Ghost TextInput" />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Size">
+          <Box display="inline-block" m="xs">
+            <TextInput size="xs" placeholder="Extra Small TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput size="sm" placeholder="Small TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput size="md" placeholder="Medium TextInput" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <TextInput size="lg" placeholder="Large TextInput" />
+          </Box>
+        </Section.Group>
+      </Section>
+
+      <Section title="Checkbox">
+        <Section.Group title="Default">
+          <Box display="inline-block" m="xs">
+            <Checkbox />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Color">
+          <Box display="inline-block" m="xs">
+            <Checkbox color="primary" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox color="secondary" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox color="accent" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox color="info" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox color="success" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox color="warning" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox color="error" />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Disabled">
+          <Box display="inline-block" m="xs">
+            <Checkbox disabled />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox disabled checked />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Size">
+          <Box display="inline-block" m="xs">
+            <Checkbox size="xs" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox size="sm" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox size="md" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Checkbox size="lg" />
+          </Box>
+        </Section.Group>
+      </Section>
+
+      <Section title="Toggle">
+        <Section.Group title="Default">
+          <Box display="inline-block" m="xs">
+            <Toggle />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Color">
+          <Box display="inline-block" m="xs">
+            <Toggle color="primary" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle color="secondary" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle color="accent" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle color="info" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle color="success" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle color="warning" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle color="error" />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Disabled">
+          <Box display="inline-block" m="xs">
+            <Toggle disabled />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle disabled checked />
+          </Box>
+        </Section.Group>
+
+        <Section.Group title="Size">
+          <Box display="inline-block" m="xs">
+            <Toggle size="xs" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle size="sm" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle size="md" />
+          </Box>
+          <Box display="inline-block" m="xs">
+            <Toggle size="lg" />
+          </Box>
+        </Section.Group>
+      </Section>
+    </main>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer class="container mx-auto mt-2 max-w-screen-lg">
+      <div class="p-8 flex justify-center items-center">
+        <a href="https://github.com/flamrdevs/klass" class="outline-none select-none">
+          klass
+        </a>
+      </div>
+    </footer>
+  );
+};
+
+function App() {
+  return (
+    <>
+      <Header />
+
+      <Main />
+
+      <Footer />
+    </>
+  );
+}
 
 export default App;

@@ -8,10 +8,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
-  "license": "MIT",
   "dependencies": {
-    "@klass/core": "^0.5.1",
-    "@klass/solid": "^0.5.1",
+    "@klass/core": "^0.5.3",
+    "@klass/solid": "^0.5.3",
     "solid-js": "^1.6.4"
   },
   "devDependencies": {

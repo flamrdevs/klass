@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@klass/core': ^0.5.1
-  '@klass/solid': ^0.5.1
+  '@klass/core': ^0.5.3
+  '@klass/solid': ^0.5.3
   '@types/babel__core': ^7.1.20
   '@types/color-string': ^1.5.2
   solid-js: ^1.6.4
@@ -13,8 +13,8 @@ specifiers:
   windicss: ^3.5.6
 
 dependencies:
-  '@klass/core': 0.5.1
-  '@klass/solid': 0.5.1
+  '@klass/core': 0.5.3
+  '@klass/solid': 0.5.3
   solid-js: 1.6.6
 
 devDependencies:
@@ -583,16 +583,16 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@klass/core/0.5.1:
-    resolution: {integrity: sha512-Q+JQlt1Ecprgue/pg+KTTfe3sK36zjh8qDAhosCkMIGOuWx22/wR0jzgYBjOYxb6A72ygfWBnSl5IxqGN2GhNg==}
+  /@klass/core/0.5.3:
+    resolution: {integrity: sha512-ljCyOzQZ/l4O/qTnRur0iD8VHGNnZ9XuB2NHFtdU0k15mKukr/avPUC5Feqz7o87XGTkLQw5kfP6NflY8ODP3w==}
     dependencies:
       clsx: 1.2.1
     dev: false
 
-  /@klass/solid/0.5.1:
-    resolution: {integrity: sha512-Q54Jaot+APDMK2NeRyAC9Ah8GpIPKW+uWe0bQas2Dx9Unb1uLsSIbxluSlNbl3fNqAJWElMWUcAhygR3/TPB5A==}
+  /@klass/solid/0.5.3:
+    resolution: {integrity: sha512-E5U/j8NcBYWaalu1Nr/UTc/HuRXS3GR1sSx1Xth3rckrEpQRQQWkXAdDmW1MT1yu2kpgBF4xaW7hkHw5IYssEw==}
     dependencies:
-      '@klass/core': 0.5.1
+      '@klass/core': 0.5.3
       solid-js: 1.6.6
     dev: false
 

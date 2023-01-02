@@ -9,6 +9,7 @@ const Toggle = klassed(
     base: "toggle",
     variants: {
       color: {
+        default: "",
         primary: "toggle-primary",
         secondary: "toggle-secondary",
         accent: "toggle-accent",
@@ -25,7 +26,7 @@ const Toggle = klassed(
       },
     },
     defaultVariants: {
-      color: "primary",
+      color: "default",
       size: "sm",
     },
   },

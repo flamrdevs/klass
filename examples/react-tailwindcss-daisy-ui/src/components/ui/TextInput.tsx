@@ -9,6 +9,7 @@ const TextInput = klassed(
     base: "input",
     variants: {
       color: {
+        default: "",
         primary: "input-primary",
         secondary: "input-secondary",
         accent: "input-accent",
@@ -18,6 +19,8 @@ const TextInput = klassed(
         error: "input-error",
       },
       variant: {
+        default: "",
+        bordered: "input-bordered",
         ghost: "input-ghost",
       },
       size: {
@@ -26,12 +29,10 @@ const TextInput = klassed(
         md: "input-md",
         lg: "input-lg",
       },
-      withBorder: {
-        true: "input-bordered",
-      },
     },
     defaultVariants: {
-      color: "primary",
+      color: "default",
+      variant: "default",
       size: "sm",
     },
   },
