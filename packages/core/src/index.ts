@@ -20,7 +20,7 @@ type VariantOptions<T extends VariantsSchema[string]> = {
 };
 
 type VariantFn<T extends VariantsSchema[string]> = {
-  (value?: BooleanKey<keyof T>): string | undefined;
+  (value?: VariantProps<T>): string | undefined;
 } & {
   options: VariantOptions<T>;
 };
@@ -74,13 +74,13 @@ function variant<T extends VariantsSchema[string]>(options: VariantOptions<T>): 
   }
 
   let key: string | (BooleanKey<keyof T> & symbol);
-  const instance: Omit<VariantFn<T>, "options"> = (props?: VariantProps<T>) => {
+  const fn: Omit<VariantFn<T>, "options"> = (props?: VariantProps<T>) => {
     return inVariant((key = getKey(props, defaultVariant))) ? clsx(variant[key]) : undefined;
   };
 
-  (instance as VariantFn<T>).options = options;
+  (fn as VariantFn<T>).options = options;
 
-  return instance as VariantFn<T>;
+  return fn as VariantFn<T>;
 }
 
 function klass<T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> {
@@ -97,7 +97,7 @@ function klass<T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> {
   const stringifiedBase = clsx(base);
   const keyofVariants = Object.keys(variants) as (keyof T)[];
 
-  const instance: Omit<KlassFn<T>, "options" | "variant"> = (props?: KlassProps<T>, classes?: ClassValue) => {
+  const fn: Omit<KlassFn<T>, "options" | "variant"> = (props?: KlassProps<T>, classes?: ClassValue) => {
     return clsx(
       stringifiedBase,
       keyofVariants.map((key) => variantGroup[key](props?.[key])),
@@ -114,10 +114,10 @@ function klass<T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> {
     );
   };
 
-  (instance as KlassFn<T>).options = options;
-  (instance as KlassFn<T>).variant = variantGroup;
+  (fn as KlassFn<T>).options = options;
+  (fn as KlassFn<T>).variant = variantGroup;
 
-  return instance as KlassFn<T>;
+  return fn as KlassFn<T>;
 }
 
 export type { VariantsSchema, VariantProps, VariantOptions, VariantFn, KlassProps, KlassOptions, KlassFn, VariantsOf };
