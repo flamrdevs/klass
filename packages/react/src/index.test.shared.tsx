@@ -1,4 +1,4 @@
-import { klassed } from "./index";
+import { klassed, reklassed } from "./index";
 
 const BoxKlassed = klassed("div", {
   base: "block",
@@ -176,4 +176,57 @@ const ButtonKlassedOptions = {
   ],
 };
 
+const BoxReklassed = reklassed("div", {
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variants: {
+    m: {
+      "1": "m-1",
+      "2": "m-2",
+      "3": "m-3",
+      "4": "m-4",
+      "5": "m-5",
+    },
+    p: {
+      "1": "p-1",
+      "2": "p-2",
+      "3": "p-3",
+      "4": "p-4",
+      "5": "p-5",
+    },
+  },
+});
+
+const BoxReklassedOptions = {
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variants: {
+    m: {
+      "1": "m-1",
+      "2": "m-2",
+      "3": "m-3",
+      "4": "m-4",
+      "5": "m-5",
+    },
+    p: {
+      "1": "p-1",
+      "2": "p-2",
+      "3": "p-3",
+      "4": "p-4",
+      "5": "p-5",
+    },
+  },
+};
+
 export { BoxKlassed, BoxKlassedOptions, ButtonKlassed, ButtonKlassedOptions };
+export { BoxReklassed, BoxReklassedOptions };
