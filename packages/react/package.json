@@ -1,6 +1,6 @@
 {
   "name": "@klass/react",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "class variant utility for react",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

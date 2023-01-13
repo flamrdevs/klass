@@ -1,5 +1,18 @@
 # @klass/preact
 
+## 0.6.0
+
+### Minor Changes
+
+- 750cec7: Responsive
+
+### Patch Changes
+
+- af144f7: Refactor internal
+- Updated dependencies [af144f7]
+- Updated dependencies [750cec7]
+  - @klass/core@0.6.0
+
 ## 0.5.3
 
 ### Patch Changes

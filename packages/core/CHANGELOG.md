@@ -1,5 +1,15 @@
 # @klass/core
 
+## 0.6.0
+
+### Minor Changes
+
+- 750cec7: Responsive
+
+### Patch Changes
+
+- af144f7: Refactor internal
+
 ## 0.5.3
 
 ### Patch Changes
