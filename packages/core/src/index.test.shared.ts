@@ -1,4 +1,4 @@
-import { variant, klass } from "./index";
+import { variant, klass, revariant, reklass } from "./index";
 
 const PaddingVariant = variant({
   variant: {
@@ -64,13 +64,57 @@ const DisableVariantOptions = {
   defaultVariant: false,
 };
 
-const MixedVariant_SymbolVariant = Symbol("SYMBOL");
+const ZIndexVariant = variant({
+  variant: {
+    0: "z-index-0",
+    1: "z-index-1",
+    2: "z-index-2",
+    3: "z-index-3",
+    4: "z-index-4",
+    5: "z-index-5",
+  },
+});
+
+const ZIndexVariantOptions = {
+  variant: {
+    0: "z-index-0",
+    1: "z-index-1",
+    2: "z-index-2",
+    3: "z-index-3",
+    4: "z-index-4",
+    5: "z-index-5",
+  },
+};
+
+const OrderVariant = variant({
+  variant: {
+    0: "order-0",
+    1: "order-1",
+    2: "order-2",
+    3: "order-3",
+    4: "order-4",
+    5: "order-5",
+  },
+  defaultVariant: 0,
+});
+
+const OrderVariantOptions = {
+  variant: {
+    0: "order-0",
+    1: "order-1",
+    2: "order-2",
+    3: "order-3",
+    4: "order-4",
+    5: "order-5",
+  },
+  defaultVariant: 0,
+};
+
 const MixedVariant = variant({
   variant: {
     "": "mix-",
     true: "mix-true",
     1: "mix-1",
-    [MixedVariant_SymbolVariant]: "mix-symbol(SYMBOL)",
   },
 });
 
@@ -79,7 +123,6 @@ const MixedVariantOptions = {
     "": "mix-",
     true: "mix-true",
     1: "mix-1",
-    [MixedVariant_SymbolVariant]: "mix-symbol(SYMBOL)",
   },
 };
 
@@ -259,6 +302,182 @@ const ButtonKlassOptions = {
   ],
 };
 
+const PaddingRevariant = revariant({
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variant: {
+    sm: "padding-sm",
+    md: "padding-md",
+    lg: "padding-lg",
+  },
+});
+
+const PaddingRevariantOptions = {
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variant: {
+    sm: "padding-sm",
+    md: "padding-md",
+    lg: "padding-lg",
+  },
+};
+
+const LoadingRevariant = revariant({
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variant: {
+    true: "loading-true",
+    false: "loading-false",
+  },
+});
+
+const LoadingRevariantOptions = {
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variant: {
+    true: "loading-true",
+    false: "loading-false",
+  },
+};
+
+const ZIndexRevariant = revariant({
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variant: {
+    0: "z-index-0",
+    1: "z-index-1",
+    2: "z-index-2",
+    3: "z-index-3",
+    4: "z-index-4",
+    5: "z-index-5",
+  },
+});
+
+const ZIndexRevariantOptions = {
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variant: {
+    0: "z-index-0",
+    1: "z-index-1",
+    2: "z-index-2",
+    3: "z-index-3",
+    4: "z-index-4",
+    5: "z-index-5",
+  },
+};
+
+const MixedRevariant = revariant({
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variant: {
+    "": "mix-",
+    true: "mix-true",
+    1: "mix-1",
+  },
+});
+
+const MixedRevariantOptions = {
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variant: {
+    "": "mix-",
+    true: "mix-true",
+    1: "mix-1",
+  },
+};
+
+const BoxReklass = reklass({
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variants: {
+    m: {
+      "1": "m-1",
+      "2": "m-2",
+      "3": "m-3",
+      "4": "m-4",
+      "5": "m-5",
+    },
+    p: {
+      "1": "p-1",
+      "2": "p-2",
+      "3": "p-3",
+      "4": "p-4",
+      "5": "p-5",
+    },
+  },
+});
+
+const BoxReklassOptions = {
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variants: {
+    m: {
+      "1": "m-1",
+      "2": "m-2",
+      "3": "m-3",
+      "4": "m-4",
+      "5": "m-5",
+    },
+    p: {
+      "1": "p-1",
+      "2": "p-2",
+      "3": "p-3",
+      "4": "p-4",
+      "5": "p-5",
+    },
+  },
+};
+
 export {
   PaddingVariant,
   PaddingVariantOptions,
@@ -268,8 +487,22 @@ export {
   LoadingVariantOptions,
   DisableVariant,
   DisableVariantOptions,
-  MixedVariant_SymbolVariant,
+  ZIndexVariant,
+  ZIndexVariantOptions,
+  OrderVariant,
+  OrderVariantOptions,
   MixedVariant,
   MixedVariantOptions,
 };
 export { BoxKlass, BoxKlassOptions, ButtonKlass, ButtonKlassOptions };
+export {
+  PaddingRevariant,
+  PaddingRevariantOptions,
+  LoadingRevariant,
+  LoadingRevariantOptions,
+  ZIndexRevariant,
+  ZIndexRevariantOptions,
+  MixedRevariant,
+  MixedRevariantOptions,
+};
+export { BoxReklass, BoxReklassOptions };
