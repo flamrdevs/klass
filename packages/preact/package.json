@@ -37,6 +37,6 @@
   "homepage": "https://github.com/flamrdevs/klass#readme",
   "dependencies": {
     "@klass/core": "*",
-    "preact": "^10.11.3"
+    "preact": "^10.13.0"
   }
 }

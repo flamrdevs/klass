@@ -37,6 +37,6 @@
   "homepage": "https://github.com/flamrdevs/klass#readme",
   "dependencies": {
     "@klass/core": "*",
-    "solid-js": "^1.6.4"
+    "solid-js": "^1.6.12"
   }
 }
