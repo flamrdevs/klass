@@ -1,5 +1,11 @@
 # @klass/core
 
+## 0.7.0
+
+### Minor Changes
+
+- 2a2b719: Responsive
+
 ## 0.6.0
 
 ### Minor Changes

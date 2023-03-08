@@ -1,5 +1,16 @@
 # @klass/preact
 
+## 0.7.0
+
+### Minor Changes
+
+- 2a2b719: Responsive
+
+### Patch Changes
+
+- Updated dependencies [2a2b719]
+  - @klass/core@0.7.0
+
 ## 0.6.0
 
 ### Minor Changes
