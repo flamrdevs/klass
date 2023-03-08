@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@klass/core": "^0.5.3",
-    "@klass/preact": "^0.5.3",
+    "@klass/core": "^0.6.0",
+    "@klass/preact": "^0.6.0",
     "preact": "^10.11.3",
     "wouter-preact": "^2.9.0"
   },

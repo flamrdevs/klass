@@ -9,8 +9,8 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@klass/core": "^0.5.3",
-    "@klass/solid": "^0.5.3",
+    "@klass/core": "^0.6.0",
+    "@klass/solid": "^0.6.0",
     "solid-js": "^1.6.6"
   },
   "devDependencies": {

@@ -1,18 +1,21 @@
 import type { VariantsOf } from "@klass/core";
-import { klassed } from "@klass/react";
+import { reklassed } from "@klass/react";
 
-type BoxVariants = VariantsOf<typeof Box["klass"]>;
+type BoxVariants = VariantsOf<typeof Box["reklass"]>;
 
-const Box = klassed("div", {
+const Box = reklassed("div", {
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+    xl: "xl:",
+    xxl: "2xl:",
+  },
+  defaultCondition: "base",
   variants: {
-    display: {
-      none: "none",
-      block: "block",
-      "inline-block": "inline-block",
-      flex: "flex",
-      "inline-flex": "inline-flex",
-    },
     m: {
+      none: "m-0",
       xs: "m-4",
       sm: "m-8",
       md: "m-12",
@@ -20,6 +23,7 @@ const Box = klassed("div", {
       xl: "m-20",
     },
     mt: {
+      none: "mt-0",
       xs: "mt-4",
       sm: "mt-8",
       md: "mt-12",
@@ -27,6 +31,7 @@ const Box = klassed("div", {
       xl: "mt-20",
     },
     mb: {
+      none: "mb-0",
       xs: "mb-4",
       sm: "mb-8",
       md: "mb-12",
@@ -34,6 +39,7 @@ const Box = klassed("div", {
       xl: "mb-20",
     },
     ml: {
+      none: "ml-0",
       xs: "ml-4",
       sm: "ml-8",
       md: "ml-12",
@@ -41,6 +47,7 @@ const Box = klassed("div", {
       xl: "ml-20",
     },
     mr: {
+      none: "mr-0",
       xs: "mr-4",
       sm: "mr-8",
       md: "mr-12",
@@ -48,6 +55,7 @@ const Box = klassed("div", {
       xl: "mr-20",
     },
     mx: {
+      none: "mx-0",
       xs: "mx-4",
       sm: "mx-8",
       md: "mx-12",
@@ -55,6 +63,7 @@ const Box = klassed("div", {
       xl: "mx-20",
     },
     my: {
+      none: "my-0",
       xs: "my-4",
       sm: "my-8",
       md: "my-12",
@@ -62,6 +71,7 @@ const Box = klassed("div", {
       xl: "my-20",
     },
     p: {
+      none: "p-0",
       xs: "p-4",
       sm: "p-8",
       md: "p-12",
@@ -69,6 +79,7 @@ const Box = klassed("div", {
       xl: "p-20",
     },
     pt: {
+      none: "pt-0",
       xs: "pt-4",
       sm: "pt-8",
       md: "pt-12",
@@ -76,6 +87,7 @@ const Box = klassed("div", {
       xl: "pt-20",
     },
     pb: {
+      none: "pb-0",
       xs: "pb-4",
       sm: "pb-8",
       md: "pb-12",
@@ -83,6 +95,7 @@ const Box = klassed("div", {
       xl: "pb-20",
     },
     pl: {
+      none: "pl-0",
       xs: "pl-4",
       sm: "pl-8",
       md: "pl-12",
@@ -90,6 +103,7 @@ const Box = klassed("div", {
       xl: "pl-20",
     },
     pr: {
+      none: "pr-0",
       xs: "pr-4",
       sm: "pr-8",
       md: "pr-12",
@@ -97,6 +111,7 @@ const Box = klassed("div", {
       xl: "pr-20",
     },
     px: {
+      none: "px-0",
       xs: "px-4",
       sm: "px-8",
       md: "px-12",
@@ -104,6 +119,7 @@ const Box = klassed("div", {
       xl: "px-20",
     },
     py: {
+      none: "py-0",
       xs: "py-4",
       sm: "py-8",
       md: "py-12",

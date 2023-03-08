@@ -61,7 +61,12 @@ function App(props: PropsWithChildren) {
       </header>
 
       <main className="container mx-auto my-4 max-w-screen-xl space-y-4">
-        <Box p="md">{props.children}</Box>
+        <Box
+          m={{ base: "none", sm: "xs", md: "sm", lg: "md", xl: "lg", xxl: "xl" }}
+          p={{ base: "none", sm: "xs", md: "sm", lg: "md", xl: "lg", xxl: "xl" }}
+        >
+          {props.children}
+        </Box>
       </main>
     </>
   );

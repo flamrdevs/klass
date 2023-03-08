@@ -50,9 +50,8 @@ const App: Component = () => {
         <Section title="Box">
           <div class="space-y-2">
             <div class="space-x-2">
-              <Box p="sm">Box</Box>
-              <Box p="sm">Box</Box>
-              <Box p="sm">Box</Box>
+              <Box m={{ base: "none", sm: "xs", md: "sm", lg: "md", xl: "lg", xxl: "xl" }}>Box</Box>
+              <Box p={{ base: "none", sm: "xs", md: "sm", lg: "md", xl: "lg", xxl: "xl" }}>Box</Box>
             </div>
           </div>
         </Section>

@@ -57,7 +57,10 @@ const App: Component = () => {
       </header>
 
       <main class="container mx-auto my-4 max-w-screen-xl space-y-4">
-        <Box p="md">
+        <Box
+          m={{ base: "none", sm: "xs", md: "sm", lg: "md", xl: "lg", xxl: "xl" }}
+          p={{ base: "none", sm: "xs", md: "sm", lg: "md", xl: "lg", xxl: "xl" }}
+        >
           <Outlet />
         </Box>
       </main>

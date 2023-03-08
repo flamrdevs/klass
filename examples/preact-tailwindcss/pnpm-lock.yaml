@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@klass/core': ^0.5.3
-  '@klass/preact': ^0.5.3
+  '@klass/core': ^0.6.0
+  '@klass/preact': ^0.6.0
   '@preact/preset-vite': ^2.4.0
   autoprefixer: ^10.4.13
   postcss: ^8.4.20
@@ -12,8 +12,8 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
-  '@klass/core': 0.5.3
-  '@klass/preact': 0.5.3
+  '@klass/core': 0.6.0
+  '@klass/preact': 0.6.0
   preact: 10.11.3
 
 devDependencies:
@@ -507,16 +507,16 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@klass/core/0.5.3:
-    resolution: {integrity: sha512-ljCyOzQZ/l4O/qTnRur0iD8VHGNnZ9XuB2NHFtdU0k15mKukr/avPUC5Feqz7o87XGTkLQw5kfP6NflY8ODP3w==}
+  /@klass/core/0.6.0:
+    resolution: {integrity: sha512-n6BlcJJ7qtvEk2P/nsNdUfrPg75PEur5sq0pDQn4Dhwp2OzJt9ETJBmPHBh8MpEzr9FujsTmAKL5IZyPupPGlg==}
     dependencies:
       clsx: 1.2.1
     dev: false
 
-  /@klass/preact/0.5.3:
-    resolution: {integrity: sha512-9xTQdQOGCzEELEYahH4NKYTbIAU7EW1kpplQPZF5O5X9//CLg0LDbakmXddvMYY3VHbD/2Ws3GKgoBhZe1lvfQ==}
+  /@klass/preact/0.6.0:
+    resolution: {integrity: sha512-RrLae4XkUvdco8mzTl8HSL39kAtaFlTOdXLnUIF8d6Jwi/m3jfOXTNak9nSlQP8EVrNXS2b9i51/kYzrMHl+gg==}
     dependencies:
-      '@klass/core': 0.5.3
+      '@klass/core': 0.6.0
       preact: 10.11.3
     dev: false
 
