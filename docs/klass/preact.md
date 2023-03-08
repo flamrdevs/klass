@@ -6,13 +6,9 @@
 
 # klass preact
 
-## Introduction <Badge type="warning" text="beta" />
-
 A class variant utility library for preact.
 
-## Quick Start
-
-### Installation
+## Installation
 
 ```bash
 npm install @klass/core @klass/preact
@@ -22,66 +18,41 @@ yarn add @klass/core @klass/preact
 pnpm add @klass/core @klass/preact
 ```
 
-### Usage
-
-#### Klassed
+## Klassed and Reklassed
 
 ```tsx
-import { klassed } from "@klass/preact";
-
-const Box = klassed("div", {
-  base: "block",
-  variants: {
-    m: {
-      sm: "m-2",
-      md: "m-4",
-      lg: "m-8",
-    },
-    p: {
-      sm: "p-2",
-      md: "p-4",
-      lg: "p-8",
-    },
-  },
-});
+import { klassed, reklassed } from "@klass/preact";
 
 const Button = klassed(
   "button",
   {
-    base: "button--base",
+    base: "button__base",
     variants: {
+      color: {
+        primary: "button__color-primary",
+        neutral: "button__color-neutral",
+      },
       size: {
-        sm: "button--size-sm",
-        md: "button--size-md",
-        lg: "button--size-lg",
+        sm: "button__size-sm",
+        md: "button__size-md",
+        lg: "button__size-lg",
       },
       outline: {
-        true: "button--outline-true",
-      },
-      loading: {
-        true: "button--loading-true",
-      },
-      // this variant will not work
-      class: {
-        will: "not-work",
+        true: "",
       },
     },
     defaultVariants: {
-      // size: "md",
-      // loading: false,
+      color: "primary",
+      size: "md",
     },
     compoundVariants: [
       {
-        variant: { size: "sm", outline: true },
-        classes: "button--size-sm-&-outline-true",
+        variant: { color: "primary", outline: true },
+        classes: "button__primary-primary__outline-true",
       },
       {
-        variant: { size: "md", outline: true },
-        classes: "button--size-md-&-outline-true",
-      },
-      {
-        variant: { size: "lg", outline: true },
-        classes: "button--size-lg-&-outline-true",
+        variant: { color: "neutral", outline: true },
+        classes: "button__primary-neutral__outline-true",
       },
     ],
   },
@@ -92,56 +63,61 @@ const Button = klassed(
   }
 );
 
+const Box = reklassed("div", {
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variants: {
+    m: {
+      none: "m-0",
+      sm: "m-2",
+      md: "m-4",
+      lg: "m-8",
+    },
+    p: {
+      none: "p-0",
+      sm: "p-2",
+      md: "p-4",
+      lg: "p-8",
+    },
+  },
+});
+
 // Re-use klass options
 const ButtonAnchor = klassed("a", Button.klass.options);
 
 function App() {
   return (
     <div>
-      <Box m="md" p="md" class="extra classes">
-        klassed div
-      </Box>
-
-      <Button size="md" outline loading class="extra classes">
-        klassed button
+      <Button color="neutral" class={["extra", { classes: true }]}>
+        Button
       </Button>
 
-      {/* Polymorph */}
-      <Button as="a" size="md" outline loading class="extra classes">
-        klassed button
+      <Box m="md" p="md" class={["extra", { classes: true }]}>
+        Box
+      </Box>
+
+      <ButtonAnchor color="neutral" class={["extra", { classes: true }]}>
+        ButtonAnchor
+      </ButtonAnchor>
+
+      <Button as="a" class={["extra", { classes: true }]}>
+        Button as Anchor
       </Button>
     </div>
   );
 }
-
-Box.klass();
-// "block"
-
-Box.klass({ m: "md", p: "md" });
-// "block block m-4 p-4"
-
-Button.klass();
-// "button--base"
-
-Button.klass({ size: "sm", outline: true, loading: true } /*, "extra classes" */);
-// "button--base button--size-sm button--outline-true button--loading-true button--size-sm-&-outline-true"
-
-Button.klass.options;
-// klass options param
-
-Button.klass.variant.size("sm");
-// "button--size-sm"
-Button.klass.variant.outline(true);
-// "button--outline-true"
-Button.klass.variant.loading(true);
-// "button--loading-true"
 ```
 
-#### VariantsOf
+## VariantsOf
 
 ```tsx
 import type { VariantsOf } from "@klass/core";
-import { klassed } from "@klass/preact";
+import { klassed, reklassed } from "@klass/preact";
 
 type ButtonVariants = VariantsOf<typeof Button["klass"]>;
 
@@ -150,52 +126,37 @@ const Button = klassed("button", {
     /* options */
   },
 });
+
+type BoxVariants = VariantsOf<typeof Box["reklass"]>;
+
+const Box = reklassed("div", {
+  ...{
+    /* options */
+  },
+});
 ```
 
-#### Polymorphic
-
-##### use 'as' prop
+## Polymorphic
 
 ```tsx
-import YourKlassedButton from "./YourKlassedButton";
+import KlassedButton from "./KlassedButton";
+import ReklassedBox from "./ReklassedBox";
 
 import Link from "some-link-component-library";
 
 function App() {
   return (
-    <nav>
-      <YourKlassedButton as={Link} href="/">
+    <ReklassedBox as="nav">
+      <KlassedButton as={Link} href="/">
         Home
-      </YourKlassedButton>
-      <YourKlassedButton as={Link} href="/about">
+      </KlassedButton>
+      <KlassedButton as={Link} href="/about">
         About
-      </YourKlassedButton>
-      <YourKlassedButton as={Link} href="/contact">
+      </KlassedButton>
+      <KlassedButton as={Link} href="/contact">
         Contact
-      </YourKlassedButton>
-    </nav>
-  );
-}
-```
-
-##### use klassed
-
-```tsx
-import { klassed } from "@klass/preact";
-
-import YourKlassedButton from "./YourKlassedButton";
-
-import Link from "some-link-component-library";
-
-const YourKlassedButtonLink = klassed(Link, YourKlassedButton.klass.options);
-
-function App() {
-  return (
-    <nav>
-      <YourKlassedButtonLink href="/">Home</YourKlassedButtonLink>
-      <YourKlassedButtonLink href="/about">About</YourKlassedButtonLink>
-      <YourKlassedButtonLink href="/contact">Contact</YourKlassedButtonLink>
-    </nav>
+      </KlassedButton>
+    </ReklassedBox>
   );
 }
 ```

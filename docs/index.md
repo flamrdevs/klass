@@ -6,8 +6,8 @@ hero:
   text: class variant utility.
   actions:
     - theme: brand
-      text: Get Started
-      link: /intro
+      text: Getting Started
+      link: /getting-started
     - theme: alt
       text: View on GitHub
       link: https://github.com/flamrdevs/klass
@@ -16,6 +16,9 @@ features:
   - icon: ⚡️
     title: Fast development
     details: Build component faster
+  - icon: 💎
+    title: Responsive
+    details: Create beautiful UI
   - icon: 🚀
     title: Framework integration
     details: Integrate with React, Preact and Solid
