@@ -1,4 +1,7 @@
 import { klassed, reklassed } from "./index";
+import type { ItFn } from "@klass/core";
+
+const itControlClasses: ItFn = (value) => `controlled-classes( ${value} )`;
 
 const BoxKlassed = klassed(
   "div",
@@ -195,6 +198,35 @@ const ButtonKlassedOptions = {
   ],
 };
 
+const BoxWithItKlassed = klassed(
+  "div",
+  {
+    base: "block",
+    variants: {
+      m: {
+        "1": "m-1",
+        "2": "m-2",
+        "3": "m-3",
+        "4": "m-4",
+        "5": "m-5",
+      },
+      p: {
+        "1": "p-1",
+        "2": "p-2",
+        "3": "p-3",
+        "4": "p-4",
+        "5": "p-5",
+      },
+    },
+  },
+  {
+    defaultProps: {
+      title: "box-klassed",
+    },
+    it: itControlClasses,
+  }
+);
+
 const BoxReklassed = reklassed(
   "div",
   {
@@ -255,5 +287,42 @@ const BoxReklassedOptions = {
   },
 };
 
+const BoxWithItReklassed = reklassed(
+  "div",
+  {
+    conditions: {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+    },
+    defaultCondition: "base",
+    variants: {
+      m: {
+        "1": "m-1",
+        "2": "m-2",
+        "3": "m-3",
+        "4": "m-4",
+        "5": "m-5",
+      },
+      p: {
+        "1": "p-1",
+        "2": "p-2",
+        "3": "p-3",
+        "4": "p-4",
+        "5": "p-5",
+      },
+    },
+  },
+  {
+    defaultProps: {
+      title: "box-reklassed",
+    },
+    it: itControlClasses,
+  }
+);
+
 export { BoxKlassed, BoxKlassedOptions, ButtonKlassed, ButtonKlassedOptions };
+export { BoxWithItKlassed };
 export { BoxReklassed, BoxReklassedOptions };
+export { BoxWithItReklassed };

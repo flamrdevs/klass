@@ -1,4 +1,7 @@
 import { variant, klass, revariant, reklass } from "./index";
+import type { ItFn } from "./index";
+
+const itControlClasses: ItFn = (value) => `controlled-classes( ${value} )`;
 
 const PaddingVariant = variant({
   variant: {
@@ -302,6 +305,30 @@ const ButtonKlassOptions = {
   ],
 };
 
+const BoxWithItKlass = klass(
+  {
+    variants: {
+      m: {
+        "1": "m-1",
+        "2": "m-2",
+        "3": "m-3",
+        "4": "m-4",
+        "5": "m-5",
+      },
+      p: {
+        "1": "p-1",
+        "2": "p-2",
+        "3": "p-3",
+        "4": "p-4",
+        "5": "p-5",
+      },
+    },
+  },
+  {
+    it: itControlClasses,
+  }
+);
+
 const PaddingRevariant = revariant({
   conditions: {
     base: "",
@@ -426,6 +453,26 @@ const MixedRevariantOptions = {
   },
 };
 
+const MixedAsSuffixRevariant = revariant(
+  {
+    conditions: {
+      base: "",
+      sm: "@sm",
+      md: "@md",
+      lg: "@lg",
+    },
+    defaultCondition: "base",
+    variant: {
+      "": "mix-",
+      true: "mix-true",
+      1: "mix-1",
+    },
+  },
+  {
+    as: "suffix",
+  }
+);
+
 const BoxReklass = reklass({
   conditions: {
     base: "",
@@ -478,6 +525,68 @@ const BoxReklassOptions = {
   },
 };
 
+const BoxAsSuffixReklass = reklass(
+  {
+    conditions: {
+      base: "",
+      sm: "@sm",
+      md: "@md",
+      lg: "@lg",
+    },
+    defaultCondition: "base",
+    variants: {
+      m: {
+        "1": "m-1",
+        "2": "m-2",
+        "3": "m-3",
+        "4": "m-4",
+        "5": "m-5",
+      },
+      p: {
+        "1": "p-1",
+        "2": "p-2",
+        "3": "p-3",
+        "4": "p-4",
+        "5": "p-5",
+      },
+    },
+  },
+  {
+    as: "suffix",
+  }
+);
+
+const BoxWithItReklass = reklass(
+  {
+    conditions: {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+    },
+    defaultCondition: "base",
+    variants: {
+      m: {
+        "1": "m-1",
+        "2": "m-2",
+        "3": "m-3",
+        "4": "m-4",
+        "5": "m-5",
+      },
+      p: {
+        "1": "p-1",
+        "2": "p-2",
+        "3": "p-3",
+        "4": "p-4",
+        "5": "p-5",
+      },
+    },
+  },
+  {
+    it: itControlClasses,
+  }
+);
+
 export {
   PaddingVariant,
   PaddingVariantOptions,
@@ -495,6 +604,7 @@ export {
   MixedVariantOptions,
 };
 export { BoxKlass, BoxKlassOptions, ButtonKlass, ButtonKlassOptions };
+export { BoxWithItKlass };
 export {
   PaddingRevariant,
   PaddingRevariantOptions,
@@ -505,4 +615,6 @@ export {
   MixedRevariant,
   MixedRevariantOptions,
 };
+export { MixedAsSuffixRevariant };
 export { BoxReklass, BoxReklassOptions };
+export { BoxAsSuffixReklass, BoxWithItReklass };

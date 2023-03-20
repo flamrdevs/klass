@@ -21,6 +21,7 @@ import {
   BoxKlassOptions,
   ButtonKlass,
   ButtonKlassOptions,
+  BoxWithItKlass,
   PaddingRevariant,
   PaddingRevariantOptions,
   LoadingRevariant,
@@ -29,15 +30,12 @@ import {
   ZIndexRevariantOptions,
   MixedRevariant,
   MixedRevariantOptions,
+  MixedAsSuffixRevariant,
   BoxReklass,
   BoxReklassOptions,
+  BoxAsSuffixReklass,
+  BoxWithItReklass,
 } from "./index.test.shared";
-
-describe("@klass/core", async () => {
-  it("work", async () => {
-    expect(true).toBeTruthy();
-  });
-});
 
 describe("variant", async () => {
   it("type of", async () => {
@@ -45,7 +43,7 @@ describe("variant", async () => {
     expect(variant({ variant: {} })).toBeTypeOf("function");
   });
 
-  it("compund", async () => {
+  it("compound", async () => {
     expect(PaddingVariant.options).toEqual(PaddingVariantOptions);
     expect(SizeVariant.options).toEqual(SizeVariantOptions);
     expect(LoadingVariant.options).toEqual(LoadingVariantOptions);
@@ -106,7 +104,7 @@ describe("klass", async () => {
     expect(klass({ variants: {} })).toBeTypeOf("function");
   });
 
-  it("compund", async () => {
+  it("compound", async () => {
     expect(BoxKlass.options).toEqual(BoxKlassOptions);
     expect(BoxKlass.variant).toBeTypeOf("object");
     expect(BoxKlass.variant.m).toBeTypeOf("function");
@@ -155,6 +153,11 @@ describe("klass", async () => {
       "inline-block outline-none bg-transparent border text-blue-600 border-blue-600"
     );
   });
+
+  it("with it", async () => {
+    expect(BoxWithItKlass()).toEqual("controlled-classes(  )");
+    expect(BoxWithItKlass({ m: "3" })).toEqual("controlled-classes( m-3 )");
+  });
 });
 
 describe("revariant", async () => {
@@ -163,7 +166,7 @@ describe("revariant", async () => {
     expect(revariant({ conditions: { condition: "" }, defaultCondition: "condition", variant: {} })).toBeTypeOf("function");
   });
 
-  it("compund", async () => {
+  it("compound", async () => {
     expect(PaddingRevariant.options).toEqual(PaddingRevariantOptions);
     expect(LoadingRevariant.options).toEqual(LoadingRevariantOptions);
     expect(ZIndexRevariant.options).toEqual(ZIndexRevariantOptions);
@@ -193,11 +196,16 @@ describe("revariant", async () => {
   });
 
   it("mix practice", async () => {
-    expect(MixedVariant()).toBeUndefined();
-    expect(MixedVariant("unknown" as any)).toBeUndefined();
-    expect(MixedVariant("")).toEqual("mix-");
-    expect(MixedVariant(true)).toEqual("mix-true");
-    expect(MixedVariant(1)).toEqual("mix-1");
+    expect(MixedRevariant()).toBeUndefined();
+    expect(MixedRevariant("unknown" as any)).toBeUndefined();
+    expect(MixedRevariant("")).toEqual("mix-");
+    expect(MixedRevariant(true)).toEqual("mix-true");
+    expect(MixedRevariant(1)).toEqual("mix-1");
+    expect(MixedRevariant({ base: true, sm: 1, md: "", lg: true })).toEqual("mix-true sm:mix-1 md:mix- lg:mix-true");
+  });
+
+  it("as suffix", async () => {
+    expect(MixedAsSuffixRevariant({ base: true, sm: 1, md: "", lg: true })).toEqual("mix-true mix-1@sm mix-@md mix-true@lg");
   });
 });
 
@@ -207,7 +215,7 @@ describe("reklass", async () => {
     expect(reklass({ conditions: { condition: "" }, defaultCondition: "condition", variants: {} })).toBeTypeOf("function");
   });
 
-  it("compund", async () => {
+  it("compound", async () => {
     expect(BoxReklass.options).toEqual(BoxReklassOptions);
     expect(BoxReklass.revariant).toBeTypeOf("object");
     expect(BoxReklass.revariant.m).toBeTypeOf("function");
@@ -244,5 +252,14 @@ describe("reklass", async () => {
     expect(BoxReklass({ m: { base: "1", md: "3" } })).toEqual("m-1 md:m-3");
     expect(BoxReklass({ m: { base: "2", md: "4" }, p: { base: "1", md: "3" } })).toEqual("m-2 md:m-4 p-1 md:p-3");
     expect(BoxReklass({ p: { base: "2", md: "4" } })).toEqual("p-2 md:p-4");
+  });
+
+  it("as suffix", async () => {
+    expect(BoxAsSuffixReklass({ m: "3", p: { base: "1", md: "3" } })).toEqual("m-3 p-1 p-3@md");
+  });
+
+  it("with it", async () => {
+    expect(BoxWithItReklass()).toEqual("controlled-classes(  )");
+    expect(BoxWithItReklass({ m: "3" })).toEqual("controlled-classes( m-3 )");
   });
 });

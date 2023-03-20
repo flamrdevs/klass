@@ -7,7 +7,16 @@ import { cleanup, fireEvent, render } from "@testing-library/preact";
 
 import { klassed, reklassed } from "./index";
 
-import { BoxKlassed, BoxKlassedOptions, ButtonKlassed, ButtonKlassedOptions, BoxReklassed, BoxReklassedOptions } from "./index.test.shared";
+import {
+  BoxKlassed,
+  BoxKlassedOptions,
+  ButtonKlassed,
+  ButtonKlassedOptions,
+  BoxWithItKlassed,
+  BoxReklassed,
+  BoxReklassedOptions,
+  BoxWithItReklassed,
+} from "./index.test.shared";
 
 import LinkComponent from "./index.test.shared/LinkComponent";
 import ReactiveKlassed from "./index.test.shared/ReactiveKlassed";
@@ -23,7 +32,7 @@ describe("klassed", async () => {
     expect(isValidElement(<BoxKlassed />)).toBeTruthy();
   });
 
-  it("compund", async () => {
+  it("compound", async () => {
     expect(BoxKlassed.klass.options).toEqual(BoxKlassedOptions);
     expect(BoxKlassed.klass.variant).toBeTypeOf("object");
     expect(BoxKlassed.klass.variant.m).toBeTypeOf("function");
@@ -63,6 +72,10 @@ describe("klassed", async () => {
         <ButtonKlassed data-testid="button" full="width" class={["extra-button", "classes"]}>
           button
         </ButtonKlassed>
+
+        <BoxWithItKlassed data-testid="box-it" m="1" p="2" class={["extra-box", "classes"]}>
+          box-it
+        </BoxWithItKlassed>
       </>
     );
 
@@ -82,6 +95,9 @@ describe("klassed", async () => {
     console.log = (...args) => output.push(args);
     fireEvent.click(button);
     expect(output).toEqual([["button-klassed"]]);
+
+    const boxit = getByTestId("box-it");
+    expect(boxit.classList.toString()).toEqual("controlled-classes( block m-1 p-2 extra-box classes )");
   });
 
   it("reactive", async () => {
@@ -135,7 +151,7 @@ describe("reklassed", async () => {
     expect(isValidElement(<BoxReklassed />)).toBeTruthy();
   });
 
-  it("compund", async () => {
+  it("compound", async () => {
     expect(BoxReklassed.reklass.options).toEqual(BoxReklassedOptions);
     expect(BoxReklassed.reklass.revariant).toBeTypeOf("object");
     expect(BoxReklassed.reklass.revariant.m).toBeTypeOf("function");
@@ -165,9 +181,13 @@ describe("reklassed", async () => {
   it("basic", async () => {
     const { getByTestId } = render(
       <>
-        <BoxReklassed data-testid="box" m="2" p={{ base: "1", md: "3" }} className={["extra-box", "classes"]}>
+        <BoxReklassed data-testid="box" m="2" p={{ base: "1", md: "3" }} class={["extra-box", "classes"]}>
           box
         </BoxReklassed>
+
+        <BoxWithItReklassed data-testid="box-it" m="2" p={{ base: "1", md: "3" }} class={["extra-box", "classes"]}>
+          box-it
+        </BoxWithItReklassed>
       </>
     );
 
@@ -176,6 +196,9 @@ describe("reklassed", async () => {
     expect(box.tagName).toEqual("DIV");
     expect(box.classList.toString()).toEqual("m-2 p-1 md:p-3 extra-box classes");
     expect(box.textContent).toEqual("box");
+
+    const boxit = getByTestId("box-it");
+    expect(boxit.classList.toString()).toEqual("controlled-classes( m-2 p-1 md:p-3 extra-box classes )");
   });
 
   it("reactive", async () => {

@@ -1,8 +1,8 @@
 import React from "react";
-import type { ElementType, ReactElement } from "react";
+import type { ElementType } from "react";
 
 import { klass, reklass } from "@klass/core";
-import type { VariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
+import type { VariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn } from "@klass/core";
 
 import type {
   PolymorphicRef,
@@ -28,13 +28,14 @@ const getVariantKeys__filterFn = (el: string) => el !== "className",
 function klassed<ET extends ElementType, VS extends VariantsSchema>(
   element: ET,
   options: KlassOptions<VS>,
-  setup?: {
+  setup: {
     defaultProps?: PolymorphicComponentPropWithRef<ET, {}>;
-  }
+    it?: ItFn;
+  } = {}
 ): KlassedComponent<ET, VS> {
-  const klassFn = klass<VS>(options),
-    keys = getVariantKeys<VS>(options.variants),
-    { className: defaultClassNameProps, ...defaultProps } = (setup?.defaultProps || {}) as ClassesNormalProps;
+  const { defaultProps: { className: _className, ...defaultProps } = {} as ClassesNormalProps, it } = setup,
+    klassFn = klass<VS>(options, { it }),
+    keys = getVariantKeys<VS>(options.variants);
 
   const Component = <C extends ElementType = ET>(
       props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>,
@@ -48,7 +49,7 @@ function klassed<ET extends ElementType, VS extends VariantsSchema>(
           {...({
             ...defaultProps,
             ...omited,
-            className: klassFn(picked, className ?? defaultClassNameProps),
+            className: klassFn(picked, className ?? _className),
           } as any)}
           ref={ref}
         />
@@ -64,13 +65,14 @@ function klassed<ET extends ElementType, VS extends VariantsSchema>(
 function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends VariantsSchema>(
   element: ET,
   options: ReklassOptions<CS, VS>,
-  setup?: {
+  setup: {
     defaultProps?: PolymorphicComponentPropWithRef<ET, {}>;
-  }
+    it?: ItFn;
+  } = {}
 ): ReklassedComponent<ET, CS, VS> {
-  const reklassFn = reklass<CS, VS>(options),
-    keys = getVariantKeys<VS>(options.variants),
-    { className: defaultClassNameProps, ...defaultProps } = (setup?.defaultProps || {}) as ClassesNormalProps;
+  const { defaultProps: { className: _className, ...defaultProps } = {} as ClassesNormalProps, it } = setup,
+    reklassFn = reklass<CS, VS>(options, { it }),
+    keys = getVariantKeys<VS>(options.variants);
 
   const Component = <C extends ElementType = ET>(
       props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>,
@@ -84,7 +86,7 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
           {...({
             ...defaultProps,
             ...omited,
-            className: reklassFn(picked, className ?? defaultClassNameProps),
+            className: reklassFn(picked, className ?? _className),
           } as any)}
           ref={ref}
         />
