@@ -1,5 +1,11 @@
 # @klass/core
 
+## 0.8.0
+
+### Minor Changes
+
+- f47994d: Configurationized
+
 ## 0.7.0
 
 ### Minor Changes
