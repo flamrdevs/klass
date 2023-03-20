@@ -1,6 +1,6 @@
 <img src="./public/cover.png" />
 
-<img src="https://hiiits.deta.dev/hit/flamrdevs/klass?" width="100%" heigth="10px" />
+<img src="https://hiiits.deno.dev/hit/flamrdevs/klass?" width="100%" heigth="10px" />
 
 # klass
 
