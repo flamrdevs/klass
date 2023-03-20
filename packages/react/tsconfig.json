@@ -8,6 +8,8 @@
     "moduleResolution": "node",
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsxdev"
+    "jsx": "react-jsxdev",
+    "lib": ["ES2020", "DOM"],
+    "skipLibCheck": true
   }
 }

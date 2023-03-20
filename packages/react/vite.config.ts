@@ -13,7 +13,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["@klass/core", "react"],
+      external: ["@klass/core", "react", "react-dom"],
     },
   },
   plugins: [

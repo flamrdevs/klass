@@ -13,7 +13,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["@klass/core", "preact"],
+      external: ["@klass/core", "preact", "preact/hooks"],
     },
   },
   plugins: [preact() as any],

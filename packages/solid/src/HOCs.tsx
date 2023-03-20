@@ -1,19 +1,20 @@
 import { splitProps } from "solid-js";
 import type { Component } from "solid-js";
 
+import { Dynamic } from "solid-js/web";
+
 import { clsx } from "@klass/core";
 import type { ClassValue } from "@klass/core";
 
-function withClassValue<P extends { [key: string]: any }>(Component: Component<P>, ...classes: ClassValue[]) {
-  const classesx = clsx(classes);
+import type { WithClassesValueProps } from "./types";
 
-  const Wrapper = (props: Omit<P, "class" | "classList"> & { class?: ClassValue; classList?: ClassValue }) => {
-    const [local, others] = splitProps(props, ["class", "classList"]);
+const LocalKeysSplitter = ["class", "classList"] as const,
+  withClassValue = <P extends { [key: string]: any }>(component: Component<P>, ...classes: ClassValue[]) => {
+    return function Wrapper(props: WithClassesValueProps<P>) {
+      const [local, others] = splitProps(props, LocalKeysSplitter);
 
-    return <Component {...(others as P)} class={clsx(classesx, local.class, local.classList)} />;
+      return <Dynamic component={component} {...(others as P)} class={clsx(classes, local.class, local.classList)} />;
+    };
   };
-
-  return Wrapper;
-}
 
 export { withClassValue };

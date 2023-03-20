@@ -20,7 +20,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "vite build && yarn run declare",
-    "declare": "tsc src/index.ts --declaration --emitDeclarationOnly --esModuleInterop --outDir dist",
+    "declare": "tsc src/index.ts --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ES2020",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui"

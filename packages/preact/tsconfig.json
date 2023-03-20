@@ -9,6 +9,8 @@
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "preact",
+    "lib": ["ES2020", "DOM"],
+    "skipLibCheck": true
   }
 }

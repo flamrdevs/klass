@@ -77,6 +77,11 @@ describe("klassed", async () => {
     expect(button.tagName).toEqual("BUTTON");
     expect(button.classList.toString()).toEqual("inline-block outline-none text-white w-full bg-red-600 extra-button classes");
     expect(button.textContent).toEqual("button");
+
+    const output: any[] = [];
+    console.log = (...args) => output.push(args);
+    fireEvent.click(button);
+    expect(output).toEqual([["button-klassed"]]);
   });
 
   it("reactive", async () => {
@@ -94,8 +99,6 @@ describe("klassed", async () => {
   });
 
   it("polymorphic", async () => {
-    const ButtonKlassedLink = klassed(LinkComponent, ButtonKlassed.klass.options, { defaultProps: { href: "/" } });
-
     const { getByTestId } = render(
       <>
         <ButtonKlassed data-testid="button-red" color="red">
@@ -106,9 +109,9 @@ describe("klassed", async () => {
           button-green-as-a
         </ButtonKlassed>
 
-        <ButtonKlassedLink data-testid="button-link-blue" color="blue">
+        <ButtonKlassed data-testid="button-link-blue" as={LinkComponent} color="blue">
           button-link-blue
-        </ButtonKlassedLink>
+        </ButtonKlassed>
       </>
     );
 
@@ -190,8 +193,6 @@ describe("reklassed", async () => {
   });
 
   it("polymorphic", async () => {
-    const BoxReklassedLink = klassed(LinkComponent, BoxReklassed.reklass.options, { defaultProps: { href: "/" } });
-
     const { getByTestId } = render(
       <>
         <BoxReklassed data-testid="box">box</BoxReklassed>
@@ -200,7 +201,9 @@ describe("reklassed", async () => {
           box-as-a
         </BoxReklassed>
 
-        <BoxReklassedLink data-testid="box-link">box-link</BoxReklassedLink>
+        <BoxReklassed data-testid="box-link" as={LinkComponent}>
+          box-link
+        </BoxReklassed>
       </>
     );
 
