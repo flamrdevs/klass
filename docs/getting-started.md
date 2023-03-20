@@ -6,7 +6,7 @@ A class variant utility library.
 
 ## Features
 
-- Variants
+- Base and variants
 - Compounds variants
 - Conditions variants
 - Framework agnostic
@@ -110,6 +110,120 @@ box(
 ); // "block m-4 p-0 sm:p-2 md:p-4 lg:p-8 extra classes"
 ```
 
+#### Low-level API
+
+```tsx
+import { variant, revariant } from "@klass/core";
+
+const marginvariant = variant({
+  variant: {
+    none: "m-0",
+    sm: "m-2",
+    md: "m-4",
+    lg: "m-8",
+  },
+  // defaultVariant: "md"
+});
+
+marginvariant();
+marginvariant("sm");
+
+const paddingrevariant = revariant({
+  conditions: {
+    base: "",
+    sm: "sm:",
+    md: "md:",
+    lg: "lg:",
+  },
+  defaultCondition: "base",
+  variant: {
+    none: "p-0",
+    sm: "p-2",
+    md: "p-4",
+    lg: "p-8",
+  },
+});
+
+paddingrevariant();
+paddingrevariant("sm");
+paddingrevariant({ base: "sm", md: "lg" });
+```
+
+#### More options
+
+return value wrapper. only for klass, reklass and it styled-like component
+
+```tsx
+import { klass, reklass } from "@klass/core";
+
+// tailwind-merge
+import { twMerge } from "tailwind-merge";
+
+const boxklass = klass(
+  {
+    ...{
+      /* options */
+    },
+  },
+  {
+    it: (value) => twMerge(value),
+  }
+);
+
+const boxreklass = reklass(
+  {
+    ...{
+      /* options */
+    },
+  },
+  {
+    it: (value) => twMerge(value),
+  }
+);
+```
+
+condition position. only for revariant, reklass and it styled-like component
+
+```tsx
+import { revariant, reklass } from "@klass/core";
+
+// master.css
+
+const boxrevariant = revariant(
+  {
+    conditions: {
+      base: "",
+      sm: "@sm",
+      md: "@md",
+      lg: "@lg",
+    },
+    ...{
+      /* other */
+    },
+  },
+  {
+    as: "suffix",
+  }
+);
+
+const boxreklass = reklass(
+  {
+    conditions: {
+      base: "",
+      sm: "@sm",
+      md: "@md",
+      lg: "@lg",
+    },
+    ...{
+      /* other */
+    },
+  },
+  {
+    as: "suffix",
+  }
+);
+```
+
 ### React
 
 #### Klassed (React)
@@ -132,6 +246,7 @@ const Box = klassed("div", {
       md: "p-4",
       lg: "p-8",
     },
+    // className property will not work
   },
 });
 
@@ -141,6 +256,8 @@ function App() {
       <Box m="md" p="md" className={["extra", { classes: true }]}>
         Box
       </Box>
+
+      {/* polymorph */}
 
       <Box as="a">Box Link</Box>
     </Box>
@@ -184,10 +301,22 @@ function App() {
         Box
       </Box>
 
+      {/* polymorph */}
+
       <Box as="a">Box Link</Box>
     </Box>
   );
 }
+```
+
+#### HOC (React)
+
+```tsx
+import { withClassValue } from "@klass/react";
+
+import UnstyledComponent from "example-unstyled-component";
+
+const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponent__Base", "extra", "classes");
 ```
 
 ### Preact
@@ -212,6 +341,7 @@ const Box = klassed("div", {
       md: "p-4",
       lg: "p-8",
     },
+    // class and className property will not work
   },
 });
 
@@ -221,6 +351,8 @@ function App() {
       <Box m="md" p="md" class={["extra", { classes: true }]}>
         Box
       </Box>
+
+      {/* polymorph */}
 
       <Box as="a">Box Link</Box>
     </Box>
@@ -264,10 +396,22 @@ function App() {
         Box
       </Box>
 
+      {/* polymorph */}
+
       <Box as="a">Box Link</Box>
     </Box>
   );
 }
+```
+
+#### HOC (Preact)
+
+```tsx
+import { withClassValue } from "@klass/preact";
+
+import UnstyledComponent from "example-unstyled-component";
+
+const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponent__Base", "extra", "classes");
 ```
 
 ### Solid
@@ -292,6 +436,7 @@ const Box = klassed("div", {
       md: "p-4",
       lg: "p-8",
     },
+    // class and classList property will not work
   },
 });
 
@@ -301,6 +446,8 @@ function App() {
       <Box m="md" p="md" class={["extra", { classes: true }]}>
         Box
       </Box>
+
+      {/* polymorph */}
 
       <Box as="a">Box Link</Box>
     </Box>
@@ -344,10 +491,22 @@ function App() {
         Box
       </Box>
 
+      {/* polymorph */}
+
       <Box as="a">Box Link</Box>
     </Box>
   );
 }
+```
+
+#### HOC (Solid)
+
+```tsx
+import { withClassValue } from "@klass/solid";
+
+import UnstyledComponent from "example-unstyled-component";
+
+const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponent__Base", "extra", "classes");
 ```
 
 ### More examples
@@ -379,6 +538,7 @@ Some of the core concepts and designs are inspired by
 
 - [class-variance-authority](https://github.com/joe-bell/cva)
 - [vanilla-extract](https://github.com/vanilla-extract-css/vanilla-extract)
+- [stitches](https://github.com/stitchesjs/stitches)
 
 ## Authors
 
