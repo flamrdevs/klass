@@ -16,10 +16,10 @@ A class variant utility library.
 
 ## Packages
 
-- [@klass/core](./packages/core) - core api
-- [@klass/react](./packages/react) - [react](https://reactjs.org) package
-- [@klass/preact](./packages/preact) - [preact](https://preactjs.com) package
-- [@klass/solid](./packages/solid) - [solid](https://www.solidjs.com) package
+- [@klass/core](./klass/core) - core api
+- [@klass/react](./klass/react) - [react](https://reactjs.org) package
+- [@klass/preact](./klass/preact) - [preact](https://preactjs.com) package
+- [@klass/solid](./klass/solid) - [solid](https://www.solidjs.com) package
 
 ## Roadmap
 
