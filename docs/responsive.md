@@ -35,7 +35,7 @@ box({ m: "md", p: { base: "none", md: "md" } }); // => "m-4 p-0 md:p-4"
 
 ## Setup
 
-Note : for now responsive variants must be added to the safelist manually
+Note : currenly responsive variants must added classes to the safelist manually
 
 ```typescript
 function combine(s: string[], e: string[]) {

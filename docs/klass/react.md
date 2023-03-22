@@ -47,12 +47,14 @@ const Button = klassed(
     },
     compoundVariants: [
       {
-        variant: { color: "primary", outline: true },
-        classes: "button__primary-primary__outline-true",
+        color: "primary",
+        outline: true,
+        class: "button__primary-primary__outline-true",
       },
       {
-        variant: { color: "neutral", outline: true },
-        classes: "button__primary-neutral__outline-true",
+        color: "neutral",
+        outline: true,
+        class: "button__primary-neutral__outline-true",
       },
     ],
   },
@@ -119,7 +121,7 @@ function App() {
 import type { VariantsOf } from "@klass/core";
 import { klassed, reklassed } from "@klass/react";
 
-type ButtonVariants = VariantsOf<typeof Button["klass"]>;
+type ButtonVariants = VariantsOf<(typeof Button)["klass"]>;
 
 const Button = klassed("button", {
   ...{
@@ -127,7 +129,7 @@ const Button = klassed("button", {
   },
 });
 
-type BoxVariants = VariantsOf<typeof Box["reklass"]>;
+type BoxVariants = VariantsOf<(typeof Box)["reklass"]>;
 
 const Box = reklassed("div", {
   ...{

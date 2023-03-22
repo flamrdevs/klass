@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { variant, klass, revariant, reklass } from "./index";
+import { cx, variant, klass, revariant, reklass } from "./index";
 
 import {
   PaddingVariant,
@@ -36,6 +36,19 @@ import {
   BoxAsSuffixReklass,
   BoxWithItReklass,
 } from "./index.test.shared";
+
+describe("cx", async () => {
+  it("type of", async () => {
+    expect(cx).toBeTypeOf("function");
+    expect(cx()).toBeTypeOf("string");
+  });
+
+  it("matches", async () => {
+    expect(cx("")).toEqual("");
+    expect(cx("a", "b", "c")).toEqual("a b c");
+    expect(cx(false, "a", ["b", undefined, false, null, true, { b: false }, { b: true }, { b: 0 }, { b: 1 }], "c")).toEqual("a b b b c");
+  });
+});
 
 describe("variant", async () => {
   it("type of", async () => {

@@ -100,12 +100,14 @@ const button = klass({
   },
   compoundVariants: [
     {
-      variant: { color: "primary", outline: true },
-      classes: "button__primary-primary__outline-true",
+      color: "primary",
+      outline: true,
+      class: "button__primary-primary__outline-true",
     },
     {
-      variant: { color: "neutral", outline: true },
-      classes: "button__primary-neutral__outline-true",
+      color: "neutral",
+      outline: true,
+      class: "button__primary-neutral__outline-true",
     },
   ],
 });

@@ -10,11 +10,11 @@ import type { VariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema
 import type { PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, KlassedComponent, ReklassedComponent } from "./types";
 
 const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "classList",
-  getVariantKeys = <VS extends VariantsSchema>(variants: VS) =>
+  getVariantKeys = <VS extends VariantsSchema<"class" | "classList">>(variants: VS) =>
     Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, "class" | "classList">)[],
   LocalKeysSplitter = ["as", "class", "classList"] as const;
 
-function klassed<VC extends ValidComponent, VS extends VariantsSchema>(
+function klassed<VC extends ValidComponent, VS extends VariantsSchema<"class" | "classList">>(
   element: VC,
   options: KlassOptions<VS>,
   setup: {
@@ -44,7 +44,7 @@ function klassed<VC extends ValidComponent, VS extends VariantsSchema>(
   return Component as KlassedComponent<VC, VS>;
 }
 
-function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends VariantsSchema>(
+function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends VariantsSchema<"class" | "classList">>(
   element: VC,
   options: ReklassOptions<CS, VS>,
   setup: {

@@ -16,20 +16,22 @@ A class variant utility library.
 
 ## Packages
 
-- [@klass/core](./klass/core) - core api
-- [@klass/react](./klass/react) - [react](https://reactjs.org) package
-- [@klass/preact](./klass/preact) - [preact](https://preactjs.com) package
-- [@klass/solid](./klass/solid) - [solid](https://www.solidjs.com) package
+- [@klass/core](./packages/core) - core api
+- [@klass/react](./packages/react) - [react](https://reactjs.org) package
+- [@klass/preact](./packages/preact) - [preact](https://preactjs.com) package
+- [@klass/solid](./packages/solid) - [solid](https://www.solidjs.com) package
 
 ## Roadmap
 
-- :heavy_check_mark: Variants
-- :heavy_check_mark: Compounds variants
-- :heavy_check_mark: Conditions variants
+- [x] Variants
+- [x] Compounds variants
+- [x] Conditions variants
 
 ## Examples
 
 ### Core
+
+klass function is main api that support base class, variants class, default variants, compound variants. another function is reklass (re~~sponsive~~klass), which support condition class. if you're come from vanilla-extract, think that klass is [recipes](https://vanilla-extract.style/documentation/packages/recipes) and reklass is [sprinkles](https://vanilla-extract.style/documentation/packages/sprinkles).
 
 #### Klass
 
@@ -55,16 +57,24 @@ const box = klass({
       md: "p-4",
       lg: "p-8",
     },
+    // shouldn't use "class" key as variant
   },
 });
 
-box(
+// usage
+
+// main
+const result /* "block m-4 p-4 extra classes" */ = box(
   {
     m: "md",
     p: "md",
   },
   ["extra", { classes: true }]
-); // "block m-4 p-4 extra classes"
+);
+
+// access variant
+box.variant.m("md");
+box.variant.p("md");
 ```
 
 #### Reklass
@@ -75,7 +85,7 @@ box(
 ```tsx
 import { reklass } from "@klass/core";
 
-// assume custom tailwind screens is "sm", "md" and "lg"
+// assume custom screens is "sm", "md" and "lg"
 
 const box = reklass({
   conditions: {
@@ -101,19 +111,28 @@ const box = reklass({
   },
 });
 
-box(
+// usage
+
+// main
+const result /* "m-4 p-0 sm:p-2 md:p-4 lg:p-8 extra classes" */ = box(
   {
     m: "md",
     p: { base: "none", sm: "sm", md: "md", lg: "lg" },
   },
   ["extra", { classes: true }]
-); // "block m-4 p-0 sm:p-2 md:p-4 lg:p-8 extra classes"
+);
+
+// access revariant
+box.revariant.m("md");
+box.revariant.p({ base: "none", sm: "sm", md: "md", lg: "lg" });
 ```
 
 #### Low-level API
 
 ```tsx
-import { variant, revariant } from "@klass/core";
+import { cx, variant, revariant } from "@klass/core";
+
+const result /* "f l a m r d e v s" */ = cx("f", "l", "a", ["m", { r: true }], { d: true, e: 1 }, "v", "s");
 
 const marginvariant = variant({
   variant: {
@@ -246,7 +265,7 @@ const Box = klassed("div", {
       md: "p-4",
       lg: "p-8",
     },
-    // className property will not work
+    // shouldn't use "class" and "className" key as variant
   },
 });
 
@@ -316,7 +335,7 @@ import { withClassValue } from "@klass/react";
 
 import UnstyledComponent from "example-unstyled-component";
 
-const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponent__Base", "extra", "classes");
+const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponentBaseClass", "extra", "classes");
 ```
 
 ### Preact
@@ -341,7 +360,7 @@ const Box = klassed("div", {
       md: "p-4",
       lg: "p-8",
     },
-    // class and className property will not work
+    // shouldn't use "class" and "className" key as variant
   },
 });
 
@@ -411,7 +430,7 @@ import { withClassValue } from "@klass/preact";
 
 import UnstyledComponent from "example-unstyled-component";
 
-const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponent__Base", "extra", "classes");
+const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponentBaseClass", "extra", "classes");
 ```
 
 ### Solid
@@ -436,7 +455,7 @@ const Box = klassed("div", {
       md: "p-4",
       lg: "p-8",
     },
-    // class and classList property will not work
+    // shouldn't use "class" and "classList" key as variant
   },
 });
 
@@ -506,7 +525,7 @@ import { withClassValue } from "@klass/solid";
 
 import UnstyledComponent from "example-unstyled-component";
 
-const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponent__Base", "extra", "classes");
+const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponentBaseClass", "extra", "classes");
 ```
 
 ### More examples

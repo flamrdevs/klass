@@ -40,11 +40,5 @@
   "bugs": {
     "url": "https://github.com/flamrdevs/klass/issues"
   },
-  "homepage": "https://klass-style.vercel.app",
-  "devDependencies": {
-    "clsx": "^1.2.1"
-  },
-  "peerDependencies": {
-    "clsx": "^1.2.1"
-  }
+  "homepage": "https://klass-style.vercel.app"
 }

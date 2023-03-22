@@ -1,7 +1,7 @@
 import React from "react";
 import type { ComponentType } from "react";
 
-import { clsx } from "@klass/core";
+import { cx } from "@klass/core";
 import type { ClassValue } from "@klass/core";
 
 import type { WithClassesValueProps } from "./types";
@@ -11,7 +11,7 @@ function withClassValue<P extends { [key: string]: any }>(Component: ComponentTy
     { className, ...others },
     ref
   ) {
-    return <Component ref={ref} {...(others as P)} className={clsx(classes, className)} />;
+    return <Component ref={ref} {...(others as P)} className={cx(classes, className)} />;
   });
 }
 

@@ -77,46 +77,34 @@ const ButtonKlassed = klassed(
     },
     compoundVariants: [
       {
-        variant: {
-          color: "red",
-          variant: "filled",
-        },
-        classes: "bg-red-600",
+        color: "red",
+        variant: "filled",
+        class: "bg-red-600",
       },
       {
-        variant: {
-          color: "green",
-          variant: "filled",
-        },
-        classes: "bg-green-600",
+        color: "green",
+        variant: "filled",
+        class: "bg-green-600",
       },
       {
-        variant: {
-          color: "blue",
-          variant: "filled",
-        },
-        classes: "bg-blue-600",
+        color: "blue",
+        variant: "filled",
+        class: "bg-blue-600",
       },
       {
-        variant: {
-          color: "red",
-          variant: "outline",
-        },
-        classes: "text-red-600 border-red-600",
+        color: "red",
+        variant: "outline",
+        class: "text-red-600 border-red-600",
       },
       {
-        variant: {
-          color: "green",
-          variant: "outline",
-        },
-        classes: "text-green-600 border-green-600",
+        color: "green",
+        variant: "outline",
+        class: "text-green-600 border-green-600",
       },
       {
-        variant: {
-          color: "blue",
-          variant: "outline",
-        },
-        classes: "text-blue-600 border-blue-600",
+        color: "blue",
+        variant: "outline",
+        class: "text-blue-600 border-blue-600",
       },
     ],
   },
@@ -154,46 +142,34 @@ const ButtonKlassedOptions = {
   },
   compoundVariants: [
     {
-      variant: {
-        color: "red",
-        variant: "filled",
-      },
-      classes: "bg-red-600",
+      color: "red",
+      variant: "filled",
+      class: "bg-red-600",
     },
     {
-      variant: {
-        color: "green",
-        variant: "filled",
-      },
-      classes: "bg-green-600",
+      color: "green",
+      variant: "filled",
+      class: "bg-green-600",
     },
     {
-      variant: {
-        color: "blue",
-        variant: "filled",
-      },
-      classes: "bg-blue-600",
+      color: "blue",
+      variant: "filled",
+      class: "bg-blue-600",
     },
     {
-      variant: {
-        color: "red",
-        variant: "outline",
-      },
-      classes: "text-red-600 border-red-600",
+      color: "red",
+      variant: "outline",
+      class: "text-red-600 border-red-600",
     },
     {
-      variant: {
-        color: "green",
-        variant: "outline",
-      },
-      classes: "text-green-600 border-green-600",
+      color: "green",
+      variant: "outline",
+      class: "text-green-600 border-green-600",
     },
     {
-      variant: {
-        color: "blue",
-        variant: "outline",
-      },
-      classes: "text-blue-600 border-blue-600",
+      color: "blue",
+      variant: "outline",
+      class: "text-blue-600 border-blue-600",
     },
   ],
 };

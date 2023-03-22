@@ -14,7 +14,7 @@ import type {
 } from "./types";
 
 const getVariantKeys__filterFn = (el: string) => el !== "className",
-  getVariantKeys = <VS extends VariantsSchema>(variants: VS) =>
+  getVariantKeys = <VS extends VariantsSchema<"class" | "className">>(variants: VS) =>
     Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, "className">)[],
   splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
     let omited: Record<string, any> = {},
@@ -25,7 +25,7 @@ const getVariantKeys__filterFn = (el: string) => el !== "className",
     return { omited, picked };
   };
 
-function klassed<ET extends ElementType, VS extends VariantsSchema>(
+function klassed<ET extends ElementType, VS extends VariantsSchema<"class" | "className">>(
   element: ET,
   options: KlassOptions<VS>,
   setup: {
@@ -62,7 +62,7 @@ function klassed<ET extends ElementType, VS extends VariantsSchema>(
   return ComponentWithRef as KlassedComponent<ET, VS>;
 }
 
-function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends VariantsSchema>(
+function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends VariantsSchema<"class" | "className">>(
   element: ET,
   options: ReklassOptions<CS, VS>,
   setup: {
