@@ -2,6 +2,11 @@
   "name": "@klass/core",
   "version": "0.8.0",
   "description": "class variant utility",
+  "keywords": [
+    "class",
+    "variant",
+    "utility"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.mjs",
@@ -20,6 +25,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "vite build && yarn run declare",
+    "build:unminify": "set UNMINIFY=true&&pnpm run build",
     "declare": "tsc src/index.ts --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ES2020",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -34,8 +40,11 @@
   "bugs": {
     "url": "https://github.com/flamrdevs/klass/issues"
   },
-  "homepage": "https://github.com/flamrdevs/klass#readme",
-  "dependencies": {
+  "homepage": "https://klass-style.vercel.app",
+  "devDependencies": {
+    "clsx": "^1.2.1"
+  },
+  "peerDependencies": {
     "clsx": "^1.2.1"
   }
 }

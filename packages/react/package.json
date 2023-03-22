@@ -2,6 +2,12 @@
   "name": "@klass/react",
   "version": "0.8.0",
   "description": "class variant utility for react",
+  "keywords": [
+    "class",
+    "variant",
+    "utility",
+    "react"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.mjs",
@@ -20,6 +26,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "vite build && yarn run declare",
+    "build:unminify": "set UNMINIFY=true&&pnpm run build",
     "declare": "tsc src/index.tsx --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ES2020 --jsx react-jsxdev",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -34,13 +41,15 @@
   "bugs": {
     "url": "https://github.com/flamrdevs/klass/issues"
   },
-  "homepage": "https://github.com/flamrdevs/klass#readme",
-  "dependencies": {
+  "homepage": "https://klass-style.vercel.app",
+  "devDependencies": {
     "@klass/core": "*",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "react": "^18.2.0"
   },
-  "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11"
+  "peerDependencies": {
+    "@klass/core": "*",
+    "react": "^18.2.0"
   }
 }

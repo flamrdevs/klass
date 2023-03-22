@@ -2,6 +2,12 @@
   "name": "@klass/preact",
   "version": "0.8.0",
   "description": "class variant utility for preact",
+  "keywords": [
+    "class",
+    "variant",
+    "utility",
+    "preact"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.mjs",
@@ -20,6 +26,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "vite build && yarn run declare",
+    "build:unminify": "set UNMINIFY=true&&pnpm run build",
     "declare": "tsc src/index.tsx --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ES2020 --jsx preserve --jsxImportSource preact",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -34,8 +41,12 @@
   "bugs": {
     "url": "https://github.com/flamrdevs/klass/issues"
   },
-  "homepage": "https://github.com/flamrdevs/klass#readme",
-  "dependencies": {
+  "homepage": "https://klass-style.vercel.app",
+  "devDependencies": {
+    "@klass/core": "*",
+    "preact": "^10.13.1"
+  },
+  "peerDependencies": {
     "@klass/core": "*",
     "preact": "^10.13.1"
   }

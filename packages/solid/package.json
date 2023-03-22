@@ -2,6 +2,12 @@
   "name": "@klass/solid",
   "version": "0.8.0",
   "description": "class variant utility for solid",
+  "keywords": [
+    "class",
+    "variant",
+    "utility",
+    "solid"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.mjs",
@@ -20,6 +26,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "vite build && yarn run declare",
+    "build:unminify": "set UNMINIFY=true&&pnpm run build",
     "declare": "tsc src/index.tsx --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ES2020 --jsx preserve --jsxImportSource solid-js",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -34,8 +41,12 @@
   "bugs": {
     "url": "https://github.com/flamrdevs/klass/issues"
   },
-  "homepage": "https://github.com/flamrdevs/klass#readme",
-  "dependencies": {
+  "homepage": "https://klass-style.vercel.app",
+  "devDependencies": {
+    "@klass/core": "*",
+    "solid-js": "^1.6.15"
+  },
+  "peerDependencies": {
     "@klass/core": "*",
     "solid-js": "^1.6.15"
   }

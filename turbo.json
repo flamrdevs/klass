@@ -8,6 +8,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "build:unminify": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
     "test": {
       "outputs": []
     },
