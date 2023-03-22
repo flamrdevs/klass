@@ -1,5 +1,11 @@
 # @klass/core
 
+## 1.0.0
+
+### Minor Changes
+
+- 4dd58ea: Compound variants API changed and improve typescript
+
 ## 0.8.1
 
 ### Patch Changes
