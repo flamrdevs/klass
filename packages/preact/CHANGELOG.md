@@ -1,5 +1,13 @@
 # @klass/preact
 
+## 0.8.1
+
+### Patch Changes
+
+- da70b9b: Optimize package
+- Updated dependencies [da70b9b]
+  - @klass/core@0.8.1
+
 ## 0.8.0
 
 ### Minor Changes

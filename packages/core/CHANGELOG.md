@@ -1,5 +1,11 @@
 # @klass/core
 
+## 0.8.1
+
+### Patch Changes
+
+- da70b9b: Optimize package
+
 ## 0.8.0
 
 ### Minor Changes
