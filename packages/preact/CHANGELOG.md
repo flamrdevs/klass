@@ -1,5 +1,13 @@
 # @klass/preact
 
+## 1.0.1
+
+### Patch Changes
+
+- ce1ebf7: Performance and fix types
+- Updated dependencies [ce1ebf7]
+  - @klass/core@1.0.1
+
 ## 1.0.0
 
 ### Minor Changes
