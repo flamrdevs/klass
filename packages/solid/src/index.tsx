@@ -5,7 +5,7 @@ import { mergeProps, splitProps } from "solid-js";
 import type { ValidComponent } from "solid-js";
 
 import { klass, reklass } from "@klass/core";
-import type { VariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn } from "@klass/core";
+import type { VariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
 
 import type { PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, KlassedComponent, ReklassedComponent } from "./types";
 
@@ -49,16 +49,15 @@ function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS ext
   options: ReklassOptions<CS, VS>,
   setup: {
     defaultProps?: PolymorphicComponentProp<VC, {}>;
+    as?: AsCondition;
     it?: ItFn;
   } = {}
 ): ReklassedComponent<VC, CS, VS> {
-  const { defaultProps: { class: _class, classList, ...defaultProps } = {} as ClassesNormalProps, it } = setup,
-    reklassFn = reklass<CS, VS>(options, { it }),
+  const { defaultProps: { class: _class, classList, ...defaultProps } = {} as ClassesNormalProps, as, it } = setup,
+    reklassFn = reklass<CS, VS>(options, { as, it }),
     keys = getVariantKeys<VS>(options.variants);
 
-  const Component = <C extends ValidComponent = VC>(
-    props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>
-  ) => {
+  const Component = <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
     const [local, picked, omited] = splitProps(props, LocalKeysSplitter, keys as any);
 
     return (
