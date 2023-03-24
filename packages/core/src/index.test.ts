@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { cx, variant, klass, revariant, reklass } from "./index";
+import { cxs, variant, klass, revariant, reklass } from "./index";
 
 import {
   PaddingVariant,
@@ -37,16 +37,16 @@ import {
   BoxWithItReklass,
 } from "./index.test.shared";
 
-describe("cx", async () => {
+describe("cxs", async () => {
   it("type of", async () => {
-    expect(cx).toBeTypeOf("function");
-    expect(cx()).toBeTypeOf("string");
+    expect(cxs).toBeTypeOf("function");
+    expect(cxs()).toBeTypeOf("string");
   });
 
   it("matches", async () => {
-    expect(cx("")).toEqual("");
-    expect(cx("a", "b", "c")).toEqual("a b c");
-    expect(cx(false, "a", ["b", undefined, false, null, true, { b: false }, { b: true }, { b: 0 }, { b: 1 }], "c")).toEqual("a b b b c");
+    expect(cxs("")).toEqual("");
+    expect(cxs("a", "b", "c")).toEqual("a b c");
+    expect(cxs(false, "a", ["b", undefined, false, null, true, { b: false }, { b: true }, { b: 0 }, { b: 1 }], "c")).toEqual("a b b b c");
   });
 });
 
@@ -162,9 +162,7 @@ describe("klass", async () => {
 
     expect(ButtonKlass({ color: "green" })).toEqual("inline-block outline-none text-white bg-green-600");
 
-    expect(ButtonKlass({ color: "blue", variant: "outline" })).toEqual(
-      "inline-block outline-none bg-transparent border text-blue-600 border-blue-600"
-    );
+    expect(ButtonKlass({ color: "blue", variant: "outline" })).toEqual("inline-block outline-none bg-transparent border text-blue-600 border-blue-600");
   });
 
   it("with it", async () => {

@@ -9,6 +9,8 @@
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["ES2020", "DOM"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   }
 }
