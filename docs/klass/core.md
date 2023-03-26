@@ -51,16 +51,16 @@ box({ m: "md" }); // => "block m-4"
 import { klass } from "@klass/core";
 
 const button = klass({
-  base: "button__base",
+  base: "button--base",
   variants: {
     color: {
-      primary: "button__color-primary",
-      neutral: "button__color-neutral",
+      primary: "button--color-primary",
+      neutral: "button--color-neutral",
     },
     size: {
-      sm: "button__size-sm",
-      md: "button__size-md",
-      lg: "button__size-lg",
+      sm: "button--size-sm",
+      md: "button--size-md",
+      lg: "button--size-lg",
     },
   },
   defaultVariants: {
@@ -69,8 +69,8 @@ const button = klass({
   },
 });
 
-box(); // => "button__base button__color-primary button__size-md"
-box({ color: "neutral" }); // => "button__base button__color-neutral button__size-md"
+box(); // => "button--base button--color-primary button--size-md"
+box({ color: "neutral" }); // => "button--base button--color-neutral button--size-md"
 ```
 
 ## Klass with compound variant
@@ -79,16 +79,16 @@ box({ color: "neutral" }); // => "button__base button__color-neutral button__siz
 import { klass } from "@klass/core";
 
 const button = klass({
-  base: "button__base",
+  base: "button--base",
   variants: {
     color: {
-      primary: "button__color-primary",
-      neutral: "button__color-neutral",
+      primary: "button--color-primary",
+      neutral: "button--color-neutral",
     },
     size: {
-      sm: "button__size-sm",
-      md: "button__size-md",
-      lg: "button__size-lg",
+      sm: "button--size-sm",
+      md: "button--size-md",
+      lg: "button--size-lg",
     },
     outline: {
       true: "",
@@ -102,19 +102,19 @@ const button = klass({
     {
       color: "primary",
       outline: true,
-      class: "button__primary-primary__outline-true",
+      class: "button--primary-primary-&-outline-true",
     },
     {
       color: "neutral",
       outline: true,
-      class: "button__primary-neutral__outline-true",
+      class: "button--primary-neutral-&-outline-true",
     },
   ],
 });
 
-box(); // => "button__base button__color-primary button__size-md"
-box({ outline: true }); // => "button__base button__color-primary button__size-md button__primary-primary__outline-true"
-box({ color: "neutral", outline: true }); // => "button__base button__color-neutral button__size-md button__neutral-neutral__outline-true"
+box(); // => "button--base button--color-primary button--size-md"
+box({ outline: true }); // => "button--base button--color-primary button--size-md button--primary-primary-&-outline-true"
+box({ color: "neutral", outline: true }); // => "button--base button--color-neutral button--size-md button--neutral-neutral-&-outline-true"
 ```
 
 ## Reklass

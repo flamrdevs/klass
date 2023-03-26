@@ -26,16 +26,16 @@ import { klassed, reklassed } from "@klass/react";
 const Button = klassed(
   "button",
   {
-    base: "button__base",
+    base: "button--base",
     variants: {
       color: {
-        primary: "button__color-primary",
-        neutral: "button__color-neutral",
+        primary: "button--color-primary",
+        neutral: "button--color-neutral",
       },
       size: {
-        sm: "button__size-sm",
-        md: "button__size-md",
-        lg: "button__size-lg",
+        sm: "button--size-sm",
+        md: "button--size-md",
+        lg: "button--size-lg",
       },
       outline: {
         true: "",
@@ -49,12 +49,12 @@ const Button = klassed(
       {
         color: "primary",
         outline: true,
-        class: "button__primary-primary__outline-true",
+        class: "button--primary-primary-&-outline-true",
       },
       {
         color: "neutral",
         outline: true,
-        class: "button__primary-neutral__outline-true",
+        class: "button--primary-neutral-&-outline-true",
       },
     ],
   },

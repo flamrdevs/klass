@@ -1,6 +1,6 @@
 # Getting Started
 
-## Introduction <Badge type="warning" text="beta" />
+## Introduction
 
 A class variant utility library.
 
@@ -130,9 +130,9 @@ box.revariant.p({ base: "none", sm: "sm", md: "md", lg: "lg" });
 #### Low-level API
 
 ```tsx
-import { cx, variant, revariant } from "@klass/core";
+import { cxs, variant, revariant } from "@klass/core";
 
-const result /* "f l a m r d e v s" */ = cx("f", "l", "a", ["m", { r: true }], { d: true, e: 1 }, "v", "s");
+const result /* "f l a m r d e v s" */ = cxs("f", "l", "a", ["m", { r: true }], { d: true, e: 1 }, "v", "s");
 
 const marginvariant = variant({
   variant: {

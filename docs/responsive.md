@@ -35,7 +35,7 @@ box({ m: "md", p: { base: "none", md: "md" } }); // => "m-4 p-0 md:p-4"
 
 ## Setup
 
-Note : currenly responsive variants must added classes to the safelist manually
+Note : currently responsive variants for tailwindcss and other must added classes to the safelist manually
 
 ```typescript
 function combine(s: string[], e: string[]) {

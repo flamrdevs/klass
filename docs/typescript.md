@@ -6,17 +6,17 @@
 import { klass, reklass } from "@klass/core";
 import type { VariantsOf } from "@klass/core";
 
-type ButtonKlassVariants = VariantsOf<typeof ButtonKlass>;
-
 const ButtonKlass = klass({
   // options
 });
 
-type BoxReklassVariants = VariantsOf<typeof BoxReklass>;
+type ButtonKlassVariants = VariantsOf<typeof ButtonKlass>;
 
 const BoxReklass = reklass({
   // options
 });
+
+type BoxReklassVariants = VariantsOf<typeof BoxReklass>;
 ```
 
 ## Components
@@ -25,15 +25,15 @@ const BoxReklass = reklass({
 import { klassed, reklassed } from "@klass/(react|preact|solid)";
 import type { VariantsOf } from "@klass/core";
 
-type ButtonKlassedVariants = VariantsOf<typeof ButtonKlassed["klass"]>;
-
 const ButtonKlassed = klassed("button", {
   // options
 });
 
-type BoxReklassedVariants = VariantsOf<typeof BoxReklassed["reklass"]>;
+type ButtonKlassedVariants = VariantsOf<(typeof ButtonKlassed)["klass"]>;
 
 const BoxReklassed = reklassed("div", {
   // options
 });
+
+type BoxReklassedVariants = VariantsOf<(typeof BoxReklassed)["reklass"]>;
 ```
