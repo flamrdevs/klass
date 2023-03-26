@@ -1,5 +1,11 @@
 # @klass/core
 
+## 1.0.2
+
+### Patch Changes
+
+- 89b3ffc: Fix builds
+
 ## 1.0.1
 
 ### Patch Changes

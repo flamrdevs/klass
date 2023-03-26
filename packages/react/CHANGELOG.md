@@ -1,5 +1,13 @@
 # @klass/react
 
+## 1.0.2
+
+### Patch Changes
+
+- 89b3ffc: Fix builds
+- Updated dependencies [89b3ffc]
+  - @klass/core@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes
