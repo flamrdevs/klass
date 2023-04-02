@@ -16,7 +16,6 @@ export default defineConfig({
     ...(env.true("UNMINIFY") ? { minify: false } : {}),
     target: "esnext",
     lib: {
-      name: "KlassCore",
       entry: "./src/index.ts",
       fileName: "index",
       formats: ["es", "cjs"],

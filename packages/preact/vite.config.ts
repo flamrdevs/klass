@@ -18,7 +18,6 @@ export default defineConfig({
     ...(env.true("UNMINIFY") ? { minify: false } : {}),
     target: "esnext",
     lib: {
-      name: "KlassPreact",
       entry: "./src/index.tsx",
       fileName: "index",
       formats: ["es", "cjs"],

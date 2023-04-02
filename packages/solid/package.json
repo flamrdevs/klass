@@ -34,7 +34,7 @@
     "clean": "rimraf dist",
     "build": "vite build && pnpm run declare",
     "build:unminify": "set UNMINIFY=true&&pnpm run build",
-    "declare": "tsc src/index.tsx --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ES2020 --jsx preserve --jsxImportSource solid-js",
+    "declare": "tsc src/index.tsx --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ESNext,DOM,DOM.Iterable --jsx preserve --jsxImportSource solid-js",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui"
