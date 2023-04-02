@@ -4,8 +4,17 @@
   "description": "class variant utility",
   "keywords": [
     "class",
+    "classname",
     "variant",
-    "utility"
+    "variants",
+    "utility",
+    "responsive",
+    "typescript",
+    "modular",
+    "framework-agnostic",
+    "preact",
+    "react",
+    "solid"
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -24,7 +33,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "vite build && yarn run declare",
+    "build": "vite build && pnpm run declare",
     "build:unminify": "set UNMINIFY=true&&pnpm run build",
     "declare": "tsc src/index.ts --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ES2020",
     "test": "vitest run",

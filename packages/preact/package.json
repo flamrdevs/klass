@@ -4,9 +4,16 @@
   "description": "class variant utility for preact",
   "keywords": [
     "class",
+    "classname",
     "variant",
+    "variants",
     "utility",
-    "preact"
+    "responsive",
+    "typescript",
+    "preact",
+    "component",
+    "styled",
+    "polymorphic"
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -25,7 +32,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "vite build && yarn run declare",
+    "build": "vite build && pnpm run declare",
     "build:unminify": "set UNMINIFY=true&&pnpm run build",
     "declare": "tsc src/index.tsx --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ES2020 --jsx preserve --jsxImportSource preact",
     "test": "vitest run",
@@ -44,10 +51,10 @@
   "homepage": "https://klass-style.vercel.app",
   "devDependencies": {
     "@klass/core": "*",
-    "preact": "^10.13.1"
+    "preact": "^10.13.2"
   },
   "peerDependencies": {
     "@klass/core": "*",
-    "preact": "^10.13.1"
+    "preact": "^10.0.0"
   }
 }

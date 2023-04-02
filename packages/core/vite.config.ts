@@ -22,7 +22,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["clsx"],
+      external: [],
     },
   },
   plugins: [],

@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "description": "class variant utility",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "clean": "turbo run clean",
     "build": "turbo run build",
@@ -13,7 +10,6 @@
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
     "test:ui": "turbo run test:ui",
-    "lint": "turbo run lint",
     "dev": "turbo run dev",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -30,25 +26,25 @@
   },
   "homepage": "https://klass-style.vercel.app",
   "devDependencies": {
-    "@changesets/cli": "^2.26.0",
+    "@changesets/cli": "^2.26.1",
     "@preact/preset-vite": "^2.5.0",
     "@solidjs/testing-library": "^0.7.0",
     "@testing-library/preact": "^3.2.3",
     "@testing-library/react": "^14.0.0",
-    "@types/react": "^18.0.28",
+    "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
-    "@vitest/ui": "^0.29.3",
+    "@vitest/ui": "^0.29.8",
     "jsdom": "^21.1.1",
-    "preact": "^10.13.1",
+    "preact": "^10.13.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rimraf": "^4.4.0",
-    "solid-js": "^1.6.15",
-    "turbo": "^1.8.3",
-    "vite": "^4.2.0",
+    "rimraf": "^4.4.1",
+    "solid-js": "^1.7.0",
+    "turbo": "^1.8.8",
+    "vite": "^4.2.1",
     "vite-plugin-solid": "^2.6.1",
-    "vitepress": "^1.0.0-alpha.60",
-    "vitest": "^0.29.3"
+    "vitepress": "1.0.0-alpha.64",
+    "vitest": "^0.29.8"
   }
 }

@@ -12,21 +12,8 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "test": {
-      "outputs": []
-    },
-    "test:watch": {
-      "cache": false
-    },
-    "test:ui": {
-      "cache": false
-    },
-    "lint": {
-      "outputs": []
-    },
-    "deploy": {
-      "dependsOn": ["build", "test", "lint"],
-      "outputs": []
-    }
+    "test": {},
+    "test:watch": {},
+    "test:ui": {}
   }
 }

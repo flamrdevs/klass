@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
-    "lib": ["ES2020", "DOM"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
