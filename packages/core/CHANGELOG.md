@@ -1,5 +1,11 @@
 # @klass/core
 
+## 1.0.3
+
+### Patch Changes
+
+- 6c6c6fd: Update library meta
+
 ## 1.0.2
 
 ### Patch Changes

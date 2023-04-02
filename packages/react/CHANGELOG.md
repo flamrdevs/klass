@@ -1,5 +1,13 @@
 # @klass/react
 
+## 1.0.3
+
+### Patch Changes
+
+- 6c6c6fd: Update library meta
+- Updated dependencies [6c6c6fd]
+  - @klass/core@1.0.3
+
 ## 1.0.2
 
 ### Patch Changes
