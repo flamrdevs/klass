@@ -5,16 +5,15 @@ import { mergeProps, splitProps } from "solid-js";
 import type { ValidComponent } from "solid-js";
 
 import { klass, reklass } from "@klass/core";
-import type { VariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
+import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
 
-import type { PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, KlassedComponent, ReklassedComponent } from "./types";
+import type { PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, SolidClassesPropsKey, SolidVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
 
 const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "classList",
-  getVariantKeys = <VS extends VariantsSchema<"class" | "classList">>(variants: VS) =>
-    Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, "class" | "classList">)[],
+  getVariantKeys = <VS extends SolidVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, SolidClassesPropsKey>)[],
   LocalKeysSplitter = ["as", "class", "classList"] as const;
 
-function klassed<VC extends ValidComponent, VS extends VariantsSchema<"class" | "classList">>(
+function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
   element: VC,
   options: KlassOptions<VS>,
   setup: {
@@ -44,7 +43,7 @@ function klassed<VC extends ValidComponent, VS extends VariantsSchema<"class" | 
   return Component as KlassedComponent<VC, VS>;
 }
 
-function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends VariantsSchema<"class" | "classList">>(
+function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends SolidVariantsSchema>(
   element: VC,
   options: ReklassOptions<CS, VS>,
   setup: {
