@@ -16,7 +16,7 @@ A class variant utility library.
 
 ## Documentation
 
-See [docs](https://klass-style.vercel.app/klass/core.html)
+See [docs](https://klass.pages.dev/klass/core.html)
 
 ## Authors
 

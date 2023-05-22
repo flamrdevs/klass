@@ -16,7 +16,7 @@ A class variant utility library for preact.
 
 ## Documentation
 
-See [docs](https://klass-style.vercel.app/klass/preact.html)
+See [docs](httpshttps://klass.pages.dev/klass/preact.html)
 
 ## Authors
 

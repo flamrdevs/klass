@@ -16,7 +16,7 @@ A class variant utility library for react.
 
 ## Documentation
 
-See [docs](https://klass-style.vercel.app/klass/react.html)
+See [docs](https://klass.pages.dev/klass/react.html)
 
 ## Authors
 

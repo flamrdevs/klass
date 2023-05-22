@@ -16,7 +16,7 @@ A class variant utility library for solid.
 
 ## Documentation
 
-See [docs](https://klass-style.vercel.app/klass/solid.html)
+See [docs](https://klass.pages.dev/klass/solid.html)
 
 ## Authors
 
