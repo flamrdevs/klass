@@ -6,8 +6,7 @@ type AsProp<ET extends ElementType> = { as?: ET };
 
 type PropsToOmit<ET extends ElementType, P> = keyof (AsProp<ET> & P);
 
-type PolymorphicComponentProp<ET extends ElementType, Props = {}> = PropsWithChildren<Props & AsProp<ET>> &
-  Omit<ComponentPropsWithoutRef<ET>, PropsToOmit<ET, Props>>;
+type PolymorphicComponentProp<ET extends ElementType, Props = {}> = PropsWithChildren<Props & AsProp<ET>> & Omit<ComponentPropsWithoutRef<ET>, PropsToOmit<ET, Props>>;
 
 type PolymorphicRef<ET extends ElementType> = ComponentPropsWithRef<ET>["ref"];
 
@@ -19,22 +18,23 @@ type ClassesNormalProps = { className?: string };
 type ClassesValueProps = { className?: ClassValue };
 type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & ClassesValueProps;
 
+type ReactClassesPropsKey = "className";
+
+type ReactVariantsSchema = VariantsSchema<ReactClassesPropsKey>;
+
 type KlassedComponent<ET extends ElementType, VS extends VariantsSchema> = {
-  <C extends ElementType = ET>(
-    props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>
-  ): ReactElement | null;
+  <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): ReactElement | null;
 } & {
   klass: KlassFn<VS>;
 };
 
 type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS extends VariantsSchema> = {
-  <C extends ElementType = ET>(
-    props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>
-  ): ReactElement | null;
+  <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): ReactElement | null;
 } & {
   reklass: ReklassFn<CS, VS>;
 };
 
-export { PolymorphicComponentProp, PolymorphicRef, PolymorphicComponentPropWithRef };
-export { ClassesNormalProps, ClassesValueProps, WithClassesValueProps };
-export { KlassedComponent, ReklassedComponent };
+export type { PolymorphicComponentProp, PolymorphicRef, PolymorphicComponentPropWithRef };
+export type { ClassesNormalProps, ClassesValueProps, WithClassesValueProps };
+export type { ReactClassesPropsKey, ReactVariantsSchema };
+export type { KlassedComponent, ReklassedComponent };
