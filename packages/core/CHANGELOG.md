@@ -1,5 +1,13 @@
 # @klass/core
 
+## 1.2.0
+
+### Minor Changes
+
+- b2a4443: Optimization
+  - assign variantKeys to KlassFn
+  - assign revariantKeys to ReklassFn
+
 ## 1.0.3
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@klass/preact",
-  "version": "1.0.3",
+  "version": "1.2.0",
   "description": "class variant utility for preact",
   "keywords": [
     "class",
