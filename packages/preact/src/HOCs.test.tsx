@@ -7,24 +7,24 @@ import { useState } from "preact/hooks";
 
 import { cleanup, fireEvent, render } from "@testing-library/preact";
 
-import { withClassValue } from "./HOCs";
+import { cxsed } from "./HOCs";
 
 afterEach(() => {
   cleanup();
 });
 
-describe("withClassValue", async () => {
+describe("cxsed", async () => {
   it("type of", async () => {
     const Div = (props: JSX.IntrinsicElements["div"]) => <div {...props} />;
-    const DivClassValue = withClassValue(Div, "base", "class");
+    const DivClassValue = cxsed(Div, "base", "class");
 
-    expect(withClassValue).toBeTypeOf("function");
+    expect(cxsed).toBeTypeOf("function");
     expect(isValidElement(<DivClassValue />)).toBeTruthy();
   });
 
   it("basic", async () => {
     const Div = (props: JSX.IntrinsicElements["div"]) => <div {...props} />;
-    const DivClassValue = withClassValue(Div, "base", "class");
+    const DivClassValue = cxsed(Div, "base", "class");
 
     const { getByTestId } = render(
       <>
@@ -43,7 +43,7 @@ describe("withClassValue", async () => {
 
   it("reactive", async () => {
     const Button = (props: JSX.IntrinsicElements["button"]) => <button {...props} />;
-    const ButtonClassValue = withClassValue(Button, "base", "class");
+    const ButtonClassValue = cxsed(Button, "base", "class");
 
     function Wrapper() {
       const [classes, setClasses] = useState<string | null>(null);

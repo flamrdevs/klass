@@ -9,7 +9,7 @@ import type { ClassValue } from "@klass/core";
 import type { WithClassesValueProps } from "./types";
 
 const LocalKeysSplitter = ["class", "classList"] as const,
-  withClassValue = <P extends { [key: string]: any }>(component: Component<P>, ...classes: ClassValue[]) => {
+  cxsed = <P extends { [key: string]: any }>(component: Component<P>, ...classes: ClassValue[]) => {
     return function Wrapper(props: WithClassesValueProps<P>) {
       const [local, others] = splitProps(props, LocalKeysSplitter);
 
@@ -17,4 +17,4 @@ const LocalKeysSplitter = ["class", "classList"] as const,
     };
   };
 
-export { withClassValue };
+export { cxsed };

@@ -6,24 +6,24 @@ import type { PropsWithoutRef } from "react";
 
 import { cleanup, fireEvent, render } from "@testing-library/react";
 
-import { withClassValue } from "./HOCs";
+import { cxsed } from "./HOCs";
 
 afterEach(() => {
   cleanup();
 });
 
-describe("withClassValue", async () => {
+describe("cxsed", async () => {
   it("type of", async () => {
     const Div = forwardRef<HTMLDivElement, PropsWithoutRef<JSX.IntrinsicElements["div"]>>((props, ref) => <div {...props} ref={ref} />);
-    const DivClassValue = withClassValue(Div, "base", "class");
+    const DivClassValue = cxsed(Div, "base", "class");
 
-    expect(withClassValue).toBeTypeOf("function");
+    expect(cxsed).toBeTypeOf("function");
     expect(isValidElement(<DivClassValue />)).toBeTruthy();
   });
 
   it("basic", async () => {
     const Div = forwardRef<HTMLDivElement, PropsWithoutRef<JSX.IntrinsicElements["div"]>>((props, ref) => <div {...props} ref={ref} />);
-    const DivClassValue = withClassValue(Div, "base", "class");
+    const DivClassValue = cxsed(Div, "base", "class");
 
     const { getByTestId } = render(
       <>
@@ -41,10 +41,8 @@ describe("withClassValue", async () => {
   });
 
   it("reactive", async () => {
-    const Button = forwardRef<HTMLButtonElement, PropsWithoutRef<JSX.IntrinsicElements["button"]>>((props, ref) => (
-      <button {...props} ref={ref} />
-    ));
-    const ButtonClassValue = withClassValue(Button, "base", "class");
+    const Button = forwardRef<HTMLButtonElement, PropsWithoutRef<JSX.IntrinsicElements["button"]>>((props, ref) => <button {...props} ref={ref} />);
+    const ButtonClassValue = cxsed(Button, "base", "class");
 
     function Wrapper() {
       const [classes, setClasses] = useState<string | null>(null);
