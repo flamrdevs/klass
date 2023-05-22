@@ -331,11 +331,11 @@ function App() {
 #### HOC (React)
 
 ```tsx
-import { withClassValue } from "@klass/react";
+import { cxsed } from "@klass/react";
 
 import UnstyledComponent from "example-unstyled-component";
 
-const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponentBaseClass", "extra", "classes");
+const UnstyledComponentClassValue = cxsed(UnstyledComponent, "UnstyledComponentBaseClass", "extra", "classes");
 ```
 
 ### Preact
@@ -426,11 +426,11 @@ function App() {
 #### HOC (Preact)
 
 ```tsx
-import { withClassValue } from "@klass/preact";
+import { cxsed } from "@klass/preact";
 
 import UnstyledComponent from "example-unstyled-component";
 
-const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponentBaseClass", "extra", "classes");
+const UnstyledComponentClassValue = cxsed(UnstyledComponent, "UnstyledComponentBaseClass", "extra", "classes");
 ```
 
 ### Solid
@@ -521,11 +521,11 @@ function App() {
 #### HOC (Solid)
 
 ```tsx
-import { withClassValue } from "@klass/solid";
+import { cxsed } from "@klass/solid";
 
 import UnstyledComponent from "example-unstyled-component";
 
-const UnstyledComponentClassValue = withClassValue(UnstyledComponent, "UnstyledComponentBaseClass", "extra", "classes");
+const UnstyledComponentClassValue = cxsed(UnstyledComponent, "UnstyledComponentBaseClass", "extra", "classes");
 ```
 
 ### More examples
