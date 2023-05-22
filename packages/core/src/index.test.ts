@@ -128,6 +128,7 @@ describe("klass", async () => {
     expect(BoxKlass.variant.p.options).toEqual({
       variant: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
     });
+    expect(BoxKlass.variantKeys).toEqual(["m", "p"]);
 
     expect(ButtonKlass.options).toEqual(ButtonKlassOptions);
     expect(ButtonKlass.variant).toBeTypeOf("object");
@@ -145,6 +146,7 @@ describe("klass", async () => {
     expect(ButtonKlass.variant.full.options).toEqual({
       variant: { true: "w-full h-full", width: "w-full", height: "h-full" },
     });
+    expect(ButtonKlass.variantKeys).toEqual(["color", "variant", "full"]);
   });
 
   it("basic", async () => {
@@ -251,6 +253,7 @@ describe("reklass", async () => {
       defaultCondition: "base",
       variant: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
     });
+    expect(BoxReklass.revariantKeys).toEqual(["m", "p"]);
   });
 
   it("basic", async () => {

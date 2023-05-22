@@ -43,6 +43,7 @@ type KlassFn<T extends VariantsSchema> = {
 } & {
   options: KlassOptions<T>;
   variant: VariantGroup<T>;
+  variantKeys: (keyof T)[];
 };
 
 type ConditionSchema = {
@@ -81,6 +82,7 @@ type ReklassFn<C extends ConditionSchema, T extends VariantsSchema> = {
 } & {
   options: ReklassOptions<C, T>;
   revariant: RevariantGroup<C, T>;
+  revariantKeys: (keyof T)[];
 };
 
 type VariantsOf<T extends (...args: any[]) => any> = Exclude<Parameters<T>[0], undefined>;
@@ -160,7 +162,7 @@ function klass<T extends VariantsSchema>(options: KlassOptions<T>, setup: { it?:
     keyofVariants = Object.keys(variants) as (keyof T)[],
     hasCompoundVariants = isArray(compoundVariants),
     cxCompoundVariants = hasCompoundVariants ? compoundVariants.map(cxCompoundVariantsMapFn) : [],
-    fn: Omit<KlassFn<T>, "options" | "variant"> = (props?: { [K in keyof T]?: GetKey<keyof T[K]> }, ...classes: ClassValue[]) => {
+    fn: Omit<KlassFn<T>, "options" | "variant" | "variantKeys"> = (props?: { [K in keyof T]?: GetKey<keyof T[K]> }, ...classes: ClassValue[]) => {
       let result: string = "",
         i: number,
         temp: string | undefined;
@@ -195,6 +197,7 @@ function klass<T extends VariantsSchema>(options: KlassOptions<T>, setup: { it?:
 
   (fn as KlassFn<T>).options = options;
   (fn as KlassFn<T>).variant = variantGroup;
+  (fn as KlassFn<T>).variantKeys = keyofVariants;
 
   return fn as KlassFn<T>;
 }
@@ -228,7 +231,7 @@ function reklass<C extends ConditionSchema, T extends VariantsSchema>(options: R
       return obj;
     }, {} as RevariantGroup<C, T>),
     keyofVariants = Object.keys(variants) as (keyof T)[],
-    fn: Omit<ReklassFn<C, T>, "options" | "revariant"> = (
+    fn: Omit<ReklassFn<C, T>, "options" | "revariant" | "revariantKeys"> = (
       props?: {
         [K in keyof T]?: GetKey<keyof T[K]> | { [condition in keyof C]?: GetKey<keyof T[K]> };
       },
@@ -239,6 +242,7 @@ function reklass<C extends ConditionSchema, T extends VariantsSchema>(options: R
 
   (fn as ReklassFn<C, T>).options = options;
   (fn as ReklassFn<C, T>).revariant = revariantGroup;
+  (fn as ReklassFn<C, T>).revariantKeys = keyofVariants;
 
   return fn as ReklassFn<C, T>;
 }
