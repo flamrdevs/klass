@@ -1,11 +1,10 @@
 import { klass, reklass } from "@klass/core";
-import type { VariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
+import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
 
-import type { ElementType, PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, KlassedComponent, ReklassedComponent } from "./types";
+import type { ElementType, PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, PreactClassesPropsKey, PreactVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
 
 const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "className",
-  getVariantKeys = <VS extends VariantsSchema<"class" | "className">>(variants: VS) =>
-    Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, "class" | "className">)[],
+  getVariantKeys = <VS extends PreactVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, PreactClassesPropsKey>)[],
   splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
     let omited: Record<string, any> = {},
       picked: Record<string, any> = {};
@@ -15,7 +14,7 @@ const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "class
     return { omited, picked };
   };
 
-function klassed<ET extends ElementType, VS extends VariantsSchema<"class" | "className">>(
+function klassed<ET extends ElementType, VS extends PreactVariantsSchema>(
   element: ET,
   options: KlassOptions<VS>,
   setup: {
@@ -47,7 +46,7 @@ function klassed<ET extends ElementType, VS extends VariantsSchema<"class" | "cl
   return Component as KlassedComponent<ET, VS>;
 }
 
-function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends VariantsSchema<"class" | "className">>(
+function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends PreactVariantsSchema>(
   element: ET,
   options: ReklassOptions<CS, VS>,
   setup: {
