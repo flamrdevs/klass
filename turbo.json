@@ -5,15 +5,13 @@
       "cache": false
     },
     "build": {
+      "cache": true,
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "build:unminify": {
+    "test": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
-    },
-    "test": {},
-    "test:watch": {},
-    "test:ui": {}
+      "cache": true
+    }
   }
 }

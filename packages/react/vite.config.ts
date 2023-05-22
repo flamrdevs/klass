@@ -2,16 +2,9 @@ import { defineConfig } from "vite";
 
 import react from "@vitejs/plugin-react";
 
-declare global {
-  namespace NodeJS {
-    interface CustomEnv {
-      UNMINIFY: string;
-    }
-    interface ProcessEnv extends CustomEnv {}
-  }
-}
+import dts from "vite-plugin-dts";
 
-const env = { true: (key: keyof NodeJS.CustomEnv) => process.env[key] === "true" };
+import env from "./vite.env";
 
 export default defineConfig({
   build: {
@@ -26,9 +19,5 @@ export default defineConfig({
       external: ["@klass/core", "react", "react-dom"],
     },
   },
-  plugins: [
-    react({
-      jsxRuntime: "classic",
-    }) as any,
-  ],
+  plugins: [react({ jsxRuntime: "classic" }), dts()],
 });

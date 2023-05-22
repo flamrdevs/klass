@@ -32,12 +32,8 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "vite build && pnpm run declare",
-    "build:unminify": "set UNMINIFY=true&&pnpm run build",
-    "declare": "tsc src/index.tsx --declaration --emitDeclarationOnly --esModuleInterop --skipLibCheck --outDir dist --lib ESNext,DOM,DOM.Iterable --jsx react-jsxdev",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui"
+    "build": "vite build",
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -48,11 +44,11 @@
   "bugs": {
     "url": "https://github.com/flamrdevs/klass/issues"
   },
-  "homepage": "https://klass-style.vercel.app",
+  "homepage": "https://klass.pages.dev",
   "devDependencies": {
     "@klass/core": "*",
-    "@types/react": "^18.0.31",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
     "react": "^18.2.0"
   },
   "peerDependencies": {

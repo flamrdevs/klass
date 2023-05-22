@@ -2,16 +2,9 @@ import { defineConfig } from "vite";
 
 import solid from "vite-plugin-solid";
 
-declare global {
-  namespace NodeJS {
-    interface CustomEnv {
-      UNMINIFY: string;
-    }
-    interface ProcessEnv extends CustomEnv {}
-  }
-}
+import dts from "vite-plugin-dts";
 
-const env = { true: (key: keyof NodeJS.CustomEnv) => process.env[key] === "true" };
+import env from "./vite.env";
 
 export default defineConfig({
   build: {
@@ -26,5 +19,5 @@ export default defineConfig({
       external: ["@klass/core", "solid-js", "solid-js/web"],
     },
   },
-  plugins: [solid() as any],
+  plugins: [solid(), dts()],
 });
