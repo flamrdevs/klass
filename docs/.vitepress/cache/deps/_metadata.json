@@ -1,11 +1,11 @@
 {
-  "hash": "7152b4ba",
-  "browserHash": "1563d23f",
+  "hash": "1cea1eae",
+  "browserHash": "073099da",
   "optimized": {
     "vue": {
-      "src": "../../../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "d1e6920a",
+      "fileHash": "8b10426d",
       "needsInterop": false
     }
   },
