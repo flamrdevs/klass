@@ -11,7 +11,7 @@ const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "class
 
     Object.entries(props).forEach(([key, value]) => ((keys.includes(key as K) ? picked : omited)[key] = value));
 
-    return { omited, picked };
+    return [omited, picked] as const;
   };
 
 function klassed<ET extends ElementType, VS extends PreactVariantsSchema>(
@@ -28,7 +28,7 @@ function klassed<ET extends ElementType, VS extends PreactVariantsSchema>(
 
   const Component = <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
     const { as: As = element, class: _class, className, ...rest } = props,
-      { omited, picked } = splitRestProps(rest, keys);
+      [omited, picked] = splitRestProps(rest, keys);
 
     return (
       <As
@@ -61,7 +61,7 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
 
   const Component = <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
     const { as: As = element, class: _class, className, ...rest } = props,
-      { omited, picked } = splitRestProps(rest, keys);
+      [omited, picked] = splitRestProps(rest, keys);
 
     return (
       <As
