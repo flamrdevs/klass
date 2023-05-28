@@ -47,7 +47,7 @@
   "homepage": "https://klass.pages.dev",
   "devDependencies": {
     "@klass/core": "*",
-    "preact": "^10.15.0"
+    "preact": "^10.15.1"
   },
   "peerDependencies": {
     "@klass/core": "*",
