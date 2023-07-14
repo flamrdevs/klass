@@ -1,4 +1,4 @@
-<img src="./public/cover.png" />
+<img src="https://klass.pages.dev/cover.png" width="100%" />
 
 # klass
 
