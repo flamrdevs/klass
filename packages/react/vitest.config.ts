@@ -9,6 +9,9 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     include: ["**/*.test.{ts,tsx}"],
-    watch: env.true("WATCH"),
+    watch: env.watch,
+    deps: {
+      inline: [/react/, /react-dom/],
+    },
   },
 });

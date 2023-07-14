@@ -8,7 +8,7 @@ import env from "./vite.env";
 
 export default defineConfig({
   build: {
-    ...(env.true("UNMINIFY") ? { minify: false } : {}),
+    ...(env.unminify ? { minify: false } : {}),
     target: "esnext",
     lib: {
       entry: "./src/index.tsx",

@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [],
   test: {
     include: ["**/*.test.{ts,tsx}"],
-    watch: env.true("WATCH"),
+    watch: env.watch,
   },
 });

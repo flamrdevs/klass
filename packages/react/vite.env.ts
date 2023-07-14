@@ -1,5 +1,6 @@
-type KEY = "UNMINIFY" | "WATCH";
-
-const env = { true: (key: KEY) => process.env[key] === "true" };
+const env = {
+  unminify: process.env["UNMINIFY"] === "true",
+  watch: process.env["WATCH"] === "true",
+};
 
 export default env;
