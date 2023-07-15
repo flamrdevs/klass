@@ -9,31 +9,31 @@ A class variant utility library.
 ## Features
 
 - Base and variants
-- Compounds variants
-- Conditions variants
-- Framework agnostic
-- Typescript support
-- Styled component like API (React, Preact & Solid)
-- Polymorphic component (React, Preact & Solid)
+- Compound variants
+- Conditional variants
+- Framework-agnostic
+- TypeScript support
+- Styled-component-like API (React, Preact & Solid)
+- Polymorphic components (React, Preact & Solid)
 
 ## Packages
 
-- [@klass/core](./packages/core) - core api
-- [@klass/react](./packages/react) - [react](https://reactjs.org) package
-- [@klass/preact](./packages/preact) - [preact](https://preactjs.com) package
-- [@klass/solid](./packages/solid) - [solid](https://www.solidjs.com) package
+- [@klass/core](./packages/core) - Core API
+- [@klass/react](./packages/react) - [React](https://reactjs.org) package
+- [@klass/preact](./packages/preact) - [Preact](https://preactjs.com) package
+- [@klass/solid](./packages/solid) - [Solid](https://www.solidjs.com) package
 
 ## Roadmap
 
 - [x] Variants
-- [x] Compounds variants
-- [x] Conditions variants
+- [x] Compound variants
+- [x] Conditional variants
 
 ## Examples
 
 ### Core
 
-klass function is main api that support base class, variants class, default variants, compound variants. another function is reklass (re~~sponsive~~klass), which support condition class. if you're come from vanilla-extract, think that klass is [recipes](https://vanilla-extract.style/documentation/packages/recipes) and reklass is [sprinkles](https://vanilla-extract.style/documentation/packages/sprinkles).
+The `klass` function is the main API that supports base classes, variant classes, default variants, and compound variants. Another function is `reklass` (responsive klass), which supports conditional classes. If you're familiar with Vanilla Extract, think of `klass` as [recipes](https://vanilla-extract.style/documentation/packages/recipes) and `reklass` as [sprinkles](https://vanilla-extract.style/documentation/packages/sprinkles).
 
 #### Klass
 
