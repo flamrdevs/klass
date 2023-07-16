@@ -1,8 +1,0 @@
-body {
-  @apply bg-neutral-50 text-neutral-900;
-  @apply dark:bg-neutral-900 dark:text-neutral-50;
-}
-
-a {
-  text-decoration: none;
-}
