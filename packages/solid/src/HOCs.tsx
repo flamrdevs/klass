@@ -8,13 +8,13 @@ import type { ClassValue } from "@klass/core";
 
 import type { WithClassesValueProps } from "./types";
 
-const LocalKeysSplitter = ["class", "classList"] as const,
-  cxsed = <P extends { [key: string]: any }>(component: Component<P>, ...classes: ClassValue[]) => {
-    return function Wrapper(props: WithClassesValueProps<P>) {
-      const [local, others] = splitProps(props, LocalKeysSplitter);
+const LocalKeysSplitter = ["class", "classList"] as const;
 
-      return <Dynamic component={component} {...(others as P)} class={cxs(classes, local.class, local.classList)} />;
-    };
+const cxsed = <P extends { [key: string]: any }>(component: Component<P>, ...classes: ClassValue[]) => {
+  return (props: WithClassesValueProps<P>) => {
+    const [local, others] = splitProps(props, LocalKeysSplitter);
+    return <Dynamic component={component} {...(others as P)} class={cxs(classes, local.class, local.classList)} />;
   };
+};
 
 export { cxsed };

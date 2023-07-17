@@ -17,11 +17,11 @@ function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
   element: VC,
   options: KlassOptions<VS>,
   setup: {
-    defaultProps?: PolymorphicComponentProp<VC, {}>;
+    dp?: PolymorphicComponentProp<VC, {}>;
     it?: ItFn;
   } = {}
 ): KlassedComponent<VC, VS> {
-  const { defaultProps: { class: _class, classList, ...defaultProps } = {} as ClassesNormalProps, it } = setup,
+  const { dp: { class: _class, classList, ...dp } = {} as ClassesNormalProps, it } = setup,
     klassFn = klass<VS>(options, { it }),
     keys = getVariantKeys<VS>(options.variants);
 
@@ -31,7 +31,7 @@ function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
     return (
       <Dynamic
         component={local.as || element}
-        {...(mergeProps(defaultProps, omited, () => ({
+        {...(mergeProps(dp, omited, () => ({
           class: klassFn(picked as any, [local.class ?? _class, local.classList ?? classList]),
         })) as any)}
       />
@@ -47,12 +47,12 @@ function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS ext
   element: VC,
   options: ReklassOptions<CS, VS>,
   setup: {
-    defaultProps?: PolymorphicComponentProp<VC, {}>;
+    dp?: PolymorphicComponentProp<VC, {}>;
     as?: AsCondition;
     it?: ItFn;
   } = {}
 ): ReklassedComponent<VC, CS, VS> {
-  const { defaultProps: { class: _class, classList, ...defaultProps } = {} as ClassesNormalProps, as, it } = setup,
+  const { dp: { class: _class, classList, ...dp } = {} as ClassesNormalProps, as, it } = setup,
     reklassFn = reklass<CS, VS>(options, { as, it }),
     keys = getVariantKeys<VS>(options.variants);
 
@@ -62,7 +62,7 @@ function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS ext
     return (
       <Dynamic
         component={local.as || element}
-        {...(mergeProps(defaultProps, omited, () => ({
+        {...(mergeProps(dp, omited, () => ({
           class: reklassFn(picked as any, [local.class ?? _class, local.classList ?? classList]),
         })) as any)}
       />
