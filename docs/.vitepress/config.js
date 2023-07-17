@@ -33,14 +33,6 @@ export default {
             text: "Getting Started",
             link: "/getting-started",
           },
-          {
-            text: "Responsive",
-            link: "/responsive",
-          },
-          {
-            text: "Typescript",
-            link: "/typescript",
-          },
         ],
       },
       {
@@ -61,98 +53,6 @@ export default {
           {
             text: "@klass/solid",
             link: "/klass/solid",
-          },
-        ],
-      },
-      {
-        text: "Examples",
-        items: [
-          {
-            text: "React",
-            items: [
-              {
-                text: "Router + TailwindCSS",
-                link: "/example/react-router-tailwindcss",
-              },
-              {
-                text: "TailwindCSS",
-                link: "/example/react-tailwindcss",
-              },
-              {
-                text: "TailwindCSS + DaisyUI",
-                link: "/example/react-tailwindcss-daisy-ui",
-              },
-              {
-                text: "TailwindCSS + RippleUI",
-                link: "/example/react-tailwindcss-ripple-ui",
-              },
-              {
-                text: "UnoCSS",
-                link: "/example/react-unocss",
-              },
-              {
-                text: "WindiCSS",
-                link: "/example/react-windicss",
-              },
-            ],
-          },
-          {
-            text: "Preact",
-            items: [
-              {
-                text: "Router + TailwindCSS",
-                link: "/example/preact-router-tailwindcss",
-              },
-              {
-                text: "TailwindCSS",
-                link: "/example/preact-tailwindcss",
-              },
-              {
-                text: "TailwindCSS + DaisyUI",
-                link: "/example/preact-tailwindcss-daisy-ui",
-              },
-              {
-                text: "TailwindCSS + RippleUI",
-                link: "/example/preact-tailwindcss-ripple-ui",
-              },
-              {
-                text: "UnoCSS",
-                link: "/example/preact-unocss",
-              },
-              {
-                text: "WindiCSS",
-                link: "/example/preact-windicss",
-              },
-            ],
-          },
-          {
-            text: "Solid",
-            items: [
-              {
-                text: "Router + TailwindCSS",
-                link: "/example/solid-router-tailwindcss",
-              },
-              {
-                text: "TailwindCSS",
-                link: "/example/solid-tailwindcss",
-              },
-              {
-                text: "TailwindCSS + DaisyUI",
-                link: "/example/solid-tailwindcss-daisy-ui",
-              },
-              {
-                text: "TailwindCSS + RippleUI",
-                link: "/example/solid-tailwindcss-ripple-ui",
-              },
-              {
-                text: "UnoCSS",
-                link: "/example/solid-unocss",
-              },
-              {
-                text: "WindiCSS",
-                link: "/example/solid-windicss",
-              },
-            ],
           },
         ],
       },

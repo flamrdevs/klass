@@ -6,7 +6,7 @@
 
 # klass core
 
-A class variant utility library.
+Class variant utility library.
 
 ## Installation
 
@@ -18,109 +18,27 @@ yarn add @klass/core
 pnpm add @klass/core
 ```
 
-## Klass
+## Usage
 
-```typescript
-import { klass } from "@klass/core";
-
-const box = klass({
-  base: "block",
-  variants: {
-    m: {
-      none: "m-0",
-      sm: "m-2",
-      md: "m-4",
-      lg: "m-8",
-    },
-    p: {
-      none: "p-0",
-      sm: "p-2",
-      md: "p-4",
-      lg: "p-8",
-    },
-  },
-});
-
-box(); // => "block"
-box({ m: "md" }); // => "block m-4"
-```
-
-## Klass with default variant
-
-```typescript
-import { klass } from "@klass/core";
+```tsx
+import { klass, reklass } from "@klass/core";
 
 const button = klass({
-  base: "button--base",
+  base: "inline-flex px-4 py-1 rounded-md outline-none text-white",
   variants: {
     color: {
-      primary: "button--color-primary",
-      neutral: "button--color-neutral",
+      red: "bg-red-700",
+      green: "bg-green-700",
+      blue: "bg-blue-700",
     },
-    size: {
-      sm: "button--size-sm",
-      md: "button--size-md",
-      lg: "button--size-lg",
+    fullWidth: {
+      true: "w-full",
     },
   },
   defaultVariants: {
-    color: "primary",
-    size: "md",
+    color: "blue",
   },
 });
-
-box(); // => "button--base button--color-primary button--size-md"
-box({ color: "neutral" }); // => "button--base button--color-neutral button--size-md"
-```
-
-## Klass with compound variant
-
-```typescript
-import { klass } from "@klass/core";
-
-const button = klass({
-  base: "button--base",
-  variants: {
-    color: {
-      primary: "button--color-primary",
-      neutral: "button--color-neutral",
-    },
-    size: {
-      sm: "button--size-sm",
-      md: "button--size-md",
-      lg: "button--size-lg",
-    },
-    outline: {
-      true: "",
-    },
-  },
-  defaultVariants: {
-    color: "primary",
-    size: "md",
-  },
-  compoundVariants: [
-    {
-      color: "primary",
-      outline: true,
-      class: "button--primary-primary-&-outline-true",
-    },
-    {
-      color: "neutral",
-      outline: true,
-      class: "button--primary-neutral-&-outline-true",
-    },
-  ],
-});
-
-box(); // => "button--base button--color-primary button--size-md"
-box({ outline: true }); // => "button--base button--color-primary button--size-md button--primary-primary-&-outline-true"
-box({ color: "neutral", outline: true }); // => "button--base button--color-neutral button--size-md button--neutral-neutral-&-outline-true"
-```
-
-## Reklass
-
-```typescript
-import { reklass } from "@klass/core";
 
 const box = reklass({
   conditions: {
@@ -132,80 +50,27 @@ const box = reklass({
   defaultCondition: "base",
   variants: {
     m: {
-      none: "m-0",
+      xs: "m-1",
       sm: "m-2",
-      md: "m-4",
-      lg: "m-8",
+      md: "m-3",
+      lg: "m-4",
+      xl: "m-5",
     },
     p: {
-      none: "p-0",
+      xs: "p-1",
       sm: "p-2",
-      md: "p-4",
-      lg: "p-8",
+      md: "p-3",
+      lg: "p-4",
+      xl: "p-5",
     },
   },
 });
 
-box(); // => ""
-box({ m: "md", p: { base: "none", md: "md" } }); // => "m-4 p-0 md:p-4"
-```
+button({ color: "red", fullWidth: true });
+button.variant.color("green");
 
-## Variant
-
-_variant used internally in klass_
-
-```typescript
-import { variant } from "@klass/core";
-
-const margin = variant({
-  variant: {
-    none: "m-0",
-    sm: "m-2",
-    md: "m-4",
-    lg: "m-8",
-  },
-});
-
-margin(); // => undefined
-margin("none"); // => "m-0"
-
-const size = variant({
-  variant: {
-    sm: "size-sm",
-    md: "size-md",
-    lg: "size-lg",
-  },
-  defaultVariant: "md",
-});
-
-size(); // => "size-md"
-size("sm"); // => "size-sm"
-```
-
-## Revariant
-
-_revariant used internally in reklass_
-
-```typescript
-import { revariant } from "@klass/core";
-
-const margin = revariant({
-  conditions: {
-    base: "",
-    sm: "sm:",
-    md: "md:",
-    lg: "lg:",
-  },
-  defaultCondition: "base",
-  variants: {
-    none: "m-0",
-    sm: "m-2",
-    md: "m-4",
-    lg: "m-8",
-  },
-});
-
-margin(); // => undefined
-margin("none"); // => "m-0"
-margin({ base: "none", md: "md" }); // => "m-0 md:m-4"
+box({ m: "sm", p: "lg" });
+box({ m: { base: "sm", md: "lg" }, p: { base: "xs", md: "xl" } });
+box.revariant.m("sm");
+box.revariant.p({ base: "xs", md: "xl" });
 ```

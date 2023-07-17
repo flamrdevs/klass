@@ -6,7 +6,7 @@
 
 # klass preact
 
-A class variant utility library for preact.
+Class variant utility library for preact.
 
 ## Installation
 
@@ -18,7 +18,7 @@ yarn add @klass/core @klass/preact
 pnpm add @klass/core @klass/preact
 ```
 
-## Klassed and Reklassed
+## Usage
 
 ```tsx
 import { klassed, reklassed } from "@klass/preact";
@@ -26,40 +26,23 @@ import { klassed, reklassed } from "@klass/preact";
 const Button = klassed(
   "button",
   {
-    base: "button--base",
+    base: "inline-flex px-4 py-1 rounded-md outline-none text-white",
     variants: {
       color: {
-        primary: "button--color-primary",
-        neutral: "button--color-neutral",
+        red: "bg-red-700",
+        green: "bg-green-700",
+        blue: "bg-blue-700",
       },
-      size: {
-        sm: "button--size-sm",
-        md: "button--size-md",
-        lg: "button--size-lg",
-      },
-      outline: {
-        true: "",
+      fullWidth: {
+        true: "w-full",
       },
     },
     defaultVariants: {
-      color: "primary",
-      size: "md",
+      color: "blue",
     },
-    compoundVariants: [
-      {
-        color: "primary",
-        outline: true,
-        class: "button--primary-primary-&-outline-true",
-      },
-      {
-        color: "neutral",
-        outline: true,
-        class: "button--primary-neutral-&-outline-true",
-      },
-    ],
   },
   {
-    defaultProps: {
+    dp: {
       type: "button",
     },
   }
@@ -75,90 +58,37 @@ const Box = reklassed("div", {
   defaultCondition: "base",
   variants: {
     m: {
-      none: "m-0",
+      xs: "m-1",
       sm: "m-2",
-      md: "m-4",
-      lg: "m-8",
+      md: "m-3",
+      lg: "m-4",
+      xl: "m-5",
     },
     p: {
-      none: "p-0",
+      xs: "p-1",
       sm: "p-2",
-      md: "p-4",
-      lg: "p-8",
+      md: "p-3",
+      lg: "p-4",
+      xl: "p-5",
     },
   },
 });
 
-// Re-use klass options
-const ButtonAnchor = klassed("a", Button.klass.options);
-
-function App() {
+export const Example = () => {
   return (
-    <div>
-      <Button color="neutral" class={["extra", { classes: true }]}>
-        Button
-      </Button>
-
-      <Box m="md" p="md" class={["extra", { classes: true }]}>
-        Box
+    <Box m={{ base: "xs", md: "xl" }} p="md">
+      <Box as="section">
+        <Button color="red" fullWidth>
+          Red Full Width Button
+        </Button>
       </Box>
 
-      <ButtonAnchor color="neutral" class={["extra", { classes: true }]}>
-        ButtonAnchor
-      </ButtonAnchor>
-
-      <Button as="a" class={["extra", { classes: true }]}>
-        Button as Anchor
-      </Button>
-    </div>
+      <Box as="section">
+        <Button as="a" color="green">
+          Green Anchor Button
+        </Button>
+      </Box>
+    </Box>
   );
-}
-```
-
-## VariantsOf
-
-```tsx
-import type { VariantsOf } from "@klass/core";
-import { klassed, reklassed } from "@klass/preact";
-
-type ButtonVariants = VariantsOf<(typeof Button)["klass"]>;
-
-const Button = klassed("button", {
-  ...{
-    /* options */
-  },
-});
-
-type BoxVariants = VariantsOf<(typeof Box)["reklass"]>;
-
-const Box = reklassed("div", {
-  ...{
-    /* options */
-  },
-});
-```
-
-## Polymorphic
-
-```tsx
-import KlassedButton from "./KlassedButton";
-import ReklassedBox from "./ReklassedBox";
-
-import Link from "some-link-component-library";
-
-function App() {
-  return (
-    <ReklassedBox as="nav">
-      <KlassedButton as={Link} href="/">
-        Home
-      </KlassedButton>
-      <KlassedButton as={Link} href="/about">
-        About
-      </KlassedButton>
-      <KlassedButton as={Link} href="/contact">
-        Contact
-      </KlassedButton>
-    </ReklassedBox>
-  );
-}
+};
 ```
