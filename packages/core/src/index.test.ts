@@ -2,40 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import { cxs, variant, klass, revariant, reklass } from "./index";
 
-import {
-  PaddingVariant,
-  PaddingVariantOptions,
-  SizeVariant,
-  SizeVariantOptions,
-  LoadingVariant,
-  LoadingVariantOptions,
-  DisableVariant,
-  DisableVariantOptions,
-  ZIndexVariant,
-  ZIndexVariantOptions,
-  OrderVariant,
-  OrderVariantOptions,
-  MixedVariant,
-  MixedVariantOptions,
-  BoxKlass,
-  BoxKlassOptions,
-  ButtonKlass,
-  ButtonKlassOptions,
-  BoxWithItKlass,
-  PaddingRevariant,
-  PaddingRevariantOptions,
-  LoadingRevariant,
-  LoadingRevariantOptions,
-  ZIndexRevariant,
-  ZIndexRevariantOptions,
-  MixedRevariant,
-  MixedRevariantOptions,
-  MixedAsSuffixRevariant,
-  BoxReklass,
-  BoxReklassOptions,
-  BoxAsSuffixReklass,
-  BoxWithItReklass,
-} from "./index.test.shared";
+import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, itOptimizedClass } from "./tests";
 
 describe("cxs", async () => {
   it("type of", async () => {
@@ -46,24 +13,87 @@ describe("cxs", async () => {
   it("matches", async () => {
     expect(cxs("")).toEqual("");
     expect(cxs("a", "b", "c")).toEqual("a b c");
-    expect(cxs(false, "a", ["b", undefined, false, null, true, { b: false }, { b: true }, { b: 0 }, { b: 1 }], "c")).toEqual("a b b b c");
+    expect(cxs(false, "a", ["b", undefined, false, null, true, { b: false }, { b: true }, { b: 0 }, { b: 1 }], "c", cxs({ c: true, [cxs("d")]: true }))).toEqual("a b b b c c d");
   });
 });
 
 describe("variant", async () => {
+  const PaddingVariant = variant({
+    variant: {
+      sm: "padding-sm",
+      md: "padding-md",
+      lg: "padding-lg",
+    },
+  });
+
+  const SizeVariant = variant({
+    variant: {
+      sm: "size-sm",
+      md: "size-md",
+      lg: "size-lg",
+    },
+    defaultVariant: "md",
+  });
+
+  const LoadingVariant = variant({
+    variant: {
+      true: "loading-true",
+      false: "loading-false",
+    },
+  });
+
+  const DisableVariant = variant({
+    variant: {
+      true: "disable-true",
+      false: "disable-false",
+    },
+    defaultVariant: false,
+  });
+
+  const ZIndexVariant = variant({
+    variant: {
+      0: "z-index-0",
+      1: "z-index-1",
+      2: "z-index-2",
+      3: "z-index-3",
+      4: "z-index-4",
+      5: "z-index-5",
+    },
+  });
+
+  const OrderVariant = variant({
+    variant: {
+      0: "order-0",
+      1: "order-1",
+      2: "order-2",
+      3: "order-3",
+      4: "order-4",
+      5: "order-5",
+    },
+    defaultVariant: 0,
+  });
+
+  const MixedVariant = variant({
+    variant: {
+      "": "mix-",
+      true: "mix-true",
+      1: "mix-1",
+    },
+  });
+
   it("type of", async () => {
     expect(variant).toBeTypeOf("function");
     expect(variant({ variant: {} })).toBeTypeOf("function");
   });
 
   it("compound", async () => {
-    expect(PaddingVariant.options).toEqual(PaddingVariantOptions);
-    expect(SizeVariant.options).toEqual(SizeVariantOptions);
-    expect(LoadingVariant.options).toEqual(LoadingVariantOptions);
-    expect(DisableVariant.options).toEqual(DisableVariantOptions);
-    expect(ZIndexVariant.options).toEqual(ZIndexVariantOptions);
-    expect(OrderVariant.options).toEqual(OrderVariantOptions);
-    expect(MixedVariant.options).toEqual(MixedVariantOptions);
+    expectVariantFn(PaddingVariant);
+    expectVariantFn(SizeVariant);
+    expectVariantFn(LoadingVariant);
+    expectVariantFn(DisableVariant);
+    expectVariantFn(ZIndexVariant);
+    expectVariantFn(OrderVariant);
+    expectVariantFn(MixedVariant);
   });
 
   it("string", async () => {
@@ -112,41 +142,96 @@ describe("variant", async () => {
 });
 
 describe("klass", async () => {
+  const BoxKlass = klass({
+    base: "block",
+    variants: {
+      m: {
+        "1": "m-1",
+        "2": "m-2",
+        "3": "m-3",
+        "4": "m-4",
+        "5": "m-5",
+      },
+      p: {
+        "1": "p-1",
+        "2": "p-2",
+        "3": "p-3",
+        "4": "p-4",
+        "5": "p-5",
+      },
+    },
+  });
+
+  const ButtonKlass = klass({
+    base: "inline-block outline-none",
+    variants: {
+      color: {
+        red: null,
+        green: null,
+        blue: null,
+      },
+      variant: {
+        filled: "text-white",
+        outline: "bg-transparent border",
+      },
+      full: {
+        true: "w-full h-full",
+        width: "w-full",
+        height: "h-full",
+      },
+    },
+    defaultVariants: {
+      color: "red",
+      variant: "filled",
+    },
+    compoundVariants: [
+      {
+        color: "red",
+        variant: "filled",
+        class: "bg-red-600",
+      },
+      {
+        color: "green",
+        variant: "filled",
+        class: "bg-green-600",
+      },
+      {
+        color: "blue",
+        variant: "filled",
+        class: "bg-blue-600",
+      },
+      {
+        color: "red",
+        variant: "outline",
+        class: "text-red-600 border-red-600",
+      },
+      {
+        color: "green",
+        variant: "outline",
+        class: "text-green-600 border-green-600",
+      },
+      {
+        color: "blue",
+        variant: "outline",
+        class: "text-blue-600 border-blue-600",
+      },
+    ],
+  });
+
+  const BoxWithItKlass = klass(BoxKlass.options, { it: itOptimizedClass });
+
   it("type of", async () => {
     expect(klass).toBeTypeOf("function");
     expect(klass({ variants: {} })).toBeTypeOf("function");
   });
 
   it("compound", async () => {
-    expect(BoxKlass.options).toEqual(BoxKlassOptions);
-    expect(BoxKlass.variant).toBeTypeOf("object");
-    expect(BoxKlass.variant.m).toBeTypeOf("function");
-    expect(BoxKlass.variant.p).toBeTypeOf("function");
-    expect(BoxKlass.variant.m.options).toEqual({
-      variant: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
+    expectKlassFn(BoxKlass, {
+      keys: ["m", "p"],
     });
-    expect(BoxKlass.variant.p.options).toEqual({
-      variant: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
+    expectKlassFn(ButtonKlass, {
+      keys: ["color", "variant", "full"],
     });
-    expect(BoxKlass.variantKeys).toEqual(["m", "p"]);
-
-    expect(ButtonKlass.options).toEqual(ButtonKlassOptions);
-    expect(ButtonKlass.variant).toBeTypeOf("object");
-    expect(ButtonKlass.variant.color).toBeTypeOf("function");
-    expect(ButtonKlass.variant.variant).toBeTypeOf("function");
-    expect(ButtonKlass.variant.full).toBeTypeOf("function");
-    expect(ButtonKlass.variant.color.options).toEqual({
-      variant: { red: null, green: null, blue: null },
-      defaultVariant: "red",
-    });
-    expect(ButtonKlass.variant.variant.options).toEqual({
-      variant: { filled: "text-white", outline: "bg-transparent border" },
-      defaultVariant: "filled",
-    });
-    expect(ButtonKlass.variant.full.options).toEqual({
-      variant: { true: "w-full h-full", width: "w-full", height: "h-full" },
-    });
-    expect(ButtonKlass.variantKeys).toEqual(["color", "variant", "full"]);
   });
 
   it("basic", async () => {
@@ -168,23 +253,98 @@ describe("klass", async () => {
   });
 
   it("with it", async () => {
-    expect(BoxWithItKlass()).toEqual("controlled-classes(  )");
-    expect(BoxWithItKlass({ m: "3" })).toEqual("controlled-classes( m-3 )");
+    expect(BoxWithItKlass()).toEqual(itOptimizedClass("block"));
+    expect(BoxWithItKlass({ m: "3" })).toEqual(itOptimizedClass("block m-3"));
   });
 });
 
 describe("revariant", async () => {
+  const PaddingRevariant = revariant({
+    conditions: {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+    },
+    defaultCondition: "base",
+    variant: {
+      sm: "padding-sm",
+      md: "padding-md",
+      lg: "padding-lg",
+    },
+  });
+
+  const LoadingRevariant = revariant({
+    conditions: {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+    },
+    defaultCondition: "base",
+    variant: {
+      true: "loading-true",
+      false: "loading-false",
+    },
+  });
+
+  const ZIndexRevariant = revariant({
+    conditions: {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+    },
+    defaultCondition: "base",
+    variant: {
+      0: "z-index-0",
+      1: "z-index-1",
+      2: "z-index-2",
+      3: "z-index-3",
+      4: "z-index-4",
+      5: "z-index-5",
+    },
+  });
+
+  const MixedRevariant = revariant({
+    conditions: {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+    },
+    defaultCondition: "base",
+    variant: {
+      "": "mix-",
+      true: "mix-true",
+      1: "mix-1",
+    },
+  });
+
+  const MixedAsSuffixRevariant = revariant(
+    {
+      conditions: {
+        base: "",
+        sm: "@sm",
+        md: "@md",
+        lg: "@lg",
+      },
+      defaultCondition: "base",
+      variant: MixedRevariant.options.variant,
+    },
+    { as: "suffix" }
+  );
+
   it("type of", async () => {
     expect(revariant).toBeTypeOf("function");
     expect(revariant({ conditions: { condition: "" }, defaultCondition: "condition", variant: {} })).toBeTypeOf("function");
   });
 
   it("compound", async () => {
-    expect(PaddingRevariant.options).toEqual(PaddingRevariantOptions);
-    expect(LoadingRevariant.options).toEqual(LoadingRevariantOptions);
-    expect(ZIndexRevariant.options).toEqual(ZIndexRevariantOptions);
-    expect(MixedRevariant.options).toEqual(MixedRevariantOptions);
-    expect(BoxReklass.options).toEqual(BoxReklassOptions);
+    expectRevariantFn(PaddingRevariant);
+    expectRevariantFn(LoadingRevariant);
+    expectRevariantFn(ZIndexRevariant);
+    expectRevariantFn(MixedRevariant);
   });
 
   it("string", async () => {
@@ -223,37 +383,57 @@ describe("revariant", async () => {
 });
 
 describe("reklass", async () => {
+  const BoxReklass = reklass({
+    conditions: {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+    },
+    defaultCondition: "base",
+    variants: {
+      m: {
+        "1": "m-1",
+        "2": "m-2",
+        "3": "m-3",
+        "4": "m-4",
+        "5": "m-5",
+      },
+      p: {
+        "1": "p-1",
+        "2": "p-2",
+        "3": "p-3",
+        "4": "p-4",
+        "5": "p-5",
+      },
+    },
+  });
+
+  const BoxAsSuffixReklass = reklass(
+    {
+      conditions: {
+        base: "",
+        sm: "@sm",
+        md: "@md",
+        lg: "@lg",
+      },
+      defaultCondition: "base",
+      variants: BoxReklass.options.variants,
+    },
+    { as: "suffix" }
+  );
+
+  const BoxWithItReklass = reklass(BoxReklass.options, { it: itOptimizedClass });
+
   it("type of", async () => {
     expect(reklass).toBeTypeOf("function");
     expect(reklass({ conditions: { condition: "" }, defaultCondition: "condition", variants: {} })).toBeTypeOf("function");
   });
 
   it("compound", async () => {
-    expect(BoxReklass.options).toEqual(BoxReklassOptions);
-    expect(BoxReklass.revariant).toBeTypeOf("object");
-    expect(BoxReklass.revariant.m).toBeTypeOf("function");
-    expect(BoxReklass.revariant.p).toBeTypeOf("function");
-    expect(BoxReklass.revariant.m.options).toEqual({
-      conditions: {
-        base: "",
-        sm: "sm:",
-        md: "md:",
-        lg: "lg:",
-      },
-      defaultCondition: "base",
-      variant: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
+    expectReklassFn(BoxReklass, {
+      keys: ["m", "p"],
     });
-    expect(BoxReklass.revariant.p.options).toEqual({
-      conditions: {
-        base: "",
-        sm: "sm:",
-        md: "md:",
-        lg: "lg:",
-      },
-      defaultCondition: "base",
-      variant: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
-    });
-    expect(BoxReklass.revariantKeys).toEqual(["m", "p"]);
   });
 
   it("basic", async () => {
@@ -273,7 +453,7 @@ describe("reklass", async () => {
   });
 
   it("with it", async () => {
-    expect(BoxWithItReklass()).toEqual("controlled-classes(  )");
-    expect(BoxWithItReklass({ m: "3" })).toEqual("controlled-classes( m-3 )");
+    expect(BoxWithItReklass()).toEqual(itOptimizedClass(""));
+    expect(BoxWithItReklass({ m: "3" })).toEqual(itOptimizedClass("m-3"));
   });
 });
