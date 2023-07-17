@@ -1,5 +1,17 @@
 # @klass/solid
 
+## 1.3.0
+
+### Minor Changes
+
+- 115cbb7: Simplified
+  - change setup prop name from defaultProps to dp
+
+### Patch Changes
+
+- Updated dependencies [115cbb7]
+  - @klass/core@1.3.0
+
 ## 1.2.0
 
 ### Minor Changes

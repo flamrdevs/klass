@@ -1,5 +1,12 @@
 # @klass/core
 
+## 1.3.0
+
+### Minor Changes
+
+- 115cbb7: Simplified
+  - refactor internals
+
 ## 1.2.0
 
 ### Minor Changes
