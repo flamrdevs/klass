@@ -2,64 +2,112 @@ import { describe, it, expect } from "vitest";
 import { afterEach } from "vitest";
 
 import { isValidElement } from "preact";
+import { useState } from "preact/hooks";
 
 import { cleanup, fireEvent, render } from "@testing-library/preact";
 
 import { klassed, reklassed } from "./index";
 
-import {
-  BoxKlassed,
-  BoxKlassedOptions,
-  ButtonKlassed,
-  ButtonKlassedOptions,
-  BoxWithItKlassed,
-  BoxReklassed,
-  BoxReklassedOptions,
-  BoxWithItReklassed,
-} from "./index.test.shared";
-
-import LinkComponent from "./index.test.shared/LinkComponent";
-import ReactiveKlassed from "./index.test.shared/ReactiveKlassed";
-import ReactiveReklassed from "./index.test.shared/ReactiveReklassed";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A } from "./tests";
 
 afterEach(() => {
   cleanup();
 });
 
 describe("klassed", async () => {
+  const BoxKlassed = klassed("div", {
+    base: "block",
+    variants: {
+      m: {
+        "1": "m-1",
+        "2": "m-2",
+        "3": "m-3",
+        "4": "m-4",
+        "5": "m-5",
+      },
+      p: {
+        "1": "p-1",
+        "2": "p-2",
+        "3": "p-3",
+        "4": "p-4",
+        "5": "p-5",
+      },
+    },
+  });
+
+  const ButtonKlassed = klassed(
+    "button",
+    {
+      base: "inline-block outline-none",
+      variants: {
+        color: {
+          red: null,
+          green: null,
+          blue: null,
+        },
+        variant: {
+          filled: "text-white",
+          outline: "bg-transparent border",
+        },
+        full: {
+          true: "w-full h-full",
+          width: "w-full",
+          height: "h-full",
+        },
+      },
+      defaultVariants: {
+        color: "red",
+        variant: "filled",
+      },
+      compoundVariants: [
+        {
+          color: "red",
+          variant: "filled",
+          class: "bg-red-600",
+        },
+        {
+          color: "green",
+          variant: "filled",
+          class: "bg-green-600",
+        },
+        {
+          color: "blue",
+          variant: "filled",
+          class: "bg-blue-600",
+        },
+        {
+          color: "red",
+          variant: "outline",
+          class: "text-red-600 border-red-600",
+        },
+        {
+          color: "green",
+          variant: "outline",
+          class: "text-green-600 border-green-600",
+        },
+        {
+          color: "blue",
+          variant: "outline",
+          class: "text-blue-600 border-blue-600",
+        },
+      ],
+    },
+    {
+      dp: {
+        type: "button",
+      },
+    }
+  );
+
+  const BoxWithItKlassed = klassed("div", BoxKlassed.klass.options, { it: itOptimizedClass });
+
   it("type of", async () => {
     expect(klassed).toBeTypeOf("function");
-    expect(isValidElement(<BoxKlassed />)).toBeTruthy();
+    expect(isValidElement(<ButtonKlassed />)).toBeTruthy();
   });
 
   it("compound", async () => {
-    expect(BoxKlassed.klass.options).toEqual(BoxKlassedOptions);
-    expect(BoxKlassed.klass.variant).toBeTypeOf("object");
-    expect(BoxKlassed.klass.variant.m).toBeTypeOf("function");
-    expect(BoxKlassed.klass.variant.p).toBeTypeOf("function");
-    expect(BoxKlassed.klass.variant.m.options).toEqual({
-      variant: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
-    });
-    expect(BoxKlassed.klass.variant.p.options).toEqual({
-      variant: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
-    });
-
-    expect(ButtonKlassed.klass.options).toEqual(ButtonKlassedOptions);
-    expect(ButtonKlassed.klass.variant).toBeTypeOf("object");
-    expect(ButtonKlassed.klass.variant.color).toBeTypeOf("function");
-    expect(ButtonKlassed.klass.variant.variant).toBeTypeOf("function");
-    expect(ButtonKlassed.klass.variant.full).toBeTypeOf("function");
-    expect(ButtonKlassed.klass.variant.color.options).toEqual({
-      variant: { red: null, green: null, blue: null },
-      defaultVariant: "red",
-    });
-    expect(ButtonKlassed.klass.variant.variant.options).toEqual({
-      variant: { filled: "text-white", outline: "bg-transparent border" },
-      defaultVariant: "filled",
-    });
-    expect(ButtonKlassed.klass.variant.full.options).toEqual({
-      variant: { true: "w-full h-full", width: "w-full", height: "h-full" },
-    });
+    expectKlassedComponent(BoxKlassed, { keys: ["m", "p"] });
   });
 
   it("basic", async () => {
@@ -69,7 +117,14 @@ describe("klassed", async () => {
           box
         </BoxKlassed>
 
-        <ButtonKlassed data-testid="button" full="width" class={["extra-button", "classes"]}>
+        <ButtonKlassed
+          data-testid="button"
+          full="width"
+          class={["extra-button", "classes"]}
+          onClick={() => {
+            console.log("button-klassed");
+          }}
+        >
           button
         </ButtonKlassed>
 
@@ -79,17 +134,10 @@ describe("klassed", async () => {
       </>
     );
 
-    const box = getByTestId("box");
-    expect(box).toBeDefined();
-    expect(box.tagName).toEqual("DIV");
-    expect(box.classList.toString()).toEqual("block m-1 p-2 extra-box classes");
-    expect(box.textContent).toEqual("box");
+    expectElement(getByTestId("box")).tagName("DIV").className("block m-1 p-2 extra-box classes").textContent("box");
 
     const button = getByTestId("button");
-    expect(button).toBeDefined();
-    expect(button.tagName).toEqual("BUTTON");
-    expect(button.classList.toString()).toEqual("inline-block outline-none text-white w-full bg-red-600 extra-button classes");
-    expect(button.textContent).toEqual("button");
+    expectElement(button).tagName("BUTTON").className("inline-block outline-none text-white w-full bg-red-600 extra-button classes").textContent("button");
 
     const output: any[] = [];
     console.log = (...args) => output.push(args);
@@ -97,21 +145,35 @@ describe("klassed", async () => {
     expect(output).toEqual([["button-klassed"]]);
 
     const boxit = getByTestId("box-it");
-    expect(boxit.classList.toString()).toEqual("controlled-classes( block m-1 p-2 extra-box classes )");
+    expect(boxit.className).toEqual(itOptimizedClass("block m-1 p-2 extra-box classes"));
   });
 
   it("reactive", async () => {
-    const { getByTestId } = render(<ReactiveKlassed />);
+    const ReactiveComponent = () => {
+      const [m, setM] = useState<"1" | "2">("1");
+      const [p, setP] = useState<"1" | "2">("1");
+      const [classes, setClasses] = useState<string | null>(null);
+
+      const handleClick = () => {
+        setM("2");
+        setP("2");
+        setClasses("reactive");
+      };
+
+      return (
+        <BoxKlassed data-testid="reactive" as="button" m={m} p={p} className={["extra-reactive", "classes", classes]} onClick={handleClick}>
+          ReactiveKlassed
+        </BoxKlassed>
+      );
+    };
+
+    const { getByTestId } = render(<ReactiveComponent />);
 
     const reactive = getByTestId("reactive");
-
-    expect(reactive).toBeDefined();
-    expect(reactive.tagName).toEqual("BUTTON");
-    expect(reactive.classList.toString()).toEqual("block m-1 p-1 extra-reactive classes");
-    expect(reactive.textContent).toEqual("ReactiveKlassed");
+    expectElement(reactive).tagName("BUTTON").className("block m-1 p-1 extra-reactive classes").textContent("ReactiveKlassed");
 
     fireEvent.click(reactive);
-    expect(reactive.classList.toString()).toEqual("block m-2 p-2 extra-reactive classes reactive");
+    expect(reactive.className).toEqual("block m-2 p-2 extra-reactive classes reactive");
   });
 
   it("polymorphic", async () => {
@@ -125,57 +187,54 @@ describe("klassed", async () => {
           button-green-as-a
         </ButtonKlassed>
 
-        <ButtonKlassed data-testid="button-link-blue" as={LinkComponent} color="blue">
-          button-link-blue
+        <ButtonKlassed data-testid="anchor-button-blue" as={A} color="blue">
+          anchor-button-blue
         </ButtonKlassed>
       </>
     );
 
-    const buttonNormal = getByTestId("button-red");
-    expect(buttonNormal).toBeDefined();
-    expect(buttonNormal.tagName).toEqual("BUTTON");
-
-    const buttonAs = getByTestId("button-green-as-a");
-    expect(buttonAs).toBeDefined();
-    expect(buttonAs.tagName).toEqual("A");
-
-    const buttonLink = getByTestId("button-link-blue");
-    expect(buttonLink).toBeDefined();
-    expect(buttonLink.tagName).toEqual("A");
+    expectElement(getByTestId("button-red")).tagName("BUTTON");
+    expectElement(getByTestId("button-green-as-a")).tagName("A");
+    expectElement(getByTestId("anchor-button-blue")).tagName("A");
   });
 });
 
 describe("reklassed", async () => {
+  const BoxReklassed = reklassed("div", {
+    conditions: {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+    },
+    defaultCondition: "base",
+    variants: {
+      m: {
+        "1": "m-1",
+        "2": "m-2",
+        "3": "m-3",
+        "4": "m-4",
+        "5": "m-5",
+      },
+      p: {
+        "1": "p-1",
+        "2": "p-2",
+        "3": "p-3",
+        "4": "p-4",
+        "5": "p-5",
+      },
+    },
+  });
+
+  const BoxWithItReklassed = reklassed("div", BoxReklassed.reklass.options, { it: itOptimizedClass });
+
   it("type of", async () => {
     expect(reklassed).toBeTypeOf("function");
     expect(isValidElement(<BoxReklassed />)).toBeTruthy();
   });
 
   it("compound", async () => {
-    expect(BoxReklassed.reklass.options).toEqual(BoxReklassedOptions);
-    expect(BoxReklassed.reklass.revariant).toBeTypeOf("object");
-    expect(BoxReklassed.reklass.revariant.m).toBeTypeOf("function");
-    expect(BoxReklassed.reklass.revariant.p).toBeTypeOf("function");
-    expect(BoxReklassed.reklass.revariant.m.options).toEqual({
-      conditions: {
-        base: "",
-        sm: "sm:",
-        md: "md:",
-        lg: "lg:",
-      },
-      defaultCondition: "base",
-      variant: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
-    });
-    expect(BoxReklassed.reklass.revariant.p.options).toEqual({
-      conditions: {
-        base: "",
-        sm: "sm:",
-        md: "md:",
-        lg: "lg:",
-      },
-      defaultCondition: "base",
-      variant: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
-    });
+    expectReklassedComponent(BoxReklassed, { keys: ["m", "p"] });
   });
 
   it("basic", async () => {
@@ -191,28 +250,36 @@ describe("reklassed", async () => {
       </>
     );
 
-    const box = getByTestId("box");
-    expect(box).toBeDefined();
-    expect(box.tagName).toEqual("DIV");
-    expect(box.classList.toString()).toEqual("m-2 p-1 md:p-3 extra-box classes");
-    expect(box.textContent).toEqual("box");
-
-    const boxit = getByTestId("box-it");
-    expect(boxit.classList.toString()).toEqual("controlled-classes( m-2 p-1 md:p-3 extra-box classes )");
+    expectElement(getByTestId("box")).tagName("DIV").className("m-2 p-1 md:p-3 extra-box classes").textContent("box");
+    expectElement(getByTestId("box-it")).tagName("DIV").className(itOptimizedClass("m-2 p-1 md:p-3 extra-box classes")).textContent("box-it");
   });
 
   it("reactive", async () => {
-    const { getByTestId } = render(<ReactiveReklassed />);
+    const ReactiveComponent = () => {
+      const [m, setM] = useState<"1" | { base: "1"; md: "3" }>("1");
+      const [p, setP] = useState<"1" | "2">("1");
+      const [classes, setClasses] = useState<string | undefined>();
+
+      const handleClick = () => {
+        setM({ base: "1", md: "3" });
+        setP("2");
+        setClasses("reactive");
+      };
+
+      return (
+        <BoxReklassed data-testid="reactive" as="button" m={m} p={p} className={["extra-reactive", "classes", classes]} onClick={handleClick}>
+          ReactiveReklassed
+        </BoxReklassed>
+      );
+    };
+
+    const { getByTestId } = render(<ReactiveComponent />);
 
     const reactive = getByTestId("reactive");
-
-    expect(reactive).toBeDefined();
-    expect(reactive.tagName).toEqual("BUTTON");
-    expect(reactive.classList.toString()).toEqual("m-1 p-1 extra-reactive classes");
-    expect(reactive.textContent).toEqual("ReactiveReklassed");
+    expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveReklassed");
 
     fireEvent.click(reactive);
-    expect(reactive.classList.toString()).toEqual("m-1 md:m-3 p-2 extra-reactive classes reactive");
+    expect(reactive.className).toEqual("m-1 md:m-3 p-2 extra-reactive classes reactive");
   });
 
   it("polymorphic", async () => {
@@ -224,22 +291,14 @@ describe("reklassed", async () => {
           box-as-a
         </BoxReklassed>
 
-        <BoxReklassed data-testid="box-link" as={LinkComponent}>
+        <BoxReklassed data-testid="box-link" as={A}>
           box-link
         </BoxReklassed>
       </>
     );
 
-    const boxNormal = getByTestId("box");
-    expect(boxNormal).toBeDefined();
-    expect(boxNormal.tagName).toEqual("DIV");
-
-    const boxAs = getByTestId("box-as-a");
-    expect(boxAs).toBeDefined();
-    expect(boxAs.tagName).toEqual("A");
-
-    const boxLink = getByTestId("box-link");
-    expect(boxLink).toBeDefined();
-    expect(boxLink.tagName).toEqual("A");
+    expectElement(getByTestId("box")).tagName("DIV");
+    expectElement(getByTestId("box-as-a")).tagName("A");
+    expectElement(getByTestId("box-link")).tagName("A");
   });
 });
