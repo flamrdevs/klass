@@ -1,7 +1,16 @@
 <p>
-  <a href="https://www.npmjs.com/package/@klass/react" style="display: inline-block; margin: 0px 4px;"><img src="https://badgen.net/npm/v/@klass/react"></a>
-  <a href="https://bundlephobia.com/package/@klass/react" style="display: inline-block; margin: 0px 4px;"><img src="https://badgen.net/bundlephobia/minzip/@klass/react"></a>
-  <a href="https://www.npmjs.com/package/@klass/react" style="display: inline-block; margin: 0px 4px;"><img src="https://badgen.net/npm/license/@klass/react"></a>
+  <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE" style="display: inline-block; margin: 0px 4px;">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.cyclic.app/core/badge?t=dark&v=MIT">
+      <img alt="github" src="https://flamrdevs.cyclic.app/core/badge?t=light&v=MIT" hspace="1">
+    </picture>
+  </a>
+  <a title="gzip" href="https://bundlejs.com/?q=@klass/react" style="display: inline-block; margin: 0px 4px;">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.cyclic.app/bundlejs/size?t=dark&n=@klass/react">
+      <img alt="github" src="https://flamrdevs.cyclic.app/bundlejs/size?t=light&n=@klass/react" hspace="1">
+    </picture>
+  </a>
 </p>
 
 # klass react
