@@ -1,5 +1,11 @@
 # @klass/core
 
+## 1.3.1
+
+### Patch Changes
+
+- 9b2f6ac: type module
+
 ## 1.3.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # @klass/react
 
+## 1.3.1
+
+### Patch Changes
+
+- 9b2f6ac: type module
+- Updated dependencies [9b2f6ac]
+  - @klass/core@1.3.1
+
 ## 1.3.0
 
 ### Minor Changes
