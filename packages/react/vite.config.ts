@@ -19,5 +19,11 @@ export default defineConfig({
       external: ["@klass/core", "react", "react-dom"],
     },
   },
-  plugins: [react({ jsxRuntime: "classic" }), dts()],
+  plugins: [
+    react({ jsxRuntime: "classic" }),
+    dts({
+      include: ["src/**/!(*.test).{ts,tsx}"],
+      exclude: ["node_module/**", "src/tests.{ts,tsx}"],
+    }),
+  ],
 });

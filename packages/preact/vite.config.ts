@@ -19,5 +19,11 @@ export default defineConfig({
       external: ["@klass/core", "preact", "preact/hooks"],
     },
   },
-  plugins: [preact(), dts()],
+  plugins: [
+    preact(),
+    dts({
+      include: ["src/**/!(*.test).{ts,tsx}"],
+      exclude: ["node_module/**", "src/tests.{ts,tsx}"],
+    }),
+  ],
 });

@@ -19,5 +19,11 @@ export default defineConfig({
       external: ["@klass/core", "solid-js", "solid-js/web"],
     },
   },
-  plugins: [solid(), dts()],
+  plugins: [
+    solid(),
+    dts({
+      include: ["src/**/!(*.test).{ts,tsx}"],
+      exclude: ["node_module/**", "src/tests.{ts,tsx}"],
+    }),
+  ],
 });

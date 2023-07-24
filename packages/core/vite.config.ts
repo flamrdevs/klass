@@ -17,5 +17,10 @@ export default defineConfig({
       external: [],
     },
   },
-  plugins: [dts()],
+  plugins: [
+    dts({
+      include: ["src/**/!(*.test).ts"],
+      exclude: ["node_module/**", "src/tests.ts"],
+    }),
+  ],
 });
