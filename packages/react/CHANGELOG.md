@@ -1,5 +1,16 @@
 # @klass/react
 
+## 1.4.0
+
+### Minor Changes
+
+- 5ad5cda: strict klass dependencies
+
+### Patch Changes
+
+- Updated dependencies [5ad5cda]
+  - @klass/core@1.4.0
+
 ## 1.3.1
 
 ### Patch Changes

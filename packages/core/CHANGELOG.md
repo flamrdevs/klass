@@ -1,5 +1,11 @@
 # @klass/core
 
+## 1.4.0
+
+### Minor Changes
+
+- 5ad5cda: strict klass dependencies
+
 ## 1.3.1
 
 ### Patch Changes
