@@ -1,4 +1,6 @@
-export default {
+import { defineConfig } from "vitepress";
+
+export default defineConfig({
   title: "klass",
   description: "class variant utility.",
   head: [
@@ -25,34 +27,59 @@ export default {
       pattern: "https://github.com/flamrdevs/klass/edit/main/docs/:path",
       text: "Edit this page on GitHub",
     },
+    search: {
+      provider: "local",
+    },
     sidebar: [
       {
-        text: "Guide",
-        items: [
-          {
-            text: "Getting Started",
-            link: "/getting-started",
-          },
-        ],
+        text: "Getting Started",
+        link: "/getting-started",
+      },
+      {
+        text: "Benchmark",
+        link: "/benchmark",
       },
       {
         text: "Packages",
+        link: "/packages",
         items: [
           {
             text: "@klass/core",
             link: "/klass/core",
           },
           {
-            text: "@klass/react",
-            link: "/klass/react",
-          },
-          {
             text: "@klass/preact",
             link: "/klass/preact",
           },
           {
+            text: "@klass/react",
+            link: "/klass/react",
+          },
+          {
             text: "@klass/solid",
             link: "/klass/solid",
+          },
+        ],
+      },
+      {
+        text: "Examples",
+        link: "/examples",
+        items: [
+          {
+            text: "Astro + Tailwind",
+            link: "/examples/astro-tailwind",
+          },
+          {
+            text: "Preact + Tailwind",
+            link: "/examples/preact-tailwind",
+          },
+          {
+            text: "React + Tailwind",
+            link: "/examples/react-tailwind",
+          },
+          {
+            text: "Solid + Tailwind",
+            link: "/examples/solid-tailwind",
           },
         ],
       },
@@ -62,4 +89,4 @@ export default {
       copyright: "Copyright © 2022-present",
     },
   },
-};
+});

@@ -1,4 +1,6 @@
-<img src="https://klass.pages.dev/cover.png" width="100%" />
+<img src="https://klass.pages.dev/cover.png" width="100%" style="margin: 0px 0px 50px 0px;" />
+
+# Getting Started
 
 ## Introduction
 
@@ -17,7 +19,7 @@ Class variant utility library.
 ## Packages
 
 - [@klass/core](./klass/core) - Core API
-- [@klass/react](./klass/react) - [React](https://reactjs.org) package
+- [@klass/react](./klass/react) - [React](https://react.dev) package
 - [@klass/preact](./klass/preact) - [Preact](https://preactjs.com) package
 - [@klass/solid](./klass/solid) - [Solid](https://www.solidjs.com) package
 

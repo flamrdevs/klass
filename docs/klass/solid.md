@@ -1,19 +1,25 @@
+# klass solid
+
 <p>
-  <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE" style="display: inline-block; margin: 0px 4px;">
+  <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE" target="_blank" style="display: inline-block; margin: 0px 4px;">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.cyclic.app/core/badge?t=dark&v=MIT">
-      <img alt="github" src="https://flamrdevs.cyclic.app/core/badge?t=light&v=MIT" hspace="1">
+      <img alt="license" src="https://flamrdevs.cyclic.app/core/badge?t=light&v=MIT" hspace="1">
     </picture>
   </a>
-  <a title="gzip" href="https://bundlejs.com/?q=@klass/solid" style="display: inline-block; margin: 0px 4px;">
+  <a title="version" href="https://www.npmjs.com/package/@klass/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.cyclic.app/npm/version?t=dark&n=@klass/solid">
+      <img alt="version" src="https://flamrdevs.cyclic.app/npm/version?t=light&n=@klass/solid" hspace="1">
+    </picture>
+  </a>
+  <a title="size" href="https://bundlejs.com/?q=@klass/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.cyclic.app/bundlejs/size?t=dark&n=@klass/solid">
-      <img alt="github" src="https://flamrdevs.cyclic.app/bundlejs/size?t=light&n=@klass/solid" hspace="1">
+      <img alt="size" src="https://flamrdevs.cyclic.app/bundlejs/size?t=light&n=@klass/solid" hspace="1">
     </picture>
   </a>
 </p>
-
-# klass solid
 
 Class variant utility library for solid.
 
