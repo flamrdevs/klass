@@ -19,7 +19,7 @@ Class variant utility library.
 ## Packages
 
 - [@klass/core](./packages/core) - Core API
-- [@klass/react](./packages/react) - [React](https://reactjs.org) package
+- [@klass/react](./packages/react) - [React](https://react.dev) package
 - [@klass/preact](./packages/preact) - [Preact](https://preactjs.com) package
 - [@klass/solid](./packages/solid) - [Solid](https://www.solidjs.com) package
 
