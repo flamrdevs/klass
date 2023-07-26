@@ -2,22 +2,13 @@
 
 <p>
   <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.cyclic.app/core/badge?t=dark&v=MIT">
-      <img alt="license" src="https://flamrdevs.cyclic.app/core/badge?t=light&v=MIT" hspace="1">
-    </picture>
+    <img alt="license" src="https://flamrdevs.cyclic.app/core/badge?v=MIT" hspace="1">
   </a>
   <a title="version" href="https://www.npmjs.com/package/@klass/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.cyclic.app/npm/version?t=dark&n=@klass/preact">
-      <img alt="version" src="https://flamrdevs.cyclic.app/npm/version?t=light&n=@klass/preact" hspace="1">
-    </picture>
+    <img alt="version" src="https://flamrdevs.cyclic.app/npm/version?n=@klass/preact" hspace="1">
   </a>
   <a title="size" href="https://bundlejs.com/?q=@klass/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.cyclic.app/bundlejs/size?t=dark&n=@klass/preact">
-      <img alt="size" src="https://flamrdevs.cyclic.app/bundlejs/size?t=light&n=@klass/preact" hspace="1">
-    </picture>
+    <img alt="size" src="https://flamrdevs.cyclic.app/bundlejs/size?n=@klass/preact" hspace="1">
   </a>
 </p>
 
