@@ -18,10 +18,92 @@ Class variant utility library.
 
 ## Packages
 
-- [@klass/core](./klass/core) - Core API
-- [@klass/react](./klass/react) - [React](https://react.dev) package
-- [@klass/preact](./klass/preact) - [Preact](https://preactjs.com) package
-- [@klass/solid](./klass/solid) - [Solid](https://www.solidjs.com) package
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <a href="/klass/core" style="font-size: 1rem; font-weight: 500;">@klass/core</a>
+          <img alt="npm" src="https://flamrdevs.cyclic.app/core/badge?v=MIT" />
+          <img alt="npm" src="https://flamrdevs.cyclic.app/npm/version?n=@klass/core" />
+        </div>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+          </a>
+          <a title="npm" href="https://www.npmjs.com/package/@klass/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="npm" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=npm" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <a href="/klass/preact" style="font-size: 1rem; font-weight: 500;">@klass/preact</a>
+          <img alt="npm" src="https://flamrdevs.cyclic.app/core/badge?v=MIT" />
+          <img alt="npm" src="https://flamrdevs.cyclic.app/npm/version?n=@klass/preact" />
+        </div>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+          </a>
+          <a title="npm" href="https://www.npmjs.com/package/@klass/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="npm" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=npm" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <a href="/klass/react" style="font-size: 1rem; font-weight: 500;">@klass/react</a>
+          <img alt="npm" src="https://flamrdevs.cyclic.app/core/badge?v=MIT" />
+          <img alt="npm" src="https://flamrdevs.cyclic.app/npm/version?n=@klass/react" />
+        </div>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+          </a>
+          <a title="npm" href="https://www.npmjs.com/package/@klass/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="npm" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=npm" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <a href="/klass/solid" style="font-size: 1rem; font-weight: 500;">@klass/solid</a>
+          <img alt="npm" src="https://flamrdevs.cyclic.app/core/badge?v=MIT" />
+          <img alt="npm" src="https://flamrdevs.cyclic.app/npm/version?n=@klass/solid" />
+        </div>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+          </a>
+          <a title="npm" href="https://www.npmjs.com/package/@klass/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="npm" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=npm" />
+          </a>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Roadmap
 
@@ -162,6 +244,91 @@ export const Example = () => {
   );
 };
 ```
+
+### More Examples
+
+<table>
+  <thead>
+    <tr>
+      <th>Example</th>
+      <th>Links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a href="/examples/astro-tailwind" style="font-size: 1rem; font-weight: 500;">Astro + Tailwind</a>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind?title=Klass%20Astro%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/examples/preact-tailwind" style="font-size: 1rem; font-weight: 500;">Preact + Tailwind</a>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/preact-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/preact-tailwind?title=Klass%20Preact%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/preact-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/examples/react-tailwind" style="font-size: 1rem; font-weight: 500;">React + Tailwind</a>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/react-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/react-tailwind?title=Klass%20React%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/react-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/examples/solid-tailwind" style="font-size: 1rem; font-weight: 500;">Solid + Tailwind</a>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/solid-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/solid-tailwind?title=Klass%20Solid%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/solid-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+          </a>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Inspiration
 

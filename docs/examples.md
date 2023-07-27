@@ -26,6 +26,9 @@
           <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind?title=Klass%20Astro%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
             <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
           </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+          </a>
         </p>
       </td>
     </tr>
@@ -40,6 +43,9 @@
           </a>
           <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/preact-tailwind?title=Klass%20Preact%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
             <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/preact-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
           </a>
         </p>
       </td>
@@ -56,6 +62,9 @@
           <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/react-tailwind?title=Klass%20React%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
             <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
           </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/react-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+          </a>
         </p>
       </td>
     </tr>
@@ -70,6 +79,9 @@
           </a>
           <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/solid-tailwind?title=Klass%20Solid%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
             <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/solid-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
           </a>
         </p>
       </td>
