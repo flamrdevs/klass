@@ -30,17 +30,17 @@ Class variant utility library.
       <td>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <span style="font-size: 1rem; font-weight: 500;">@klass/core</span>
-          <img alt="npm" src="https://flamrdevs.cyclic.app/core/badge?v=MIT" />
-          <img alt="npm" src="https://flamrdevs.cyclic.app/npm/version?n=@klass/core" />
+          <img alt="npm" src="https://none.deno.dev/npm/l?n=@klass/core" />
+          <img alt="npm" src="https://none.deno.dev/npm/v?n=@klass/core" />
         </div>
       </td>
       <td>
         <p align="center">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=npm" />
+            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
           </a>
         </p>
       </td>
@@ -49,17 +49,17 @@ Class variant utility library.
       <td>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <span style="font-size: 1rem; font-weight: 500;">@klass/preact</span>
-          <img alt="npm" src="https://flamrdevs.cyclic.app/core/badge?v=MIT" />
-          <img alt="npm" src="https://flamrdevs.cyclic.app/npm/version?n=@klass/preact" />
+          <img alt="npm" src="https://none.deno.dev/npm/l?n=@klass/preact" />
+          <img alt="npm" src="https://none.deno.dev/npm/v?n=@klass/preact" />
         </div>
       </td>
       <td>
         <p align="center">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=npm" />
+            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
           </a>
         </p>
       </td>
@@ -68,17 +68,17 @@ Class variant utility library.
       <td>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <span style="font-size: 1rem; font-weight: 500;">@klass/react</span>
-          <img alt="npm" src="https://flamrdevs.cyclic.app/core/badge?v=MIT" />
-          <img alt="npm" src="https://flamrdevs.cyclic.app/npm/version?n=@klass/react" />
+          <img alt="npm" src="https://none.deno.dev/npm/l?n=@klass/react" />
+          <img alt="npm" src="https://none.deno.dev/npm/v?n=@klass/react" />
         </div>
       </td>
       <td>
         <p align="center">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=npm" />
+            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
           </a>
         </p>
       </td>
@@ -87,17 +87,17 @@ Class variant utility library.
       <td>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <span style="font-size: 1rem; font-weight: 500;">@klass/solid</span>
-          <img alt="npm" src="https://flamrdevs.cyclic.app/core/badge?v=MIT" />
-          <img alt="npm" src="https://flamrdevs.cyclic.app/npm/version?n=@klass/solid" />
+          <img alt="npm" src="https://none.deno.dev/npm/l?n=@klass/solid" />
+          <img alt="npm" src="https://none.deno.dev/npm/v?n=@klass/solid" />
         </div>
       </td>
       <td>
         <p align="center">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=npm" />
+            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
           </a>
         </p>
       </td>
@@ -262,13 +262,13 @@ export const Example = () => {
       <td>
         <p align="center">
           <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
           </a>
           <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind?title=Klass%20Astro%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
           </a>
           <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
           </a>
         </p>
       </td>
@@ -280,13 +280,13 @@ export const Example = () => {
       <td>
         <p align="center">
           <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/preact-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
           </a>
           <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/preact-tailwind?title=Klass%20Preact%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
           </a>
           <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/preact-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
           </a>
         </p>
       </td>
@@ -298,13 +298,13 @@ export const Example = () => {
       <td>
         <p align="center">
           <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/react-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
           </a>
           <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/react-tailwind?title=Klass%20React%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
           </a>
           <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/react-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
           </a>
         </p>
       </td>
@@ -316,13 +316,13 @@ export const Example = () => {
       <td>
         <p align="center">
           <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/solid-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=github" />
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
           </a>
           <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/solid-tailwind?title=Klass%20Solid%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=stackblitz" />
+            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
           </a>
           <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/solid-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://flamrdevs.cyclic.app/core/icon-button/simple?i=codesandbox" />
+            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
           </a>
         </p>
       </td>

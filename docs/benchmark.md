@@ -2,7 +2,7 @@
 
 <p>
   <a title="github" href="https://github.com/flamrdevs/klass-benchmark" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="github" src="https://flamrdevs.cyclic.app/core/button?v=Open in GitHub" hspace="1">
+    <img alt="github" src="https://none.deno.dev/ui/button/simple?i=github&e=Open in GitHub" hspace="1">
   </a>
 </p>
 
