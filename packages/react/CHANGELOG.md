@@ -1,5 +1,14 @@
 # @klass/react
 
+## 2.0.0
+
+### Patch Changes
+
+- 062c035: Refactor API
+  - rename setup params name
+- Updated dependencies [062c035]
+  - @klass/core@2.0.0
+
 ## 1.4.0
 
 ### Minor Changes

@@ -1,5 +1,18 @@
 # @klass/core
 
+## 2.0.0
+
+### Patch Changes
+
+- 062c035: Refactor API
+  - rename setup params name
+  - rename function compounds name
+    - .options -> .o
+    - .variant -> .v
+    - .variantKeys -> .vk
+    - .revariant -> .rv
+    - .revariantKeys -> .rvk
+
 ## 1.4.0
 
 ### Minor Changes
