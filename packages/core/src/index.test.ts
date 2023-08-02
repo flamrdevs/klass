@@ -218,7 +218,7 @@ describe("klass", async () => {
     ],
   });
 
-  const BoxWithItKlass = klass(BoxKlass.options, { it: itOptimizedClass });
+  const BoxWithItKlass = klass(BoxKlass.o, { it: itOptimizedClass });
 
   it("type of", async () => {
     expect(klass).toBeTypeOf("function");
@@ -330,7 +330,7 @@ describe("revariant", async () => {
         lg: "@lg",
       },
       defaultCondition: "base",
-      variant: MixedRevariant.options.variant,
+      variant: MixedRevariant.o.variant,
     },
     { as: "suffix" }
   );
@@ -418,12 +418,12 @@ describe("reklass", async () => {
         lg: "@lg",
       },
       defaultCondition: "base",
-      variants: BoxReklass.options.variants,
+      variants: BoxReklass.o.variants,
     },
     { as: "suffix" }
   );
 
-  const BoxWithItReklass = reklass(BoxReklass.options, { it: itOptimizedClass });
+  const BoxWithItReklass = reklass(BoxReklass.o, { it: itOptimizedClass });
 
   it("type of", async () => {
     expect(reklass).toBeTypeOf("function");
