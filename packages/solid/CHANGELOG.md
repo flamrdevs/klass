@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 2.0.1
+
+### Patch Changes
+
+- d3bb09e: Docs
+- Updated dependencies [d3bb09e]
+  - @klass/core@2.0.1
+
 ## 2.0.0
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @klass/core
 
+## 2.0.1
+
+### Patch Changes
+
+- d3bb09e: Docs
+
 ## 2.0.0
 
 ### Patch Changes
