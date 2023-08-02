@@ -16,12 +16,12 @@ const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "class
 function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
   element: VC,
   options: KlassOptions<VS>,
-  setup: {
+  config: {
     dp?: PolymorphicComponentProp<VC, {}>;
     it?: ItFn;
   } = {}
 ): KlassedComponent<VC, VS> {
-  const { dp: { class: _class, classList, ...dp } = {} as ClassesNormalProps, it } = setup,
+  const { dp: { class: _class, classList, ...dp } = {} as ClassesNormalProps, it } = config,
     klassFn = klass<VS>(options, { it }),
     keys = getVariantKeys<VS>(options.variants);
 
@@ -46,13 +46,13 @@ function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
 function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends SolidVariantsSchema>(
   element: VC,
   options: ReklassOptions<CS, VS>,
-  setup: {
+  config: {
     dp?: PolymorphicComponentProp<VC, {}>;
     as?: AsCondition;
     it?: ItFn;
   } = {}
 ): ReklassedComponent<VC, CS, VS> {
-  const { dp: { class: _class, classList, ...dp } = {} as ClassesNormalProps, as, it } = setup,
+  const { dp: { class: _class, classList, ...dp } = {} as ClassesNormalProps, as, it } = config,
     reklassFn = reklass<CS, VS>(options, { as, it }),
     keys = getVariantKeys<VS>(options.variants);
 
