@@ -98,7 +98,7 @@ describe("klassed", async () => {
     }
   );
 
-  const BoxWithItKlassed = klassed("div", BoxKlassed.klass.options, { it: itOptimizedClass });
+  const BoxWithItKlassed = klassed("div", BoxKlassed.klass.o, { it: itOptimizedClass });
 
   it("type of", async () => {
     expect(klassed).toBeTypeOf("function");
@@ -225,7 +225,7 @@ describe("reklassed", async () => {
     },
   });
 
-  const BoxWithItReklassed = reklassed("div", BoxReklassed.reklass.options, { it: itOptimizedClass });
+  const BoxWithItReklassed = reklassed("div", BoxReklassed.reklass.o, { it: itOptimizedClass });
 
   it("type of", async () => {
     expect(reklassed).toBeTypeOf("function");
