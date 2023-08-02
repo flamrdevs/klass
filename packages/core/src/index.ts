@@ -155,9 +155,9 @@ const variant = <T extends VariantsSchema[string]>(options: VariantOptions<T>): 
 
 const cxCompoundVariantsMapFn = <T extends VariantsSchema>({ class: _class, ...v }: CompoundVariant<T>) => ({ v, c: cx(_class) });
 
-const klass = <T extends VariantsSchema>(options: KlassOptions<T>, setup: { it?: ItFn } = {}): KlassFn<T> => {
+const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { it?: ItFn } = {}): KlassFn<T> => {
   const { base, variants, defaultVariants, compoundVariants } = options,
-    { it = defaultItFn } = setup;
+    { it = defaultItFn } = config;
 
   const cxBase = cx(base);
   const variantGroup = Object.entries(variants).reduce((obj, [key, value]) => {
@@ -208,9 +208,9 @@ const klass = <T extends VariantsSchema>(options: KlassOptions<T>, setup: { it?:
   return fn as KlassFn<T>;
 };
 
-const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(options: RevariantOptions<C, T>, setup: { as?: AsCondition } = {}) => {
+const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(options: RevariantOptions<C, T>, config: { as?: AsCondition } = {}) => {
   const { conditions, defaultCondition, variant } = options,
-    { as = defaultAsCondition } = setup;
+    { as = defaultAsCondition } = config;
 
   const keyofConditions = Object.keys(conditions) as (keyof C)[];
 
@@ -232,9 +232,9 @@ const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(
   return fn as RevariantFn<C, T>;
 };
 
-const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>, setup: { as?: AsCondition; it?: ItFn } = {}) => {
+const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>, config: { as?: AsCondition; it?: ItFn } = {}) => {
   const { conditions, defaultCondition, variants } = options,
-    { as, it = defaultItFn } = setup;
+    { as, it = defaultItFn } = config;
 
   const revariantGroup = Object.entries(variants).reduce((obj, [key, value]) => {
     obj[key as keyof typeof obj] = revariant<C, T[keyof T]>({ conditions, defaultCondition, variant: value as any }, { as });
