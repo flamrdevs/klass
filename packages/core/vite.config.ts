@@ -2,7 +2,11 @@ import { defineConfig } from "vite";
 
 import dts from "vite-plugin-dts";
 
-import env from "./vite.env";
+const env = {
+  command: { build: process.env["COMMAND"] === "build", test: process.env["COMMAND"] === "test" },
+  unminify: process.env["UNMINIFY"] === "true",
+  watch: process.env["WATCH"] === "true",
+};
 
 export default defineConfig({
   build: {
@@ -18,9 +22,15 @@ export default defineConfig({
     },
   },
   plugins: [
-    dts({
-      include: ["src/**/!(*.test).ts"],
-      exclude: ["node_module/**", "src/tests.ts"],
-    }),
+    env.command.build
+      ? dts({
+          include: ["src/**/!(*.test).ts"],
+          exclude: ["node_module/**", "src/tests.ts"],
+        })
+      : null,
   ],
+  test: {
+    include: ["**/*.test.{ts,tsx}"],
+    watch: env.watch,
+  },
 });

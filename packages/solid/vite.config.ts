@@ -4,7 +4,11 @@ import solid from "vite-plugin-solid";
 
 import dts from "vite-plugin-dts";
 
-import env from "./vite.env";
+const env = {
+  command: { build: process.env["COMMAND"] === "build", test: process.env["COMMAND"] === "test" },
+  unminify: process.env["UNMINIFY"] === "true",
+  watch: process.env["WATCH"] === "true",
+};
 
 export default defineConfig({
   build: {
@@ -21,9 +25,19 @@ export default defineConfig({
   },
   plugins: [
     solid(),
-    dts({
-      include: ["src/**/!(*.test).{ts,tsx}"],
-      exclude: ["node_module/**", "src/tests.{ts,tsx}"],
-    }),
+    env.command.build
+      ? dts({
+          include: ["src/**/!(*.test).{ts,tsx}"],
+          exclude: ["node_module/**", "src/tests.{ts,tsx}"],
+        })
+      : null,
   ],
+  test: {
+    environment: "jsdom",
+    include: ["**/*.test.{ts,tsx}"],
+    watch: env.watch,
+    deps: {
+      inline: [/solid-js/, /@solidjs\/router/],
+    },
+  },
 });
