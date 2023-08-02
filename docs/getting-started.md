@@ -162,12 +162,12 @@ const box = reklass({
 });
 
 button({ color: "red", fullWidth: true });
-button.variant.color("green");
+button.v.color("green");
 
 box({ m: "sm", p: "lg" });
 box({ m: { base: "sm", md: "lg" }, p: { base: "xs", md: "xl" } });
-box.revariant.m("sm");
-box.revariant.p({ base: "xs", md: "xl" });
+box.rv.m("sm");
+box.rv.p({ base: "xs", md: "xl" });
 ```
 
 ### Preact / React / Solid
