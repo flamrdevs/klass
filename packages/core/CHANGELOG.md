@@ -1,5 +1,11 @@
 # @klass/core
 
+## 2.0.2
+
+### Patch Changes
+
+- 891bd5f: Update project info
+
 ## 2.0.1
 
 ### Patch Changes
