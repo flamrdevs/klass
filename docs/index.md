@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: klass
-  text: class variant utility
+  text: Class variant utility
   actions:
     - theme: brand
       text: Getting Started

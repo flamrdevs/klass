@@ -29,7 +29,7 @@
 
 ## Introduction
 
-Class variant utility library for solid.
+Class variant utility for Solid.
 
 ## Installation
 

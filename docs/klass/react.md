@@ -12,7 +12,7 @@
   </a>
 </p>
 
-Class variant utility library for react.
+Class variant utility for react.
 
 ## Installation
 

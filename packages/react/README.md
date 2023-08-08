@@ -29,7 +29,7 @@
 
 ## Introduction
 
-Class variant utility library for react.
+Class variant utility for React.
 
 ## Installation
 

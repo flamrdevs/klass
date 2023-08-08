@@ -1,7 +1,7 @@
 {
   "name": "@klass/workspace",
   "version": "0.0.0",
-  "description": "class variant utility",
+  "description": "Class variant utility",
   "private": true,
   "scripts": {
     "clean": "turbo run clean",

@@ -12,7 +12,7 @@
   </a>
 </p>
 
-Class variant utility library for preact.
+Class variant utility for preact.
 
 ## Installation
 

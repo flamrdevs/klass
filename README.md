@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Class variant utility library.
+Class variant utility
 
 ## Features
 

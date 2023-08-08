@@ -12,7 +12,7 @@
   </a>
 </p>
 
-Class variant utility library for solid.
+Class variant utility for solid.
 
 ## Installation
 

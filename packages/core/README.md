@@ -29,7 +29,7 @@
 
 ## Introduction
 
-Class variant utility library.
+Class variant utility
 
 ## Installation
 

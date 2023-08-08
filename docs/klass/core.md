@@ -12,7 +12,7 @@
   </a>
 </p>
 
-Class variant utility library.
+Class variant utility
 
 ## Installation
 

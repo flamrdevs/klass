@@ -29,7 +29,7 @@
 
 ## Introduction
 
-Class variant utility library for preact.
+Class variant utility for Preact.
 
 ## Installation
 

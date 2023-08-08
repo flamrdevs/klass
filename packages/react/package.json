@@ -1,7 +1,7 @@
 {
   "name": "@klass/react",
   "version": "2.0.1",
-  "description": "class variant utility for react",
+  "description": "Class variant utility for React",
   "keywords": [
     "class",
     "classname",

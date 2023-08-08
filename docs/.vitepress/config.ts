@@ -2,17 +2,17 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
   title: "klass",
-  description: "class variant utility.",
+  description: "Class variant utility",
   head: [
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:url", content: "https://https://klass.pages.dev" }],
-    ["meta", { property: "og:title", content: "klass | klass" }],
-    ["meta", { property: "og:description", content: "class variant utility." }],
+    ["meta", { property: "og:title", content: "klass" }],
+    ["meta", { property: "og:description", content: "Class variant utility" }],
     ["meta", { property: "og:image", content: "https://https://klass.pages.dev/cover.png" }],
     ["meta", { property: "twitter:card", content: "summary_large_image" }],
     ["meta", { property: "twitter:url", content: "https://https://klass.pages.dev" }],
-    ["meta", { property: "twitter:title", content: "klass | klass" }],
-    ["meta", { property: "twitter:description", content: "class variant utility." }],
+    ["meta", { property: "twitter:title", content: "klass" }],
+    ["meta", { property: "twitter:description", content: "Class variant utility" }],
     ["meta", { property: "twitter:image", content: "https://https://klass.pages.dev/cover.png" }],
   ],
   lastUpdated: true,
