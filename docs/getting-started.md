@@ -293,6 +293,24 @@ export const Example = () => {
     </tr>
     <tr>
       <td>
+        <a href="/examples/qwik-tailwind" style="font-size: 1rem; font-weight: 500;">Qwik + Tailwind</a>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/qwik-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/qwik-tailwind?title=Klass%20Qwik%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/qwik-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <a href="/examples/react-tailwind" style="font-size: 1rem; font-weight: 500;">React + Tailwind</a>
       </td>
       <td>
@@ -322,6 +340,42 @@ export const Example = () => {
             <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
           </a>
           <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/solid-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/examples/svelte-tailwind" style="font-size: 1rem; font-weight: 500;">Svelte + Tailwind</a>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/svelte-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/svelte-tailwind?title=Klass%20Svelte%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/svelte-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/examples/vue-tailwind" style="font-size: 1rem; font-weight: 500;">Vue + Tailwind</a>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/vue-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/vue-tailwind?title=Klass%20Vue%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/vue-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
             <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
           </a>
         </p>

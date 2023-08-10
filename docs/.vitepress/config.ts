@@ -74,12 +74,24 @@ export default defineConfig({
             link: "/examples/preact-tailwind",
           },
           {
+            text: "Qwik + Tailwind",
+            link: "/examples/qwik-tailwind",
+          },
+          {
             text: "React + Tailwind",
             link: "/examples/react-tailwind",
           },
           {
             text: "Solid + Tailwind",
             link: "/examples/solid-tailwind",
+          },
+          {
+            text: "Svelte + Tailwind",
+            link: "/examples/svelte-tailwind",
+          },
+          {
+            text: "Vue + Tailwind",
+            link: "/examples/vue-tailwind",
           },
         ],
       },
