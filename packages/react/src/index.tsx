@@ -32,6 +32,10 @@ function klassed<ET extends ElementType, VS extends ReactVariantsSchema>(
   config: {
     dp?: PolymorphicComponentPropWithRef<ET, {}>;
     it?: ItFn;
+    /**
+     * @deprecated rename to "dp"
+     */
+    defaultProps?: undefined;
   } = {}
 ): KlassedComponent<ET, VS> {
   const { dp: { className: _className, ...dp } = {} as ClassesNormalProps, it } = config,
@@ -67,6 +71,10 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
     dp?: PolymorphicComponentPropWithRef<ET, {}>;
     as?: AsCondition;
     it?: ItFn;
+    /**
+     * @deprecated rename to "dp"
+     */
+    defaultProps?: undefined;
   } = {}
 ): ReklassedComponent<ET, CS, VS> {
   const { dp: { className: _className, ...dp } = {} as ClassesNormalProps, as, it } = config,
