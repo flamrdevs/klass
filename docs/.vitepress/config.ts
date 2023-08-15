@@ -1,6 +1,6 @@
-import { defineConfig } from "vitepress";
+import type { UserConfig } from "vitepress";
 
-export default defineConfig({
+export default {
   title: "klass",
   description: "Class variant utility",
   head: [
@@ -101,4 +101,4 @@ export default defineConfig({
       copyright: "Copyright © 2022-present",
     },
   },
-});
+} satisfies UserConfig;
