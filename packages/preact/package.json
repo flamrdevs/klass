@@ -1,6 +1,6 @@
 {
   "name": "@klass/preact",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Class variant utility for Preact",
   "keywords": [
     "class",
@@ -52,11 +52,11 @@
   },
   "homepage": "https://klass.pages.dev",
   "devDependencies": {
-    "@klass/core": "2.0.2",
+    "@klass/core": "2.0.3",
     "preact": "^10.16.0"
   },
   "peerDependencies": {
-    "@klass/core": "2.0.2",
+    "@klass/core": "2.0.3",
     "preact": "^10.0.0"
   }
 }

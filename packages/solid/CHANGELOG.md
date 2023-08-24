@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 2.0.3
+
+### Patch Changes
+
+- 1a1dc9a: Show deprecation
+- Updated dependencies [1a1dc9a]
+  - @klass/core@2.0.3
+
 ## 2.0.2
 
 ### Patch Changes

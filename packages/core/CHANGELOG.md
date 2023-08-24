@@ -1,5 +1,11 @@
 # @klass/core
 
+## 2.0.3
+
+### Patch Changes
+
+- 1a1dc9a: Show deprecation
+
 ## 2.0.2
 
 ### Patch Changes
