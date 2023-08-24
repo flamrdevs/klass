@@ -392,6 +392,17 @@ Some of the core concepts and designs are inspired by
 - [vanilla-extract](https://github.com/vanilla-extract-css/vanilla-extract)
 - [stitches](https://github.com/stitchesjs/stitches)
 
+## Benchmark
+
+<p align="left">
+  <a title="github" href="https://github.com/flamrdevs/klass-benchmark">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/button/simple?t=dark&i=github&e=Open%20in%20GitHub">
+      <img alt="github" src="https://none.deno.dev/ui/button/simple?t=light&i=github&e=Open%20in%20GitHub" hspace="1">
+    </picture>
+  </a>
+</p>
+
 ## Authors
 
 - [flamrdevs](https://github.com/flamrdevs)
