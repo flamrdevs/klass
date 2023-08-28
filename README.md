@@ -388,7 +388,7 @@ export const Example = () => {
 
 Some of the core concepts and designs are inspired by
 
-- [class-variance-authority](https://github.com/joe-bell/cva)
+- [cva](https://github.com/joe-bell/cva)
 - [vanilla-extract](https://github.com/vanilla-extract-css/vanilla-extract)
 - [stitches](https://github.com/stitchesjs/stitches)
 
