@@ -29,6 +29,9 @@ export default defineConfig({
       ? dts({
           include: ["src/**/!(*.test).{ts,tsx}"],
           exclude: ["node_module/**", "src/tests.{ts,tsx}"],
+          compilerOptions: {
+            removeComments: false,
+          },
         })
       : null,
   ],
