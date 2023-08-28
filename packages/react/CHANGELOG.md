@@ -1,5 +1,13 @@
 # @klass/react
 
+## 2.0.4
+
+### Patch Changes
+
+- d26d5b8: Fix dts comments
+- Updated dependencies [d26d5b8]
+  - @klass/core@2.0.4
+
 ## 2.0.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @klass/core
 
+## 2.0.4
+
+### Patch Changes
+
+- d26d5b8: Fix dts comments
+
 ## 2.0.3
 
 ### Patch Changes
