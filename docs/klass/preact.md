@@ -48,6 +48,7 @@ const Button = klassed(
     },
   },
   {
+    // default props
     dp: {
       type: "button",
     },

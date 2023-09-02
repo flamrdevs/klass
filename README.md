@@ -162,10 +162,12 @@ const box = reklass({
 });
 
 button({ color: "red", fullWidth: true });
+// access variant
 button.v.color("green");
 
 box({ m: "sm", p: "lg" });
 box({ m: { base: "sm", md: "lg" }, p: { base: "xs", md: "xl" } });
+// access revariant
 box.rv.m("sm");
 box.rv.p({ base: "xs", md: "xl" });
 ```
@@ -194,6 +196,7 @@ const Button = klassed(
     },
   },
   {
+    // default props
     dp: {
       type: "button",
     },
