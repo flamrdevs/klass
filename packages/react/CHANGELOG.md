@@ -1,5 +1,13 @@
 # @klass/react
 
+## 2.0.5
+
+### Patch Changes
+
+- 71f69af: Update docs
+- Updated dependencies [71f69af]
+  - @klass/core@2.0.5
+
 ## 2.0.4
 
 ### Patch Changes
