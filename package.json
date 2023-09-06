@@ -44,7 +44,7 @@
     "vite": "^4.4.9",
     "vite-plugin-dts": "^3.5.2",
     "vite-plugin-solid": "^2.7.0",
-    "vitepress": "1.0.0-rc.4",
-    "vitest": "^0.34.2"
+    "vitepress": "1.0.0-rc.10",
+    "vitest": "^0.34.3"
   }
 }
