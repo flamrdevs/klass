@@ -2,7 +2,7 @@ type ClassValue = ClassArray | ClassDictionary | string | number | null | boolea
 type ClassDictionary = Record<string, any>;
 type ClassArray = ClassValue[];
 
-type GetKey<T extends PropertyKey> = T extends "true" & "false" ? boolean : T extends "true" ? true : T extends "false" ? false : Exclude<T, symbol>;
+type TransformKey<T extends PropertyKey> = T extends "true" ? true : T extends "false" ? false : Exclude<T, symbol>;
 
 type VariantsSchema<E extends string = "class"> = {
   [variant: string]: {
@@ -14,11 +14,11 @@ type VariantsSchema<E extends string = "class"> = {
 
 type VariantOptions<T extends VariantsSchema[string]> = {
   variant: T;
-  defaultVariant?: GetKey<keyof T>;
+  defaultVariant?: TransformKey<keyof T>;
 };
 
 type VariantFn<T extends VariantsSchema[string]> = {
-  (value?: GetKey<keyof T>): string | undefined;
+  (value?: TransformKey<keyof T>): string | undefined;
 } & {
   o: VariantOptions<T>;
   /**
@@ -31,19 +31,19 @@ type VariantGroup<T extends VariantsSchema> = {
   [K in keyof T]: VariantFn<T[K]>;
 };
 
-type CompoundVariant<T extends VariantsSchema> = Omit<{ [K in keyof T]?: GetKey<keyof T[K]> }, "class"> & {
+type CompoundVariant<T extends VariantsSchema> = Omit<{ [K in keyof T]?: TransformKey<keyof T[K]> }, "class"> & {
   class?: ClassValue;
 };
 
 type KlassOptions<T extends VariantsSchema> = {
   base?: ClassValue;
   variants: T;
-  defaultVariants?: { [K in keyof T]?: GetKey<keyof T[K]> };
+  defaultVariants?: { [K in keyof T]?: TransformKey<keyof T[K]> };
   compoundVariants?: CompoundVariant<T>[];
 };
 
 type KlassFn<T extends VariantsSchema> = {
-  (props?: { [K in keyof T]?: GetKey<keyof T[K]> }, classes?: ClassValue): string;
+  (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }, classes?: ClassValue): string;
 } & {
   o: KlassOptions<T>;
   v: VariantGroup<T>;
@@ -73,7 +73,7 @@ type RevariantOptions<C extends ConditionSchema, T extends VariantsSchema[string
 };
 
 type RevariantFn<C extends ConditionSchema, T extends VariantsSchema[string]> = {
-  (value?: GetKey<keyof T> | { [condition in keyof C]?: GetKey<keyof T> }): string | undefined;
+  (value?: TransformKey<keyof T> | { [condition in keyof C]?: TransformKey<keyof T> }): string | undefined;
 } & {
   o: RevariantOptions<C, T>;
   /**
@@ -95,7 +95,7 @@ type ReklassOptions<C extends ConditionSchema, T extends VariantsSchema> = {
 type ReklassFn<C extends ConditionSchema, T extends VariantsSchema> = {
   (
     props?: {
-      [K in keyof T]?: GetKey<keyof T[K]> | { [condition in keyof C]?: GetKey<keyof T[K]> };
+      [K in keyof T]?: TransformKey<keyof T[K]> | { [condition in keyof C]?: TransformKey<keyof T[K]> };
     },
     classes?: ClassValue
   ): string;
@@ -164,7 +164,7 @@ const cxs = (...classes: ClassValue[]) => {
   return result;
 };
 
-const getPropKey = <T extends VariantsSchema[string]>(value?: GetKey<keyof T>, defaultValue?: GetKey<keyof T>) => String(typeof value === "undefined" ? defaultValue : value);
+const getPropKey = <T extends VariantsSchema[string]>(value?: TransformKey<keyof T>, defaultValue?: TransformKey<keyof T>) => String(typeof value === "undefined" ? defaultValue : value);
 const defaultItFn: ItFn = (value) => value;
 const defaultAsCondition: AsCondition = "prefix",
   defaultAsPrefixFn: AsConditionFn = (condition, value) => `${condition}${value}`,
@@ -175,8 +175,8 @@ const variant = <T extends VariantsSchema[string]>(options: VariantOptions<T>): 
 
   const isVariant = (value: unknown) => isPropertyKey(value) && value in variant;
 
-  const fn: Omit<VariantFn<T>, "o" | "options"> = (props?: GetKey<keyof T>) => {
-    let key: string | GetKey<keyof T>;
+  const fn: Omit<VariantFn<T>, "o" | "options"> = (props?: TransformKey<keyof T>) => {
+    let key: string | TransformKey<keyof T>;
     return isVariant((key = getPropKey<T>(props, defaultVariant))) ? cx(variant[key]) : undefined;
   };
 
@@ -200,7 +200,7 @@ const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { it?
   const hasCompoundVariants = isArray(compoundVariants);
   const cxCompoundVariants = hasCompoundVariants ? compoundVariants.map(cxCompoundVariantsMapFn) : [];
 
-  const fn: Omit<KlassFn<T>, "o" | "v" | "vk" | "options" | "variant" | "variantKeys"> = (props?: { [K in keyof T]?: GetKey<keyof T[K]> }, ...classes: ClassValue[]) => {
+  const fn: Omit<KlassFn<T>, "o" | "v" | "vk" | "options" | "variant" | "variantKeys"> = (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }, ...classes: ClassValue[]) => {
     let result: string = "",
       i: number,
       temp: string | undefined;
@@ -249,8 +249,8 @@ const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(
   const isVariant = (value: unknown) => isPropertyKey(value) && value in variant;
   const asCondition = as === "suffix" ? defaultAsSuffixFn : defaultAsPrefixFn;
 
-  const fn: Omit<RevariantFn<C, T>, "o" | "options"> = (props?: GetKey<keyof T> | { [condition in keyof C]?: GetKey<keyof T> }) => {
-    let key: string | GetKey<keyof T>;
+  const fn: Omit<RevariantFn<C, T>, "o" | "options"> = (props?: TransformKey<keyof T> | { [condition in keyof C]?: TransformKey<keyof T> }) => {
+    let key: string | TransformKey<keyof T>;
 
     return typeof props !== "object"
       ? isVariant((key = getPropKey<T>(props)))
@@ -276,7 +276,7 @@ const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: R
 
   const fn: Omit<ReklassFn<C, T>, "o" | "rv" | "rvk" | "options" | "revariant" | "revariantKeys"> = (
     props?: {
-      [K in keyof T]?: GetKey<keyof T[K]> | { [condition in keyof C]?: GetKey<keyof T[K]> };
+      [K in keyof T]?: TransformKey<keyof T[K]> | { [condition in keyof C]?: TransformKey<keyof T[K]> };
     },
     ...classes: ClassValue[]
   ) => {
