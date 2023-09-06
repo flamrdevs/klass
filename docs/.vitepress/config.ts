@@ -16,6 +16,9 @@ export default {
     ["meta", { property: "twitter:image", content: "https://klass.pages.dev/cover.png" }],
   ],
   lastUpdated: true,
+  sitemap: {
+    hostname: "https://klass.pages.dev",
+  },
   themeConfig: {
     socialLinks: [
       {
@@ -101,4 +104,4 @@ export default {
       copyright: "Copyright © 2022-present",
     },
   },
-} satisfies UserConfig;
+} as UserConfig;
