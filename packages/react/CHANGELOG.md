@@ -1,5 +1,13 @@
 # @klass/react
 
+## 2.0.6
+
+### Patch Changes
+
+- aeca891: Fix types
+- Updated dependencies [aeca891]
+  - @klass/core@2.0.6
+
 ## 2.0.5
 
 ### Patch Changes
