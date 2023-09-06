@@ -413,3 +413,5 @@ Some of the core concepts and designs are inspired by
 ## License
 
 [MIT License](./LICENSE)
+
+<img width="100%" src="https://hiiiits.deno.dev/hit/flamrdevs/klass" alt="hiiiits" title="hiiiits" />
