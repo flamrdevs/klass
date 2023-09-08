@@ -96,6 +96,18 @@ export default {
             text: "Vue + Tailwind",
             link: "/examples/vue-tailwind",
           },
+          {
+            text: "Preact + Master",
+            link: "/examples/preact-master",
+          },
+          {
+            text: "React + Master",
+            link: "/examples/react-master",
+          },
+          {
+            text: "Solid + Master",
+            link: "/examples/solid-master",
+          },
         ],
       },
     ],
