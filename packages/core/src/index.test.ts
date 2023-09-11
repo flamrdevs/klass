@@ -1,21 +1,8 @@
 import { describe, it, expect } from "vitest";
 
-import { cxs, variant, klass, revariant, reklass } from "./index";
+import { variant, klass, revariant, reklass } from "./index";
 
 import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, itOptimizedClass } from "./tests";
-
-describe("cxs", async () => {
-  it("type of", async () => {
-    expect(cxs).toBeTypeOf("function");
-    expect(cxs()).toBeTypeOf("string");
-  });
-
-  it("matches", async () => {
-    expect(cxs("")).toEqual("");
-    expect(cxs("a", "b", "c")).toEqual("a b c");
-    expect(cxs(false, "a", ["b", undefined, false, null, true, { b: false }, { b: true }, { b: 0 }, { b: 1 }], "c", cxs({ c: true, [cxs("d")]: true }))).toEqual("a b b b c c d");
-  });
-});
 
 describe("variant", async () => {
   const PaddingVariant = variant({
@@ -76,7 +63,9 @@ describe("variant", async () => {
   const MixedVariant = variant({
     variant: {
       "": "mix-",
+      false: "mix-false",
       true: "mix-true",
+      0: "mix-0",
       1: "mix-1",
     },
   });
@@ -136,7 +125,9 @@ describe("variant", async () => {
     expect(MixedVariant()).toBeUndefined();
     expect(MixedVariant("unknown" as any)).toBeUndefined();
     expect(MixedVariant("")).toEqual("mix-");
+    expect(MixedVariant(false)).toEqual("mix-false");
     expect(MixedVariant(true)).toEqual("mix-true");
+    expect(MixedVariant(0)).toEqual("mix-0");
     expect(MixedVariant(1)).toEqual("mix-1");
   });
 });

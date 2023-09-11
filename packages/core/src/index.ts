@@ -1,6 +1,5 @@
-type ClassValue = ClassArray | ClassDictionary | string | number | null | boolean | undefined;
-type ClassDictionary = Record<string, any>;
-type ClassArray = ClassValue[];
+import { clsx } from "clsx";
+import type { ClassValue } from "clsx";
 
 type TransformKey<T extends PropertyKey> = T extends "true" ? true : T extends "false" ? false : Exclude<T, symbol>;
 
@@ -123,48 +122,9 @@ type ItFn = (value: string) => string;
 type AsCondition = "prefix" | "suffix";
 type AsConditionFn = (condition: string, value: string) => string;
 
-const isString = (value: unknown): value is string => typeof value === "string",
-  isNumber = (value: unknown): value is number => typeof value === "number",
-  isObject = (value: unknown): value is Record<PropertyKey, any> => typeof value === "object",
-  isArray = (value: unknown): value is any[] => Array.isArray(value),
-  isPropertyKey = (value: unknown): value is string | number => isString(value) || isNumber(value);
+const isPropertyKey = (value: unknown): value is string | number => typeof value === "string" || typeof value === "number";
 
-const cx = (mix: any) => {
-  let result: string = "",
-    temp: string | number,
-    i: number;
-  if (isString(mix) || isNumber(mix)) {
-    result += mix;
-  } else if (isObject(mix)) {
-    if (isArray(mix)) {
-      for (i = 0; i < mix.length; i++)
-        if ((temp = cx(mix[i]))) {
-          result && (result += " ");
-          result += temp;
-        }
-    } else {
-      for (temp in mix)
-        if (mix[temp]) {
-          result && (result += " ");
-          result += temp;
-        }
-    }
-  }
-  return result;
-};
-const cxs = (...classes: ClassValue[]) => {
-  let result: string = "",
-    temp: string,
-    i: number;
-  for (i = 0; i < classes.length; i++)
-    if ((temp = cx(classes[i]))) {
-      result && (result += " ");
-      result += temp;
-    }
-  return result;
-};
-
-const getPropKey = <T extends VariantsSchema[string]>(value?: TransformKey<keyof T>, defaultValue?: TransformKey<keyof T>) => String(typeof value === "undefined" ? defaultValue : value);
+const getPropKey = <T extends VariantsSchema[string]>(value?: TransformKey<keyof T>, defaultValue?: TransformKey<keyof T>) => String(value ?? defaultValue);
 const defaultItFn: ItFn = (value) => value;
 const defaultAsCondition: AsCondition = "prefix",
   defaultAsPrefixFn: AsConditionFn = (condition, value) => `${condition}${value}`,
@@ -177,7 +137,7 @@ const variant = <T extends VariantsSchema[string]>(options: VariantOptions<T>): 
 
   const fn: Omit<VariantFn<T>, "o" | "options"> = (props?: TransformKey<keyof T>) => {
     let key: string | TransformKey<keyof T>;
-    return isVariant((key = getPropKey<T>(props, defaultVariant))) ? cx(variant[key]) : undefined;
+    return isVariant((key = getPropKey<T>(props, defaultVariant))) ? clsx(variant[key]) : undefined;
   };
 
   (fn as VariantFn<T>).o = options;
@@ -185,19 +145,19 @@ const variant = <T extends VariantsSchema[string]>(options: VariantOptions<T>): 
   return fn as VariantFn<T>;
 };
 
-const cxCompoundVariantsMapFn = <T extends VariantsSchema>({ class: _class, ...v }: CompoundVariant<T>) => ({ v, c: cx(_class) });
+const cxCompoundVariantsMapFn = <T extends VariantsSchema>({ class: _class, ...v }: CompoundVariant<T>) => ({ v, c: clsx(_class) });
 
 const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { it?: ItFn } = {}): KlassFn<T> => {
   const { base, variants, defaultVariants, compoundVariants } = options,
     { it = defaultItFn } = config;
 
-  const cxBase = cx(base);
+  const cxBase = clsx(base);
   const variantGroup = Object.entries(variants).reduce((obj, [key, value]) => {
     obj[key as keyof typeof obj] = variant<T[keyof T]>({ variant: value as any, defaultVariant: defaultVariants?.[key] as any });
     return obj;
   }, {} as VariantGroup<T>);
   const keyofVariants = Object.keys(variants) as (keyof T)[];
-  const hasCompoundVariants = isArray(compoundVariants);
+  const hasCompoundVariants = Array.isArray(compoundVariants);
   const cxCompoundVariants = hasCompoundVariants ? compoundVariants.map(cxCompoundVariantsMapFn) : [];
 
   const fn: Omit<KlassFn<T>, "o" | "v" | "vk" | "options" | "variant" | "variantKeys"> = (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }, ...classes: ClassValue[]) => {
@@ -230,7 +190,7 @@ const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { it?
       }
     }
 
-    return it(cx([cxBase, result, classes]));
+    return it(clsx([cxBase, result, classes]));
   };
 
   (fn as KlassFn<T>).o = options;
@@ -254,9 +214,9 @@ const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(
 
     return typeof props !== "object"
       ? isVariant((key = getPropKey<T>(props)))
-        ? asCondition(conditions[defaultCondition], cx(variant[key]))
+        ? asCondition(conditions[defaultCondition], clsx(variant[key]))
         : undefined
-      : cx(keyofConditions.map((condition) => condition in props && isVariant((key = getPropKey<T>(props[condition]))) && asCondition(conditions[condition], cx(variant[key]))));
+      : clsx(keyofConditions.map((condition) => condition in props && isVariant((key = getPropKey<T>(props[condition]))) && asCondition(conditions[condition], clsx(variant[key]))));
   };
 
   (fn as RevariantFn<C, T>).o = options;
@@ -280,7 +240,7 @@ const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: R
     },
     ...classes: ClassValue[]
   ) => {
-    return it(cx([keyofVariants.map((key) => revariantGroup[key](props?.[key])), classes]));
+    return it(clsx([keyofVariants.map((key) => revariantGroup[key](props?.[key])), classes]));
   };
 
   (fn as ReklassFn<C, T>).o = options;
@@ -310,4 +270,4 @@ export type {
   ReklassFn,
   ReklassOptions,
 };
-export { cxs, variant, klass, revariant, reklass };
+export { variant, klass, revariant, reklass };
