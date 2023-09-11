@@ -51,5 +51,8 @@
   "bugs": {
     "url": "https://github.com/flamrdevs/klass/issues"
   },
-  "homepage": "https://klass.pages.dev"
+  "homepage": "https://klass.pages.dev",
+  "dependencies": {
+    "clsx": "^2.0.0"
+  }
 }
