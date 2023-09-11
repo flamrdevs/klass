@@ -1,5 +1,11 @@
 # @klass/core
 
+## 3.3.3
+
+### Minor Changes
+
+- 8789b27: Performance improvement
+
 ## 3.0.0
 
 ### Minor Changes
