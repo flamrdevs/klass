@@ -83,4 +83,3 @@ function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS ext
 }
 
 export { klassed, reklassed };
-export * from "./HOCs";

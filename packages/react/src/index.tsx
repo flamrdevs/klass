@@ -104,4 +104,3 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
 }
 
 export { klassed, reklassed };
-export * from "./HOCs";
