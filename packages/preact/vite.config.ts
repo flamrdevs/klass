@@ -39,8 +39,10 @@ export default defineConfig({
     environment: "jsdom",
     include: ["**/*.test.{ts,tsx}"],
     watch: env.watch,
-    deps: {
-      inline: [/preact/],
+    server: {
+      deps: {
+        inline: [/preact/],
+      },
     },
   },
 });

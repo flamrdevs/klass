@@ -39,8 +39,10 @@ export default defineConfig({
     environment: "jsdom",
     include: ["**/*.test.{ts,tsx}"],
     watch: env.watch,
-    deps: {
-      inline: [/react/, /react-dom/],
+    server: {
+      deps: {
+        inline: [/react/, /react-dom/],
+      },
     },
   },
 });
