@@ -1,5 +1,12 @@
 # @klass/core
 
+## 3.0.0
+
+### Minor Changes
+
+- d76418e: Depends on clsx
+  - use clsx instead of cxs
+
 ## 2.0.6
 
 ### Patch Changes

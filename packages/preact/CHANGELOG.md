@@ -1,5 +1,17 @@
 # @klass/preact
 
+## 3.0.0
+
+### Minor Changes
+
+- d76418e: Depends on clsx
+  - remove cxsed HOC
+
+### Patch Changes
+
+- Updated dependencies [d76418e]
+  - @klass/core@3.0.0
+
 ## 2.0.6
 
 ### Patch Changes
