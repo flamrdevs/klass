@@ -307,7 +307,9 @@ describe("revariant", async () => {
     defaultCondition: "base",
     variant: {
       "": "mix-",
+      false: "mix-false",
       true: "mix-true",
+      0: "mix-0",
       1: "mix-1",
     },
   });
@@ -363,12 +365,16 @@ describe("revariant", async () => {
     expect(MixedRevariant()).toBeUndefined();
     expect(MixedRevariant("unknown" as any)).toBeUndefined();
     expect(MixedRevariant("")).toEqual("mix-");
+    expect(MixedRevariant(false)).toEqual("mix-false");
     expect(MixedRevariant(true)).toEqual("mix-true");
+    expect(MixedRevariant(0)).toEqual("mix-0");
     expect(MixedRevariant(1)).toEqual("mix-1");
+    expect(MixedRevariant({ base: false, sm: 0, md: "", lg: false })).toEqual("mix-false sm:mix-0 md:mix- lg:mix-false");
     expect(MixedRevariant({ base: true, sm: 1, md: "", lg: true })).toEqual("mix-true sm:mix-1 md:mix- lg:mix-true");
   });
 
   it("as suffix", async () => {
+    expect(MixedAsSuffixRevariant({ base: false, sm: 0, md: "", lg: false })).toEqual("mix-false mix-0@sm mix-@md mix-false@lg");
     expect(MixedAsSuffixRevariant({ base: true, sm: 1, md: "", lg: true })).toEqual("mix-true mix-1@sm mix-@md mix-true@lg");
   });
 });
@@ -440,7 +446,9 @@ describe("reklass", async () => {
   });
 
   it("as suffix", async () => {
-    expect(BoxAsSuffixReklass({ m: "3", p: { base: "1", md: "3" } })).toEqual("m-3 p-1 p-3@md");
+    expect(BoxAsSuffixReklass({ m: { base: "1", md: "3" } })).toEqual("m-1 m-3@md");
+    expect(BoxAsSuffixReklass({ m: { base: "2", md: "4" }, p: { base: "1", md: "3" } })).toEqual("m-2 m-4@md p-1 p-3@md");
+    expect(BoxAsSuffixReklass({ p: { base: "2", md: "4" } })).toEqual("p-2 p-4@md");
   });
 
   it("with it", async () => {

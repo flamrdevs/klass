@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType, PropsWithChildren, ReactElement } from "react";
 
-import type { ClassValue, VariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
+import type { ClassValue, RestrictedVariantsKey, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
 type AsProp<ET extends ElementType> = { as?: ET };
 
@@ -18,17 +18,17 @@ type ClassesNormalProps = { className?: string };
 type ClassesValueProps = { className?: ClassValue };
 type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & ClassesValueProps;
 
-type ReactClassesPropsKey = "className";
+type ReactClassesPropsKey = RestrictedVariantsKey | "className";
 
-type ReactVariantsSchema = VariantsSchema<ReactClassesPropsKey>;
+type ReactVariantsSchema = StrictVariantsSchema<ReactClassesPropsKey>;
 
-type KlassedComponent<ET extends ElementType, VS extends VariantsSchema> = {
+type KlassedComponent<ET extends ElementType, VS extends ReactVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): ReactElement | null;
 } & {
   klass: KlassFn<VS>;
 };
 
-type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS extends VariantsSchema> = {
+type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS extends ReactVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): ReactElement | null;
 } & {
   reklass: ReklassFn<CS, VS>;

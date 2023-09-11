@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentChildren, ComponentType, JSX } from "preact";
 
-import type { ClassValue, VariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
+import type { ClassValue, RestrictedVariantsKey, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
 type ElementType<P = any> =
   | {
@@ -27,9 +27,9 @@ type ClassesNormalProps = { class?: string; className?: string };
 type ClassesValueProps = { class?: ClassValue; className?: ClassValue };
 type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & ClassesValueProps;
 
-type PreactClassesPropsKey = "class" | "className";
+type PreactClassesPropsKey = RestrictedVariantsKey | "className";
 
-type PreactVariantsSchema = VariantsSchema<PreactClassesPropsKey>;
+type PreactVariantsSchema = StrictVariantsSchema<PreactClassesPropsKey>;
 
 type KlassedComponent<ET extends ElementType, VS extends PreactVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element | null;
