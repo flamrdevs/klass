@@ -1,5 +1,11 @@
 # @klass/core
 
+## 3.3.4
+
+### Patch Changes
+
+- 2a49c17: Improve typing and docs
+
 ## 3.3.3
 
 ### Minor Changes
