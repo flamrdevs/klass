@@ -1,5 +1,11 @@
 # @klass/core
 
+## 3.3.5
+
+### Patch Changes
+
+- f31862f: Build
+
 ## 3.3.4
 
 ### Patch Changes
