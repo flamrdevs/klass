@@ -73,6 +73,14 @@ export default {
             link: "/examples/astro-tailwind",
           },
           {
+            text: "Astro + Tailwind Daisy UI",
+            link: "/examples/astro-tailwind-daisyui",
+          },
+          {
+            text: "Astro + Tailwind Ripple UI",
+            link: "/examples/astro-tailwind-rippleui",
+          },
+          {
             text: "Preact + Tailwind",
             link: "/examples/preact-tailwind",
           },

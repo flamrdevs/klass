@@ -34,6 +34,42 @@
     </tr>
     <tr>
       <td>
+        <a href="/examples/astro-tailwind-daisyui" style="font-size: 1rem; font-weight: 500;">Astro + Tailwind Daisy UI</a>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind-daisyui" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind-daisyui?title=Klass%20Astro%20Tailwind%20Daisy%20UI" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind-daisyui" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/examples/astro-tailwind-rippleui" style="font-size: 1rem; font-weight: 500;">Astro + Tailwind Ripple UI</a>
+      </td>
+      <td>
+        <p align="center">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind-rippleui" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind-rippleui?title=Klass%20Astro%20Tailwind%20Ripple%20UI" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind-rippleui" target="_blank" style="display: inline-block; margin: 0px 4px;">
+            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          </a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <a href="/examples/preact-tailwind" style="font-size: 1rem; font-weight: 500;">Preact + Tailwind</a>
       </td>
       <td>
