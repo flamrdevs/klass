@@ -25,12 +25,18 @@ type ReactVariantsSchema = StrictVariantsSchema<ReactClassesPropsKey>;
 type KlassedComponent<ET extends ElementType, VS extends ReactVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): ReactElement | null;
 } & {
+  /**
+   * klass function
+   */
   klass: KlassFn<VS>;
 };
 
 type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS extends ReactVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): ReactElement | null;
 } & {
+  /**
+   * reklass function
+   */
   reklass: ReklassFn<CS, VS>;
 };
 

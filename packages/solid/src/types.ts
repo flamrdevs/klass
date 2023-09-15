@@ -24,12 +24,18 @@ type SolidVariantsSchema = StrictVariantsSchema<SolidClassesPropsKey>;
 type KlassedComponent<VC extends ValidComponent, VS extends SolidVariantsSchema> = {
   <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element | null;
 } & {
+  /**
+   * klass function
+   */
   klass: KlassFn<VS>;
 };
 
 type ReklassedComponent<VC extends ValidComponent, CS extends ConditionSchema, VS extends SolidVariantsSchema> = {
   <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): JSX.Element | null;
 } & {
+  /**
+   * reklass function
+   */
   reklass: ReklassFn<CS, VS>;
 };
 

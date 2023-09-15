@@ -34,12 +34,18 @@ type PreactVariantsSchema = StrictVariantsSchema<PreactClassesPropsKey>;
 type KlassedComponent<ET extends ElementType, VS extends PreactVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element | null;
 } & {
+  /**
+   * klass function
+   */
   klass: KlassFn<VS>;
 };
 
 type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS extends PreactVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): JSX.Element | null;
 } & {
+  /**
+   * reklass function
+   */
   reklass: ReklassFn<CS, VS>;
 };
 

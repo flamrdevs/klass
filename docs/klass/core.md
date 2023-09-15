@@ -2,13 +2,13 @@
 
 <p>
   <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="license" src="https://none.deno.dev/npm/l?n=@klass/core" hspace="1">
+    <img alt="license" src="https://none.deno.dev/npm/l/@klass/core" hspace="1">
   </a>
   <a title="version" href="https://www.npmjs.com/package/@klass/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="version" src="https://none.deno.dev/npm/v?n=@klass/core" hspace="1">
+    <img alt="version" src="https://none.deno.dev/npm/v/@klass/core" hspace="1">
   </a>
   <a title="size" href="https://bundlejs.com/?q=@klass/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="size" src="https://none.deno.dev/bundlejs/mz?n=@klass/core" hspace="1">
+    <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/core" hspace="1">
   </a>
 </p>
 

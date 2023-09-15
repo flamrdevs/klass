@@ -2,13 +2,13 @@
 
 <p>
   <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="license" src="https://none.deno.dev/npm/l?n=@klass/preact" hspace="1">
+    <img alt="license" src="https://none.deno.dev/npm/l/@klass/preact" hspace="1">
   </a>
   <a title="version" href="https://www.npmjs.com/package/@klass/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="version" src="https://none.deno.dev/npm/v?n=@klass/preact" hspace="1">
+    <img alt="version" src="https://none.deno.dev/npm/v/@klass/preact" hspace="1">
   </a>
   <a title="size" href="https://bundlejs.com/?q=@klass/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="size" src="https://none.deno.dev/bundlejs/mz?n=@klass/preact" hspace="1">
+    <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/preact" hspace="1">
   </a>
 </p>
 

@@ -13,6 +13,15 @@ const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "class
   getVariantKeys = <VS extends SolidVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, SolidClassesPropsKey>)[],
   LocalKeysSplitter = ["as", "class", "classList"] as const;
 
+/**
+ *
+ * @param element element
+ * @param options klass options
+ * @param config additional config
+ * @returns klass component
+ *
+ * @see {@link https://klass.pages.dev/klass/solid.html#usage | klassed}
+ */
 function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
   element: VC,
   options: KlassOptions<VS>,
@@ -47,6 +56,15 @@ function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
   return Component as KlassedComponent<VC, VS>;
 }
 
+/**
+ *
+ * @param element element
+ * @param options reklass options
+ * @param config additional config
+ * @returns reklass component
+ *
+ * @see {@link https://klass.pages.dev/klass/solid.html#usage | reklassed}
+ */
 function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends SolidVariantsSchema>(
   element: VC,
   options: ReklassOptions<CS, VS>,

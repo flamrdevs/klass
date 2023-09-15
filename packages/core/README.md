@@ -7,20 +7,20 @@
 <p align="center">
   <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l?t=dark&n=@klass/core">
-      <img alt="license" src="https://none.deno.dev/npm/l?t=light&n=@klass/core" hspace="1">
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/core?t=dark">
+      <img alt="license" src="https://none.deno.dev/npm/l/@klass/core?t=light" hspace="1">
     </picture>
   </a>
   <a title="version" href="https://www.npmjs.com/package/@klass/core">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v?t=dark&n=@klass/core">
-      <img alt="version" src="https://none.deno.dev/npm/v?t=light&n=@klass/core" hspace="1">
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/core?t=dark">
+      <img alt="version" src="https://none.deno.dev/npm/v/@klass/core?t=light" hspace="1">
     </picture>
   </a>
   <a title="size" href="https://bundlejs.com/?q=@klass/core">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz?t=dark&n=@klass/core">
-      <img alt="size" src="https://none.deno.dev/bundlejs/mz?t=light&n=@klass/core" hspace="1">
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/core?t=dark">
+      <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/core?t=light" hspace="1">
     </picture>
   </a>
 </p>

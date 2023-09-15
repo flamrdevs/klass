@@ -18,8 +18,8 @@
       <td>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <a href="/klass/core" style="font-size: 1rem; font-weight: 500;">@klass/core</a>
-          <img alt="npm" src="https://none.deno.dev/npm/l?n=@klass/core" />
-          <img alt="npm" src="https://none.deno.dev/npm/v?n=@klass/core" />
+          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/core" />
+          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/core" />
         </div>
       </td>
       <td>
@@ -37,8 +37,8 @@
       <td>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <a href="/klass/preact" style="font-size: 1rem; font-weight: 500;">@klass/preact</a>
-          <img alt="npm" src="https://none.deno.dev/npm/l?n=@klass/preact" />
-          <img alt="npm" src="https://none.deno.dev/npm/v?n=@klass/preact" />
+          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/preact" />
+          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/preact" />
         </div>
       </td>
       <td>
@@ -56,8 +56,8 @@
       <td>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <a href="/klass/react" style="font-size: 1rem; font-weight: 500;">@klass/react</a>
-          <img alt="npm" src="https://none.deno.dev/npm/l?n=@klass/react" />
-          <img alt="npm" src="https://none.deno.dev/npm/v?n=@klass/react" />
+          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/react" />
+          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/react" />
         </div>
       </td>
       <td>
@@ -75,8 +75,8 @@
       <td>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <a href="/klass/solid" style="font-size: 1rem; font-weight: 500;">@klass/solid</a>
-          <img alt="npm" src="https://none.deno.dev/npm/l?n=@klass/solid" />
-          <img alt="npm" src="https://none.deno.dev/npm/v?n=@klass/solid" />
+          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/solid" />
+          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/solid" />
         </div>
       </td>
       <td>
