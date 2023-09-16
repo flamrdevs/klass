@@ -1,5 +1,30 @@
 <img src="https://klass.pages.dev/cover.png" width="100%" />
 
+<p>
+  <img width="100%" src="https://hiiiits.deno.dev/hit/flamrdevs/klass" alt="hiiiits" title="hiiiits" />
+</p>
+
+<p align="center">
+  <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/github/repo/l/flamrdevs/klass?t=dark">
+      <img alt="license" src="https://none.deno.dev/github/repo/l/flamrdevs/klass?t=light" hspace="1">
+    </picture>
+  </a>
+  <a title="forks" href="https://github.com/flamrdevs/klass/forks">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/github/repo/fc/flamrdevs/klass?t=dark">
+      <img alt="forks" src="https://none.deno.dev/github/repo/fc/flamrdevs/klass?t=light" hspace="1">
+    </picture>
+  </a>
+  <a title="stargazers" href="https://github.com/flamrdevs/klass/stargazers">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/github/repo/sc/flamrdevs/klass?t=dark">
+      <img alt="stargazers" src="https://none.deno.dev/github/repo/sc/flamrdevs/klass?t=light" hspace="1">
+    </picture>
+  </a>
+</p>
+
 # klass
 
 ## Introduction
@@ -503,5 +528,3 @@ Some of the core concepts and designs are inspired by
 ## License
 
 [MIT License](./LICENSE)
-
-<img width="100%" src="https://hiiiits.deno.dev/hit/flamrdevs/klass" alt="hiiiits" title="hiiiits" />
