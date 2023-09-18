@@ -20,6 +20,7 @@
           <a href="/klass/core" style="font-size: 1rem; font-weight: 500;">@klass/core</a>
           <img alt="npm" src="https://none.deno.dev/npm/l/@klass/core" />
           <img alt="npm" src="https://none.deno.dev/npm/v/@klass/core" />
+          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/core" />
         </div>
       </td>
       <td>
@@ -39,6 +40,7 @@
           <a href="/klass/preact" style="font-size: 1rem; font-weight: 500;">@klass/preact</a>
           <img alt="npm" src="https://none.deno.dev/npm/l/@klass/preact" />
           <img alt="npm" src="https://none.deno.dev/npm/v/@klass/preact" />
+          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/preact" />
         </div>
       </td>
       <td>
@@ -58,6 +60,7 @@
           <a href="/klass/react" style="font-size: 1rem; font-weight: 500;">@klass/react</a>
           <img alt="npm" src="https://none.deno.dev/npm/l/@klass/react" />
           <img alt="npm" src="https://none.deno.dev/npm/v/@klass/react" />
+          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/react" />
         </div>
       </td>
       <td>
@@ -77,6 +80,7 @@
           <a href="/klass/solid" style="font-size: 1rem; font-weight: 500;">@klass/solid</a>
           <img alt="npm" src="https://none.deno.dev/npm/l/@klass/solid" />
           <img alt="npm" src="https://none.deno.dev/npm/v/@klass/solid" />
+          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/solid" />
         </div>
       </td>
       <td>

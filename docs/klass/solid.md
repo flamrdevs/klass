@@ -10,6 +10,7 @@
   <a title="size" href="https://bundlejs.com/?q=@klass/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
     <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/solid" hspace="1">
   </a>
+  <img alt="size" src="https://none.deno.dev/npm/dm/@klass/solid" style="display: inline-block; margin: 0px 4px;" hspace="1">
 </p>
 
 Class variant utility for solid.

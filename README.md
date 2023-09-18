@@ -57,6 +57,7 @@ Class variant utility
           <span style="font-size: 1rem; font-weight: 500;">@klass/core</span>
           <img alt="npm" src="https://none.deno.dev/npm/l/@klass/core" />
           <img alt="npm" src="https://none.deno.dev/npm/v/@klass/core" />
+          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/core" />
         </div>
       </td>
       <td>
@@ -76,6 +77,7 @@ Class variant utility
           <span style="font-size: 1rem; font-weight: 500;">@klass/preact</span>
           <img alt="npm" src="https://none.deno.dev/npm/l/@klass/preact" />
           <img alt="npm" src="https://none.deno.dev/npm/v/@klass/preact" />
+          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/preact" />
         </div>
       </td>
       <td>
@@ -95,6 +97,7 @@ Class variant utility
           <span style="font-size: 1rem; font-weight: 500;">@klass/react</span>
           <img alt="npm" src="https://none.deno.dev/npm/l/@klass/react" />
           <img alt="npm" src="https://none.deno.dev/npm/v/@klass/react" />
+          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/react" />
         </div>
       </td>
       <td>
@@ -114,6 +117,7 @@ Class variant utility
           <span style="font-size: 1rem; font-weight: 500;">@klass/solid</span>
           <img alt="npm" src="https://none.deno.dev/npm/l/@klass/solid" />
           <img alt="npm" src="https://none.deno.dev/npm/v/@klass/solid" />
+          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/solid" />
         </div>
       </td>
       <td>
@@ -135,6 +139,8 @@ Class variant utility
 - [x] Variants
 - [x] Compound variants
 - [x] Conditional variants
+- [x] Group
+- [x] Slots
 
 ## Examples
 
@@ -509,6 +515,7 @@ Some of the core concepts and designs are inspired by
 - [cva](https://github.com/joe-bell/cva)
 - [vanilla-extract](https://github.com/vanilla-extract-css/vanilla-extract)
 - [stitches](https://github.com/stitchesjs/stitches)
+- [tailwind-variants](https://github.com/nextui-org/tailwind-variants)
 
 ## Benchmark
 

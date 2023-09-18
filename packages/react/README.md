@@ -23,6 +23,10 @@
       <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/react?t=light" hspace="1">
     </picture>
   </a>
+  <picture title="npm monthly downloads">
+    <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/react?t=dark">
+    <img alt="size" src="https://none.deno.dev/npm/dm/@klass/react?t=light" hspace="1">
+  </picture>
 </p>
 
 # klass react
