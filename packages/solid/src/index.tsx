@@ -26,7 +26,13 @@ function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
   element: VC,
   options: KlassOptions<VS>,
   config: {
+    /**
+     * default props
+     */
     dp?: PolymorphicComponentProp<VC, {}>;
+    /**
+     * it function
+     */
     it?: ItFn;
     /**
      * @deprecated rename to "dp"
@@ -69,8 +75,17 @@ function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS ext
   element: VC,
   options: ReklassOptions<CS, VS>,
   config: {
+    /**
+     * default props
+     */
     dp?: PolymorphicComponentProp<VC, {}>;
+    /**
+     * condition as
+     */
     as?: AsCondition;
+    /**
+     * it function
+     */
     it?: ItFn;
     /**
      * @deprecated rename to "dp"
