@@ -21,7 +21,8 @@ const getVariantKeys__filterFn = (el: string) => el !== "className",
     let omited: Record<string, any> = {},
       picked: Record<string, any> = {};
 
-    Object.entries(props).forEach(([key, value]) => ((keys.includes(key as K) ? picked : omited)[key] = value));
+    let key: string;
+    for (key in props) (keys.includes(key as K) ? picked : omited)[key] = props[key];
 
     return [omited, picked] as const;
   };
@@ -39,7 +40,13 @@ function klassed<ET extends ElementType, VS extends ReactVariantsSchema>(
   element: ET,
   options: KlassOptions<VS>,
   config: {
+    /**
+     * default props
+     */
     dp?: PolymorphicComponentPropWithRef<ET, {}>;
+    /**
+     * it function
+     */
     it?: ItFn;
     /**
      * @deprecated rename to "dp"
@@ -86,8 +93,17 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
   element: ET,
   options: ReklassOptions<CS, VS>,
   config: {
+    /**
+     * default props
+     */
     dp?: PolymorphicComponentPropWithRef<ET, {}>;
+    /**
+     * condition as
+     */
     as?: AsCondition;
+    /**
+     * it function
+     */
     it?: ItFn;
     /**
      * @deprecated rename to "dp"
