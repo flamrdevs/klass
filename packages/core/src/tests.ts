@@ -42,5 +42,7 @@ const expectReklassFn = <C extends ConditionSchema, T extends VariantsSchema>(re
 
 const itOptimizedClass: ItFn = (value) => `optimized( ${value} )`;
 
+const array = <T>(length: number, map: (index: number) => T) => Array.from({ length }).map((_, index) => map(index));
+
 export { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn };
-export { itOptimizedClass };
+export { itOptimizedClass, array };

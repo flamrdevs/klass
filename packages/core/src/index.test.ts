@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import { variant, klass, revariant, reklass } from "./index";
 
-import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, itOptimizedClass } from "./tests";
+import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, itOptimizedClass, array } from "./tests";
 
 describe("variant", async () => {
   const PaddingVariant = variant({
@@ -63,6 +63,7 @@ describe("variant", async () => {
   const MixedVariant = variant({
     variant: {
       "": "mix-",
+      empty: "",
       false: "mix-false",
       true: "mix-true",
       0: "mix-0",
@@ -125,6 +126,7 @@ describe("variant", async () => {
     expect(MixedVariant()).toBeUndefined();
     expect(MixedVariant("unknown" as any)).toBeUndefined();
     expect(MixedVariant("")).toEqual("mix-");
+    expect(MixedVariant("empty")).toEqual("");
     expect(MixedVariant(false)).toEqual("mix-false");
     expect(MixedVariant(true)).toEqual("mix-true");
     expect(MixedVariant(0)).toEqual("mix-0");
@@ -150,6 +152,12 @@ describe("klass", async () => {
         "4": "p-4",
         "5": "p-5",
       },
+      empty: {
+        0: "",
+        1: "",
+        true: "",
+        false: "",
+      },
     },
   });
 
@@ -169,6 +177,12 @@ describe("klass", async () => {
         true: "w-full h-full",
         width: "w-full",
         height: "h-full",
+      },
+      empty: {
+        0: "",
+        1: "",
+        true: "",
+        false: "",
       },
     },
     defaultVariants: {
@@ -206,6 +220,21 @@ describe("klass", async () => {
         variant: "outline",
         class: "text-blue-600 border-blue-600",
       },
+      {
+        empty: true,
+        color: "red",
+        class: "",
+      },
+      {
+        empty: true,
+        color: "red",
+        class: "",
+      },
+      {
+        empty: true,
+        color: "red",
+        class: "",
+      },
     ],
   });
 
@@ -218,15 +247,17 @@ describe("klass", async () => {
 
   it("compound", async () => {
     expectKlassFn(BoxKlass, {
-      keys: ["m", "p"],
+      keys: ["m", "p", "empty"],
     });
     expectKlassFn(ButtonKlass, {
-      keys: ["color", "variant", "full"],
+      keys: ["color", "variant", "full", "empty"],
     });
   });
 
   it("basic", async () => {
     expect(BoxKlass()).toEqual("block");
+
+    expect(([0, 1, false, true] as const).map((empty) => BoxKlass({ empty }))).toEqual(array(4, () => "block"));
 
     expect(BoxKlass({ m: "1" })).toEqual("block m-1");
     expect(BoxKlass({ m: "2", p: "1" })).toEqual("block m-2 p-1");
@@ -234,6 +265,8 @@ describe("klass", async () => {
   });
 
   it("basic with default variants", async () => {
+    expect(([0, 1, false, true] as const).map((empty) => ButtonKlass({ empty }))).toEqual(array(4, () => "inline-block outline-none text-white bg-red-600"));
+
     expect(ButtonKlass()).toEqual("inline-block outline-none text-white bg-red-600");
 
     expect(ButtonKlass({ full: true })).toEqual("inline-block outline-none text-white w-full h-full bg-red-600");
@@ -307,6 +340,7 @@ describe("revariant", async () => {
     defaultCondition: "base",
     variant: {
       "": "mix-",
+      empty: "",
       false: "mix-false",
       true: "mix-true",
       0: "mix-0",
@@ -365,6 +399,7 @@ describe("revariant", async () => {
     expect(MixedRevariant()).toBeUndefined();
     expect(MixedRevariant("unknown" as any)).toBeUndefined();
     expect(MixedRevariant("")).toEqual("mix-");
+    expect(MixedRevariant("empty")).toEqual("");
     expect(MixedRevariant(false)).toEqual("mix-false");
     expect(MixedRevariant(true)).toEqual("mix-true");
     expect(MixedRevariant(0)).toEqual("mix-0");
@@ -403,6 +438,12 @@ describe("reklass", async () => {
         "4": "p-4",
         "5": "p-5",
       },
+      empty: {
+        0: "",
+        1: "",
+        true: "",
+        false: "",
+      },
     },
   });
 
@@ -429,12 +470,14 @@ describe("reklass", async () => {
 
   it("compound", async () => {
     expectReklassFn(BoxReklass, {
-      keys: ["m", "p"],
+      keys: ["m", "p", "empty"],
     });
   });
 
   it("basic", async () => {
     expect(BoxReklass()).toEqual("");
+
+    expect(([0, 1, false, true] as const).map((empty) => BoxReklass({ empty }))).toEqual(array(4, () => ""));
 
     expect(BoxReklass({ m: "1" })).toEqual("m-1");
     expect(BoxReklass({ m: "2", p: "1" })).toEqual("m-2 p-1");

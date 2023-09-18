@@ -35,7 +35,7 @@ type VariantGroup<T extends VariantsSchema> = {
   [K in keyof T]: VariantFn<T[K]>;
 };
 
-type CompoundVariant<T extends VariantsSchema> = Omit<{ [K in keyof T]?: TransformKey<keyof T[K]> }, RestrictedVariantsKey> & { class?: ClassValue };
+type CompoundVariant<T extends VariantsSchema> = Omit<{ [K in keyof T]?: TransformKey<keyof T[K]> }, RestrictedVariantsKey> & { class: ClassValue };
 
 type KlassOptions<T extends StrictVariantsSchema> = {
   base?: ClassValue;
@@ -180,6 +180,7 @@ const variant = <T extends VariantsSchema[string]>(options: VariantOptions<T>): 
 };
 
 const pickVariantCompoundVariantsMapFn = <T extends StrictVariantsSchema>({ class: _class, ...variant }: CompoundVariant<T>) => variant;
+const keyofVariantCompoundVariantsMapFn = <T extends StrictVariantsSchema>(variant: Omit<CompoundVariant<T>, "class">) => Object.keys(variant);
 const resolveClassCompoundVariantsMapFn = <T extends StrictVariantsSchema>({ class: _class }: CompoundVariant<T>) => clsx(_class);
 
 /**
@@ -223,6 +224,7 @@ const klass = <T extends StrictVariantsSchema>(options: KlassOptions<T>, config:
   const compoundVariants = options.compoundVariants ?? [];
   const hasCompoundVariants = compoundVariants.length > 0;
   const pickVariantCompoundVariants = compoundVariants.map(pickVariantCompoundVariantsMapFn);
+  const keyofVariantCompoundVariants = pickVariantCompoundVariants.map(keyofVariantCompoundVariantsMapFn);
   const resolvedClassCompoundVariants = compoundVariants.map(resolveClassCompoundVariantsMapFn);
 
   const fn: Omit<KlassFn<T>, "o" | "v" | "vk" | "options" | "variant" | "variantKeys"> = (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }, classes?: ClassValue) => {
@@ -241,16 +243,17 @@ const klass = <T extends StrictVariantsSchema>(options: KlassOptions<T>, config:
       for (i = 0; i < pickVariantCompoundVariants.length; i++) {
         let v = pickVariantCompoundVariants[i];
         if (
-          Object.keys(v).every((key) =>
+          keyofVariantCompoundVariants[i].every((key) =>
             typeof v[key as keyof typeof v] === "undefined"
               ? false
               : typeof props?.[key] !== "undefined"
               ? props?.[key] === v[key as keyof typeof v]
               : options.defaultVariants?.[key] === v[key as keyof typeof v]
-          )
+          ) &&
+          (temp = resolvedClassCompoundVariants[i])
         ) {
           result && (result += " ");
-          result += resolvedClassCompoundVariants[i];
+          result += temp;
         }
       }
     }
@@ -368,24 +371,25 @@ const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: R
 
 export type {
   ClassValue,
-  CompoundVariant,
-  ConditionSchema,
-  RestrictedVariantsKey,
-  VariantsSchema,
-  StrictVariantsSchema,
-  VariantsOf,
+  TransformKey,
   ItFn,
   AsCondition,
   AsConditionFn,
+  VariantsSchema,
+  RestrictedVariantsKey,
+  StrictVariantsSchema,
+  VariantsOf,
+  VariantOptions,
   VariantFn,
   VariantGroup,
-  VariantOptions,
-  KlassFn,
+  CompoundVariant,
   KlassOptions,
+  KlassFn,
+  ConditionSchema,
+  RevariantOptions,
   RevariantFn,
   RevariantGroup,
-  RevariantOptions,
-  ReklassFn,
   ReklassOptions,
+  ReklassFn,
 };
 export { variant, klass, revariant, reklass };
