@@ -29,9 +29,31 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.cjs"
       }
+    },
+    "./group": {
+      "import": {
+        "types": "./dist/group.d.ts",
+        "default": "./dist/group.js"
+      },
+      "require": {
+        "types": "./dist/group.d.ts",
+        "default": "./dist/group.cjs"
+      }
+    },
+    "./slots": {
+      "import": {
+        "types": "./dist/slots.d.ts",
+        "default": "./dist/slots.js"
+      },
+      "require": {
+        "types": "./dist/slots.d.ts",
+        "default": "./dist/slots.cjs"
+      }
     }
   },
   "files": [
+    "group.d.ts",
+    "slots.d.ts",
     "dist"
   ],
   "publishConfig": {
