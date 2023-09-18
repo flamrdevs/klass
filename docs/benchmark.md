@@ -80,6 +80,8 @@ Testing on `Monday, 18 September 2023`.
 
 <!-- responsive-variants -->
 
+## Slots
+
 <!-- slots -->
 
 | No  | Libs                 | Ops/Sec |
