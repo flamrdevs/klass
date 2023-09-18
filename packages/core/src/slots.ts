@@ -1,5 +1,5 @@
 import { klass } from ".";
-import type { ClassValue, TransformKey, RestrictedVariantsKey, KlassFn } from ".";
+import type { ClassValue, TransformKey, ItFn, RestrictedVariantsKey, KlassFn } from ".";
 
 type StrictSlotsVariantsSchema<B extends string, E extends string = RestrictedVariantsKey> = {
   [variant: string]: {
@@ -53,11 +53,14 @@ type SlotsFn<B extends string, T extends StrictSlotsVariantsSchema<B>> = {
 /**
  *
  * @param options slots options
+ * @param config additional config
  * @returns slots function
  *
  * @see {@link https://klass.pages.dev/klass/core.html#slots | slots}
  */
-const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options: SlotsOptions<B, T>): SlotsFn<B, T> => {
+const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options: SlotsOptions<B, T>, config: { it?: ItFn } = {}): SlotsFn<B, T> => {
+  const { it } = config;
+
   const keyofBase = Object.keys(options.base) as B[];
 
   const klasses = {} as {
@@ -65,15 +68,20 @@ const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options
   };
 
   for (const base of keyofBase) {
-    klasses[base] = klass<ToVariantsSchema<B, T>>({
-      base: options.base[base],
-      variants: Object.entries(options.variants).reduce(
-        (obj, [variant, types]) => ((obj[variant] = Object.entries(types).reduce((obj, [type, bases]) => ((obj[type] = bases[base]), obj), {} as { [type: string]: ClassValue })), obj),
-        {} as { [variant: string]: { [type: string]: ClassValue } }
-      ) as any,
-      defaultVariants: options.defaultVariants,
-      compoundVariants: options.compoundVariants?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] })).filter((compound) => typeof compound.class !== "undefined") as any,
-    });
+    klasses[base] = klass<ToVariantsSchema<B, T>>(
+      {
+        base: options.base[base],
+        variants: Object.entries(options.variants).reduce(
+          (obj, [variant, types]) => ((obj[variant] = Object.entries(types).reduce((obj, [type, bases]) => ((obj[type] = bases[base]), obj), {} as { [type: string]: ClassValue })), obj),
+          {} as { [variant: string]: { [type: string]: ClassValue } }
+        ) as any,
+        defaultVariants: options.defaultVariants,
+        compoundVariants: options.compoundVariants
+          ?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] }))
+          .filter((compound) => typeof compound.class !== "undefined") as any,
+      },
+      { it }
+    );
   }
 
   const fn: Omit<SlotsFn<B, T>, "o" | "klass"> = (props = {}) => {

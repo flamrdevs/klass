@@ -1,5 +1,5 @@
 import { klass } from ".";
-import type { ClassValue, TransformKey, RestrictedVariantsKey, KlassFn } from ".";
+import type { ClassValue, TransformKey, ItFn, RestrictedVariantsKey, KlassFn } from ".";
 
 type StrictGroupVariantsSchema<B extends string, E extends string = RestrictedVariantsKey> = {
   [variant: string]: {
@@ -38,11 +38,14 @@ type GroupResult<B extends string, T extends StrictGroupVariantsSchema<B>> = {
 /**
  *
  * @param options group options
+ * @param config additional config
  * @returns multiple klass
  *
  * @see {@link https://klass.pages.dev/klass/core.html#group | group}
  */
-const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>): GroupResult<B, T> => {
+const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>, config: { it?: ItFn } = {}): GroupResult<B, T> => {
+  const { it } = config;
+
   const keyofBase = Object.keys(options.base) as B[];
 
   const klasses = {} as {
@@ -50,15 +53,20 @@ const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options
   };
 
   for (const base of keyofBase) {
-    klasses[base] = klass<ToVariantsSchema<B, T>>({
-      base: options.base[base],
-      variants: Object.entries(options.variants).reduce(
-        (obj, [variant, types]) => ((obj[variant] = Object.entries(types).reduce((obj, [type, bases]) => ((obj[type] = bases[base]), obj), {} as { [type: string]: ClassValue })), obj),
-        {} as { [variant: string]: { [type: string]: ClassValue } }
-      ) as any,
-      defaultVariants: options.defaultVariants,
-      compoundVariants: options.compoundVariants?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] })).filter((compound) => typeof compound.class !== "undefined") as any,
-    });
+    klasses[base] = klass<ToVariantsSchema<B, T>>(
+      {
+        base: options.base[base],
+        variants: Object.entries(options.variants).reduce(
+          (obj, [variant, types]) => ((obj[variant] = Object.entries(types).reduce((obj, [type, bases]) => ((obj[type] = bases[base]), obj), {} as { [type: string]: ClassValue })), obj),
+          {} as { [variant: string]: { [type: string]: ClassValue } }
+        ) as any,
+        defaultVariants: options.defaultVariants,
+        compoundVariants: options.compoundVariants
+          ?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] }))
+          .filter((compound) => typeof compound.class !== "undefined") as any,
+      },
+      { it }
+    );
   }
 
   return klasses;
