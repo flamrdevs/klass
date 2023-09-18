@@ -1,5 +1,13 @@
 # @klass/react
 
+## 3.4.6
+
+### Patch Changes
+
+- 09ca373: Update badges
+- Updated dependencies [09ca373]
+  - @klass/core@3.4.6
+
 ## 3.4.5
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @klass/core
 
+## 3.4.6
+
+### Patch Changes
+
+- 09ca373: Update badges and add config to group and slots
+
 ## 3.4.5
 
 ### Minor Changes
