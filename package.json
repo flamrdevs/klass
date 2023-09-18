@@ -39,12 +39,12 @@
     "react-dom": "^18.2.0",
     "rimraf": "^5.0.1",
     "solid-js": "^1.7.8",
-    "turbo": "^1.10.13",
+    "turbo": "^1.10.14",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vite-plugin-dts": "^3.5.2",
+    "vite-plugin-dts": "^3.5.3",
     "vite-plugin-solid": "^2.7.0",
-    "vitepress": "1.0.0-rc.10",
-    "vitest": "^0.34.3"
+    "vitepress": "1.0.0-rc.14",
+    "vitest": "^0.34.4"
   }
 }
