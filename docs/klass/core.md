@@ -91,6 +91,184 @@ box.rv.m("sm");
 box.rv.p({ base: "xs", md: "xl" });
 ```
 
+### group
+
+```tsx
+import group from "@klass/core/group";
+
+const { root, header, body, footer } = group({
+  base: {
+    root: "relative overflow-hidden",
+    header: "flex justify-between",
+    body: "relative overflow-hidden",
+    footer: "flex justify-between",
+  },
+  variants: {
+    color: {
+      red: {
+        root: "bg-red-200",
+        body: "bg-red-100",
+      },
+      green: {
+        root: "bg-green-200",
+        body: "bg-green-100",
+      },
+      blue: {
+        root: "bg-blue-200",
+        body: "bg-blue-100",
+      },
+    },
+    size: {
+      sm: {
+        root: "px-2 py-0.5",
+        header: "px-0.5",
+        body: "px-1 py-0.5",
+        footer: "px-0.5",
+      },
+      md: {
+        root: "px-3 py-1",
+        header: "px-1",
+        body: "px-2 py-1",
+        footer: "px-1",
+      },
+      lg: {
+        root: "px-6 py-2",
+        header: "px-2",
+        body: "px-4 py-2",
+        footer: "px-2",
+      },
+    },
+    disabled: {
+      true: {
+        root: "opacity-80",
+      },
+    },
+  },
+  defaultVariants: {
+    color: "blue",
+    size: "md",
+  },
+  compoundVariants: [
+    {
+      color: "red",
+      disabled: true,
+      class: {
+        root: "bg-red-100",
+      },
+    },
+    {
+      color: "green",
+      disabled: true,
+      class: {
+        root: "bg-green-100",
+      },
+    },
+    {
+      color: "blue",
+      disabled: true,
+      class: {
+        root: "bg-blue-100",
+      },
+    },
+  ],
+});
+
+root({ disabled: true });
+header({ disabled: true });
+body({ disabled: true });
+footer({ disabled: true });
+```
+
+### slots
+
+```tsx
+import slots from "@klass/core/slots";
+
+const card = slots({
+  base: {
+    root: "relative overflow-hidden",
+    header: "flex justify-between",
+    body: "relative overflow-hidden",
+    footer: "flex justify-between",
+  },
+  variants: {
+    color: {
+      red: {
+        root: "bg-red-200",
+        body: "bg-red-100",
+      },
+      green: {
+        root: "bg-green-200",
+        body: "bg-green-100",
+      },
+      blue: {
+        root: "bg-blue-200",
+        body: "bg-blue-100",
+      },
+    },
+    size: {
+      sm: {
+        root: "px-2 py-0.5",
+        header: "px-0.5",
+        body: "px-1 py-0.5",
+        footer: "px-0.5",
+      },
+      md: {
+        root: "px-3 py-1",
+        header: "px-1",
+        body: "px-2 py-1",
+        footer: "px-1",
+      },
+      lg: {
+        root: "px-6 py-2",
+        header: "px-2",
+        body: "px-4 py-2",
+        footer: "px-2",
+      },
+    },
+    disabled: {
+      true: {
+        root: "opacity-80",
+      },
+    },
+  },
+  defaultVariants: {
+    color: "blue",
+    size: "md",
+  },
+  compoundVariants: [
+    {
+      color: "red",
+      disabled: true,
+      class: {
+        root: "bg-red-100",
+      },
+    },
+    {
+      color: "green",
+      disabled: true,
+      class: {
+        root: "bg-green-100",
+      },
+    },
+    {
+      color: "blue",
+      disabled: true,
+      class: {
+        root: "bg-blue-100",
+      },
+    },
+  ],
+});
+
+const { root, header, body, footer } = card({ color: "green" });
+
+root({ disabled: true });
+header({ disabled: true });
+body({ disabled: true });
+footer({ disabled: true });
+```
+
 ### variant
 
 ```tsx
