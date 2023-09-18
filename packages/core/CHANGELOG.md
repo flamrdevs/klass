@@ -1,5 +1,15 @@
 # @klass/core
 
+## 3.4.5
+
+### Minor Changes
+
+- 4efed0a: New core feature and typing and docs improvements
+  - fix: compound variants construction
+  - feat: group utility
+  - feat: slots utility
+  - docs: comments
+
 ## 3.3.5
 
 ### Patch Changes

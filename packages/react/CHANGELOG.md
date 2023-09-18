@@ -1,5 +1,18 @@
 # @klass/react
 
+## 3.4.5
+
+### Minor Changes
+
+- 4efed0a: New core feature and typing and docs improvements
+  - perf: split props
+  - docs: comments
+
+### Patch Changes
+
+- Updated dependencies [4efed0a]
+  - @klass/core@3.4.5
+
 ## 3.3.5
 
 ### Patch Changes
