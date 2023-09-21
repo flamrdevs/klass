@@ -1,5 +1,11 @@
 # @klass/core
 
+## 3.4.7
+
+### Patch Changes
+
+- 7bfc012: New looks
+
 ## 3.4.6
 
 ### Patch Changes

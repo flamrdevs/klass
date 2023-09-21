@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 3.4.7
+
+### Patch Changes
+
+- 7bfc012: New looks
+- Updated dependencies [7bfc012]
+  - @klass/core@3.4.7
+
 ## 3.4.6
 
 ### Patch Changes
