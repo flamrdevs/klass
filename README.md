@@ -53,82 +53,166 @@ Class variant utility
   <tbody>
     <tr>
       <td>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <span style="font-size: 1rem; font-weight: 500;">@klass/core</span>
-          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/core" />
-          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/core" />
-          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/core" />
-        </div>
+        <details>
+          <summary>@klass/core</summary>
+          <div style="display: flex; gap: 0.2rem;">
+            <picture title="license">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/core?t=dark">
+              <img alt="license" src="https://none.deno.dev/npm/l/@klass/core?t=light">
+            </picture>
+            <picture title="version">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/core?t=dark">
+              <img alt="version" src="https://none.deno.dev/npm/v/@klass/core?t=light">
+            </picture>
+            <picture title="size">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/core?t=dark">
+              <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/core?t=light">
+            </picture>
+            <picture title="npm monthly downloads">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/core?t=dark">
+              <img alt="size" src="https://none.deno.dev/npm/dm/@klass/core?t=light">
+            </picture>
+          </div>
+        </details>
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/core">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="npm" href="https://www.npmjs.com/package/@klass/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
+          <a title="npm" href="https://www.npmjs.com/package/@klass/core">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
+              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
+            </picture>
           </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <span style="font-size: 1rem; font-weight: 500;">@klass/preact</span>
-          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/preact" />
-          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/preact" />
-          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/preact" />
-        </div>
+        <details>
+          <summary>@klass/preact</summary>
+          <div style="display: flex; gap: 0.2rem;">
+            <picture title="license">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/preact?t=dark">
+              <img alt="license" src="https://none.deno.dev/npm/l/@klass/preact?t=light">
+            </picture>
+            <picture title="version">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/preact?t=dark">
+              <img alt="version" src="https://none.deno.dev/npm/v/@klass/preact?t=light">
+            </picture>
+            <picture title="size">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/preact?t=dark">
+              <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/preact?t=light">
+            </picture>
+            <picture title="npm monthly downloads">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/preact?t=dark">
+              <img alt="size" src="https://none.deno.dev/npm/dm/@klass/preact?t=light">
+            </picture>
+          </div>
+        </details>
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/preact">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="npm" href="https://www.npmjs.com/package/@klass/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
+          <a title="npm" href="https://www.npmjs.com/package/@klass/preact">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
+              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
+            </picture>
           </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <span style="font-size: 1rem; font-weight: 500;">@klass/react</span>
-          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/react" />
-          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/react" />
-          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/react" />
-        </div>
+        <details>
+          <summary>@klass/react</summary>
+          <div style="display: flex; gap: 0.2rem;">
+            <picture title="license">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/react?t=dark">
+              <img alt="license" src="https://none.deno.dev/npm/l/@klass/react?t=light">
+            </picture>
+            <picture title="version">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/react?t=dark">
+              <img alt="version" src="https://none.deno.dev/npm/v/@klass/react?t=light">
+            </picture>
+            <picture title="size">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/react?t=dark">
+              <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/react?t=light">
+            </picture>
+            <picture title="npm monthly downloads">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/react?t=dark">
+              <img alt="size" src="https://none.deno.dev/npm/dm/@klass/react?t=light">
+            </picture>
+          </div>
+        </details>
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/react">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="npm" href="https://www.npmjs.com/package/@klass/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
+          <a title="npm" href="https://www.npmjs.com/package/@klass/react">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
+              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
+            </picture>
           </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <span style="font-size: 1rem; font-weight: 500;">@klass/solid</span>
-          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/solid" />
-          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/solid" />
-          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/solid" />
-        </div>
+        <details>
+          <summary>@klass/solid</summary>
+          <div style="display: flex; gap: 0.2rem;">
+            <picture title="license">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/solid?t=dark">
+              <img alt="license" src="https://none.deno.dev/npm/l/@klass/solid?t=light">
+            </picture>
+            <picture title="version">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/solid?t=dark">
+              <img alt="version" src="https://none.deno.dev/npm/v/@klass/solid?t=light">
+            </picture>
+            <picture title="size">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/solid?t=dark">
+              <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/solid?t=light">
+            </picture>
+            <picture title="npm monthly downloads">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/solid?t=dark">
+              <img alt="size" src="https://none.deno.dev/npm/dm/@klass/solid?t=light">
+            </picture>
+          </div>
+        </details>
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/solid">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="npm" href="https://www.npmjs.com/package/@klass/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
+          <a title="npm" href="https://www.npmjs.com/package/@klass/solid">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
+              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
+            </picture>
           </a>
-        </p>
+        </div>
       </td>
     </tr>
   </tbody>
@@ -281,6 +365,15 @@ export const Example = () => {
 
 ### More Examples
 
+<p>
+  <a title="github" href="https://github.com/flamrdevs/klass-examples">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/button/simple?t=dark&i=github&e=Open%20in%20GitHub">
+      <img alt="github" src="https://none.deno.dev/ui/button/simple?t=light&i=github&e=Open%20in%20GitHub">
+    </picture>
+  </a>
+</p>
+
 <table>
   <thead>
     <tr>
@@ -291,218 +384,326 @@ export const Example = () => {
   <tbody>
     <tr>
       <td>
-        <span style="font-size: 1rem; font-weight: 500;">Astro + Tailwind</span>
+        Astro + Tailwind
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind?title=Klass%20Astro%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind?title=Klass%20Astro%20Tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
           </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
           </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span style="font-size: 1rem; font-weight: 500;">Astro + Tailwind Daisy UI</span>
-      </td>
-      <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind-daisyui" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
-          </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind-daisyui?title=Klass%20Astro%20Tailwind%20Daisy%20UI" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
-          </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind-daisyui" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
-          </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span style="font-size: 1rem; font-weight: 500;">Astro + Tailwind Ripple UI</span>
+        Astro + Tailwind Daisy UI
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind-rippleui" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind-daisyui">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind-rippleui?title=Klass%20Astro%20Tailwind%20Ripple%20UI" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind-daisyui?title=Klass%20Astro%20Tailwind%20Daisy%20UI">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
           </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind-rippleui" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind-daisyui">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
           </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span style="font-size: 1rem; font-weight: 500;">Preact + Tailwind</span>
-      </td>
-      <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/preact-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
-          </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/preact-tailwind?title=Klass%20Preact%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
-          </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/preact-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
-          </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span style="font-size: 1rem; font-weight: 500;">Qwik + Tailwind</span>
+        Astro + Tailwind Ripple UI
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/qwik-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-tailwind-rippleui">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/qwik-tailwind?title=Klass%20Qwik%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-tailwind-rippleui?title=Klass%20Astro%20Tailwind%20Ripple%20UI">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
           </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/qwik-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-tailwind-rippleui">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
           </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span style="font-size: 1rem; font-weight: 500;">React + Tailwind</span>
-      </td>
-      <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/react-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
-          </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/react-tailwind?title=Klass%20React%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
-          </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/react-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
-          </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span style="font-size: 1rem; font-weight: 500;">Solid + Tailwind</span>
+        Preact + Tailwind
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/solid-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/preact-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/solid-tailwind?title=Klass%20Solid%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/preact-tailwind?title=Klass%20Preact%20Tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
           </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/solid-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/preact-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
           </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span style="font-size: 1rem; font-weight: 500;">Svelte + Tailwind</span>
-      </td>
-      <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/svelte-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
-          </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/svelte-tailwind?title=Klass%20Svelte%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
-          </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/svelte-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
-          </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span style="font-size: 1rem; font-weight: 500;">Vue + Tailwind</span>
+        Qwik + Tailwind
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/vue-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/qwik-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/vue-tailwind?title=Klass%20Vue%20Tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/qwik-tailwind?title=Klass%20Qwik%20Tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
           </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/vue-tailwind" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/qwik-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
           </a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span style="font-size: 1rem; font-weight: 500;">Preact + Master</span>
-      </td>
-      <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/preact-master" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
-          </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/preact-master?title=Klass%20Preact%20Master" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
-          </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/preact-master" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
-          </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span style="font-size: 1rem; font-weight: 500;">React + Master</span>
+        React + Tailwind
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/react-master" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/react-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/react-master?title=Klass%20React%20Master" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/react-tailwind?title=Klass%20React%20Tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
           </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/react-master" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/react-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
           </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span style="font-size: 1rem; font-weight: 500;">Solid + Master</span>
+        Solid + Tailwind
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/solid-master" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/solid-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/solid-master?title=Klass%20Solid%20Master" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&i=stackblitz" />
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/solid-tailwind?title=Klass%20Solid%20Tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
           </a>
-          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/solid-master" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?i=codesandbox" />
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/solid-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
           </a>
-        </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Svelte + Tailwind
+      </td>
+      <td>
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/svelte-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/svelte-tailwind?title=Klass%20Svelte%20Tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/svelte-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Vue + Tailwind
+      </td>
+      <td>
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/vue-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/vue-tailwind?title=Klass%20Vue%20Tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/vue-tailwind">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Preact + Master
+      </td>
+      <td>
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/preact-master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/preact-master?title=Klass%20Preact%20Master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/preact-master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        React + Master
+      </td>
+      <td>
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/react-master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/react-master?title=Klass%20React%20Master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/react-master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Solid + Master
+      </td>
+      <td>
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/solid-master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/solid-master?title=Klass%20Solid%20Master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/solid-master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
+          </a>
+        </div>
       </td>
     </tr>
   </tbody>
@@ -519,18 +720,25 @@ Some of the core concepts and designs are inspired by
 
 ## Benchmark
 
-<p align="left">
+<p>
   <a title="github" href="https://github.com/flamrdevs/klass-benchmark">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/button/simple?t=dark&i=github&e=Open%20in%20GitHub">
-      <img alt="github" src="https://none.deno.dev/ui/button/simple?t=light&i=github&e=Open%20in%20GitHub" hspace="1">
+      <img alt="github" src="https://none.deno.dev/ui/button/simple?t=light&i=github&e=Open%20in%20GitHub">
     </picture>
   </a>
 </p>
 
 ## Authors
 
-- [flamrdevs](https://github.com/flamrdevs)
+<p>
+  <a title="github" href="https://github.com/flamrdevs">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.pages.dev/badge/dark.svg">
+      <img alt="github" src="https://flamrdevs.pages.dev/badge/light.svg">
+    </picture>
+  </a>
+</p>
 
 ## License
 

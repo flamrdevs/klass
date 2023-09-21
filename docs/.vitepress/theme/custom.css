@@ -10,28 +10,38 @@
 
 :root {
   --vp-c-bg: #f9f9f9;
-  --vp-c-bg-alt: #fcfcfc;
+  --vp-c-bg-alt: #f7f7f7;
   --vp-c-bg-elv: #f1f1f1;
-  --vp-c-bg-soft: #f4f4f4;
+  --vp-c-bg-soft: #f1f1f170;
 }
 
 .dark {
   --vp-c-bg: #1b1b1b;
   --vp-c-bg-alt: #1e1e1e;
   --vp-c-bg-elv: #282828;
-  --vp-c-bg-soft: #2b2b2b;
+  --vp-c-bg-soft: #28282870;
 }
 
 :root {
-  --vp-c-gray-1: #bbbbcb;
-  --vp-c-gray-2: #d4d4e4;
-  --vp-c-gray-3: #dddded;
-  --vp-c-gray-soft: #dddddd17;
+  --vp-c-gray-1: #bbbbbb;
+  --vp-c-gray-2: #d4d4d4;
+  --vp-c-gray-3: #dddddd;
+  --vp-c-gray-soft: #dddddd20;
+
+  --vp-c-indigo-1: #4747c2;
+  --vp-c-indigo-2: #5353ce;
+  --vp-c-indigo-3: #5b5bd6;
+  --vp-c-indigo-soft: #5b5bd620;
 }
 
 .dark {
-  --vp-c-gray-1: #606070;
-  --vp-c-gray-2: #4a4a5a;
-  --vp-c-gray-3: #3f3f4f;
-  --vp-c-gray-soft: #3f3f3f17;
+  --vp-c-gray-1: #606060;
+  --vp-c-gray-2: #4a4a4a;
+  --vp-c-gray-3: #3f3f3f;
+  --vp-c-gray-soft: #3f3f3f20;
+
+  --vp-c-indigo-1: #a19eff;
+  --vp-c-indigo-2: #6f6de2;
+  --vp-c-indigo-3: #5b5bd6;
+  --vp-c-indigo-soft: #5b5bd620;
 }

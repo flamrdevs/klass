@@ -119,6 +119,8 @@ export default {
         ],
       },
     ],
+    aside: true,
+    outline: "deep",
     footer: {
       message: "Released under the MIT License.",
       copyright: "Copyright © 2022-present",

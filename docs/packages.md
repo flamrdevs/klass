@@ -1,11 +1,5 @@
 # Packages
 
-<p>
-  <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="github" src="https://none.deno.dev/ui/button/simple?i=github&e=Open in GitHub" hspace="1">
-  </a>
-</p>
-
 <table>
   <thead>
     <tr>
@@ -16,82 +10,174 @@
   <tbody>
     <tr>
       <td>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <a href="/klass/core" style="font-size: 1rem; font-weight: 500;">@klass/core</a>
-          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/core" />
-          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/core" />
-          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/core" />
-        </div>
+        <details>
+          <summary>
+            <a href="/klass/core">@klass/core</a>
+          </summary>
+          <div style="display: flex; gap: 0.2rem;">
+            <picture title="license">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/core?t=dark">
+              <img alt="license" src="https://none.deno.dev/npm/l/@klass/core?t=light">
+            </picture>
+            <picture title="version">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/core?t=dark">
+              <img alt="version" src="https://none.deno.dev/npm/v/@klass/core?t=light">
+            </picture>
+            <picture title="size">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/core?t=dark">
+              <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/core?t=light">
+            </picture>
+            <picture title="npm monthly downloads">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/core?t=dark">
+              <img alt="size" src="https://none.deno.dev/npm/dm/@klass/core?t=light">
+            </picture>
+          </div>
+        </details>
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/core">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="npm" href="https://www.npmjs.com/package/@klass/core" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
+          <a title="npm" href="https://www.npmjs.com/package/@klass/core">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
+              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
+            </picture>
           </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <a href="/klass/preact" style="font-size: 1rem; font-weight: 500;">@klass/preact</a>
-          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/preact" />
-          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/preact" />
-          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/preact" />
-        </div>
+        <details>
+          <summary>
+            <a href="/klass/preact">@klass/preact</a>
+          </summary>
+          <div style="display: flex; gap: 0.2rem;">
+            <picture title="license">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/preact?t=dark">
+              <img alt="license" src="https://none.deno.dev/npm/l/@klass/preact?t=light">
+            </picture>
+            <picture title="version">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/preact?t=dark">
+              <img alt="version" src="https://none.deno.dev/npm/v/@klass/preact?t=light">
+            </picture>
+            <picture title="size">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/preact?t=dark">
+              <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/preact?t=light">
+            </picture>
+            <picture title="npm monthly downloads">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/preact?t=dark">
+              <img alt="size" src="https://none.deno.dev/npm/dm/@klass/preact?t=light">
+            </picture>
+          </div>
+        </details>
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/preact">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="npm" href="https://www.npmjs.com/package/@klass/preact" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
+          <a title="npm" href="https://www.npmjs.com/package/@klass/preact">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
+              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
+            </picture>
           </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <a href="/klass/react" style="font-size: 1rem; font-weight: 500;">@klass/react</a>
-          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/react" />
-          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/react" />
-          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/react" />
-        </div>
+        <details>
+          <summary>
+            <a href="/klass/react">@klass/react</a>
+          </summary>
+          <div style="display: flex; gap: 0.2rem;">
+            <picture title="license">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/react?t=dark">
+              <img alt="license" src="https://none.deno.dev/npm/l/@klass/react?t=light">
+            </picture>
+            <picture title="version">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/react?t=dark">
+              <img alt="version" src="https://none.deno.dev/npm/v/@klass/react?t=light">
+            </picture>
+            <picture title="size">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/react?t=dark">
+              <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/react?t=light">
+            </picture>
+            <picture title="npm monthly downloads">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/react?t=dark">
+              <img alt="size" src="https://none.deno.dev/npm/dm/@klass/react?t=light">
+            </picture>
+          </div>
+        </details>
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/react">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="npm" href="https://www.npmjs.com/package/@klass/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
+          <a title="npm" href="https://www.npmjs.com/package/@klass/react">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
+              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
+            </picture>
           </a>
-        </p>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <a href="/klass/solid" style="font-size: 1rem; font-weight: 500;">@klass/solid</a>
-          <img alt="npm" src="https://none.deno.dev/npm/l/@klass/solid" />
-          <img alt="npm" src="https://none.deno.dev/npm/v/@klass/solid" />
-          <img alt="npm" src="https://none.deno.dev/npm/dm/@klass/solid" />
-        </div>
+        <details>
+          <summary>
+            <a href="/klass/solid">@klass/solid</a>
+          </summary>
+          <div style="display: flex; gap: 0.2rem;">
+            <picture title="license">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/solid?t=dark">
+              <img alt="license" src="https://none.deno.dev/npm/l/@klass/solid?t=light">
+            </picture>
+            <picture title="version">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/solid?t=dark">
+              <img alt="version" src="https://none.deno.dev/npm/v/@klass/solid?t=light">
+            </picture>
+            <picture title="size">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/solid?t=dark">
+              <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/solid?t=light">
+            </picture>
+            <picture title="npm monthly downloads">
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/solid?t=dark">
+              <img alt="size" src="https://none.deno.dev/npm/dm/@klass/solid?t=light">
+            </picture>
+          </div>
+        </details>
       </td>
       <td>
-        <p align="center">
-          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?i=github" />
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/solid">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
           </a>
-          <a title="npm" href="https://www.npmjs.com/package/@klass/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
-            <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&i=npm" />
+          <a title="npm" href="https://www.npmjs.com/package/@klass/solid">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
+              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
+            </picture>
           </a>
-        </p>
+        </div>
       </td>
     </tr>
   </tbody>

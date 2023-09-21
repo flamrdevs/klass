@@ -1,16 +1,28 @@
 # klass react
 
-<p>
-  <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="license" src="https://none.deno.dev/npm/l/@klass/react" hspace="1">
+<p style="display: flex; gap: 0.2rem;"> 
+  <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/react?t=dark">
+      <img alt="license" src="https://none.deno.dev/npm/l/@klass/react?t=light">
+    </picture>
   </a>
-  <a title="version" href="https://www.npmjs.com/package/@klass/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="version" src="https://none.deno.dev/npm/v/@klass/react" hspace="1">
+  <a title="version" href="https://www.npmjs.com/package/@klass/react">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/react?t=dark">
+      <img alt="version" src="https://none.deno.dev/npm/v/@klass/react?t=light">
+    </picture>
   </a>
-  <a title="size" href="https://bundlejs.com/?q=@klass/react" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/react" hspace="1">
+  <a title="size" href="https://bundlejs.com/?q=@klass/react">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/react?t=dark">
+      <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/react?t=light">
+    </picture>
   </a>
-  <img alt="size" src="https://none.deno.dev/npm/dm/@klass/react" style="display: inline-block; margin: 0px 4px;" hspace="1">
+  <picture title="npm monthly downloads">
+    <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/react?t=dark">
+    <img alt="size" src="https://none.deno.dev/npm/dm/@klass/react?t=light">
+  </picture>
 </p>
 
 Class variant utility for react.
@@ -23,6 +35,8 @@ npm install @klass/core @klass/react
 yarn add @klass/core @klass/react
 # or
 pnpm add @klass/core @klass/react
+# or
+bun add @klass/core @klass/react
 ```
 
 ## Usage

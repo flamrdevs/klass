@@ -14,12 +14,15 @@ hero:
 
 features:
   - icon: ⚡️
-    title: Fast development
-    details: Build component faster
+    title: Feature-rich
+    details: Offering responsive variants, grouping, slots, built-in framework integration, and much more.
   - icon: 💎
-    title: Responsive
-    details: Create beautiful UI easily
+    title: First-class TypesSript
+    details: A fully-typed API provides the best developer experience.
+  - icon: 🎉
+    title: Built-in integration
+    details: Integration libraries that support Preact, React, and Solid.
   - icon: 🚀
-    title: Framework integration
-    details: Integrate with React, Preact and Solid
+    title: Framework-agnostic
+    details: It's just a utility library that seamlessly works with any framework.
 ---

@@ -1,16 +1,28 @@
 # klass solid
 
-<p>
-  <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="license" src="https://none.deno.dev/npm/l/@klass/solid" hspace="1">
+<p style="display: flex; gap: 0.2rem;"> 
+  <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/solid?t=dark">
+      <img alt="license" src="https://none.deno.dev/npm/l/@klass/solid?t=light">
+    </picture>
   </a>
-  <a title="version" href="https://www.npmjs.com/package/@klass/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="version" src="https://none.deno.dev/npm/v/@klass/solid" hspace="1">
+  <a title="version" href="https://www.npmjs.com/package/@klass/solid">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/solid?t=dark">
+      <img alt="version" src="https://none.deno.dev/npm/v/@klass/solid?t=light">
+    </picture>
   </a>
-  <a title="size" href="https://bundlejs.com/?q=@klass/solid" target="_blank" style="display: inline-block; margin: 0px 4px;">
-    <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/solid" hspace="1">
+  <a title="size" href="https://bundlejs.com/?q=@klass/solid">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/solid?t=dark">
+      <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/solid?t=light">
+    </picture>
   </a>
-  <img alt="size" src="https://none.deno.dev/npm/dm/@klass/solid" style="display: inline-block; margin: 0px 4px;" hspace="1">
+  <picture title="npm monthly downloads">
+    <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/solid?t=dark">
+    <img alt="size" src="https://none.deno.dev/npm/dm/@klass/solid?t=light">
+  </picture>
 </p>
 
 Class variant utility for solid.
@@ -23,6 +35,8 @@ npm install @klass/core @klass/solid
 yarn add @klass/core @klass/solid
 # or
 pnpm add @klass/core @klass/solid
+# or
+bun add @klass/core @klass/solid
 ```
 
 ## Usage

@@ -1,6 +1,6 @@
 <img src="https://klass.pages.dev/cover.png" width="100%" />
 
-<p align="center">
+<p>
   <h1 align="center">klass</h1>
 </p>
 
@@ -43,6 +43,8 @@ npm install @klass/core @klass/solid
 yarn add @klass/core @klass/solid
 # or
 pnpm add @klass/core @klass/solid
+# or
+bun add @klass/core @klass/solid
 ```
 
 ## Usage
@@ -123,12 +125,26 @@ export const Example = () => {
 
 ## Documentation
 
-See [docs](https://klass.pages.dev/klass/solid.html)
+<p>
+  <a title="docs" href="https://klass.pages.dev/klass/solid.html">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/button/lucide?t=dark&i=external-link&e=Docs">
+      <img alt="docs" src="https://none.deno.dev/ui/button/lucide?t=light&i=external-link&e=Docs" hspace="1">
+    </picture>
+  </a>
+</p>
 
 ## Authors
 
-- [flamrdevs](https://github.com/flamrdevs)
+<p>
+  <a title="github" href="https://github.com/flamrdevs">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://flamrdevs.pages.dev/badge/dark.svg">
+      <img alt="github" src="https://flamrdevs.pages.dev/badge/light.svg" hspace="1">
+    </picture>
+  </a>
+</p>
 
 ## License
 
-MIT License
+[MIT License](https://github.com/flamrdevs/klass/blob/main/LICENSE)
