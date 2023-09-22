@@ -280,6 +280,64 @@
     </tr>
     <tr>
       <td>
+        <a href="/examples/astro-uno">
+          Astro + Uno
+        </a>
+      </td>
+      <td>
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-uno">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-uno?title=Klass%20Astro%20Uno">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-uno">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/examples/astro-master">
+          Astro + Master
+        </a>
+      </td>
+      <td>
+        <div style="display: flex; gap: 0.2rem;">
+          <a title="github" href="https://github.com/flamrdevs/klass-examples/tree/main/astro-master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
+              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
+            </picture>
+          </a>
+          <a title="stackblitz" href="https://stackblitz.com/fork/github/flamrdevs/klass-examples/tree/main/astro-master?title=Klass%20Astro%20Master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=blue&t=dark&i=stackblitz">
+              <img alt="stackblitz" src="https://none.deno.dev/ui/icon-button/simple?c=blue&t=light&i=stackblitz">
+            </picture>
+          </a>
+          <a title="codesandbox" href="https://codesandbox.io/p/sandbox/github/flamrdevs/klass-examples/tree/main/astro-master">
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=slate&t=dark&i=codesandbox">
+              <img alt="codesandbox" src="https://none.deno.dev/ui/icon-button/simple?c=slate&t=light&i=codesandbox">
+            </picture>
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <a href="/examples/preact-master">
           Preact + Master
         </a>

@@ -15,7 +15,7 @@ OS `x64 | win32 | 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz | 15.71GB`
 
 Node.js `v20.5.1`
 
-Testing on `Thursday, September 21, 2023`
+Testing on `Saturday, September 23, 2023`
 
 <!-- /information/ -->
 
@@ -25,23 +25,23 @@ Testing on `Thursday, September 21, 2023`
 
 | No  | Libs                                 | Ops/Sec |
 | --- | ------------------------------------ | ------: |
-| 1   | @klass/core                          | 2361848 |
-| 2   | onno                                 | 1507000 |
-| 3   | classname-variants                   | 1250773 |
-| 4   | @tw-classed/core                     |  778452 |
-| 5   | @klass/core + tailwind-merge         |  568475 |
-| 6   | @intrnl/cv                           |  553991 |
-| 7   | tailwind-variants(-tailwind-merge)   |  375026 |
-| 8   | @vanilla-extract/recipes (impostor!) |  372953 |
-| 9   | tailwind-variants(+tailwind-merge)   |  340855 |
-| 10  | cvu                                  |  272800 |
-| 11  | classname-manager                    |  271240 |
-| 12  | cva                                  |  256860 |
+| 1   | @klass/core                          | 2237764 |
+| 2   | onno                                 | 1450524 |
+| 3   | classname-variants                   | 1096217 |
+| 4   | @tw-classed/core                     |  889882 |
+| 5   | @klass/core + tailwind-merge         |  541159 |
+| 6   | @intrnl/cv                           |  506236 |
+| 7   | tailwind-variants(-tailwind-merge)   |  369089 |
+| 8   | @vanilla-extract/recipes (impostor!) |  321932 |
+| 9   | tailwind-variants(+tailwind-merge)   |  300440 |
+| 10  | cvu                                  |  270882 |
+| 11  | classname-manager                    |  258012 |
+| 12  | cva                                  |  232658 |
 | 13  | class-variant                        |  223143 |
-| 14  | cvu + tailwind-merge                 |  193000 |
-| 15  | cva + tailwind-merge                 |  187522 |
-| 16  | stitches (impostor!)                 |   87737 |
-| 17  | pandacss (impostor!)                 |   75354 |
+| 14  | cvu + tailwind-merge                 |  191297 |
+| 15  | cva + tailwind-merge                 |  174812 |
+| 16  | stitches (impostor!)                 |   80487 |
+| 17  | pandacss (impostor!)                 |   69410 |
 
 <!-- variants -->
 
@@ -51,21 +51,21 @@ Testing on `Thursday, September 21, 2023`
 
 | No  | Libs                                 | Ops/Sec |
 | --- | ------------------------------------ | ------: |
-| 1   | @klass/core                          |  716004 |
-| 2   | onno                                 |  583666 |
-| 3   | classname-variants                   |  540465 |
-| 4   | @intrnl/cv                           |  428484 |
-| 5   | @klass/core + tailwind-merge         |  344556 |
-| 6   | @vanilla-extract/recipes (impostor!) |  260876 |
-| 7   | @tw-classed/core                     |  134310 |
-| 8   | cva                                  |   98398 |
-| 9   | cva + tailwind-merge                 |   85470 |
-| 10  | stitches (impostor!)                 |   66453 |
-| 11  | cvu                                  |   49018 |
-| 12  | tailwind-variants(-tailwind-merge)   |   48449 |
-| 13  | tailwind-variants(+tailwind-merge)   |   46974 |
-| 14  | cvu + tailwind-merge                 |   45246 |
-| 15  | pandacss (impostor!)                 |   38303 |
+| 1   | @klass/core                          |  882296 |
+| 2   | onno                                 |  578497 |
+| 3   | classname-variants                   |  476375 |
+| 4   | @intrnl/cv                           |  456167 |
+| 5   | @klass/core + tailwind-merge         |  400391 |
+| 6   | @vanilla-extract/recipes (impostor!) |  262037 |
+| 7   | @tw-classed/core                     |  130195 |
+| 8   | cva                                  |   89005 |
+| 9   | cva + tailwind-merge                 |   74484 |
+| 10  | stitches (impostor!)                 |   70983 |
+| 11  | tailwind-variants(+tailwind-merge)   |   50228 |
+| 12  | cvu                                  |   48284 |
+| 13  | tailwind-variants(-tailwind-merge)   |   46945 |
+| 14  | cvu + tailwind-merge                 |   42893 |
+| 15  | pandacss (impostor!)                 |   39656 |
 
 <!-- variants-compound -->
 
@@ -75,12 +75,12 @@ Testing on `Thursday, September 21, 2023`
 
 | No  | Libs                                   | Ops/Sec |
 | --- | -------------------------------------- | ------: |
-| 1   | @klass/core                            |  626671 |
-| 2   | @klass/core + tailwind-merge           |  452566 |
-| 3   | tailwind-variants(+tailwind-merge)     |  115027 |
-| 4   | tailwind-variants(-tailwind-merge)     |  114245 |
-| 5   | @vanilla-extract/sprinkles (impostor!) |   85922 |
-| 6   | pandacss (impostor!)                   |   49028 |
+| 1   | @klass/core                            |  695045 |
+| 2   | @klass/core + tailwind-merge           |  453429 |
+| 3   | tailwind-variants(-tailwind-merge)     |  113100 |
+| 4   | tailwind-variants(+tailwind-merge)     |  109636 |
+| 5   | @vanilla-extract/sprinkles (impostor!) |   86290 |
+| 6   | pandacss (impostor!)                   |   44075 |
 
 <!-- responsive-variants -->
 
@@ -90,10 +90,10 @@ Testing on `Thursday, September 21, 2023`
 
 | No  | Libs                               | Ops/Sec |
 | --- | ---------------------------------- | ------: |
-| 1   | @klass/core/slots                  |  772581 |
-| 2   | @klass/core/slots + tailwind-merge |  460656 |
-| 3   | tailwind-variants(+tailwind-merge) |   26341 |
-| 4   | tailwind-variants(-tailwind-merge) |   24637 |
-| 5   | pandacss (impostor!)               |   22872 |
+| 1   | @klass/core/slots                  |  675015 |
+| 2   | @klass/core/slots + tailwind-merge |  505661 |
+| 3   | tailwind-variants(-tailwind-merge) |   25238 |
+| 4   | tailwind-variants(+tailwind-merge) |   22726 |
+| 5   | pandacss (impostor!)               |   22451 |
 
 <!-- slots -->

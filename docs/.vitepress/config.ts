@@ -106,6 +106,14 @@ export default {
             link: "/examples/vue-tailwind",
           },
           {
+            text: "Astro + Uno",
+            link: "/examples/astro-uno",
+          },
+          {
+            text: "Astro + Master",
+            link: "/examples/astro-master",
+          },
+          {
             text: "Preact + Master",
             link: "/examples/preact-master",
           },
