@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 3.4.8
+
+### Patch Changes
+
+- b9527ae: Docs improvements
+- Updated dependencies [b9527ae]
+  - @klass/core@3.4.8
+
 ## 3.4.7
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @klass/core
 
+## 3.4.8
+
+### Patch Changes
+
+- b9527ae: Docs improvements
+
 ## 3.4.7
 
 ### Patch Changes
