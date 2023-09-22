@@ -37,7 +37,7 @@ Class variant utility for React.
 
 ## Installation
 
-```bash
+```sh
 npm install @klass/core @klass/react
 # or
 yarn add @klass/core @klass/react
@@ -55,19 +55,27 @@ import { klassed, reklassed } from "@klass/react";
 const Button = klassed(
   "button",
   {
-    base: "inline-flex px-4 py-1 rounded-md outline-none text-white",
+    base: "inline-flex items-center justify-center rounded-md outline-none",
     variants: {
       color: {
-        red: "bg-red-700",
-        green: "bg-green-700",
-        blue: "bg-blue-700",
+        default: "bg-neutral-700 text-white",
+        primary: "bg-indigo-700 text-white",
+        secondary: "bg-orange-700 text-white",
       },
-      fullWidth: {
+      size: {
+        sm: "px-3 py-0.5 h-7 text-sm font-medium",
+        md: "px-4 py-1 h-8 text-base font-medium",
+        lg: "px-5 py-1.5 h-9 text-lg font-semibold",
+      },
+      block: {
         true: "w-full",
       },
+      // "class" variant are not allowed
+      // "className" variant are not allowed
     },
     defaultVariants: {
-      color: "blue",
+      color: "default",
+      size: "md",
     },
   },
   {
@@ -84,43 +92,55 @@ const Box = reklassed("div", {
     sm: "sm:",
     md: "md:",
     lg: "lg:",
+    xl: "xl:",
+    "2xl": "2xl:",
   },
   defaultCondition: "base",
   variants: {
     m: {
-      xs: "m-1",
-      sm: "m-2",
-      md: "m-3",
-      lg: "m-4",
-      xl: "m-5",
+      "0": "m-0",
+      "1": "m-1",
+      "2": "m-2",
+      "3": "m-3",
+      "4": "m-4",
+      "5": "m-5",
+      "6": "m-6",
+      "7": "m-7",
+      "8": "m-8",
     },
     p: {
-      xs: "p-1",
-      sm: "p-2",
-      md: "p-3",
-      lg: "p-4",
-      xl: "p-5",
+      "0": "p-0",
+      "1": "p-1",
+      "2": "p-2",
+      "3": "p-3",
+      "4": "p-4",
+      "5": "p-5",
+      "6": "p-6",
+      "7": "p-7",
+      "8": "p-8",
     },
   },
 });
 
-export const Example = () => {
+const App = () => {
   return (
-    <Box m={{ base: "xs", md: "xl" }} p="md">
+    <Box m={{ base: "1", md: "2" }} p="2">
       <Box as="section">
-        <Button color="red" fullWidth>
-          Red Full Width Button
+        <Button color="primary" block>
+          Primary Block Button
         </Button>
       </Box>
 
       <Box as="section">
-        <Button as="a" color="green">
-          Green Anchor Button
+        <Button as="a" color="secondary">
+          Secondary Anchor Button
         </Button>
       </Box>
     </Box>
   );
 };
+
+export default App;
 ```
 
 ## Documentation

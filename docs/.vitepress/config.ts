@@ -1,6 +1,7 @@
 import type { UserConfig } from "vitepress";
 
 export default {
+  lang: "en-US",
   title: "klass",
   description: "Class variant utility",
   head: [
