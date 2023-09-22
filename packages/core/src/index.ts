@@ -241,15 +241,10 @@ const klass = <T extends StrictVariantsSchema>(options: KlassOptions<T>, config:
 
     if (hasCompoundVariants) {
       for (i = 0; i < pickVariantCompoundVariants.length; i++) {
-        let v = pickVariantCompoundVariants[i];
+        let v = pickVariantCompoundVariants[i],
+          val: (typeof v)[keyof typeof v];
         if (
-          keyofVariantCompoundVariants[i].every((key) =>
-            typeof v[key as keyof typeof v] === "undefined"
-              ? false
-              : typeof props?.[key] !== "undefined"
-              ? props?.[key] === v[key as keyof typeof v]
-              : options.defaultVariants?.[key] === v[key as keyof typeof v]
-          ) &&
+          keyofVariantCompoundVariants[i].every((key) => typeof (val = v[key as keyof typeof v]) !== "undefined" && (props?.[key] ?? options.defaultVariants?.[key]) === val) &&
           (temp = resolvedClassCompoundVariants[i])
         ) {
           result && (result += " ");
