@@ -81,7 +81,7 @@ importers:
   packages/preact:
     devDependencies:
       '@klass/core':
-        specifier: 3.4.9
+        specifier: 3.4.10
         version: link:../core
       preact:
         specifier: ^10.19.3
@@ -90,7 +90,7 @@ importers:
   packages/react:
     devDependencies:
       '@klass/core':
-        specifier: 3.4.9
+        specifier: 3.4.10
         version: link:../core
       '@types/react':
         specifier: ^18.2.43
@@ -105,7 +105,7 @@ importers:
   packages/solid:
     devDependencies:
       '@klass/core':
-        specifier: 3.4.9
+        specifier: 3.4.10
         version: link:../core
       solid-js:
         specifier: ^1.8.7
