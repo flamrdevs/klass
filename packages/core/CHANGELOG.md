@@ -1,5 +1,11 @@
 # @klass/core
 
+## 3.4.10
+
+### Patch Changes
+
+- a51d6b2: Update dependencies
+
 ## 3.4.9
 
 ### Patch Changes

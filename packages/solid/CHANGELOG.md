@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 3.4.10
+
+### Patch Changes
+
+- a51d6b2: Update dependencies
+- Updated dependencies [a51d6b2]
+  - @klass/core@3.4.10
+
 ## 3.4.9
 
 ### Patch Changes
