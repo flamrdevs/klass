@@ -7,11 +7,13 @@ import type { ValidComponent } from "solid-js";
 import { klass, reklass } from "@klass/core";
 import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
 
-import type { PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, SolidClassesPropsKey, SolidVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
 
 const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "classList",
-  getVariantKeys = <VS extends SolidVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, SolidClassesPropsKey>)[],
-  LocalKeysSplitter = ["as", "class", "classList"] as const;
+  getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],
+  PolymorphicKeysSplitter = ["as"] as const,
+  ClassesKeysSplitter = ["class", "classList"] as const,
+  classesProps = <P extends Partial<Record<FinalRestrictedVariantsKey, any>>>(props: P) => [props.class, props.classList];
 
 /**
  *
@@ -22,7 +24,7 @@ const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "class
  *
  * @see {@link https://klass.pages.dev/klass/solid.html#usage | klassed}
  */
-function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
+function klassed<VC extends ValidComponent, VS extends FinalVariantsSchema>(
   element: VC,
   options: KlassOptions<VS>,
   config: {
@@ -34,25 +36,22 @@ function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
      * it function
      */
     it?: ItFn;
-    /**
-     * @deprecated rename to "dp"
-     */
-    defaultProps?: undefined;
   } = {}
 ): KlassedComponent<VC, VS> {
-  const { dp: { class: _class, classList, ...dp } = {} as ClassesNormalProps, it } = config,
+  const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesNormalProps, it } = config,
     klassFn = klass<VS>(options, { it }),
-    keys = getVariantKeys<VS>(options.variants);
+    keys = getVariantKeys<VS>(options.variants),
+    defaultPolymorphicProps = { as: element },
+    defaultClassesProps = { class: defaultClass, classList: defaultClassList };
 
   const Component = <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
-    const [local, picked, omited] = splitProps(props, LocalKeysSplitter, keys as any);
+    const [polymorphic, classes, picked, omited] = splitProps(props, PolymorphicKeysSplitter, ClassesKeysSplitter, keys as any);
 
     return (
       <Dynamic
-        component={local.as || element}
-        {...(mergeProps(dp, omited, () => ({
-          class: klassFn(picked as any, [local.class ?? _class, local.classList ?? classList]),
-        })) as any)}
+        component={mergeProps(defaultPolymorphicProps, polymorphic).as}
+        {...(mergeProps(defaultProps, omited) as any)}
+        class={klassFn(picked as any, classesProps(mergeProps(defaultClassesProps, classes)))}
       />
     );
   };
@@ -71,7 +70,7 @@ function klassed<VC extends ValidComponent, VS extends SolidVariantsSchema>(
  *
  * @see {@link https://klass.pages.dev/klass/solid.html#usage | reklassed}
  */
-function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends SolidVariantsSchema>(
+function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: VC,
   options: ReklassOptions<CS, VS>,
   config: {
@@ -87,25 +86,22 @@ function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS ext
      * it function
      */
     it?: ItFn;
-    /**
-     * @deprecated rename to "dp"
-     */
-    defaultProps?: undefined;
   } = {}
 ): ReklassedComponent<VC, CS, VS> {
-  const { dp: { class: _class, classList, ...dp } = {} as ClassesNormalProps, as, it } = config,
+  const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesNormalProps, as, it } = config,
     reklassFn = reklass<CS, VS>(options, { as, it }),
-    keys = getVariantKeys<VS>(options.variants);
+    keys = getVariantKeys<VS>(options.variants),
+    defaultPolymorphicProps = { as: element },
+    defaultClassesProps = { class: defaultClass, classList: defaultClassList };
 
   const Component = <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
-    const [local, picked, omited] = splitProps(props, LocalKeysSplitter, keys as any);
+    const [polymorphic, classes, picked, omited] = splitProps(props, PolymorphicKeysSplitter, ClassesKeysSplitter, keys as any);
 
     return (
       <Dynamic
-        component={local.as || element}
-        {...(mergeProps(dp, omited, () => ({
-          class: reklassFn(picked as any, [local.class ?? _class, local.classList ?? classList]),
-        })) as any)}
+        component={mergeProps(defaultPolymorphicProps, polymorphic).as}
+        {...(mergeProps(defaultProps, omited) as any)}
+        class={reklassFn(picked as any, classesProps(mergeProps(defaultClassesProps, classes)))}
       />
     );
   };

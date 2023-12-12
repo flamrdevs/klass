@@ -8,49 +8,45 @@ type ElementType<P = any> =
     }[keyof JSX.IntrinsicElements]
   | ComponentType<P>;
 
-type PropsWithChildren<P = unknown> = P & {
+type PolymorphicComponentProp<ET extends ElementType, Props = {}> = (Props & { as?: ET } & {
   children?: ComponentChildren;
-};
+}) &
+  Omit<
+    Omit<ComponentProps<ET>, "ref"> & { ref?: (ET extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[ET] : ComponentProps<ET>) extends { ref?: infer Ref } ? Ref : unknown },
+    "as" | keyof Props
+  >;
 
-type AsProp<ET extends ElementType> = { as?: ET };
+type FinalRestrictedVariantsKey = RestrictedVariantsKey | "className";
+type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;
 
-type PropsToOmit<ET extends ElementType, P> = keyof (AsProp<ET> & P);
-
-type RefValue<T extends any> = T extends { ref?: any } ? T["ref"] : unknown;
-
-type ComponentPropsRef<ET extends ElementType> = ET extends keyof JSX.IntrinsicElements ? RefValue<JSX.IntrinsicElements[ET]> : RefValue<ComponentProps<ET>>;
-
-type PolymorphicComponentProp<ET extends ElementType, Props = {}> = PropsWithChildren<Props & AsProp<ET>> &
-  Omit<Omit<ComponentProps<ET>, "ref"> & { ref?: ComponentPropsRef<ET> }, PropsToOmit<ET, Props>>;
-
-type ClassesNormalProps = { class?: string; className?: string };
-type ClassesValueProps = { class?: ClassValue; className?: ClassValue };
+type ClassesNormalProps = Partial<Record<FinalRestrictedVariantsKey, string>>;
+type ClassesValueProps = Partial<Record<FinalRestrictedVariantsKey, ClassValue>>;
 type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & ClassesValueProps;
 
-type PreactClassesPropsKey = RestrictedVariantsKey | "className";
+type BaseComponent = {
+  displayName?: string;
+};
 
-type PreactVariantsSchema = StrictVariantsSchema<PreactClassesPropsKey>;
-
-type KlassedComponent<ET extends ElementType, VS extends PreactVariantsSchema> = {
+type KlassedComponent<ET extends ElementType, VS extends FinalVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element | null;
-} & {
-  /**
-   * klass function
-   */
-  klass: KlassFn<VS>;
-};
+} & BaseComponent & {
+    /**
+     * klass function
+     */
+    klass: KlassFn<VS>;
+  };
 
-type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS extends PreactVariantsSchema> = {
+type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): JSX.Element | null;
-} & {
-  /**
-   * reklass function
-   */
-  reklass: ReklassFn<CS, VS>;
-};
+} & BaseComponent & {
+    /**
+     * reklass function
+     */
+    reklass: ReklassFn<CS, VS>;
+  };
 
-export type { ElementType, PropsWithChildren };
+export type { ElementType };
 export type { PolymorphicComponentProp };
 export type { ClassesNormalProps, ClassesValueProps, WithClassesValueProps };
-export type { PreactClassesPropsKey, PreactVariantsSchema };
+export type { FinalRestrictedVariantsKey, FinalVariantsSchema };
 export type { KlassedComponent, ReklassedComponent };

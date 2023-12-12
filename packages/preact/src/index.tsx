@@ -1,10 +1,10 @@
 import { klass, reklass } from "@klass/core";
 import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
 
-import type { ElementType, PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, PreactClassesPropsKey, PreactVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { ElementType, PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
 
 const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "className",
-  getVariantKeys = <VS extends PreactVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, PreactClassesPropsKey>)[],
+  getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],
   splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
     let omited: Record<string, any> = {},
       picked: Record<string, any> = {};
@@ -24,7 +24,7 @@ const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "class
  *
  * @see {@link https://klass.pages.dev/klass/preact.html#usage | klassed}
  */
-function klassed<ET extends ElementType, VS extends PreactVariantsSchema>(
+function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   element: ET,
   options: KlassOptions<VS>,
   config: {
@@ -36,29 +36,21 @@ function klassed<ET extends ElementType, VS extends PreactVariantsSchema>(
      * it function
      */
     it?: ItFn;
-    /**
-     * @deprecated rename to "dp"
-     */
-    defaultProps?: undefined;
   } = {}
 ): KlassedComponent<ET, VS> {
-  const { dp: { class: __class, className: _className, ...dp } = {} as ClassesNormalProps, it } = config,
+  const { dp: { class: defaultClass, className: defaultClassName, ...defaultProps } = {} as ClassesNormalProps, it } = config,
     klassFn = klass<VS>(options, { it }),
     keys = getVariantKeys<VS>(options.variants);
 
-  const Component = <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
-    const { as: As = element, class: _class, className, ...rest } = props,
-      [omited, picked] = splitRestProps(rest, keys);
+  const Component = <C extends ElementType = ET>({
+    as: As = element as unknown as C,
+    class: CLASS = defaultClass,
+    className = defaultClassName,
+    ...rest
+  }: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
+    const [omited, picked] = splitRestProps(rest, keys);
 
-    return (
-      <As
-        {...({
-          ...dp,
-          ...omited,
-          class: klassFn(picked, _class ?? __class ?? className ?? _className),
-        } as any)}
-      />
-    );
+    return <As {...defaultProps} {...(omited as any)} class={klassFn(picked, CLASS ?? className)} />;
   };
 
   (Component as KlassedComponent<ET, VS>).klass = klassFn;
@@ -75,7 +67,7 @@ function klassed<ET extends ElementType, VS extends PreactVariantsSchema>(
  *
  * @see {@link https://klass.pages.dev/klass/preact.html#usage | reklassed}
  */
-function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends PreactVariantsSchema>(
+function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
   options: ReklassOptions<CS, VS>,
   config: {
@@ -91,29 +83,21 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
      * it function
      */
     it?: ItFn;
-    /**
-     * @deprecated rename to "dp"
-     */
-    defaultProps?: undefined;
   } = {}
 ): ReklassedComponent<ET, CS, VS> {
-  const { dp: { class: __class, className: _className, ...dp } = {} as ClassesNormalProps, as, it } = config,
+  const { dp: { class: defaultClass, className: defaultClassName, ...defaultProps } = {} as ClassesNormalProps, as, it } = config,
     reklassFn = reklass<CS, VS>(options, { as, it }),
     keys = getVariantKeys<VS>(options.variants);
 
-  const Component = <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
-    const { as: As = element, class: _class, className, ...rest } = props,
-      [omited, picked] = splitRestProps(rest, keys);
+  const Component = <C extends ElementType = ET>({
+    as: As = element as unknown as C,
+    class: CLASS = defaultClass,
+    className = defaultClassName,
+    ...rest
+  }: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
+    const [omited, picked] = splitRestProps(rest, keys);
 
-    return (
-      <As
-        {...({
-          ...dp,
-          ...omited,
-          class: reklassFn(picked, _class ?? __class ?? className ?? _className),
-        } as any)}
-      />
-    );
+    return <As {...defaultProps} {...(omited as any)} class={reklassFn(picked, CLASS ?? className)} />;
   };
 
   (Component as ReklassedComponent<ET, CS, VS>).reklass = reklassFn;

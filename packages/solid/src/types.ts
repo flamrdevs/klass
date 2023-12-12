@@ -1,27 +1,21 @@
-import type { ComponentProps, JSX, ParentProps, ValidComponent } from "solid-js";
+import type { ComponentProps, JSX, ValidComponent } from "solid-js";
 
 import type { ClassValue, RestrictedVariantsKey, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
-type AsProp<VC extends ValidComponent> = { as?: VC };
+type PolymorphicComponentProp<VC extends ValidComponent, Props = {}> = (Props & { as?: VC } & { children?: JSX.Element }) &
+  Omit<
+    Omit<ComponentProps<VC>, "ref"> & { ref?: (VC extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[VC] : ComponentProps<VC>) extends { ref?: infer Ref } ? Ref : unknown },
+    "as" | keyof Props
+  >;
 
-type PropsToOmit<VC extends ValidComponent, P> = keyof (AsProp<VC> & P);
-
-type RefValue<T extends any> = T extends { ref?: any } ? T["ref"] : unknown;
-
-type ComponentPropsRef<VC extends ValidComponent> = VC extends keyof JSX.IntrinsicElements ? RefValue<JSX.IntrinsicElements[VC]> : RefValue<ComponentProps<VC>>;
-
-type PolymorphicComponentProp<VC extends ValidComponent, Props = {}> = ParentProps<Props & AsProp<VC>> &
-  Omit<Omit<ComponentProps<VC>, "ref"> & { ref?: ComponentPropsRef<VC> }, PropsToOmit<VC, Props>>;
+type FinalRestrictedVariantsKey = RestrictedVariantsKey | "classList";
+type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;
 
 type ClassesNormalProps = { class?: string; classList?: { [key: string]: boolean | undefined } };
-type ClassesValueProps = { class?: ClassValue; classList?: ClassValue };
+type ClassesValueProps = Partial<Record<FinalRestrictedVariantsKey, ClassValue>>;
 type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & ClassesValueProps;
 
-type SolidClassesPropsKey = RestrictedVariantsKey | "classList";
-
-type SolidVariantsSchema = StrictVariantsSchema<SolidClassesPropsKey>;
-
-type KlassedComponent<VC extends ValidComponent, VS extends SolidVariantsSchema> = {
+type KlassedComponent<VC extends ValidComponent, VS extends FinalVariantsSchema> = {
   <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element | null;
 } & {
   /**
@@ -30,7 +24,7 @@ type KlassedComponent<VC extends ValidComponent, VS extends SolidVariantsSchema>
   klass: KlassFn<VS>;
 };
 
-type ReklassedComponent<VC extends ValidComponent, CS extends ConditionSchema, VS extends SolidVariantsSchema> = {
+type ReklassedComponent<VC extends ValidComponent, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
   <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): JSX.Element | null;
 } & {
   /**
@@ -41,5 +35,5 @@ type ReklassedComponent<VC extends ValidComponent, CS extends ConditionSchema, V
 
 export type { PolymorphicComponentProp };
 export type { ClassesNormalProps, ClassesValueProps, WithClassesValueProps };
-export type { SolidClassesPropsKey, SolidVariantsSchema };
+export type { FinalRestrictedVariantsKey, FinalVariantsSchema };
 export type { KlassedComponent, ReklassedComponent };

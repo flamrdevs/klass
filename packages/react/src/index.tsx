@@ -9,14 +9,14 @@ import type {
   PolymorphicComponentPropWithRef,
   ClassesNormalProps,
   WithClassesValueProps,
-  ReactClassesPropsKey,
-  ReactVariantsSchema,
+  FinalRestrictedVariantsKey,
+  FinalVariantsSchema,
   KlassedComponent,
   ReklassedComponent,
 } from "./types";
 
 const getVariantKeys__filterFn = (el: string) => el !== "className",
-  getVariantKeys = <VS extends ReactVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, ReactClassesPropsKey>)[],
+  getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],
   splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
     let omited: Record<string, any> = {},
       picked: Record<string, any> = {};
@@ -36,7 +36,7 @@ const getVariantKeys__filterFn = (el: string) => el !== "className",
  *
  * @see {@link https://klass.pages.dev/klass/react.html#usage | klassed}
  */
-function klassed<ET extends ElementType, VS extends ReactVariantsSchema>(
+function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   element: ET,
   options: KlassOptions<VS>,
   config: {
@@ -48,30 +48,19 @@ function klassed<ET extends ElementType, VS extends ReactVariantsSchema>(
      * it function
      */
     it?: ItFn;
-    /**
-     * @deprecated rename to "dp"
-     */
-    defaultProps?: undefined;
   } = {}
 ): KlassedComponent<ET, VS> {
-  const { dp: { className: _className, ...dp } = {} as ClassesNormalProps, it } = config,
+  const { dp: { className: defaultClassName, ...defaultProps } = {} as ClassesNormalProps, it } = config,
     klassFn = klass<VS>(options, { it }),
     keys = getVariantKeys<VS>(options.variants);
 
-  const Component = <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>, ref?: PolymorphicRef<C>) => {
-      const { as: As = element, className, ...rest } = props,
-        [omited, picked] = splitRestProps(rest, keys);
+  const Component = <C extends ElementType = ET>(
+      { as: As = element as unknown as C, className = defaultClassName, ...rest }: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>,
+      ref?: PolymorphicRef<C>
+    ) => {
+      const [omited, picked] = splitRestProps(rest, keys);
 
-      return (
-        <As
-          {...({
-            ...dp,
-            ...omited,
-            className: klassFn(picked, className ?? _className),
-          } as any)}
-          ref={ref}
-        />
-      );
+      return <As {...defaultProps} {...(omited as any)} ref={ref} className={klassFn(picked, className)} />;
     },
     ComponentWithRef: Omit<KlassedComponent<ET, VS>, "klass"> = React.forwardRef<any, any>(Component);
 
@@ -89,7 +78,7 @@ function klassed<ET extends ElementType, VS extends ReactVariantsSchema>(
  *
  * @see {@link https://klass.pages.dev/klass/react.html#usage | reklassed}
  */
-function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends ReactVariantsSchema>(
+function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
   options: ReklassOptions<CS, VS>,
   config: {
@@ -105,30 +94,19 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
      * it function
      */
     it?: ItFn;
-    /**
-     * @deprecated rename to "dp"
-     */
-    defaultProps?: undefined;
   } = {}
 ): ReklassedComponent<ET, CS, VS> {
-  const { dp: { className: _className, ...dp } = {} as ClassesNormalProps, as, it } = config,
+  const { dp: { className: defaultClassName, ...defaultProps } = {} as ClassesNormalProps, as, it } = config,
     reklassFn = reklass<CS, VS>(options, { as, it }),
     keys = getVariantKeys<VS>(options.variants);
 
-  const Component = <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>, ref?: PolymorphicRef<C>) => {
-      const { as: As = element, className, ...rest } = props,
-        [omited, picked] = splitRestProps(rest, keys);
+  const Component = <C extends ElementType = ET>(
+      { as: As = element as unknown as C, className = defaultClassName, ...rest }: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>,
+      ref?: PolymorphicRef<C>
+    ) => {
+      const [omited, picked] = splitRestProps(rest, keys);
 
-      return (
-        <As
-          {...({
-            ...dp,
-            ...omited,
-            className: reklassFn(picked, className ?? _className),
-          } as any)}
-          ref={ref}
-        />
-      );
+      return <As {...defaultProps} {...(omited as any)} ref={ref} className={reklassFn(picked, className)} />;
     },
     ComponentWithRef: Omit<ReklassedComponent<ET, CS, VS>, "reklass"> = React.forwardRef<any, any>(Component);
 

@@ -8,7 +8,7 @@ import { cleanup, fireEvent, render } from "@testing-library/preact";
 
 import { klassed, reklassed } from "./index";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A } from "./tests";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A, Div } from "./tests";
 
 afterEach(() => {
   cleanup();
@@ -99,6 +99,8 @@ describe("klassed", async () => {
     }
   );
 
+  const BoxElement = klassed(Div, BoxKlassed.klass.o, { it: itOptimizedClass });
+
   const BoxWithItKlassed = klassed("div", BoxKlassed.klass.o, { it: itOptimizedClass });
 
   it("type of", async () => {
@@ -128,6 +130,8 @@ describe("klassed", async () => {
           button
         </ButtonKlassed>
 
+        <BoxElement data-testid="box-element">box-element</BoxElement>
+
         <BoxWithItKlassed data-testid="box-it" m="1" p="2" class={["extra-box", "classes"]}>
           box-it
         </BoxWithItKlassed>
@@ -143,6 +147,9 @@ describe("klassed", async () => {
     console.log = (...args) => output.push(args);
     fireEvent.click(button);
     expect(output).toEqual([["button-klassed"]]);
+
+    const boxelement = getByTestId("box-element");
+    expect(boxelement.className).toEqual(itOptimizedClass("block"));
 
     const boxit = getByTestId("box-it");
     expect(boxit.className).toEqual(itOptimizedClass("block m-1 p-2 extra-box classes"));
