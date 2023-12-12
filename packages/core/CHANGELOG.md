@@ -1,5 +1,11 @@
 # @klass/core
 
+## 3.4.9
+
+### Patch Changes
+
+- c1971e0: Cleanup
+
 ## 3.4.8
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @klass/preact
 
+## 3.4.9
+
+### Patch Changes
+
+- c1971e0: Cleanup
+- Updated dependencies [c1971e0]
+  - @klass/core@3.4.9
+
 ## 3.4.8
 
 ### Patch Changes
