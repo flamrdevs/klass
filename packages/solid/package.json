@@ -53,7 +53,7 @@
   "homepage": "https://klass.pages.dev",
   "devDependencies": {
     "@klass/core": "3.4.9",
-    "solid-js": "^1.7.8"
+    "solid-js": "^1.8.7"
   },
   "peerDependencies": {
     "@klass/core": "3.4.9",

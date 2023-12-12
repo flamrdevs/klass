@@ -4,9 +4,9 @@ import {
   ref,
   unref,
   watch
-} from "./chunk-67UUJLDS.js";
+} from "./chunk-5FEEEWFN.js";
 
-// node_modules/.pnpm/@vueuse+shared@10.4.1_vue@3.3.4/node_modules/@vueuse/shared/index.mjs
+// node_modules/.pnpm/@vueuse+shared@10.7.0_vue@3.3.11/node_modules/@vueuse/shared/index.mjs
 function tryOnScopeDispose(fn) {
   if (getCurrentScope()) {
     onScopeDispose(fn);
@@ -18,10 +18,11 @@ function toValue(r) {
   return typeof r === "function" ? r() : unref(r);
 }
 var isClient = typeof window !== "undefined" && typeof document !== "undefined";
+var isWorker = typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
 var isIOS = getIsIOS();
 function getIsIOS() {
-  var _a;
-  return isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
+  var _a, _b;
+  return isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && (/iP(ad|hone|od)/.test(window.navigator.userAgent) || ((_b = window == null ? void 0 : window.navigator) == null ? void 0 : _b.maxTouchPoints) > 2 && /iPad|Macintosh/.test(window == null ? void 0 : window.navigator.userAgent));
 }
 function cacheStringFunction(fn) {
   const cache = /* @__PURE__ */ Object.create(null);
@@ -31,9 +32,7 @@ function cacheStringFunction(fn) {
   };
 }
 var hyphenateRE = /\B([A-Z])/g;
-var hyphenate = cacheStringFunction(
-  (str) => str.replace(hyphenateRE, "-$1").toLowerCase()
-);
+var hyphenate = cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
 var camelizeRE = /-(\w)/g;
 var camelize = cacheStringFunction((str) => {
   return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
@@ -42,7 +41,7 @@ function identity(arg) {
   return arg;
 }
 
-// node_modules/.pnpm/@vueuse+core@10.4.1_vue@3.3.4/node_modules/@vueuse/core/index.mjs
+// node_modules/.pnpm/@vueuse+core@10.7.0_vue@3.3.11/node_modules/@vueuse/core/index.mjs
 function unrefElement(elRef) {
   var _a;
   const plain = toValue(elRef);
@@ -440,27 +439,27 @@ var isFocusable = function isFocusable2(node, options) {
   return isNodeMatchingSelectorFocusable(options, node);
 };
 
-// node_modules/.pnpm/focus-trap@7.5.2/node_modules/focus-trap/dist/focus-trap.esm.js
-function ownKeys(object, enumerableOnly) {
-  var keys2 = Object.keys(object);
+// node_modules/.pnpm/focus-trap@7.5.4/node_modules/focus-trap/dist/focus-trap.esm.js
+function ownKeys(e, r) {
+  var t = Object.keys(e);
   if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function(sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys2.push.apply(keys2, symbols);
+    var o = Object.getOwnPropertySymbols(e);
+    r && (o = o.filter(function(r2) {
+      return Object.getOwnPropertyDescriptor(e, r2).enumerable;
+    })), t.push.apply(t, o);
   }
-  return keys2;
+  return t;
 }
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2 ? ownKeys(Object(source), true).forEach(function(key) {
-      _defineProperty(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+function _objectSpread2(e) {
+  for (var r = 1; r < arguments.length; r++) {
+    var t = null != arguments[r] ? arguments[r] : {};
+    r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
+      _defineProperty(e, r2, t[r2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
+      Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
     });
   }
-  return target;
+  return e;
 }
 function _defineProperty(obj, key, value) {
   key = _toPropertyKey(key);
@@ -739,11 +738,21 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       throw new Error("At least one node with a positive tabindex was found in one of your focus-trap's multiple containers. Positive tabindexes are only supported in single-container focus-traps.");
     }
   };
+  var getActiveElement = function getActiveElement2(el) {
+    var activeElement = el.activeElement;
+    if (!activeElement) {
+      return;
+    }
+    if (activeElement.shadowRoot && activeElement.shadowRoot.activeElement !== null) {
+      return getActiveElement2(activeElement.shadowRoot);
+    }
+    return activeElement;
+  };
   var tryFocus = function tryFocus2(node) {
     if (node === false) {
       return;
     }
-    if (node === doc.activeElement) {
+    if (node === getActiveElement(document)) {
       return;
     }
     if (!node || !node.focus) {
@@ -1017,14 +1026,14 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       state.active = true;
       state.paused = false;
       state.nodeFocusedBeforeActivation = doc.activeElement;
-      onActivate === null || onActivate === void 0 ? void 0 : onActivate();
+      onActivate === null || onActivate === void 0 || onActivate();
       var finishActivation = function finishActivation2() {
         if (checkCanFocusTrap) {
           updateTabbableNodes();
         }
         addListeners();
         updateObservedNodes();
-        onPostActivate === null || onPostActivate === void 0 ? void 0 : onPostActivate();
+        onPostActivate === null || onPostActivate === void 0 || onPostActivate();
       };
       if (checkCanFocusTrap) {
         checkCanFocusTrap(state.containers.concat()).then(finishActivation, finishActivation);
@@ -1053,13 +1062,13 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       var onPostDeactivate = getOption(options, "onPostDeactivate");
       var checkCanReturnFocus = getOption(options, "checkCanReturnFocus");
       var returnFocus = getOption(options, "returnFocus", "returnFocusOnDeactivate");
-      onDeactivate === null || onDeactivate === void 0 ? void 0 : onDeactivate();
+      onDeactivate === null || onDeactivate === void 0 || onDeactivate();
       var finishDeactivation = function finishDeactivation2() {
         delay(function() {
           if (returnFocus) {
             tryFocus(getReturnFocusNode(state.nodeFocusedBeforeActivation));
           }
-          onPostDeactivate === null || onPostDeactivate === void 0 ? void 0 : onPostDeactivate();
+          onPostDeactivate === null || onPostDeactivate === void 0 || onPostDeactivate();
         });
       };
       if (returnFocus && checkCanReturnFocus) {
@@ -1076,10 +1085,10 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       var onPause = getOption(pauseOptions, "onPause");
       var onPostPause = getOption(pauseOptions, "onPostPause");
       state.paused = true;
-      onPause === null || onPause === void 0 ? void 0 : onPause();
+      onPause === null || onPause === void 0 || onPause();
       removeListeners();
       updateObservedNodes();
-      onPostPause === null || onPostPause === void 0 ? void 0 : onPostPause();
+      onPostPause === null || onPostPause === void 0 || onPostPause();
       return this;
     },
     unpause: function unpause(unpauseOptions) {
@@ -1089,11 +1098,11 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       var onUnpause = getOption(unpauseOptions, "onUnpause");
       var onPostUnpause = getOption(unpauseOptions, "onPostUnpause");
       state.paused = false;
-      onUnpause === null || onUnpause === void 0 ? void 0 : onUnpause();
+      onUnpause === null || onUnpause === void 0 || onUnpause();
       updateTabbableNodes();
       addListeners();
       updateObservedNodes();
-      onPostUnpause === null || onPostUnpause === void 0 ? void 0 : onPostUnpause();
+      onPostUnpause === null || onPostUnpause === void 0 || onPostUnpause();
       return this;
     },
     updateContainerElements: function updateContainerElements(containerElements) {
@@ -1112,7 +1121,7 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
   return trap;
 };
 
-// node_modules/.pnpm/@vueuse+integrations@10.4.1_focus-trap@7.5.2_vue@3.3.4/node_modules/@vueuse/integrations/useFocusTrap.mjs
+// node_modules/.pnpm/@vueuse+integrations@10.7.0_focus-trap@7.5.4_vue@3.3.11/node_modules/@vueuse/integrations/useFocusTrap.mjs
 function useFocusTrap(target, options = {}) {
   let trap;
   const { immediate, ...focusTrapOptions } = options;
@@ -1178,7 +1187,7 @@ tabbable/dist/index.esm.js:
 
 focus-trap/dist/focus-trap.esm.js:
   (*!
-  * focus-trap 7.5.2
+  * focus-trap 7.5.4
   * @license MIT, https://github.com/focus-trap/focus-trap/blob/master/LICENSE
   *)
 */
