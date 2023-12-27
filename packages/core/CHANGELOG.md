@@ -1,5 +1,12 @@
 # @klass/core
 
+## 3.4.11
+
+### Patch Changes
+
+- 9a93fde: Update dependencies and fix types
+  - Extract types
+
 ## 3.4.10
 
 ### Patch Changes
