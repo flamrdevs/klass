@@ -1,31 +1,15 @@
-import type { ComponentProps, ComponentChildren, ComponentType, JSX } from "preact";
+import type { JSX } from "preact";
 
 import type { ClassValue, RestrictedVariantsKey, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
-type ElementType<P = any> =
-  | {
-      [K in keyof JSX.IntrinsicElements]: P extends JSX.IntrinsicElements[K] ? K : never;
-    }[keyof JSX.IntrinsicElements]
-  | ComponentType<P>;
+import type { ElementType, Classes, BaseComponent } from "./preact";
+import type { PolymorphicComponentProp } from "./polymorphic";
 
-type PolymorphicComponentProp<ET extends ElementType, Props = {}> = (Props & { as?: ET } & {
-  children?: ComponentChildren;
-}) &
-  Omit<
-    Omit<ComponentProps<ET>, "ref"> & { ref?: (ET extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[ET] : ComponentProps<ET>) extends { ref?: infer Ref } ? Ref : unknown },
-    "as" | keyof Props
-  >;
-
-type FinalRestrictedVariantsKey = RestrictedVariantsKey | "className";
+type FinalRestrictedVariantsKey = RestrictedVariantsKey | Classes;
 type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;
 
-type ClassesNormalProps = Partial<Record<FinalRestrictedVariantsKey, string>>;
-type ClassesValueProps = Partial<Record<FinalRestrictedVariantsKey, ClassValue>>;
+type ClassesValueProps = Partial<Record<Classes, ClassValue>>;
 type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & ClassesValueProps;
-
-type BaseComponent = {
-  displayName?: string;
-};
 
 type KlassedComponent<ET extends ElementType, VS extends FinalVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element | null;
@@ -45,8 +29,6 @@ type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS e
     reklass: ReklassFn<CS, VS>;
   };
 
-export type { ElementType };
-export type { PolymorphicComponentProp };
-export type { ClassesNormalProps, ClassesValueProps, WithClassesValueProps };
+export type { ClassesValueProps, WithClassesValueProps };
 export type { FinalRestrictedVariantsKey, FinalVariantsSchema };
 export type { KlassedComponent, ReklassedComponent };

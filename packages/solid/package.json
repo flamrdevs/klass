@@ -51,12 +51,12 @@
     "url": "https://github.com/flamrdevs/klass/issues"
   },
   "homepage": "https://klass.pages.dev",
-  "devDependencies": {
-    "@klass/core": "3.4.10",
-    "solid-js": "^1.8.7"
-  },
   "peerDependencies": {
     "@klass/core": "3.4.10",
     "solid-js": "^1.8.0"
+  },
+  "devDependencies": {
+    "@klass/core": "3.4.10",
+    "solid-js": "^1.8.7"
   }
 }

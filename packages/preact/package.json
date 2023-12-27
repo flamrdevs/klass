@@ -51,12 +51,12 @@
     "url": "https://github.com/flamrdevs/klass/issues"
   },
   "homepage": "https://klass.pages.dev",
+  "peerDependencies": {
+    "@klass/core": "3.4.10",
+    "preact": "^10.19.0"
+  },
   "devDependencies": {
     "@klass/core": "3.4.10",
     "preact": "^10.19.3"
-  },
-  "peerDependencies": {
-    "@klass/core": "3.4.10",
-    "preact": "^10.10.0"
   }
 }

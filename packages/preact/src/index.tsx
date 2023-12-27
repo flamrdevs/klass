@@ -1,7 +1,9 @@
 import { klass, reklass } from "@klass/core";
 import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
 
-import type { ElementType, PolymorphicComponentProp, ClassesNormalProps, WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { ElementType, ClassesProps } from "./types/preact";
+import type { PolymorphicComponentProp } from "./types/polymorphic";
 
 const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "className",
   getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],
@@ -38,7 +40,7 @@ function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
     it?: ItFn;
   } = {}
 ): KlassedComponent<ET, VS> {
-  const { dp: { class: defaultClass, className: defaultClassName, ...defaultProps } = {} as ClassesNormalProps, it } = config,
+  const { dp: { class: defaultClass, className: defaultClassName, ...defaultProps } = {} as ClassesProps, it } = config,
     klassFn = klass<VS>(options, { it }),
     keys = getVariantKeys<VS>(options.variants);
 
@@ -85,7 +87,7 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
     it?: ItFn;
   } = {}
 ): ReklassedComponent<ET, CS, VS> {
-  const { dp: { class: defaultClass, className: defaultClassName, ...defaultProps } = {} as ClassesNormalProps, as, it } = config,
+  const { dp: { class: defaultClass, className: defaultClassName, ...defaultProps } = {} as ClassesProps, as, it } = config,
     reklassFn = reklass<CS, VS>(options, { as, it }),
     keys = getVariantKeys<VS>(options.variants);
 
