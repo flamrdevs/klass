@@ -9,7 +9,6 @@
     "build:unminify": "set UNMINIFY=true&&set COMMAND=build&&turbo run build --force",
     "test": "set COMMAND=test&&turbo run test",
     "test:watch": "set WATCH=true&&set COMMAND=test&&turbo run test --force",
-    "dev": "turbo run dev",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
