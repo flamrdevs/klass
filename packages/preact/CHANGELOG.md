@@ -1,5 +1,16 @@
 # @klass/preact
 
+## 4.0.0-next.0
+
+### Major Changes
+
+- Enter prerelease mode for v4
+
+### Patch Changes
+
+- Updated dependencies
+  - @klass/core@4.0.0-next.0
+
 ## 3.4.11
 
 ### Patch Changes

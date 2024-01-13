@@ -1,0 +1,13 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@klass/core": "3.4.11",
+    "@klass/preact": "3.4.11",
+    "@klass/react": "3.4.11",
+    "@klass/solid": "3.4.11"
+  },
+  "changesets": [
+    "clean-tigers-remain"
+  ]
+}
