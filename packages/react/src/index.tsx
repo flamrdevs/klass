@@ -20,26 +20,11 @@ const getVariantKeys__filterFn = (el: string) => el !== "className",
     return [omited, picked] as const;
   };
 
-/**
- *
- * @param element element
- * @param options klass options
- * @param config additional config
- * @returns klass component
- *
- * @see {@link https://klass.pages.dev/klass/react.html#usage | klassed}
- */
 function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   element: ET,
   options: KlassOptions<VS>,
   config: {
-    /**
-     * default props
-     */
     dp?: PolymorphicComponentPropWithRef<ET, {}>;
-    /**
-     * it function
-     */
     it?: ItFn;
   } = {}
 ): KlassedComponent<ET, VS> {
@@ -62,30 +47,12 @@ function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   return ComponentWithRef as KlassedComponent<ET, VS>;
 }
 
-/**
- *
- * @param element element
- * @param options reklass options
- * @param config additional config
- * @returns reklass component
- *
- * @see {@link https://klass.pages.dev/klass/react.html#usage | reklassed}
- */
 function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
   options: ReklassOptions<CS, VS>,
   config: {
-    /**
-     * default props
-     */
     dp?: PolymorphicComponentPropWithRef<ET, {}>;
-    /**
-     * condition as
-     */
     as?: AsCondition;
-    /**
-     * it function
-     */
     it?: ItFn;
   } = {}
 ): ReklassedComponent<ET, CS, VS> {

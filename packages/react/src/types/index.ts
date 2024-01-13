@@ -14,18 +14,12 @@ type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & Cl
 type KlassedComponent<ET extends ElementType, VS extends FinalVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): ReactElement | null;
 } & BaseComponent & {
-    /**
-     * klass function
-     */
     klass: KlassFn<VS>;
   };
 
 type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
   <C extends ElementType = ET>(props: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): ReactElement | null;
 } & BaseComponent & {
-    /**
-     * reklass function
-     */
     reklass: ReklassFn<CS, VS>;
   };
 

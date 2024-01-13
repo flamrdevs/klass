@@ -20,9 +20,6 @@ type VariantOptions<T extends VariantsSchema[string]> = {
 type VariantFn<T extends VariantsSchema[string]> = {
   (value?: TransformKey<keyof T>): string | undefined;
 } & {
-  /**
-   * options
-   */
   o: VariantOptions<T>;
 };
 
@@ -42,17 +39,8 @@ type KlassOptions<T extends StrictVariantsSchema> = {
 type KlassFn<T extends StrictVariantsSchema> = {
   (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }, classes?: ClassValue): string;
 } & {
-  /**
-   * options
-   */
   o: KlassOptions<T>;
-  /**
-   * variant group
-   */
   v: VariantGroup<T>;
-  /**
-   * variant keys
-   */
   vk: (keyof T)[];
 };
 
@@ -69,9 +57,6 @@ type RevariantOptions<C extends ConditionSchema, T extends VariantsSchema[string
 type RevariantFn<C extends ConditionSchema, T extends VariantsSchema[string]> = {
   (value?: TransformKey<keyof T> | { [condition in keyof C]?: TransformKey<keyof T> }): string | undefined;
 } & {
-  /**
-   * options
-   */
   o: RevariantOptions<C, T>;
 };
 
@@ -93,17 +78,8 @@ type ReklassFn<C extends ConditionSchema, T extends VariantsSchema> = {
     classes?: ClassValue
   ): string;
 } & {
-  /**
-   * options
-   */
   o: ReklassOptions<C, T>;
-  /**
-   * revariant group
-   */
   rv: RevariantGroup<C, T>;
-  /**
-   * revariant keys
-   */
   rvk: (keyof T)[];
 };
 

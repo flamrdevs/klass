@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Dynamic } from "solid-js/web";
 import { mergeProps, splitProps } from "solid-js";
 import type { ValidComponent } from "solid-js";
@@ -17,26 +15,11 @@ const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "class
   ClassesKeysSplitter = ["class", "classList"] as const,
   classesProps = <P extends Partial<Record<FinalRestrictedVariantsKey, any>>>(props: P) => [props.class, props.classList];
 
-/**
- *
- * @param element element
- * @param options klass options
- * @param config additional config
- * @returns klass component
- *
- * @see {@link https://klass.pages.dev/klass/solid.html#usage | klassed}
- */
 function klassed<VC extends ValidComponent, VS extends FinalVariantsSchema>(
   element: VC,
   options: KlassOptions<VS>,
   config: {
-    /**
-     * default props
-     */
     dp?: PolymorphicComponentProp<VC, {}>;
-    /**
-     * it function
-     */
     it?: ItFn;
   } = {}
 ): KlassedComponent<VC, VS> {
@@ -63,30 +46,12 @@ function klassed<VC extends ValidComponent, VS extends FinalVariantsSchema>(
   return Component as KlassedComponent<VC, VS>;
 }
 
-/**
- *
- * @param element element
- * @param options reklass options
- * @param config additional config
- * @returns reklass component
- *
- * @see {@link https://klass.pages.dev/klass/solid.html#usage | reklassed}
- */
 function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: VC,
   options: ReklassOptions<CS, VS>,
   config: {
-    /**
-     * default props
-     */
     dp?: PolymorphicComponentProp<VC, {}>;
-    /**
-     * condition as
-     */
     as?: AsCondition;
-    /**
-     * it function
-     */
     it?: ItFn;
   } = {}
 ): ReklassedComponent<VC, CS, VS> {

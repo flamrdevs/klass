@@ -38,26 +38,12 @@ type SlotsFn<B extends string, T extends StrictSlotsVariantsSchema<B>> = {
     [key in B]: KlassOnlyFn<B, T>;
   };
 } & {
-  /**
-   * options
-   */
   o: SlotsOptions<B, T>;
-  /**
-   * klasses
-   */
   klass: {
     [key in B]: KlassFn<ToVariantsSchema<B, T>>;
   };
 };
 
-/**
- *
- * @param options slots options
- * @param config additional config
- * @returns slots function
- *
- * @see {@link https://klass.pages.dev/klass/core.html#slots | slots}
- */
 const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options: SlotsOptions<B, T>, config: { it?: ItFn } = {}): SlotsFn<B, T> => {
   const { it } = config;
 

@@ -35,14 +35,6 @@ type GroupResult<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   [key in B]: KlassFn<ToVariantsSchema<B, T>>;
 };
 
-/**
- *
- * @param options group options
- * @param config additional config
- * @returns multiple klass
- *
- * @see {@link https://klass.pages.dev/klass/core.html#group | group}
- */
 const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>, config: { it?: ItFn } = {}): GroupResult<B, T> => {
   const { it } = config;
 

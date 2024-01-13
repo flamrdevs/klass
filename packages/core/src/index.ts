@@ -37,13 +37,6 @@ const resolveVariant = <T extends { [type: string]: ClassValue }>(variant: T) =>
   return result;
 };
 
-/**
- *
- * @param options variant options
- * @returns variant function
- *
- * @see {@link https://klass.pages.dev/klass/core.html#variant | variant}
- */
 const variant = <T extends VariantsSchema[string]>(options: VariantOptions<T>): VariantFn<T> => {
   const resolvedVariant = resolveVariant(options.variant);
 
@@ -61,34 +54,6 @@ const pickVariantCompoundVariantsMapFn = <T extends StrictVariantsSchema>({ clas
 const keyofVariantCompoundVariantsMapFn = <T extends StrictVariantsSchema>(variant: Omit<CompoundVariant<T>, "class">) => Object.keys(variant);
 const resolveClassCompoundVariantsMapFn = <T extends StrictVariantsSchema>({ class: _class }: CompoundVariant<T>) => clsx(_class);
 
-/**
- *
- * @param options variants options
- * @param config additional config
- * @returns klass function
- *
- * @example
- * klass({
- *  base: "base",
- *  variants: {
- *    color: {
- *      neutral: "color-neutral",
- *      primary: "color-primary"
- *    },
- *    size: {
- *      sm: "size-sm",
- *      md: "size-md",
- *      lg: "size-lg"
- *    }
- *  },
- *  defaultVariants: {
- *    color: "primary",
- *    size: "md"
- *  },
- * });
- *
- * @see {@link https://klass.pages.dev/klass/core.html#klass | klass}
- */
 const klass = <T extends StrictVariantsSchema>(options: KlassOptions<T>, config: { it?: ItFn } = {}): KlassFn<T> => {
   const { it = defaultItFn } = config;
 
@@ -141,14 +106,6 @@ const klass = <T extends StrictVariantsSchema>(options: KlassOptions<T>, config:
   return fn as KlassFn<T>;
 };
 
-/**
- *
- * @param options responsive variant options
- * @param config additional config
- * @returns revariant function
- *
- * @see {@link https://klass.pages.dev/klass/core.html#revariant | revariant}
- */
 const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(options: RevariantOptions<C, T>, config: { as?: AsCondition } = {}) => {
   const { as = defaultAsCondition } = config;
 
@@ -174,43 +131,6 @@ const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(
   return fn as RevariantFn<C, T>;
 };
 
-/**
- *
- * @param options responsive variants options
- * @param config additional config
- * @returns reklass function
- *
- * @example
- * reklass({
- *  conditions: {
- *    base: "",
- *    sm: "sm:",
- *    md: "md:",
- *    lg: "lg:",
- *    xl: "xl:",
- *    xxl: "2xl:"
- *  },
- *  defaultCondition: "base",
- *  variants: {
- *    m: {
- *      "0": "m-0",
- *      "1": "m-1",
- *      "2": "m-2",
- *      "3": "m-3",
- *      "4": "m-4"
- *    },
- *    p: {
- *      "0": "p-0",
- *      "1": "p-1",
- *      "2": "p-2",
- *      "3": "p-3",
- *      "4": "p-4"
- *    }
- *  }
- * });
- *
- * @see {@link https://klass.pages.dev/klass/core.html#reklass | reklass}
- */
 const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>, config: { as?: AsCondition; it?: ItFn } = {}) => {
   const { as, it = defaultItFn } = config;
 

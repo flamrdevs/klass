@@ -14,18 +14,12 @@ type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & Cl
 type KlassedComponent<VC extends ValidComponent, VS extends FinalVariantsSchema> = {
   <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element | null;
 } & {
-  /**
-   * klass function
-   */
   klass: KlassFn<VS>;
 };
 
 type ReklassedComponent<VC extends ValidComponent, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
   <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): JSX.Element | null;
 } & {
-  /**
-   * reklass function
-   */
   reklass: ReklassFn<CS, VS>;
 };
 
