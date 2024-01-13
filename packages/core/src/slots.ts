@@ -1,5 +1,5 @@
 import { klass } from ".";
-import type { ClassValue, TransformKey, ItFn, RestrictedVariantsKey, KlassFn } from ".";
+import type { ClassValue, TransformKey, EndFn, RestrictedVariantsKey, KlassFn } from ".";
 
 type StrictSlotsVariantsSchema<B extends string, E extends string = RestrictedVariantsKey> = {
   [variant: string]: {
@@ -44,9 +44,7 @@ type SlotsFn<B extends string, T extends StrictSlotsVariantsSchema<B>> = {
   };
 };
 
-const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options: SlotsOptions<B, T>, config: { it?: ItFn } = {}): SlotsFn<B, T> => {
-  const { it } = config;
-
+const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options: SlotsOptions<B, T>, config?: { end?: EndFn }): SlotsFn<B, T> => {
   const keyofBase = Object.keys(options.base) as B[];
 
   const klasses = {} as {
@@ -66,7 +64,7 @@ const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options
           ?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] }))
           .filter((compound) => typeof compound.class !== "undefined") as any,
       },
-      { it }
+      config
     );
   }
 

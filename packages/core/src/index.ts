@@ -3,9 +3,8 @@ import type { ClassValue } from "clsx";
 
 import type {
   TransformKey,
-  ItFn,
-  AsCondition,
-  AsConditionFn,
+  EndFn,
+  AsFn,
   VariantsSchema,
   RestrictedVariantsKey,
   StrictVariantsSchema,
@@ -25,10 +24,8 @@ import type {
 } from "./types.ts";
 
 const getPropKey = <T extends VariantsSchema[string]>(value?: TransformKey<keyof T>, defaultValue?: TransformKey<keyof T>) => `${value ?? defaultValue}`;
-const defaultItFn: ItFn = (value) => value;
-const defaultAsCondition: AsCondition = "prefix",
-  defaultAsPrefixFn: AsConditionFn = (condition, value) => `${condition}${value}`,
-  defaultAsSuffixFn: AsConditionFn = (condition, value) => `${value}${condition}`;
+const defaultEndFn: EndFn = (value) => value;
+const defaultAsFn: AsFn = (condition, className) => `${condition}${className}`;
 
 const resolveVariant = <T extends { [type: string]: ClassValue }>(variant: T) => {
   const result = {} as { [key in keyof T]: string };
@@ -54,8 +51,8 @@ const pickVariantCompoundVariantsMapFn = <T extends StrictVariantsSchema>({ clas
 const keyofVariantCompoundVariantsMapFn = <T extends StrictVariantsSchema>(variant: Omit<CompoundVariant<T>, "class">) => Object.keys(variant);
 const resolveClassCompoundVariantsMapFn = <T extends StrictVariantsSchema>({ class: _class }: CompoundVariant<T>) => clsx(_class);
 
-const klass = <T extends StrictVariantsSchema>(options: KlassOptions<T>, config: { it?: ItFn } = {}): KlassFn<T> => {
-  const { it = defaultItFn } = config;
+const klass = <T extends StrictVariantsSchema>(options: KlassOptions<T>, config: { end?: EndFn } = {}): KlassFn<T> => {
+  const { end = defaultEndFn } = config;
 
   const resolvedBase = clsx(options.base);
   const keyofVariants: (keyof T)[] = [];
@@ -96,7 +93,7 @@ const klass = <T extends StrictVariantsSchema>(options: KlassOptions<T>, config:
       }
     }
 
-    return it(clsx(resolvedBase, result, classes));
+    return end(clsx(resolvedBase, result, classes));
   };
 
   (fn as KlassFn<T>).o = options;
@@ -106,24 +103,20 @@ const klass = <T extends StrictVariantsSchema>(options: KlassOptions<T>, config:
   return fn as KlassFn<T>;
 };
 
-const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(options: RevariantOptions<C, T>, config: { as?: AsCondition } = {}) => {
-  const { as = defaultAsCondition } = config;
+const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(options: RevariantOptions<C, T>, config: { as?: AsFn } = {}) => {
+  const { as = defaultAsFn } = config;
 
   const keyofConditions = Object.keys(options.conditions) as (keyof C)[];
   const resolvedVariant = resolveVariant(options.variant);
-
-  const asCondition = as === "suffix" ? defaultAsSuffixFn : defaultAsPrefixFn;
 
   const fn: Omit<RevariantFn<C, T>, "o"> = (props?: TransformKey<keyof T> | { [condition in keyof C]?: TransformKey<keyof T> }) => {
     let key: string | TransformKey<keyof T>;
 
     return typeof props !== "object"
       ? `${(key = getPropKey<T>(props))}` in options.variant
-        ? asCondition(options.conditions[options.defaultCondition], resolvedVariant[key])
+        ? as(options.conditions[options.defaultCondition], resolvedVariant[key])
         : undefined
-      : clsx(
-          keyofConditions.map((condition) => condition in props && `${(key = getPropKey<T>(props[condition]))}` in options.variant && asCondition(options.conditions[condition], resolvedVariant[key]))
-        );
+      : clsx(keyofConditions.map((condition) => condition in props && `${(key = getPropKey<T>(props[condition]))}` in options.variant && as(options.conditions[condition], resolvedVariant[key])));
   };
 
   (fn as RevariantFn<C, T>).o = options;
@@ -131,8 +124,8 @@ const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(
   return fn as RevariantFn<C, T>;
 };
 
-const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>, config: { as?: AsCondition; it?: ItFn } = {}) => {
-  const { as, it = defaultItFn } = config;
+const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>, config: { as?: AsFn; end?: EndFn } = {}) => {
+  const { as, end = defaultEndFn } = config;
 
   const keyofVariants: (keyof T)[] = [];
   const revariantGroup = Object.entries(options.variants).reduce((obj, [key, value]: [keyof T, VariantsSchema[string]]) => {
@@ -147,7 +140,7 @@ const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: R
     },
     classes?: ClassValue
   ) => {
-    return it(
+    return end(
       clsx(
         keyofVariants.map((key) => revariantGroup[key](props?.[key])),
         classes
@@ -165,9 +158,8 @@ const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: R
 export type {
   ClassValue,
   TransformKey,
-  ItFn,
-  AsCondition,
-  AsConditionFn,
+  EndFn,
+  AsFn,
   VariantsSchema,
   RestrictedVariantsKey,
   StrictVariantsSchema,

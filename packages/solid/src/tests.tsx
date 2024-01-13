@@ -2,7 +2,7 @@ import { expect } from "vitest";
 
 import type { JSX } from "solid-js";
 
-import type { ConditionSchema, VariantsSchema, ItFn, VariantFn, KlassFn, RevariantFn, ReklassFn } from "@klass/core";
+import type { ConditionSchema, VariantsSchema, EndFn, VariantFn, KlassFn, RevariantFn, ReklassFn } from "@klass/core";
 
 import type { KlassedComponent, ReklassedComponent } from "./types/index.ts";
 
@@ -74,12 +74,12 @@ const expectElement = <T extends Element>(el: T) => {
   };
 };
 
-const itOptimizedClass: ItFn = (value) => `optimized( ${value} )`;
+const customEnd: EndFn = (value) => `end( ${value} )`;
 
 const A = (props: JSX.IntrinsicElements["a"]) => <a {...props} />;
 const Button = (props: JSX.IntrinsicElements["button"]) => <button {...props} />;
 const Div = (props: JSX.IntrinsicElements["div"]) => <div {...props} />;
 
 export { expectKlassedComponent, expectReklassedComponent, expectElement };
-export { itOptimizedClass };
+export { customEnd };
 export { A, Button, Div };

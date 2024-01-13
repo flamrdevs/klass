@@ -3,7 +3,7 @@ import { expect } from "vitest";
 import { forwardRef } from "react";
 import type { PropsWithoutRef } from "react";
 
-import type { ConditionSchema, VariantsSchema, ItFn, VariantFn, KlassFn, RevariantFn, ReklassFn } from "@klass/core";
+import type { ConditionSchema, VariantsSchema, EndFn, VariantFn, KlassFn, RevariantFn, ReklassFn } from "@klass/core";
 
 import type { KlassedComponent, ReklassedComponent } from "./types/index.ts";
 
@@ -75,12 +75,12 @@ const expectElement = <T extends Element>(el: T) => {
   };
 };
 
-const itOptimizedClass: ItFn = (value) => `optimized( ${value} )`;
+const customEnd: EndFn = (value) => `end( ${value} )`;
 
 const A = forwardRef<HTMLAnchorElement, PropsWithoutRef<JSX.IntrinsicElements["a"]>>((props, ref) => <a ref={ref} {...props} />);
 const Button = forwardRef<HTMLButtonElement, PropsWithoutRef<JSX.IntrinsicElements["button"]>>((props, ref) => <button ref={ref} {...props} />);
 const Div = forwardRef<HTMLDivElement, PropsWithoutRef<JSX.IntrinsicElements["div"]>>((props, ref) => <div ref={ref} {...props} />);
 
 export { expectKlassedComponent, expectReklassedComponent, expectElement };
-export { itOptimizedClass };
+export { customEnd };
 export { A, Button, Div };

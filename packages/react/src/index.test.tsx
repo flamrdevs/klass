@@ -7,7 +7,7 @@ import { cleanup, fireEvent, render } from "@testing-library/react";
 
 import { klassed, reklassed } from "./index.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A, Div } from "./tests.tsx";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A, Div } from "./tests.tsx";
 
 afterEach(() => {
   cleanup();
@@ -98,9 +98,9 @@ describe("klassed", async () => {
     }
   );
 
-  const BoxElement = klassed(Div, BoxKlassed.klass.o, { it: itOptimizedClass });
+  const BoxElement = klassed(Div, BoxKlassed.klass.o, { end: customEnd });
 
-  const BoxWithItKlassed = klassed("div", BoxKlassed.klass.o, { it: itOptimizedClass });
+  const BoxCustomEndKlassed = klassed("div", BoxKlassed.klass.o, { end: customEnd });
 
   it("type of", async () => {
     expect(klassed).toBeTypeOf("function");
@@ -131,9 +131,9 @@ describe("klassed", async () => {
 
         <BoxElement data-testid="box-element">box-element</BoxElement>
 
-        <BoxWithItKlassed data-testid="box-it" m="1" p="2" className={["extra-box", "classes"]}>
+        <BoxCustomEndKlassed data-testid="box-it" m="1" p="2" className={["extra-box", "classes"]}>
           box-it
-        </BoxWithItKlassed>
+        </BoxCustomEndKlassed>
       </>
     );
 
@@ -148,10 +148,10 @@ describe("klassed", async () => {
     expect(output).toEqual([["button-klassed"]]);
 
     const boxelement = getByTestId("box-element");
-    expect(boxelement.className).toEqual(itOptimizedClass("block"));
+    expect(boxelement.className).toEqual(customEnd("block"));
 
     const boxit = getByTestId("box-it");
-    expect(boxit.className).toEqual(itOptimizedClass("block m-1 p-2 extra-box classes"));
+    expect(boxit.className).toEqual(customEnd("block m-1 p-2 extra-box classes"));
   });
 
   it("reactive", async () => {
@@ -232,7 +232,7 @@ describe("reklassed", async () => {
     },
   });
 
-  const BoxWithItReklassed = reklassed("div", BoxReklassed.reklass.o, { it: itOptimizedClass });
+  const BoxCustomEndReklassed = reklassed("div", BoxReklassed.reklass.o, { end: customEnd });
 
   it("type of", async () => {
     expect(reklassed).toBeTypeOf("function");
@@ -250,14 +250,14 @@ describe("reklassed", async () => {
           box
         </BoxReklassed>
 
-        <BoxWithItReklassed data-testid="box-it" m="2" p={{ base: "1", md: "3" }} className={["extra-box", "classes"]}>
+        <BoxCustomEndReklassed data-testid="box-it" m="2" p={{ base: "1", md: "3" }} className={["extra-box", "classes"]}>
           box-it
-        </BoxWithItReklassed>
+        </BoxCustomEndReklassed>
       </>
     );
 
     expectElement(getByTestId("box")).tagName("DIV").className("m-2 p-1 md:p-3 extra-box classes").textContent("box");
-    expectElement(getByTestId("box-it")).tagName("DIV").className(itOptimizedClass("m-2 p-1 md:p-3 extra-box classes")).textContent("box-it");
+    expectElement(getByTestId("box-it")).tagName("DIV").className(customEnd("m-2 p-1 md:p-3 extra-box classes")).textContent("box-it");
   });
 
   it("reactive", async () => {

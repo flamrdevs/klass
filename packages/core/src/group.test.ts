@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import group from "./group.ts";
 
-import { expectKlassFn, itOptimizedClass } from "./tests.ts";
+import { expectKlassFn, customEnd } from "./tests.ts";
 
 describe("group", async () => {
   it("works", async () => {
@@ -88,7 +88,7 @@ describe("group", async () => {
     expect(footer({ size: "lg" })).toEqual("footer footer-color-primary-size-lg");
   });
 
-  it("works with it", async () => {
+  it("customize end", async () => {
     const card = group(
       {
         base: {
@@ -144,7 +144,7 @@ describe("group", async () => {
           },
         ],
       },
-      { it: itOptimizedClass }
+      { end: customEnd }
     );
 
     expect(card).toBeTypeOf("object");
@@ -158,19 +158,19 @@ describe("group", async () => {
 
     const { root, header, body, footer } = card;
 
-    expect(root()).toEqual(itOptimizedClass("root color-primary size-md"));
-    expect(header()).toEqual(itOptimizedClass("header"));
-    expect(body()).toEqual(itOptimizedClass("body color-primary size-md"));
-    expect(footer()).toEqual(itOptimizedClass("footer"));
+    expect(root()).toEqual(customEnd("root color-primary size-md"));
+    expect(header()).toEqual(customEnd("header"));
+    expect(body()).toEqual(customEnd("body color-primary size-md"));
+    expect(footer()).toEqual(customEnd("footer"));
 
-    expect(root()).toEqual(itOptimizedClass("root color-primary size-md"));
-    expect(header()).toEqual(itOptimizedClass("header"));
-    expect(body()).toEqual(itOptimizedClass("body color-primary size-md"));
-    expect(footer()).toEqual(itOptimizedClass("footer"));
+    expect(root()).toEqual(customEnd("root color-primary size-md"));
+    expect(header()).toEqual(customEnd("header"));
+    expect(body()).toEqual(customEnd("body color-primary size-md"));
+    expect(footer()).toEqual(customEnd("footer"));
 
-    expect(root({ color: "secondary" })).toEqual(itOptimizedClass("root color-secondary size-md"));
-    expect(header({ size: "lg" })).toEqual(itOptimizedClass("header header-color-primary-size-lg"));
-    expect(body({ size: "lg" })).toEqual(itOptimizedClass("body color-primary size-lg"));
-    expect(footer({ size: "lg" })).toEqual(itOptimizedClass("footer footer-color-primary-size-lg"));
+    expect(root({ color: "secondary" })).toEqual(customEnd("root color-secondary size-md"));
+    expect(header({ size: "lg" })).toEqual(customEnd("header header-color-primary-size-lg"));
+    expect(body({ size: "lg" })).toEqual(customEnd("body color-primary size-lg"));
+    expect(footer({ size: "lg" })).toEqual(customEnd("footer footer-color-primary-size-lg"));
   });
 });

@@ -3,7 +3,7 @@ import { mergeProps, splitProps } from "solid-js";
 import type { ValidComponent } from "solid-js";
 
 import { klass, reklass } from "@klass/core";
-import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
+import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, EndFn, AsFn } from "@klass/core";
 
 import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
 import type { ClassesProps } from "./types/solid.ts";
@@ -20,11 +20,11 @@ function klassed<VC extends ValidComponent, VS extends FinalVariantsSchema>(
   options: KlassOptions<VS>,
   config: {
     dp?: PolymorphicComponentProp<VC, {}>;
-    it?: ItFn;
+    end?: EndFn;
   } = {}
 ): KlassedComponent<VC, VS> {
-  const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesProps, it } = config,
-    klassFn = klass<VS>(options, { it }),
+  const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesProps, end } = config,
+    klassFn = klass<VS>(options, { end }),
     keys = getVariantKeys<VS>(options.variants),
     defaultPolymorphicProps = { as: element },
     defaultClassesProps = { class: defaultClass, classList: defaultClassList };
@@ -51,12 +51,12 @@ function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS ext
   options: ReklassOptions<CS, VS>,
   config: {
     dp?: PolymorphicComponentProp<VC, {}>;
-    as?: AsCondition;
-    it?: ItFn;
+    as?: AsFn;
+    end?: EndFn;
   } = {}
 ): ReklassedComponent<VC, CS, VS> {
-  const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesProps, as, it } = config,
-    reklassFn = reklass<CS, VS>(options, { as, it }),
+  const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesProps, as, end } = config,
+    reklassFn = reklass<CS, VS>(options, { as, end }),
     keys = getVariantKeys<VS>(options.variants),
     defaultPolymorphicProps = { as: element },
     defaultClassesProps = { class: defaultClass, classList: defaultClassList };

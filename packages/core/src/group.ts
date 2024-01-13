@@ -1,5 +1,5 @@
 import { klass } from ".";
-import type { ClassValue, TransformKey, ItFn, RestrictedVariantsKey, KlassFn } from ".";
+import type { ClassValue, TransformKey, EndFn, RestrictedVariantsKey, KlassFn } from ".";
 
 type StrictGroupVariantsSchema<B extends string, E extends string = RestrictedVariantsKey> = {
   [variant: string]: {
@@ -35,9 +35,7 @@ type GroupResult<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   [key in B]: KlassFn<ToVariantsSchema<B, T>>;
 };
 
-const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>, config: { it?: ItFn } = {}): GroupResult<B, T> => {
-  const { it } = config;
-
+const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>, config?: { end?: EndFn }): GroupResult<B, T> => {
   const keyofBase = Object.keys(options.base) as B[];
 
   const klasses = {} as {
@@ -57,7 +55,7 @@ const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options
           ?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] }))
           .filter((compound) => typeof compound.class !== "undefined") as any,
       },
-      { it }
+      config
     );
   }
 

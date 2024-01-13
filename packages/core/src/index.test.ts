@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import { variant, klass, revariant, reklass } from "./index.ts";
 
-import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, itOptimizedClass, array } from "./tests.ts";
+import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, customEnd, customAs, array } from "./tests.ts";
 
 describe("variant", async () => {
   const PaddingVariant = variant({
@@ -238,7 +238,7 @@ describe("klass", async () => {
     ],
   });
 
-  const BoxWithItKlass = klass(BoxKlass.o, { it: itOptimizedClass });
+  const BoxCustomEndKlass = klass(BoxKlass.o, { end: customEnd });
 
   it("type of", async () => {
     expect(klass).toBeTypeOf("function");
@@ -276,9 +276,9 @@ describe("klass", async () => {
     expect(ButtonKlass({ color: "blue", variant: "outline" })).toEqual("inline-block outline-none bg-transparent border text-blue-600 border-blue-600");
   });
 
-  it("with it", async () => {
-    expect(BoxWithItKlass()).toEqual(itOptimizedClass("block"));
-    expect(BoxWithItKlass({ m: "3" })).toEqual(itOptimizedClass("block m-3"));
+  it("customize end", async () => {
+    expect(BoxCustomEndKlass()).toEqual(customEnd("block"));
+    expect(BoxCustomEndKlass({ m: "3" })).toEqual(customEnd("block m-3"));
   });
 });
 
@@ -348,7 +348,7 @@ describe("revariant", async () => {
     },
   });
 
-  const MixedAsSuffixRevariant = revariant(
+  const MixedCustomAsRevariant = revariant(
     {
       conditions: {
         base: "",
@@ -359,7 +359,7 @@ describe("revariant", async () => {
       defaultCondition: "base",
       variant: MixedRevariant.o.variant,
     },
-    { as: "suffix" }
+    { as: customAs }
   );
 
   it("type of", async () => {
@@ -408,9 +408,9 @@ describe("revariant", async () => {
     expect(MixedRevariant({ base: true, sm: 1, md: "", lg: true })).toEqual("mix-true sm:mix-1 md:mix- lg:mix-true");
   });
 
-  it("as suffix", async () => {
-    expect(MixedAsSuffixRevariant({ base: false, sm: 0, md: "", lg: false })).toEqual("mix-false mix-0@sm mix-@md mix-false@lg");
-    expect(MixedAsSuffixRevariant({ base: true, sm: 1, md: "", lg: true })).toEqual("mix-true mix-1@sm mix-@md mix-true@lg");
+  it("customize as", async () => {
+    expect(MixedCustomAsRevariant({ base: false, sm: 0, md: "", lg: false })).toEqual("mix-false mix-0@sm mix-@md mix-false@lg");
+    expect(MixedCustomAsRevariant({ base: true, sm: 1, md: "", lg: true })).toEqual("mix-true mix-1@sm mix-@md mix-true@lg");
   });
 });
 
@@ -447,7 +447,7 @@ describe("reklass", async () => {
     },
   });
 
-  const BoxAsSuffixReklass = reklass(
+  const BoxCustomAsReklass = reklass(
     {
       conditions: {
         base: "",
@@ -458,10 +458,10 @@ describe("reklass", async () => {
       defaultCondition: "base",
       variants: BoxReklass.o.variants,
     },
-    { as: "suffix" }
+    { as: customAs }
   );
 
-  const BoxWithItReklass = reklass(BoxReklass.o, { it: itOptimizedClass });
+  const BoxCustomEndReklass = reklass(BoxReklass.o, { end: customEnd });
 
   it("type of", async () => {
     expect(reklass).toBeTypeOf("function");
@@ -488,14 +488,14 @@ describe("reklass", async () => {
     expect(BoxReklass({ p: { base: "2", md: "4" } })).toEqual("p-2 md:p-4");
   });
 
-  it("as suffix", async () => {
-    expect(BoxAsSuffixReklass({ m: { base: "1", md: "3" } })).toEqual("m-1 m-3@md");
-    expect(BoxAsSuffixReklass({ m: { base: "2", md: "4" }, p: { base: "1", md: "3" } })).toEqual("m-2 m-4@md p-1 p-3@md");
-    expect(BoxAsSuffixReklass({ p: { base: "2", md: "4" } })).toEqual("p-2 p-4@md");
+  it("customize as", async () => {
+    expect(BoxCustomAsReklass({ m: { base: "1", md: "3" } })).toEqual("m-1 m-3@md");
+    expect(BoxCustomAsReklass({ m: { base: "2", md: "4" }, p: { base: "1", md: "3" } })).toEqual("m-2 m-4@md p-1 p-3@md");
+    expect(BoxCustomAsReklass({ p: { base: "2", md: "4" } })).toEqual("p-2 p-4@md");
   });
 
-  it("with it", async () => {
-    expect(BoxWithItReklass()).toEqual(itOptimizedClass(""));
-    expect(BoxWithItReklass({ m: "3" })).toEqual(itOptimizedClass("m-3"));
+  it("customize end", async () => {
+    expect(BoxCustomEndReklass()).toEqual(customEnd(""));
+    expect(BoxCustomEndReklass({ m: "3" })).toEqual(customEnd("m-3"));
   });
 });

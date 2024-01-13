@@ -1,6 +1,6 @@
 import { expect } from "vitest";
 
-import type { ConditionSchema, VariantsSchema, ItFn, VariantFn, KlassFn, RevariantFn, ReklassFn } from "./index.ts";
+import type { ConditionSchema, VariantsSchema, EndFn, AsFn, VariantFn, KlassFn, RevariantFn, ReklassFn } from "./index.ts";
 
 const expectVariantFn = <T extends VariantsSchema[string]>(variantFn: VariantFn<T>) => {
   expect(variantFn).toBeTypeOf("function");
@@ -40,9 +40,10 @@ const expectReklassFn = <C extends ConditionSchema, T extends VariantsSchema>(re
   });
 };
 
-const itOptimizedClass: ItFn = (value) => `optimized( ${value} )`;
+const customEnd: EndFn = (value) => `end( ${value} )`;
+const customAs: AsFn = (condition, className) => `${className}${condition}`;
 
 const array = <T>(length: number, map: (index: number) => T) => Array.from({ length }).map((_, index) => map(index));
 
 export { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn };
-export { itOptimizedClass, array };
+export { customEnd, customAs, array };

@@ -85,15 +85,13 @@ type ReklassFn<C extends ConditionSchema, T extends VariantsSchema> = {
 
 type VariantsOf<T extends (...args: any[]) => any> = Exclude<Parameters<T>[0], undefined>;
 
-type ItFn = (className: string) => string;
-type AsCondition = "prefix" | "suffix";
-type AsConditionFn = (condition: string, className: string) => string;
+type EndFn = (className: string) => string;
+type AsFn = (condition: string, className: string) => string;
 
 export type {
   TransformKey,
-  ItFn,
-  AsCondition,
-  AsConditionFn,
+  EndFn,
+  AsFn,
   VariantsSchema,
   RestrictedVariantsKey,
   StrictVariantsSchema,

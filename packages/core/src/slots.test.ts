@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import slots from "./slots.ts";
 
-import { expectKlassFn, itOptimizedClass } from "./tests.ts";
+import { expectKlassFn, customEnd } from "./tests.ts";
 
 describe("slots", async () => {
   it("works", async () => {
@@ -96,7 +96,7 @@ describe("slots", async () => {
     expect(card3.footer({ color: "primary" })).toEqual("footer footer-color-primary-size-lg");
   });
 
-  it("works with it", async () => {
+  it("customize end", async () => {
     const card = slots(
       {
         base: {
@@ -152,7 +152,7 @@ describe("slots", async () => {
           },
         ],
       },
-      { it: itOptimizedClass }
+      { end: customEnd }
     );
 
     expect(card).toBeTypeOf("function");
@@ -170,23 +170,23 @@ describe("slots", async () => {
 
     const card1 = card();
 
-    expect(card1.root()).toEqual(itOptimizedClass("root color-primary size-md"));
-    expect(card1.header()).toEqual(itOptimizedClass("header"));
-    expect(card1.body()).toEqual(itOptimizedClass("body color-primary size-md"));
-    expect(card1.footer()).toEqual(itOptimizedClass("footer"));
+    expect(card1.root()).toEqual(customEnd("root color-primary size-md"));
+    expect(card1.header()).toEqual(customEnd("header"));
+    expect(card1.body()).toEqual(customEnd("body color-primary size-md"));
+    expect(card1.footer()).toEqual(customEnd("footer"));
 
     const card2 = card({ color: "secondary" });
 
-    expect(card2.root()).toEqual(itOptimizedClass("root color-secondary size-md"));
-    expect(card2.header()).toEqual(itOptimizedClass("header"));
-    expect(card2.body()).toEqual(itOptimizedClass("body color-secondary size-md"));
-    expect(card2.footer()).toEqual(itOptimizedClass("footer"));
+    expect(card2.root()).toEqual(customEnd("root color-secondary size-md"));
+    expect(card2.header()).toEqual(customEnd("header"));
+    expect(card2.body()).toEqual(customEnd("body color-secondary size-md"));
+    expect(card2.footer()).toEqual(customEnd("footer"));
 
     const card3 = card({ color: "secondary", size: "lg" });
 
-    expect(card3.root({ color: "primary" })).toEqual(itOptimizedClass("root color-primary size-lg"));
-    expect(card3.header({ color: "primary" })).toEqual(itOptimizedClass("header header-color-primary-size-lg"));
-    expect(card3.body({ size: "md" })).toEqual(itOptimizedClass("body color-secondary size-md"));
-    expect(card3.footer({ color: "primary" })).toEqual(itOptimizedClass("footer footer-color-primary-size-lg"));
+    expect(card3.root({ color: "primary" })).toEqual(customEnd("root color-primary size-lg"));
+    expect(card3.header({ color: "primary" })).toEqual(customEnd("header header-color-primary-size-lg"));
+    expect(card3.body({ size: "md" })).toEqual(customEnd("body color-secondary size-md"));
+    expect(card3.footer({ color: "primary" })).toEqual(customEnd("footer footer-color-primary-size-lg"));
   });
 });
