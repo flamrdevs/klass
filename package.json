@@ -8,10 +8,7 @@
     "build": "set COMMAND=build&&turbo run build",
     "build:unminify": "set UNMINIFY=true&&set COMMAND=build&&turbo run build --force",
     "test": "set COMMAND=test&&turbo run test",
-    "test:watch": "set WATCH=true&&set COMMAND=test&&turbo run test --force",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "test:watch": "set WATCH=true&&set COMMAND=test&&turbo run test --force"
   },
   "repository": {
     "type": "git",
@@ -46,7 +43,6 @@
     "vite": "^5.0.11",
     "vite-plugin-dts": "^3.7.0",
     "vite-plugin-solid": "^2.8.0",
-    "vitepress": "1.0.0-rc.33",
     "vitest": "^1.1.3"
   }
 }
