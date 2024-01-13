@@ -13,7 +13,7 @@ export default defineConfig({
     ...(env.unminify ? { minify: false } : {}),
     target: "esnext",
     lib: {
-      entry: ["./src/index.ts", "./src/group.ts", "./src/slots.ts"],
+      entry: ["src/index.ts", "src/group.ts", "src/slots.ts"],
       fileName: (format, entry) => `${entry}.${format === "cjs" ? "cjs" : "js"}`,
       formats: ["es", "cjs"],
     },
@@ -33,7 +33,9 @@ export default defineConfig({
       : null,
   ],
   test: {
-    include: ["**/*.test.{ts,tsx}"],
+    include: ["src/**/*.test.ts"],
     watch: env.watch,
+    reporters: ["default", "html"],
+    outputFile: "test-reports/index.html",
   },
 });

@@ -6,9 +6,9 @@ import { useState } from "preact/hooks";
 
 import { cleanup, fireEvent, render } from "@testing-library/preact";
 
-import { klassed, reklassed } from "./index";
+import { klassed, reklassed } from "./index.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A, Div } from "./tests";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A, Div } from "./tests.tsx";
 
 afterEach(() => {
   cleanup();

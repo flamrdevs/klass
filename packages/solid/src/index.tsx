@@ -7,9 +7,9 @@ import type { ValidComponent } from "solid-js";
 import { klass, reklass } from "@klass/core";
 import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
 
-import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
-import type { ClassesProps } from "./types/solid";
-import type { PolymorphicComponentProp } from "./types/polymorphic";
+import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
+import type { ClassesProps } from "./types/solid.ts";
+import type { PolymorphicComponentProp } from "./types/polymorphic.ts";
 
 const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "classList",
   getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],

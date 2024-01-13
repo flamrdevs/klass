@@ -2,8 +2,8 @@ import type { JSX, ValidComponent } from "solid-js";
 
 import type { ClassValue, RestrictedVariantsKey, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
-import type { Classes } from "./solid";
-import type { PolymorphicComponentProp } from "./polymorphic";
+import type { Classes } from "./solid.ts";
+import type { PolymorphicComponentProp } from "./polymorphic.ts";
 
 type FinalRestrictedVariantsKey = RestrictedVariantsKey | Classes;
 type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;

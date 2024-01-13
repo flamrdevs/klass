@@ -5,9 +5,9 @@ import { createSignal } from "solid-js";
 
 import { cleanup, fireEvent, render } from "@solidjs/testing-library";
 
-import { klassed, reklassed } from "./index";
+import { klassed, reklassed } from "./index.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A, Div } from "./tests";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A, Div } from "./tests.tsx";
 
 afterEach(() => {
   cleanup();

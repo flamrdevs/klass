@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 
-import slots from "./slots";
+import slots from "./slots.ts";
 
-import { expectKlassFn, itOptimizedClass } from "./tests";
+import { expectKlassFn, itOptimizedClass } from "./tests.ts";
 
 describe("slots", async () => {
   it("works", async () => {

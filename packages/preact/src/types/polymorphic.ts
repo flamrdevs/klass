@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentChildren, JSX } from "preact";
 
-import type { ElementType } from "./preact";
+import type { ElementType } from "./preact.ts";
 
 type PolymorphicComponentProp<ET extends ElementType, Props = {}> = (Props & { as?: ET } & {
   children?: ComponentChildren;

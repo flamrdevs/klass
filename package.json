@@ -4,11 +4,13 @@
   "description": "Class variant utility",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "clean": "turbo run clean",
     "build": "set COMMAND=build&&turbo run build",
-    "build:unminify": "set UNMINIFY=true&&set COMMAND=build&&turbo run build --force",
+    "build:unminify": "set UNMINIFY=true&&set COMMAND=build&&turbo run build",
     "test": "set COMMAND=test&&turbo run test",
-    "test:watch": "set WATCH=true&&set COMMAND=test&&turbo run test --force"
+    "test:watch": "set WATCH=true&&set COMMAND=test&&turbo run test",
+    "test:preview": "pnpm --parallel --filter ./packages/** exec vite preview --outDir test-reports"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,7 @@
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/ui": "^1.2.0",
     "babel-plugin-transform-hook-names": "^1.0.2",
     "jsdom": "^23.2.0",
     "preact": "^10.19.3",

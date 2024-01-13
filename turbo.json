@@ -10,7 +10,9 @@
       "outputs": ["dist/**"]
     },
     "test": {
-      "cache": true
+      "cache": true,
+      "dependsOn": ["^test"],
+      "outputs": ["test-reports/**"]
     }
   }
 }

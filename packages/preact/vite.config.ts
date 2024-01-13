@@ -15,7 +15,7 @@ export default defineConfig({
     ...(env.unminify ? { minify: false } : {}),
     target: "esnext",
     lib: {
-      entry: "./src/index.tsx",
+      entry: "src/index.tsx",
       fileName: "index",
       formats: ["es", "cjs"],
     },
@@ -27,8 +27,8 @@ export default defineConfig({
     preact(),
     env.command.build
       ? dts({
-          include: ["src/**/!(*.test).{ts,tsx}"],
-          exclude: ["node_module/**", "src/tests.{ts,tsx}"],
+          include: ["src/**/!(*.test).tsx"],
+          exclude: ["node_module/**", "src/tests.tsx"],
           compilerOptions: {
             removeComments: false,
           },
@@ -37,8 +37,10 @@ export default defineConfig({
   ],
   test: {
     environment: "jsdom",
-    include: ["**/*.test.{ts,tsx}"],
+    include: ["src/**/*.test.tsx"],
     watch: env.watch,
+    reporters: ["default", "html"],
+    outputFile: "test-reports/index.html",
     server: {
       deps: {
         inline: [/preact/],

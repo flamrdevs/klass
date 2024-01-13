@@ -2,8 +2,8 @@ import type { ElementType, ReactElement } from "react";
 
 import type { ClassValue, RestrictedVariantsKey, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
-import type { Classes, BaseComponent } from "./react";
-import type { PolymorphicComponentPropWithRef } from "./polymorphic";
+import type { Classes, BaseComponent } from "./react.ts";
+import type { PolymorphicComponentPropWithRef } from "./polymorphic.ts";
 
 type FinalRestrictedVariantsKey = RestrictedVariantsKey | Classes;
 type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;

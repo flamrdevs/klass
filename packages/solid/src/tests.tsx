@@ -4,7 +4,7 @@ import type { JSX } from "solid-js";
 
 import type { ConditionSchema, VariantsSchema, ItFn, VariantFn, KlassFn, RevariantFn, ReklassFn } from "@klass/core";
 
-import type { KlassedComponent, ReklassedComponent } from "./types";
+import type { KlassedComponent, ReklassedComponent } from "./types/index.ts";
 
 const expectVariantFn = <T extends VariantsSchema[string]>(variantFn: VariantFn<T>) => {
   expect(variantFn).toBeTypeOf("function");

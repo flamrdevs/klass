@@ -1,6 +1,6 @@
 import { expect } from "vitest";
 
-import type { ConditionSchema, VariantsSchema, ItFn, VariantFn, KlassFn, RevariantFn, ReklassFn } from "./index";
+import type { ConditionSchema, VariantsSchema, ItFn, VariantFn, KlassFn, RevariantFn, ReklassFn } from "./index.ts";
 
 const expectVariantFn = <T extends VariantsSchema[string]>(variantFn: VariantFn<T>) => {
   expect(variantFn).toBeTypeOf("function");

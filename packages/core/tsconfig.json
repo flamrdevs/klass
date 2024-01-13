@@ -5,10 +5,12 @@
     "declaration": true,
     "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "noEmit": true,
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true

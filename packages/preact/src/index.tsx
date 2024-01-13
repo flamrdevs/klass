@@ -1,9 +1,9 @@
 import { klass, reklass } from "@klass/core";
 import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, ItFn, AsCondition } from "@klass/core";
 
-import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
-import type { ElementType, ClassesProps } from "./types/preact";
-import type { PolymorphicComponentProp } from "./types/polymorphic";
+import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
+import type { ElementType, ClassesProps } from "./types/preact.ts";
+import type { PolymorphicComponentProp } from "./types/polymorphic.ts";
 
 const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "className",
   getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],

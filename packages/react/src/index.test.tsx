@@ -5,9 +5,9 @@ import { isValidElement, useState } from "react";
 
 import { cleanup, fireEvent, render } from "@testing-library/react";
 
-import { klassed, reklassed } from "./index";
+import { klassed, reklassed } from "./index.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A, Div } from "./tests";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, itOptimizedClass, A, Div } from "./tests.tsx";
 
 afterEach(() => {
   cleanup();

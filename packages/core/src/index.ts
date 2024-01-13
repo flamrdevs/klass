@@ -22,7 +22,7 @@ import type {
   RevariantGroup,
   ReklassOptions,
   ReklassFn,
-} from "./types";
+} from "./types.ts";
 
 const getPropKey = <T extends VariantsSchema[string]>(value?: TransformKey<keyof T>, defaultValue?: TransformKey<keyof T>) => `${value ?? defaultValue}`;
 const defaultItFn: ItFn = (value) => value;
