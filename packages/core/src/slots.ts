@@ -1,5 +1,5 @@
-import { klass } from ".";
-import type { ClassValue, TransformKey, EndFn, RestrictedVariantsKey, KlassFn } from ".";
+import { klass } from "./index.ts";
+import type { ClassValue, TransformKey, EndFn, RestrictedVariantsKey, KlassFn } from "./index.ts";
 
 type StrictSlotsVariantsSchema<B extends string, E extends string = RestrictedVariantsKey> = {
   [variant: string]: {
@@ -51,11 +51,13 @@ const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options
     [key in B]: KlassFn<ToVariantsSchema<B, T>>;
   };
 
+  const variantsEntries = Object.entries(options.variants);
+
   for (const base of keyofBase) {
     klasses[base] = klass<ToVariantsSchema<B, T>>(
       {
         base: options.base[base],
-        variants: Object.entries(options.variants).reduce(
+        variants: variantsEntries.reduce(
           (obj, [variant, types]) => ((obj[variant] = Object.entries(types).reduce((obj, [type, bases]) => ((obj[type] = bases[base]), obj), {} as { [type: string]: ClassValue })), obj),
           {} as { [variant: string]: { [type: string]: ClassValue } }
         ) as any,

@@ -12,16 +12,7 @@ type RestrictedVariantsKey = "class";
 
 type StrictVariantsSchema<E extends string = RestrictedVariantsKey> = VariantsSchema & { [variant in E]?: undefined };
 
-type VariantOptions<T extends VariantsSchema[string]> = {
-  variant: T;
-  defaultVariant?: TransformKey<keyof T>;
-};
-
-type VariantFn<T extends VariantsSchema[string]> = {
-  (value?: TransformKey<keyof T>): string | undefined;
-} & {
-  o: VariantOptions<T>;
-};
+type VariantFn<T extends VariantsSchema[string]> = (value?: TransformKey<keyof T>) => string | undefined;
 
 type VariantGroup<T extends VariantsSchema> = {
   [K in keyof T]: VariantFn<T[K]>;
@@ -48,17 +39,7 @@ type ConditionSchema = {
   [type: string]: string;
 };
 
-type RevariantOptions<C extends ConditionSchema, T extends VariantsSchema[string]> = {
-  conditions: C;
-  defaultCondition: keyof C;
-  variant: T;
-};
-
-type RevariantFn<C extends ConditionSchema, T extends VariantsSchema[string]> = {
-  (value?: TransformKey<keyof T> | { [condition in keyof C]?: TransformKey<keyof T> }): string | undefined;
-} & {
-  o: RevariantOptions<C, T>;
-};
+type RevariantFn<C extends ConditionSchema, T extends VariantsSchema[string]> = (value?: TransformKey<keyof T> | { [condition in keyof C]?: TransformKey<keyof T> }) => string | undefined;
 
 type RevariantGroup<C extends ConditionSchema, T extends VariantsSchema> = {
   [K in keyof T]: RevariantFn<C, T[K]>;
@@ -96,14 +77,12 @@ export type {
   RestrictedVariantsKey,
   StrictVariantsSchema,
   VariantsOf,
-  VariantOptions,
   VariantFn,
   VariantGroup,
   CompoundVariant,
   KlassOptions,
   KlassFn,
   ConditionSchema,
-  RevariantOptions,
   RevariantFn,
   RevariantGroup,
   ReklassOptions,

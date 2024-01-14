@@ -6,50 +6,44 @@ import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, cus
 
 describe("variant", async () => {
   const PaddingVariant = variant({
-    variant: {
-      sm: "padding-sm",
-      md: "padding-md",
-      lg: "padding-lg",
-    },
+    sm: "padding-sm",
+    md: "padding-md",
+    lg: "padding-lg",
   });
 
-  const SizeVariant = variant({
-    variant: {
+  const SizeVariant = variant(
+    {
       sm: "size-sm",
       md: "size-md",
       lg: "size-lg",
     },
-    defaultVariant: "md",
-  });
+    "md"
+  );
 
   const LoadingVariant = variant({
-    variant: {
-      true: "loading-true",
-      false: "loading-false",
-    },
+    true: "loading-true",
+    false: "loading-false",
   });
 
-  const DisableVariant = variant({
-    variant: {
+  const DisableVariant = variant(
+    {
       true: "disable-true",
       false: "disable-false",
     },
-    defaultVariant: false,
-  });
+    false
+  );
 
   const ZIndexVariant = variant({
-    variant: {
-      0: "z-index-0",
-      1: "z-index-1",
-      2: "z-index-2",
-      3: "z-index-3",
-      4: "z-index-4",
-      5: "z-index-5",
-    },
+    0: "z-index-0",
+    1: "z-index-1",
+    2: "z-index-2",
+    3: "z-index-3",
+    4: "z-index-4",
+    5: "z-index-5",
   });
 
-  const OrderVariant = variant({
-    variant: {
+  const OrderVariant = variant(
+    {
       0: "order-0",
       1: "order-1",
       2: "order-2",
@@ -57,23 +51,21 @@ describe("variant", async () => {
       4: "order-4",
       5: "order-5",
     },
-    defaultVariant: 0,
-  });
+    0
+  );
 
   const MixedVariant = variant({
-    variant: {
-      "": "mix-",
-      empty: "",
-      false: "mix-false",
-      true: "mix-true",
-      0: "mix-0",
-      1: "mix-1",
-    },
+    "": "mix-",
+    empty: "",
+    false: "mix-false",
+    true: "mix-true",
+    0: "mix-0",
+    1: "mix-1",
   });
 
   it("type of", async () => {
     expect(variant).toBeTypeOf("function");
-    expect(variant({ variant: {} })).toBeTypeOf("function");
+    expect(variant({})).toBeTypeOf("function");
   });
 
   it("compound", async () => {
@@ -283,62 +275,80 @@ describe("klass", async () => {
 });
 
 describe("revariant", async () => {
-  const PaddingRevariant = revariant({
-    conditions: {
+  const PaddingRevariant = revariant(
+    {
       base: "",
       sm: "sm:",
       md: "md:",
       lg: "lg:",
     },
-    defaultCondition: "base",
-    variant: {
+    "base",
+    {
       sm: "padding-sm",
       md: "padding-md",
       lg: "padding-lg",
-    },
-  });
+    }
+  );
 
-  const LoadingRevariant = revariant({
-    conditions: {
+  const LoadingRevariant = revariant(
+    {
       base: "",
       sm: "sm:",
       md: "md:",
       lg: "lg:",
     },
-    defaultCondition: "base",
-    variant: {
+    "base",
+    {
       true: "loading-true",
       false: "loading-false",
-    },
-  });
+    }
+  );
 
-  const ZIndexRevariant = revariant({
-    conditions: {
+  const ZIndexRevariant = revariant(
+    {
       base: "",
       sm: "sm:",
       md: "md:",
       lg: "lg:",
     },
-    defaultCondition: "base",
-    variant: {
+    "base",
+    {
       0: "z-index-0",
       1: "z-index-1",
       2: "z-index-2",
       3: "z-index-3",
       4: "z-index-4",
       5: "z-index-5",
-    },
-  });
+    }
+  );
 
-  const MixedRevariant = revariant({
-    conditions: {
+  const MixedRevariant = revariant(
+    {
       base: "",
       sm: "sm:",
       md: "md:",
       lg: "lg:",
     },
-    defaultCondition: "base",
-    variant: {
+    "base",
+    {
+      "": "mix-",
+      empty: "",
+      false: "mix-false",
+      true: "mix-true",
+      0: "mix-0",
+      1: "mix-1",
+    }
+  );
+
+  const MixedCustomAsRevariant = revariant(
+    {
+      base: "",
+      sm: "@sm",
+      md: "@md",
+      lg: "@lg",
+    },
+    "base",
+    {
       "": "mix-",
       empty: "",
       false: "mix-false",
@@ -346,25 +356,12 @@ describe("revariant", async () => {
       0: "mix-0",
       1: "mix-1",
     },
-  });
-
-  const MixedCustomAsRevariant = revariant(
-    {
-      conditions: {
-        base: "",
-        sm: "@sm",
-        md: "@md",
-        lg: "@lg",
-      },
-      defaultCondition: "base",
-      variant: MixedRevariant.o.variant,
-    },
     { as: customAs }
   );
 
   it("type of", async () => {
     expect(revariant).toBeTypeOf("function");
-    expect(revariant({ conditions: { condition: "" }, defaultCondition: "condition", variant: {} })).toBeTypeOf("function");
+    expect(revariant({ condition: "" }, "condition", {})).toBeTypeOf("function");
   });
 
   it("compound", async () => {
