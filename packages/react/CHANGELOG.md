@@ -1,5 +1,13 @@
 # @klass/react
 
+## 4.0.0-next.1
+
+### Patch Changes
+
+- Performance improvement
+- Updated dependencies
+  - @klass/core@4.0.0-next.1
+
 ## 4.0.0-next.0
 
 ### Major Changes

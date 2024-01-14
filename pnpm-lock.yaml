@@ -90,7 +90,7 @@ importers:
   packages/preact:
     devDependencies:
       '@klass/core':
-        specifier: 4.0.0-next.0
+        specifier: 4.0.0-next.1
         version: link:../core
       preact:
         specifier: ^10.19.3
@@ -99,7 +99,7 @@ importers:
   packages/react:
     devDependencies:
       '@klass/core':
-        specifier: 4.0.0-next.0
+        specifier: 4.0.0-next.1
         version: link:../core
       '@types/react':
         specifier: ^18.2.47
@@ -117,7 +117,7 @@ importers:
   packages/solid:
     devDependencies:
       '@klass/core':
-        specifier: 4.0.0-next.0
+        specifier: 4.0.0-next.1
         version: link:../core
       solid-js:
         specifier: ^1.8.10
