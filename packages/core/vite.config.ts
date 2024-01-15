@@ -25,7 +25,7 @@ export default defineConfig({
     env.command.build
       ? dts({
           include: ["src/**/!(*.test).ts"],
-          exclude: ["node_module/**", "src/tests.ts"],
+          exclude: ["node_module/**", "src/tests/**"],
           compilerOptions: {
             removeComments: false,
           },

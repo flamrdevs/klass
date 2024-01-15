@@ -1,17 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { afterEach } from "vitest";
 
 import { isValidElement, useState } from "react";
 
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
 import { klassed, reklassed } from "./index.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A, Div } from "./tests.tsx";
-
-afterEach(() => {
-  cleanup();
-});
+import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A, Div } from "./tests/utils.tsx";
 
 describe("klassed", async () => {
   const BoxKlassed = klassed("div", {

@@ -28,7 +28,7 @@ export default defineConfig({
     env.command.build
       ? dts({
           include: ["src/**/!(*.test).tsx"],
-          exclude: ["node_module/**", "src/tests.tsx"],
+          exclude: ["node_module/**", "src/tests/**"],
           compilerOptions: {
             removeComments: false,
           },
@@ -37,6 +37,7 @@ export default defineConfig({
   ],
   test: {
     environment: "jsdom",
+    setupFiles: "vitest.setup.ts",
     include: ["src/**/*.test.tsx"],
     watch: env.watch,
     reporters: ["default", "html"],

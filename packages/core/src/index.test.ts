@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import { variant, klass, revariant, reklass } from "./index.ts";
 
-import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, customEnd, customAs, array } from "./tests.ts";
+import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, customEnd, customAs, createArray } from "./tests/utils.ts";
 
 describe("variant", async () => {
   const PaddingVariant = variant({
@@ -249,7 +249,7 @@ describe("klass", async () => {
   it("basic", async () => {
     expect(BoxKlass()).toEqual("block");
 
-    expect(([0, 1, false, true] as const).map((empty) => BoxKlass({ empty }))).toEqual(array(4, () => "block"));
+    expect(([0, 1, false, true] as const).map((empty) => BoxKlass({ empty }))).toEqual(createArray(4, () => "block"));
 
     expect(BoxKlass({ m: "1" })).toEqual("block m-1");
     expect(BoxKlass({ m: "2", p: "1" })).toEqual("block m-2 p-1");
@@ -257,7 +257,7 @@ describe("klass", async () => {
   });
 
   it("basic with default variants", async () => {
-    expect(([0, 1, false, true] as const).map((empty) => ButtonKlass({ empty }))).toEqual(array(4, () => "inline-block outline-none text-white bg-red-600"));
+    expect(([0, 1, false, true] as const).map((empty) => ButtonKlass({ empty }))).toEqual(createArray(4, () => "inline-block outline-none text-white bg-red-600"));
 
     expect(ButtonKlass()).toEqual("inline-block outline-none text-white bg-red-600");
 
@@ -474,7 +474,7 @@ describe("reklass", async () => {
   it("basic", async () => {
     expect(BoxReklass()).toEqual("");
 
-    expect(([0, 1, false, true] as const).map((empty) => BoxReklass({ empty }))).toEqual(array(4, () => ""));
+    expect(([0, 1, false, true] as const).map((empty) => BoxReklass({ empty }))).toEqual(createArray(4, () => ""));
 
     expect(BoxReklass({ m: "1" })).toEqual("m-1");
     expect(BoxReklass({ m: "2", p: "1" })).toEqual("m-2 p-1");
