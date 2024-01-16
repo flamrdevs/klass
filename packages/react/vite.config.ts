@@ -38,7 +38,7 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: "vitest.setup.ts",
-    include: ["src/**/*.test.tsx"],
+    include: ["src/**/*.test.{ts,tsx}"],
     watch: env.watch,
     reporters: ["default", "html"],
     outputFile: "test-reports/index.html",

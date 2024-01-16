@@ -27,7 +27,7 @@ export default defineConfig({
     solid(),
     env.command.build
       ? dts({
-          include: ["src/**/!(*.test).tsx"],
+          include: ["src/**/!(*.test).{ts,tsx}"],
           exclude: ["node_module/**", "src/tests/**"],
           compilerOptions: {
             removeComments: false,
