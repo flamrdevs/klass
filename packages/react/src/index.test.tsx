@@ -1,102 +1,16 @@
 import { describe, it, expect } from "vitest";
 
-import { isValidElement, useState } from "react";
+import { isValidElement } from "react";
 
 import { fireEvent, render } from "@testing-library/react";
 
 import { klassed, reklassed } from "./index.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A, Div } from "./tests/utils.tsx";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A } from "./tests/utils.tsx";
+
+import { BoxKlassed, ButtonKlassed, BoxElement, BoxCustomEndKlassed, KlassedReactiveComponent, BoxReklassed, BoxCustomEndReklassed, ReklassedReactiveComponent } from "./index.test.utils.tsx";
 
 describe("klassed", async () => {
-  const BoxKlassed = klassed("div", {
-    base: "block",
-    variants: {
-      m: {
-        "1": "m-1",
-        "2": "m-2",
-        "3": "m-3",
-        "4": "m-4",
-        "5": "m-5",
-      },
-      p: {
-        "1": "p-1",
-        "2": "p-2",
-        "3": "p-3",
-        "4": "p-4",
-        "5": "p-5",
-      },
-    },
-  });
-
-  const ButtonKlassed = klassed(
-    "button",
-    {
-      base: "inline-block outline-none",
-      variants: {
-        color: {
-          red: null,
-          green: null,
-          blue: null,
-        },
-        variant: {
-          filled: "text-white",
-          outline: "bg-transparent border",
-        },
-        full: {
-          true: "w-full h-full",
-          width: "w-full",
-          height: "h-full",
-        },
-      },
-      defaultVariants: {
-        color: "red",
-        variant: "filled",
-      },
-      compoundVariants: [
-        {
-          color: "red",
-          variant: "filled",
-          class: "bg-red-600",
-        },
-        {
-          color: "green",
-          variant: "filled",
-          class: "bg-green-600",
-        },
-        {
-          color: "blue",
-          variant: "filled",
-          class: "bg-blue-600",
-        },
-        {
-          color: "red",
-          variant: "outline",
-          class: "text-red-600 border-red-600",
-        },
-        {
-          color: "green",
-          variant: "outline",
-          class: "text-green-600 border-green-600",
-        },
-        {
-          color: "blue",
-          variant: "outline",
-          class: "text-blue-600 border-blue-600",
-        },
-      ],
-    },
-    {
-      dp: {
-        type: "button",
-      },
-    }
-  );
-
-  const BoxElement = klassed(Div, BoxKlassed.klass.o, { end: customEnd });
-
-  const BoxCustomEndKlassed = klassed("div", BoxKlassed.klass.o, { end: customEnd });
-
   it("type of", async () => {
     expect(klassed).toBeTypeOf("function");
     expect(isValidElement(<ButtonKlassed />)).toBeTruthy();
@@ -150,25 +64,7 @@ describe("klassed", async () => {
   });
 
   it("reactive", async () => {
-    const ReactiveComponent = () => {
-      const [m, setM] = useState<"1" | "2">("1");
-      const [p, setP] = useState<"1" | "2">("1");
-      const [classes, setClasses] = useState<string | null>(null);
-
-      const handleClick = () => {
-        setM("2");
-        setP("2");
-        setClasses("reactive");
-      };
-
-      return (
-        <BoxKlassed data-testid="reactive" as="button" m={m} p={p} className={["extra-reactive", "classes", classes]} onClick={handleClick}>
-          ReactiveKlassed
-        </BoxKlassed>
-      );
-    };
-
-    const { getByTestId } = render(<ReactiveComponent />);
+    const { getByTestId } = render(<KlassedReactiveComponent />);
 
     const reactive = getByTestId("reactive");
     expectElement(reactive).tagName("BUTTON").className("block m-1 p-1 extra-reactive classes").textContent("ReactiveKlassed");
@@ -201,34 +97,6 @@ describe("klassed", async () => {
 });
 
 describe("reklassed", async () => {
-  const BoxReklassed = reklassed("div", {
-    conditions: {
-      base: "",
-      sm: "sm:",
-      md: "md:",
-      lg: "lg:",
-    },
-    defaultCondition: "base",
-    variants: {
-      m: {
-        "1": "m-1",
-        "2": "m-2",
-        "3": "m-3",
-        "4": "m-4",
-        "5": "m-5",
-      },
-      p: {
-        "1": "p-1",
-        "2": "p-2",
-        "3": "p-3",
-        "4": "p-4",
-        "5": "p-5",
-      },
-    },
-  });
-
-  const BoxCustomEndReklassed = reklassed("div", BoxReklassed.reklass.o, { end: customEnd });
-
   it("type of", async () => {
     expect(reklassed).toBeTypeOf("function");
     expect(isValidElement(<BoxReklassed />)).toBeTruthy();
@@ -256,25 +124,7 @@ describe("reklassed", async () => {
   });
 
   it("reactive", async () => {
-    const ReactiveComponent = () => {
-      const [m, setM] = useState<"1" | { base: "1"; md: "3" }>("1");
-      const [p, setP] = useState<"1" | "2">("1");
-      const [classes, setClasses] = useState<string | undefined>();
-
-      const handleClick = () => {
-        setM({ base: "1", md: "3" });
-        setP("2");
-        setClasses("reactive");
-      };
-
-      return (
-        <BoxReklassed data-testid="reactive" as="button" m={m} p={p} className={["extra-reactive", "classes", classes]} onClick={handleClick}>
-          ReactiveReklassed
-        </BoxReklassed>
-      );
-    };
-
-    const { getByTestId } = render(<ReactiveComponent />);
+    const { getByTestId } = render(<ReklassedReactiveComponent />);
 
     const reactive = getByTestId("reactive");
     expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveReklassed");
