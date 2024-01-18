@@ -1,5 +1,13 @@
 # @klass/preact
 
+## 4.0.0-next.2
+
+### Patch Changes
+
+- New Vue and Qwik packages
+- Updated dependencies
+  - @klass/core@4.0.0-next.2
+
 ## 4.0.0-next.1
 
 ### Patch Changes

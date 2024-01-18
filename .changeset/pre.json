@@ -5,10 +5,13 @@
     "@klass/core": "3.4.11",
     "@klass/preact": "3.4.11",
     "@klass/react": "3.4.11",
-    "@klass/solid": "3.4.11"
+    "@klass/solid": "3.4.11",
+    "@klass/qwik": "4.0.0-next.1",
+    "@klass/vue": "4.0.0-next.1"
   },
   "changesets": [
     "clean-tigers-remain",
-    "proud-singers-shout"
+    "proud-singers-shout",
+    "sixty-rings-cross"
   ]
 }

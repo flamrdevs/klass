@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.2
+
+### Patch Changes
+
+- New Vue and Qwik packages
+
 ## 4.0.0-next.1
 
 ### Patch Changes
