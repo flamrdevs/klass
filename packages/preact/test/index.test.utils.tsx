@@ -1,8 +1,8 @@
-import { component$, useSignal } from "@builder.io/qwik";
+import { useState } from "preact/hooks";
 
-import { klassed, reklassed } from "./index.tsx";
+import { klassed, reklassed } from "../src/index.tsx";
 
-import { customEnd, Div } from "./tests/utils.tsx";
+import { customEnd, Div } from "./utils.tsx";
 
 export const BoxKlassed = klassed("div", {
   base: "block",
@@ -92,28 +92,28 @@ export const BoxElement = klassed(Div, BoxKlassed.klass.o, { end: customEnd });
 
 export const BoxCustomEndKlassed = klassed("div", BoxKlassed.klass.o, { end: customEnd });
 
-export const KlassedReactiveComponent = component$(() => {
-  const m = useSignal<"1" | "2">("1");
-  const p = useSignal<"1" | "2">("1");
-  const classes = useSignal<string | null>(null);
+export const KlassedReactiveComponent = () => {
+  const [m, setM] = useState<"1" | "2">("1");
+  const [p, setP] = useState<"1" | "2">("1");
+  const [classes, setClasses] = useState<string | null>(null);
 
   return (
     <BoxKlassed
       data-testid="reactive"
       as="button"
-      m={m.value}
-      p={p.value}
-      class={["extra-reactive", "classes", classes.value]}
-      onClick$={() => {
-        m.value = "2";
-        p.value = "2";
-        classes.value = "reactive";
+      m={m}
+      p={p}
+      className={["extra-reactive", "classes", classes]}
+      onClick={() => {
+        setM("2");
+        setP("2");
+        setClasses("reactive");
       }}
     >
       ReactiveKlassed
     </BoxKlassed>
   );
-});
+};
 
 export const BoxReklassed = reklassed("div", {
   conditions: {
@@ -143,25 +143,25 @@ export const BoxReklassed = reklassed("div", {
 
 export const BoxCustomEndReklassed = reklassed("div", BoxReklassed.reklass.o, { end: customEnd });
 
-export const ReklassedReactiveComponent = component$(() => {
-  const m = useSignal<"1" | { base: "1"; md: "3" }>("1");
-  const p = useSignal<"1" | "2">("1");
-  const classes = useSignal<string | undefined>();
+export const ReklassedReactiveComponent = () => {
+  const [m, setM] = useState<"1" | { base: "1"; md: "3" }>("1");
+  const [p, setP] = useState<"1" | "2">("1");
+  const [classes, setClasses] = useState<string | undefined>();
 
   return (
     <BoxReklassed
       data-testid="reactive"
       as="button"
-      m={m.value}
-      p={p.value}
-      class={["extra-reactive", "classes", classes.value]}
-      onClick$={() => {
-        m.value = { base: "1", md: "3" };
-        p.value = "2";
-        classes.value = "reactive";
+      m={m}
+      p={p}
+      className={["extra-reactive", "classes", classes]}
+      onClick={() => {
+        setM({ base: "1", md: "3" });
+        setP("2");
+        setClasses("reactive");
       }}
     >
       ReactiveReklassed
     </BoxReklassed>
   );
-});
+};

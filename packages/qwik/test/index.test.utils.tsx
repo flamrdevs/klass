@@ -1,8 +1,8 @@
-import { defineComponent, ref } from "vue";
+import { component$, useSignal } from "@builder.io/qwik";
 
-import { klassed, reklassed } from "./index.tsx";
+import { klassed, reklassed } from "../src/index.tsx";
 
-import { customEnd, Div } from "./tests/utils.tsx";
+import { customEnd, Div } from "./utils.tsx";
 
 export const BoxKlassed = klassed("div", {
   base: "block",
@@ -92,19 +92,19 @@ export const BoxElement = klassed(Div, BoxKlassed.klass.o, { end: customEnd });
 
 export const BoxCustomEndKlassed = klassed("div", BoxKlassed.klass.o, { end: customEnd });
 
-export const KlassedReactiveComponent = defineComponent(() => {
-  const m = ref<"1" | "2">("1");
-  const p = ref<"1" | "2">("1");
-  const classes = ref<string | null>(null);
+export const KlassedReactiveComponent = component$(() => {
+  const m = useSignal<"1" | "2">("1");
+  const p = useSignal<"1" | "2">("1");
+  const classes = useSignal<string | null>(null);
 
-  return () => (
+  return (
     <BoxKlassed
       data-testid="reactive"
       as="button"
       m={m.value}
       p={p.value}
       class={["extra-reactive", "classes", classes.value]}
-      onClick={() => {
+      onClick$={() => {
         m.value = "2";
         p.value = "2";
         classes.value = "reactive";
@@ -143,19 +143,19 @@ export const BoxReklassed = reklassed("div", {
 
 export const BoxCustomEndReklassed = reklassed("div", BoxReklassed.reklass.o, { end: customEnd });
 
-export const ReklassedReactiveComponent = defineComponent(() => {
-  const m = ref<"1" | { base: "1"; md: "3" }>("1");
-  const p = ref<"1" | "2">("1");
-  const classes = ref<string | undefined>();
+export const ReklassedReactiveComponent = component$(() => {
+  const m = useSignal<"1" | { base: "1"; md: "3" }>("1");
+  const p = useSignal<"1" | "2">("1");
+  const classes = useSignal<string | undefined>();
 
-  return () => (
+  return (
     <BoxReklassed
       data-testid="reactive"
       as="button"
       m={m.value}
       p={p.value}
       class={["extra-reactive", "classes", classes.value]}
-      onClick={() => {
+      onClick$={() => {
         m.value = { base: "1", md: "3" };
         p.value = "2";
         classes.value = "reactive";

@@ -1,14 +1,12 @@
 import { expect } from "vitest";
 
-import type { JSXNode } from "@builder.io/qwik";
-import type { JSX } from "@builder.io/qwik/jsx-runtime";
-import { createDOM } from "@builder.io/qwik/testing";
+import type { JSX } from "preact";
 
 import type { ConditionSchema, VariantsSchema } from "@klass/core";
 
-import type { KlassedComponent, ReklassedComponent } from "./../types/index.ts";
+import type { KlassedComponent, ReklassedComponent } from "./../src/types/index.ts";
 
-import { expectKlassFn, expectReklassFn } from "./../../../core/src/tests/utils.ts";
+import { expectKlassFn, expectReklassFn } from "./../../core/test/utils.ts";
 
 const expectKlassedComponent = <T extends VariantsSchema>(klassedComponent: KlassedComponent<any, T>, options: { keys: (keyof T)[] }) => {
   expect(klassedComponent).toBeTypeOf("function");
@@ -44,30 +42,6 @@ const A = (props: JSX.IntrinsicElements["a"]) => <a {...props} />;
 const Button = (props: JSX.IntrinsicElements["button"]) => <button {...props} />;
 const Div = (props: JSX.IntrinsicElements["div"]) => <div {...props} />;
 
-const render = async (
-  jsxElement: JSXNode,
-  runner: (ext: {
-    fireEvent: {
-      click: (element: Element) => Promise<void>;
-    };
-    getByTestId: (id: string) => HTMLElement;
-  }) => Promise<unknown>
-) => {
-  const { render, screen, userEvent } = await createDOM();
-
-  const { cleanup } = await render(jsxElement);
-
-  await runner({
-    fireEvent: {
-      click: async (element: Element) => await userEvent(element, "click"),
-    },
-    getByTestId: (id) => screen.querySelector(`[data-testid=${id}]`)!,
-  });
-
-  cleanup();
-};
-
-export * from "./../../../core/src/tests/utils.ts";
+export * from "./../../core/test/utils.ts";
 export { expectKlassedComponent, expectReklassedComponent, expectElement };
 export { A, Button, Div };
-export { render };

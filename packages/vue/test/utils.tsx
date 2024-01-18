@@ -1,21 +1,23 @@
 import { expect } from "vitest";
 
-import type { JSX } from "preact";
+import { h } from "vue";
+import type { FunctionalComponent } from "vue";
+import type { JSX } from "vue/jsx-runtime";
 
 import type { ConditionSchema, VariantsSchema } from "@klass/core";
 
-import type { KlassedComponent, ReklassedComponent } from "./../types/index.ts";
+import type { KlassedComponent, ReklassedComponent } from "./../src/types/index.ts";
 
-import { expectKlassFn, expectReklassFn } from "./../../../core/src/tests/utils.ts";
+import { expectKlassFn, expectReklassFn } from "./../../core/test/utils.ts";
 
 const expectKlassedComponent = <T extends VariantsSchema>(klassedComponent: KlassedComponent<any, T>, options: { keys: (keyof T)[] }) => {
-  expect(klassedComponent).toBeTypeOf("function");
+  expect(klassedComponent).toBeTypeOf("object");
   expect(klassedComponent).toHaveProperty("klass");
   expectKlassFn(klassedComponent.klass, options);
 };
 
 const expectReklassedComponent = <C extends ConditionSchema, T extends VariantsSchema>(reklassedComponent: ReklassedComponent<any, C, T>, options: { keys: (keyof T)[] }) => {
-  expect(reklassedComponent).toBeTypeOf("function");
+  expect(reklassedComponent).toBeTypeOf("object");
   expect(reklassedComponent).toHaveProperty("reklass");
   expectReklassFn(reklassedComponent.reklass, options);
 };
@@ -38,10 +40,13 @@ const expectElement = <T extends Element>(el: T) => {
   };
 };
 
-const A = (props: JSX.IntrinsicElements["a"]) => <a {...props} />;
-const Button = (props: JSX.IntrinsicElements["button"]) => <button {...props} />;
-const Div = (props: JSX.IntrinsicElements["div"]) => <div {...props} />;
+const A: FunctionalComponent<JSX.IntrinsicElements["a"]> = (_, { attrs, slots }) => h("a", attrs, slots);
+A.inheritAttrs = false;
+const Button: FunctionalComponent<JSX.IntrinsicElements["button"]> = (_, { attrs, slots }) => h("button", attrs, slots);
+Button.inheritAttrs = false;
+const Div: FunctionalComponent<JSX.IntrinsicElements["div"]> = (_, { attrs, slots }) => h("div", attrs, slots);
+Div.inheritAttrs = false;
 
-export * from "./../../../core/src/tests/utils.ts";
+export * from "./../../core/test/utils.ts";
 export { expectKlassedComponent, expectReklassedComponent, expectElement };
 export { A, Button, Div };

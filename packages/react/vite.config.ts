@@ -27,8 +27,7 @@ export default defineConfig({
     react(env.command.build ? { jsxRuntime: "classic" } : {}),
     env.command.build
       ? dts({
-          include: ["src/**/!(*.test).tsx"],
-          exclude: ["node_module/**", "src/tests/**"],
+          include: ["src/**/*.{ts,tsx}"],
           compilerOptions: {
             removeComments: false,
           },
@@ -38,7 +37,7 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: "vitest.setup.ts",
-    include: ["src/**/*.test.{ts,tsx}"],
+    include: ["test/**/*.test.{ts,tsx}"],
     watch: env.watch,
     reporters: ["default", "html"],
     outputFile: "test-reports/index.html",

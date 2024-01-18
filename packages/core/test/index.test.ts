@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 
-import { variant, klass, revariant, reklass } from "./index.ts";
+import { variant, klass, revariant, reklass } from "./../src/index.ts";
 
-import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, customEnd, customAs, createArray } from "./tests/utils.ts";
+import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, customEnd, customAs, createArray } from "./utils.ts";
 
 describe("variant", async () => {
   const PaddingVariant = variant({

@@ -1,21 +1,22 @@
 import { expect } from "vitest";
 
-import type { JSX } from "solid-js";
+import { forwardRef } from "react";
+import type { PropsWithoutRef } from "react";
 
 import type { ConditionSchema, VariantsSchema } from "@klass/core";
 
-import type { KlassedComponent, ReklassedComponent } from "./../types/index.ts";
+import type { KlassedComponent, ReklassedComponent } from "./../src/types/index.ts";
 
-import { expectKlassFn, expectReklassFn } from "./../../../core/src/tests/utils.ts";
+import { expectKlassFn, expectReklassFn } from "./../../core/test/utils.ts";
 
 const expectKlassedComponent = <T extends VariantsSchema>(klassedComponent: KlassedComponent<any, T>, options: { keys: (keyof T)[] }) => {
-  expect(klassedComponent).toBeTypeOf("function");
+  expect(klassedComponent).toBeTypeOf("object");
   expect(klassedComponent).toHaveProperty("klass");
   expectKlassFn(klassedComponent.klass, options);
 };
 
 const expectReklassedComponent = <C extends ConditionSchema, T extends VariantsSchema>(reklassedComponent: ReklassedComponent<any, C, T>, options: { keys: (keyof T)[] }) => {
-  expect(reklassedComponent).toBeTypeOf("function");
+  expect(reklassedComponent).toBeTypeOf("object");
   expect(reklassedComponent).toHaveProperty("reklass");
   expectReklassFn(reklassedComponent.reklass, options);
 };
@@ -38,10 +39,10 @@ const expectElement = <T extends Element>(el: T) => {
   };
 };
 
-const A = (props: JSX.IntrinsicElements["a"]) => <a {...props} />;
-const Button = (props: JSX.IntrinsicElements["button"]) => <button {...props} />;
-const Div = (props: JSX.IntrinsicElements["div"]) => <div {...props} />;
+const A = forwardRef<HTMLAnchorElement, PropsWithoutRef<JSX.IntrinsicElements["a"]>>((props, ref) => <a ref={ref} {...props} />);
+const Button = forwardRef<HTMLButtonElement, PropsWithoutRef<JSX.IntrinsicElements["button"]>>((props, ref) => <button ref={ref} {...props} />);
+const Div = forwardRef<HTMLDivElement, PropsWithoutRef<JSX.IntrinsicElements["div"]>>((props, ref) => <div ref={ref} {...props} />);
 
-export * from "./../../../core/src/tests/utils.ts";
+export * from "./../../core/test/utils.ts";
 export { expectKlassedComponent, expectReklassedComponent, expectElement };
 export { A, Button, Div };

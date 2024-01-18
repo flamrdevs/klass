@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 
-import { klassed, reklassed } from "./index.tsx";
+import { klassed, reklassed } from "../src/index.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A, render } from "./tests/utils.tsx";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A, render } from "./utils.tsx";
 
 import { BoxKlassed, ButtonKlassed, BoxElement, BoxCustomEndKlassed, KlassedReactiveComponent, BoxReklassed, BoxCustomEndReklassed, ReklassedReactiveComponent } from "./index.test.utils.tsx";
 

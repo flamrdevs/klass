@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
 
-import { fireEvent, render } from "@testing-library/vue";
+import { fireEvent, render } from "@solidjs/testing-library";
 
-import { klassed, reklassed } from "./index.tsx";
+import { klassed, reklassed } from "../src/index.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A } from "./tests/utils.tsx";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A } from "./utils.tsx";
 
 import { BoxKlassed, ButtonKlassed, BoxElement, BoxCustomEndKlassed, KlassedReactiveComponent, BoxReklassed, BoxCustomEndReklassed, ReklassedReactiveComponent } from "./index.test.utils.tsx";
 
@@ -50,7 +50,7 @@ describe("klassed", async () => {
 
     const output: any[] = [];
     console.log = (...args) => output.push(args);
-    await fireEvent.click(button);
+    fireEvent.click(button);
     expect(output).toEqual([["button-klassed"]]);
 
     const boxelement = getByTestId("box-element");
@@ -66,7 +66,7 @@ describe("klassed", async () => {
     const reactive = getByTestId("reactive");
     expectElement(reactive).tagName("BUTTON").className("block m-1 p-1 extra-reactive classes").textContent("ReactiveKlassed");
 
-    await fireEvent.click(reactive);
+    fireEvent.click(reactive);
     expect(reactive.className).toEqual("block m-2 p-2 extra-reactive classes reactive");
   });
 
@@ -125,7 +125,7 @@ describe("reklassed", async () => {
     const reactive = getByTestId("reactive");
     expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveReklassed");
 
-    await fireEvent.click(reactive);
+    fireEvent.click(reactive);
     expect(reactive.className).toEqual("m-1 md:m-3 p-2 extra-reactive classes reactive");
   });
 

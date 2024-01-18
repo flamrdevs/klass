@@ -1,12 +1,12 @@
 import { describe, it, expect } from "vitest";
 
-import { isValidElement } from "react";
+import { isValidElement } from "preact";
 
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/preact";
 
-import { klassed, reklassed } from "./index.tsx";
+import { klassed, reklassed } from "../src/index.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A } from "./tests/utils.tsx";
+import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A } from "./utils.tsx";
 
 import { BoxKlassed, ButtonKlassed, BoxElement, BoxCustomEndKlassed, KlassedReactiveComponent, BoxReklassed, BoxCustomEndReklassed, ReklassedReactiveComponent } from "./index.test.utils.tsx";
 
@@ -23,14 +23,14 @@ describe("klassed", async () => {
   it("basic", async () => {
     const { getByTestId } = render(
       <>
-        <BoxKlassed data-testid="box" m="1" p="2" className={["extra-box", "classes"]}>
+        <BoxKlassed data-testid="box" m="1" p="2" class={["extra-box", "classes"]}>
           box
         </BoxKlassed>
 
         <ButtonKlassed
           data-testid="button"
           full="width"
-          className={["extra-button", "classes"]}
+          class={["extra-button", "classes"]}
           onClick={() => {
             console.log("button-klassed");
           }}
@@ -40,7 +40,7 @@ describe("klassed", async () => {
 
         <BoxElement data-testid="box-element">box-element</BoxElement>
 
-        <BoxCustomEndKlassed data-testid="box-it" m="1" p="2" className={["extra-box", "classes"]}>
+        <BoxCustomEndKlassed data-testid="box-it" m="1" p="2" class={["extra-box", "classes"]}>
           box-it
         </BoxCustomEndKlassed>
       </>
@@ -109,11 +109,11 @@ describe("reklassed", async () => {
   it("basic", async () => {
     const { getByTestId } = render(
       <>
-        <BoxReklassed data-testid="box" m="2" p={{ base: "1", md: "3" }} className={["extra-box", "classes"]}>
+        <BoxReklassed data-testid="box" m="2" p={{ base: "1", md: "3" }} class={["extra-box", "classes"]}>
           box
         </BoxReklassed>
 
-        <BoxCustomEndReklassed data-testid="box-it" m="2" p={{ base: "1", md: "3" }} className={["extra-box", "classes"]}>
+        <BoxCustomEndReklassed data-testid="box-it" m="2" p={{ base: "1", md: "3" }} class={["extra-box", "classes"]}>
           box-it
         </BoxCustomEndReklassed>
       </>

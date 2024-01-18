@@ -1,8 +1,8 @@
-import { createSignal } from "solid-js";
+import { useState } from "react";
 
-import { klassed, reklassed } from "./index.tsx";
+import { klassed, reklassed } from "../src/index.tsx";
 
-import { customEnd, Div } from "./tests/utils.tsx";
+import { customEnd, Div } from "./utils.tsx";
 
 export const BoxKlassed = klassed("div", {
   base: "block",
@@ -93,17 +93,17 @@ export const BoxElement = klassed(Div, BoxKlassed.klass.o, { end: customEnd });
 export const BoxCustomEndKlassed = klassed("div", BoxKlassed.klass.o, { end: customEnd });
 
 export const KlassedReactiveComponent = () => {
-  const [m, setM] = createSignal<"1" | "2">("1");
-  const [p, setP] = createSignal<"1" | "2">("1");
-  const [classes, setClasses] = createSignal<string | null>(null);
+  const [m, setM] = useState<"1" | "2">("1");
+  const [p, setP] = useState<"1" | "2">("1");
+  const [classes, setClasses] = useState<string | null>(null);
 
   return (
     <BoxKlassed
       data-testid="reactive"
       as="button"
-      m={m()}
-      p={p()}
-      class={["extra-reactive", "classes", classes()]}
+      m={m}
+      p={p}
+      className={["extra-reactive", "classes", classes]}
       onClick={() => {
         setM("2");
         setP("2");
@@ -144,17 +144,17 @@ export const BoxReklassed = reklassed("div", {
 export const BoxCustomEndReklassed = reklassed("div", BoxReklassed.reklass.o, { end: customEnd });
 
 export const ReklassedReactiveComponent = () => {
-  const [m, setM] = createSignal<"1" | { base: "1"; md: "3" }>("1");
-  const [p, setP] = createSignal<"1" | "2">("1");
-  const [classes, setClasses] = createSignal<string | undefined>();
+  const [m, setM] = useState<"1" | { base: "1"; md: "3" }>("1");
+  const [p, setP] = useState<"1" | "2">("1");
+  const [classes, setClasses] = useState<string | undefined>();
 
   return (
     <BoxReklassed
       data-testid="reactive"
       as="button"
-      m={m()}
-      p={p()}
-      class={["extra-reactive", "classes", classes()]}
+      m={m}
+      p={p}
+      className={["extra-reactive", "classes", classes]}
       onClick={() => {
         setM({ base: "1", md: "3" });
         setP("2");

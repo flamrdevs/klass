@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 
-import group from "./group.ts";
+import group from "./../src/group.ts";
 
-import { expectKlassFn, customEnd } from "./tests/utils.ts";
+import { expectKlassFn, customEnd } from "./utils.ts";
 
 describe("group", async () => {
   it("works", async () => {

@@ -24,8 +24,7 @@ export default defineConfig({
   plugins: [
     env.command.build
       ? dts({
-          include: ["src/**/!(*.test).ts"],
-          exclude: ["node_module/**", "src/tests/**"],
+          include: ["src/**/*.ts"],
           compilerOptions: {
             removeComments: false,
           },
@@ -33,7 +32,7 @@ export default defineConfig({
       : null,
   ],
   test: {
-    include: ["src/**/*.test.ts"],
+    include: ["test/**/*.test.ts"],
     watch: env.watch,
     reporters: ["default", "html"],
     outputFile: "test-reports/index.html",
