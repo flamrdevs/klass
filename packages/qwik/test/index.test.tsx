@@ -4,7 +4,18 @@ import { klassed, reklassed } from "../src/index.tsx";
 
 import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A, render } from "./utils.tsx";
 
-import { BoxKlassed, ButtonKlassed, BoxElement, BoxCustomEndKlassed, KlassedReactiveComponent, BoxReklassed, BoxCustomEndReklassed, ReklassedReactiveComponent } from "./index.test.utils.tsx";
+import {
+  BoxKlassed,
+  ButtonKlassed,
+  BoxElement,
+  BoxCustomEndKlassed,
+  KlassedReactiveComponent,
+  KlassedReactiveSignalComponent,
+  BoxReklassed,
+  BoxCustomEndReklassed,
+  ReklassedReactiveComponent,
+  ReklassedReactiveSignalComponent,
+} from "./index.test.utils.tsx";
 
 describe("klassed", async () => {
   it("type of", async () => {
@@ -69,6 +80,16 @@ describe("klassed", async () => {
     });
   });
 
+  it("reactive signal", async () => {
+    await render(<KlassedReactiveSignalComponent />, async ({ fireEvent, getByTestId }) => {
+      const reactive = getByTestId("reactive");
+      expectElement(reactive).tagName("BUTTON").className("block m-1 p-1 extra-reactive classes").textContent("ReactiveSignalKlassed");
+
+      await fireEvent.click(reactive);
+      expect(reactive.className).toEqual("block m-2 p-2 extra-reactive classes reactive");
+    });
+  });
+
   it("polymorphic", async () => {
     await render(
       <>
@@ -124,6 +145,16 @@ describe("reklassed", async () => {
     await render(<ReklassedReactiveComponent />, async ({ fireEvent, getByTestId }) => {
       const reactive = getByTestId("reactive");
       expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveReklassed");
+
+      await fireEvent.click(reactive);
+      expect(reactive.className).toEqual("m-1 md:m-3 p-2 extra-reactive classes reactive");
+    });
+  });
+
+  it("reactive signal", async () => {
+    await render(<ReklassedReactiveSignalComponent />, async ({ fireEvent, getByTestId }) => {
+      const reactive = getByTestId("reactive");
+      expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveSignalReklassed");
 
       await fireEvent.click(reactive);
       expect(reactive.className).toEqual("m-1 md:m-3 p-2 extra-reactive classes reactive");

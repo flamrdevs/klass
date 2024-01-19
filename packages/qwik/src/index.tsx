@@ -7,6 +7,8 @@ import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSc
 import type { ElementType, ClassesProps } from "./types/qwik.ts";
 import type { PolymorphicComponentProp } from "./types/polymorphic.ts";
 
+import { maybeSignal } from "./utils.ts";
+
 const getVariantKeys__filterFn = (el: string) => el !== "class",
   getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],
   splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
@@ -14,7 +16,7 @@ const getVariantKeys__filterFn = (el: string) => el !== "class",
       picked: Record<string, any> = {};
 
     let key: string;
-    for (key in props) (keys.includes(key as K) ? picked : omited)[key] = props[key];
+    for (key in props) (keys.includes(key as K) ? picked : omited)[key] = maybeSignal(props[key]);
 
     return { o: omited, p: picked } as const;
   };
@@ -38,7 +40,7 @@ function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   }: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
     const splitted = splitRestProps(rest, keys);
 
-    return jsx(As, { ...defaultProps, ...(splitted.o as any), class: klassFn(splitted.p, CLASS) });
+    return jsx(As, { ...defaultProps, ...(splitted.o as any), class: klassFn(splitted.p, maybeSignal(CLASS)) });
   };
 
   (Component as KlassedComponent<ET, VS>).klass = klassFn;
@@ -66,7 +68,7 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
   }: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
     const splitted = splitRestProps(rest, keys);
 
-    return jsx(As, { ...defaultProps, ...(splitted.o as any), class: reklassFn(splitted.p, CLASS) });
+    return jsx(As, { ...defaultProps, ...(splitted.o as any), class: reklassFn(splitted.p, maybeSignal(CLASS)) });
   };
 
   (Component as ReklassedComponent<ET, CS, VS>).reklass = reklassFn;

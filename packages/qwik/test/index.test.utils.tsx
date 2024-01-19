@@ -1,4 +1,4 @@
-import { component$, useSignal } from "@builder.io/qwik";
+import { component$, useComputed$, useSignal } from "@builder.io/qwik";
 
 import { klassed, reklassed } from "../src/index.tsx";
 
@@ -115,6 +115,31 @@ export const KlassedReactiveComponent = component$(() => {
   );
 });
 
+export const KlassedReactiveSignalComponent = component$(() => {
+  const m = useSignal<"1" | "2">("1");
+  const p = useSignal<"1" | "2">("1");
+  const classes = useSignal<string | null>(null);
+
+  const className = useComputed$(() => ["extra-reactive", "classes", classes.value]);
+
+  return (
+    <BoxKlassed
+      data-testid="reactive"
+      as="button"
+      m={m}
+      p={p}
+      class={className}
+      onClick$={() => {
+        m.value = "2";
+        p.value = "2";
+        classes.value = "reactive";
+      }}
+    >
+      ReactiveSignalKlassed
+    </BoxKlassed>
+  );
+});
+
 export const BoxReklassed = reklassed("div", {
   conditions: {
     base: "",
@@ -162,6 +187,31 @@ export const ReklassedReactiveComponent = component$(() => {
       }}
     >
       ReactiveReklassed
+    </BoxReklassed>
+  );
+});
+
+export const ReklassedReactiveSignalComponent = component$(() => {
+  const m = useSignal<"1" | { base: "1"; md: "3" }>("1");
+  const p = useSignal<"1" | "2">("1");
+  const classes = useSignal<string | undefined>();
+
+  const className = useComputed$(() => ["extra-reactive", "classes", classes.value]);
+
+  return (
+    <BoxReklassed
+      data-testid="reactive"
+      as="button"
+      m={m}
+      p={p}
+      class={className}
+      onClick$={() => {
+        m.value = { base: "1", md: "3" };
+        p.value = "2";
+        classes.value = "reactive";
+      }}
+    >
+      ReactiveSignalReklassed
     </BoxReklassed>
   );
 });

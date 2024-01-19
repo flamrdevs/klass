@@ -28,6 +28,7 @@
     "@builder.io/qwik": "^1.4.0",
     "@changesets/cli": "^2.27.1",
     "@preact/preset-vite": "^2.8.1",
+    "@preact/signals": "^1.2.2",
     "@solidjs/testing-library": "^0.8.5",
     "@testing-library/preact": "^3.2.3",
     "@testing-library/react": "^14.1.2",

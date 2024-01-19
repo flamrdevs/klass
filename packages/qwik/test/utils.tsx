@@ -1,6 +1,6 @@
 import { expect } from "vitest";
 
-import type { JSXNode } from "@builder.io/qwik";
+import type { JSXOutput } from "@builder.io/qwik";
 import type { JSX } from "@builder.io/qwik/jsx-runtime";
 import { createDOM } from "@builder.io/qwik/testing";
 
@@ -45,7 +45,7 @@ const Button = (props: JSX.IntrinsicElements["button"]) => <button {...props} />
 const Div = (props: JSX.IntrinsicElements["div"]) => <div {...props} />;
 
 const render = async (
-  jsxElement: JSXNode,
+  jsxElement: JSXOutput,
   runner: (ext: {
     fireEvent: {
       click: (element: Element) => Promise<void>;

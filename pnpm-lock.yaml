@@ -23,6 +23,9 @@ importers:
       '@preact/preset-vite':
         specifier: ^2.8.1
         version: 2.8.1(@babel/core@7.23.7)(preact@10.19.3)(vite@5.0.11)
+      '@preact/signals':
+        specifier: ^1.2.2
+        version: 1.2.2(preact@10.19.3)
       '@solidjs/testing-library':
         specifier: ^0.8.5
         version: 0.8.5(@solidjs/router@0.10.9)(solid-js@1.8.11)
@@ -102,7 +105,7 @@ importers:
   packages/preact:
     devDependencies:
       '@klass/core':
-        specifier: 4.0.0-next.1
+        specifier: 4.0.0-next.2
         version: link:../core
       preact:
         specifier: ^10.19.3
@@ -1221,6 +1224,19 @@ packages:
     transitivePeerDependencies:
       - preact
       - supports-color
+    dev: true
+
+  /@preact/signals-core@1.5.1:
+    resolution: {integrity: sha512-dE6f+WCX5ZUDwXzUIWNMhhglmuLpqJhuy3X3xHrhZYI0Hm2LyQwOu0l9mdPiWrVNsE+Q7txOnJPgtIqHCYoBVA==}
+    dev: true
+
+  /@preact/signals@1.2.2(preact@10.19.3):
+    resolution: {integrity: sha512-ColCqdo4cRP18bAuIR4Oik5rDpiyFtPIJIygaYPMEAwTnl4buWkBOflGBSzhYyPyJfKpkwlekrvK+1pzQ2ldWw==}
+    peerDependencies:
+      preact: 10.x
+    dependencies:
+      '@preact/signals-core': 1.5.1
+      preact: 10.19.3
     dev: true
 
   /@prefresh/babel-plugin@0.5.1:

@@ -8,7 +8,18 @@ import { klassed, reklassed } from "../src/index.tsx";
 
 import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A } from "./utils.tsx";
 
-import { BoxKlassed, ButtonKlassed, BoxElement, BoxCustomEndKlassed, KlassedReactiveComponent, BoxReklassed, BoxCustomEndReklassed, ReklassedReactiveComponent } from "./index.test.utils.tsx";
+import {
+  BoxKlassed,
+  ButtonKlassed,
+  BoxElement,
+  BoxCustomEndKlassed,
+  KlassedReactiveComponent,
+  KlassedReactiveSignalComponent,
+  BoxReklassed,
+  BoxCustomEndReklassed,
+  ReklassedReactiveComponent,
+  ReklassedReactiveSignalComponent,
+} from "./index.test.utils.tsx";
 
 describe("klassed", async () => {
   it("type of", async () => {
@@ -73,6 +84,16 @@ describe("klassed", async () => {
     expect(reactive.className).toEqual("block m-2 p-2 extra-reactive classes reactive");
   });
 
+  it("reactive signal", async () => {
+    const { getByTestId } = render(<KlassedReactiveSignalComponent />);
+
+    const reactive = getByTestId("reactive");
+    expectElement(reactive).tagName("BUTTON").className("block m-1 p-1 extra-reactive classes").textContent("ReactiveSignalKlassed");
+
+    fireEvent.click(reactive);
+    expect(reactive.className).toEqual("block m-2 p-2 extra-reactive classes reactive");
+  });
+
   it("polymorphic", async () => {
     const { getByTestId } = render(
       <>
@@ -128,6 +149,16 @@ describe("reklassed", async () => {
 
     const reactive = getByTestId("reactive");
     expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveReklassed");
+
+    fireEvent.click(reactive);
+    expect(reactive.className).toEqual("m-1 md:m-3 p-2 extra-reactive classes reactive");
+  });
+
+  it("reactive signal", async () => {
+    const { getByTestId } = render(<ReklassedReactiveSignalComponent />);
+
+    const reactive = getByTestId("reactive");
+    expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveSignalReklassed");
 
     fireEvent.click(reactive);
     expect(reactive.className).toEqual("m-1 md:m-3 p-2 extra-reactive classes reactive");
