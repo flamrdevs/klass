@@ -44,6 +44,8 @@ type SlotsFn<B extends string, T extends StrictSlotsVariantsSchema<B>> = {
   };
 };
 
+const compoundVariantsFilterFn = <T extends { class?: unknown }>(compound: T) => typeof compound.class !== "undefined";
+
 const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options: SlotsOptions<B, T>, config?: { end?: EndFn }): SlotsFn<B, T> => {
   const keyofBase = Object.keys(options.base) as B[];
 
@@ -62,15 +64,13 @@ const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options
           {} as { [variant: string]: { [type: string]: ClassValue } }
         ) as any,
         defaultVariants: options.defaultVariants,
-        compoundVariants: options.compoundVariants
-          ?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] }))
-          .filter((compound) => typeof compound.class !== "undefined") as any,
+        compoundVariants: options.compoundVariants?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] })).filter(compoundVariantsFilterFn) as any,
       },
       config
     );
   }
 
-  const fn: Omit<SlotsFn<B, T>, "o" | "klass"> = (props = {}) => {
+  const fn = ((props = {}) => {
     const klassesonly = {} as {
       [key in B]: KlassOnlyFn<B, T>;
     };
@@ -78,12 +78,12 @@ const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options
     for (const base of keyofBase) klassesonly[base] = (_props = {}, classes) => klasses[base]({ ...props, ..._props }, classes);
 
     return klassesonly;
-  };
+  }) as SlotsFn<B, T>;
 
-  (fn as SlotsFn<B, T>).o = options;
-  (fn as SlotsFn<B, T>).klass = klasses;
+  fn.o = options;
+  fn.klass = klasses;
 
-  return fn as SlotsFn<B, T>;
+  return fn;
 };
 
 export type { StrictSlotsVariantsSchema, SlotsCompoundVariant, SlotsOptions, SlotsFn };

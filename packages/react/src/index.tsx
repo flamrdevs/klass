@@ -8,17 +8,16 @@ import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSc
 import type { ClassesProps } from "./types/react.ts";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "./types/polymorphic.ts";
 
-const getVariantKeys__filterFn = (el: string) => el !== "className",
-  getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],
-  splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
-    let omited: Record<string, any> = {},
-      picked: Record<string, any> = {};
+const getVariantKeys__filterFn = <VS extends FinalVariantsSchema>(el: keyof VS) => el !== "className",
+  getVariantKeys = <VS extends FinalVariantsSchema>(keys: (keyof VS)[]) => keys.filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[];
 
-    let key: string;
-    for (key in props) (keys.includes(key as K) ? picked : omited)[key] = props[key];
-
-    return [omited, picked] as const;
-  };
+const splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
+  let o: /** omited */ Record<string, any> = {},
+    p: /** picked */ Record<string, any> = {},
+    key: string;
+  for (key in props) (keys.includes(key as K) ? p : o)[key] = props[key];
+  return { o, p } as const;
+};
 
 function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   element: ET,
@@ -30,21 +29,22 @@ function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
 ): KlassedComponent<ET, VS> {
   const { dp: { className: defaultClassName, ...defaultProps } = {} as ClassesProps, end } = config,
     klassFn = klass<VS>(options, { end }),
-    keys = getVariantKeys<VS>(options.variants);
+    keys = getVariantKeys<VS>(klassFn.vk);
 
-  const Component = <C extends ElementType = ET>(
+  const Component = React.forwardRef<any, any>(
+    <C extends ElementType = ET>(
       { as: As = element as unknown as C, className = defaultClassName, ...rest }: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>,
       ref?: PolymorphicRef<C>
     ) => {
-      const [omited, picked] = splitRestProps(rest, keys);
+      const splitted = splitRestProps(rest, keys);
 
-      return <As {...defaultProps} {...(omited as any)} ref={ref} className={klassFn(picked, className)} />;
-    },
-    ComponentWithRef: Omit<KlassedComponent<ET, VS>, "klass"> = React.forwardRef<any, any>(Component);
+      return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={klassFn(splitted.p, className)} />;
+    }
+  ) as unknown as KlassedComponent<ET, VS>;
 
-  (ComponentWithRef as KlassedComponent<ET, VS>).klass = klassFn;
+  Component.klass = klassFn;
 
-  return ComponentWithRef as KlassedComponent<ET, VS>;
+  return Component;
 }
 
 function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
@@ -58,21 +58,22 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
 ): ReklassedComponent<ET, CS, VS> {
   const { dp: { className: defaultClassName, ...defaultProps } = {} as ClassesProps, as, end } = config,
     reklassFn = reklass<CS, VS>(options, { as, end }),
-    keys = getVariantKeys<VS>(options.variants);
+    keys = getVariantKeys<VS>(reklassFn.rvk);
 
-  const Component = <C extends ElementType = ET>(
+  const Component = React.forwardRef<any, any>(
+    <C extends ElementType = ET>(
       { as: As = element as unknown as C, className = defaultClassName, ...rest }: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>,
       ref?: PolymorphicRef<C>
     ) => {
-      const [omited, picked] = splitRestProps(rest, keys);
+      const splitted = splitRestProps(rest, keys);
 
-      return <As {...defaultProps} {...(omited as any)} ref={ref} className={reklassFn(picked, className)} />;
-    },
-    ComponentWithRef: Omit<ReklassedComponent<ET, CS, VS>, "reklass"> = React.forwardRef<any, any>(Component);
+      return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={reklassFn(splitted.p, className)} />;
+    }
+  ) as unknown as ReklassedComponent<ET, CS, VS>;
 
-  (ComponentWithRef as ReklassedComponent<ET, CS, VS>).reklass = reklassFn;
+  Component.reklass = reklassFn;
 
-  return ComponentWithRef as ReklassedComponent<ET, CS, VS>;
+  return Component;
 }
 
 export { klassed, reklassed };

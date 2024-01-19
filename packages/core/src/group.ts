@@ -35,6 +35,8 @@ type GroupResult<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   [key in B]: KlassFn<ToVariantsSchema<B, T>>;
 };
 
+const compoundVariantsFilterFn = <T extends { class?: unknown }>(compound: T) => typeof compound.class !== "undefined";
+
 const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>, config?: { end?: EndFn }): GroupResult<B, T> => {
   const keyofBase = Object.keys(options.base) as B[];
 
@@ -53,9 +55,7 @@ const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options
           {} as { [variant: string]: { [type: string]: ClassValue } }
         ) as any,
         defaultVariants: options.defaultVariants,
-        compoundVariants: options.compoundVariants
-          ?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] }))
-          .filter((compound) => typeof compound.class !== "undefined") as any,
+        compoundVariants: options.compoundVariants?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] })).filter(compoundVariantsFilterFn) as any,
       },
       config
     );

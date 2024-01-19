@@ -7,17 +7,16 @@ import type { PolymorphicComponentProp } from "./types/polymorphic.ts";
 
 import { maybeSignal } from "./utils.ts";
 
-const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "className",
-  getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],
-  splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
-    let omited: Record<string, any> = {},
-      picked: Record<string, any> = {};
+const getVariantKeys__filterFn = <VS extends FinalVariantsSchema>(el: keyof VS) => el !== "class" && el !== "className",
+  getVariantKeys = <VS extends FinalVariantsSchema>(keys: (keyof VS)[]) => keys.filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[];
 
-    let key: string;
-    for (key in props) (keys.includes(key as K) ? picked : omited)[key] = maybeSignal(props[key]);
-
-    return [omited, picked] as const;
-  };
+const splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
+  let o: /** omited */ Record<string, any> = {},
+    p: /** picked */ Record<string, any> = {},
+    key: string;
+  for (key in props) (keys.includes(key as K) ? p : o)[key] = maybeSignal(props[key]);
+  return { o, p } as const;
+};
 
 function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   element: ET,
@@ -29,22 +28,22 @@ function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
 ): KlassedComponent<ET, VS> {
   const { dp: { class: defaultClass, className: defaultClassName, ...defaultProps } = {} as ClassesProps, end } = config,
     klassFn = klass<VS>(options, { end }),
-    keys = getVariantKeys<VS>(options.variants);
+    keys = getVariantKeys<VS>(klassFn.vk);
 
-  const Component = <C extends ElementType = ET>({
+  const Component = (<C extends ElementType = ET>({
     as: As = element as unknown as C,
-    class: CLASS = defaultClass,
+    class: _class = defaultClass,
     className = defaultClassName,
     ...rest
   }: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
-    const [omited, picked] = splitRestProps(rest, keys);
+    const splitted = splitRestProps(rest, keys);
 
-    return <As {...defaultProps} {...(omited as any)} class={klassFn(picked, maybeSignal(CLASS ?? className))} />;
-  };
+    return <As {...defaultProps} {...(splitted.o as any)} class={klassFn(splitted.p, maybeSignal(_class ?? className))} />;
+  }) as KlassedComponent<ET, VS>;
 
-  (Component as KlassedComponent<ET, VS>).klass = klassFn;
+  Component.klass = klassFn;
 
-  return Component as KlassedComponent<ET, VS>;
+  return Component;
 }
 
 function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
@@ -58,22 +57,22 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
 ): ReklassedComponent<ET, CS, VS> {
   const { dp: { class: defaultClass, className: defaultClassName, ...defaultProps } = {} as ClassesProps, as, end } = config,
     reklassFn = reklass<CS, VS>(options, { as, end }),
-    keys = getVariantKeys<VS>(options.variants);
+    keys = getVariantKeys<VS>(reklassFn.rvk);
 
-  const Component = <C extends ElementType = ET>({
+  const Component = (<C extends ElementType = ET>({
     as: As = element as unknown as C,
-    class: CLASS = defaultClass,
+    class: _class = defaultClass,
     className = defaultClassName,
     ...rest
   }: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
-    const [omited, picked] = splitRestProps(rest, keys);
+    const splitted = splitRestProps(rest, keys);
 
-    return <As {...defaultProps} {...(omited as any)} class={reklassFn(picked, maybeSignal(CLASS ?? className))} />;
-  };
+    return <As {...defaultProps} {...(splitted.o as any)} class={reklassFn(splitted.p, maybeSignal(_class ?? className))} />;
+  }) as ReklassedComponent<ET, CS, VS>;
 
-  (Component as ReklassedComponent<ET, CS, VS>).reklass = reklassFn;
+  Component.reklass = reklassFn;
 
-  return Component as ReklassedComponent<ET, CS, VS>;
+  return Component;
 }
 
 export { klassed, reklassed };

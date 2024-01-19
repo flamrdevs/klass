@@ -9,11 +9,12 @@ import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSc
 import type { ClassesProps } from "./types/solid.ts";
 import type { PolymorphicComponentProp } from "./types/polymorphic.ts";
 
-const getVariantKeys__filterFn = (el: string) => el !== "class" && el !== "classList",
-  getVariantKeys = <VS extends FinalVariantsSchema>(variants: VS) => Object.keys(variants).filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[],
-  PolymorphicKeysSplitter = ["as"] as const,
+const getVariantKeys__filterFn = <VS extends FinalVariantsSchema>(el: keyof VS) => el !== "class" && el !== "classList",
+  getVariantKeys = <VS extends FinalVariantsSchema>(keys: (keyof VS)[]) => keys.filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[];
+
+const PolymorphicKeysSplitter = ["as"] as const,
   ClassesKeysSplitter = ["class", "classList"] as const,
-  classesProps = <P extends Partial<Record<FinalRestrictedVariantsKey, any>>>(props: P) => [props.class, props.classList];
+  classesProps = <P extends Partial<Record<FinalRestrictedVariantsKey, any>>>(props: P, defaultClass: any, defaultClassList: any) => [props.class ?? defaultClass, props.classList ?? defaultClassList];
 
 function klassed<VC extends ValidComponent, VS extends FinalVariantsSchema>(
   element: VC,
@@ -25,25 +26,17 @@ function klassed<VC extends ValidComponent, VS extends FinalVariantsSchema>(
 ): KlassedComponent<VC, VS> {
   const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesProps, end } = config,
     klassFn = klass<VS>(options, { end }),
-    keys = getVariantKeys<VS>(options.variants),
-    defaultPolymorphicProps = { as: element },
-    defaultClassesProps = { class: defaultClass, classList: defaultClassList };
+    keys = getVariantKeys<VS>(klassFn.vk);
 
-  const Component = <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
+  const Component = (<C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
     const [polymorphic, classes, picked, omited] = splitProps(props, PolymorphicKeysSplitter, ClassesKeysSplitter, keys as any);
 
-    return (
-      <Dynamic
-        component={mergeProps(defaultPolymorphicProps, polymorphic).as}
-        {...(mergeProps(defaultProps, omited) as any)}
-        class={klassFn(picked as any, classesProps(mergeProps(defaultClassesProps, classes)))}
-      />
-    );
-  };
+    return <Dynamic component={polymorphic.as ?? element} {...(mergeProps(defaultProps, omited) as any)} class={klassFn(picked as any, classesProps(classes, defaultClass, defaultClassList))} />;
+  }) as KlassedComponent<VC, VS>;
 
-  (Component as KlassedComponent<VC, VS>).klass = klassFn;
+  Component.klass = klassFn;
 
-  return Component as KlassedComponent<VC, VS>;
+  return Component;
 }
 
 function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
@@ -57,25 +50,17 @@ function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS ext
 ): ReklassedComponent<VC, CS, VS> {
   const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesProps, as, end } = config,
     reklassFn = reklass<CS, VS>(options, { as, end }),
-    keys = getVariantKeys<VS>(options.variants),
-    defaultPolymorphicProps = { as: element },
-    defaultClassesProps = { class: defaultClass, classList: defaultClassList };
+    keys = getVariantKeys<VS>(reklassFn.rvk);
 
-  const Component = <C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
+  const Component = (<C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
     const [polymorphic, classes, picked, omited] = splitProps(props, PolymorphicKeysSplitter, ClassesKeysSplitter, keys as any);
 
-    return (
-      <Dynamic
-        component={mergeProps(defaultPolymorphicProps, polymorphic).as}
-        {...(mergeProps(defaultProps, omited) as any)}
-        class={reklassFn(picked as any, classesProps(mergeProps(defaultClassesProps, classes)))}
-      />
-    );
-  };
+    return <Dynamic component={polymorphic.as ?? element} {...(mergeProps(defaultProps, omited) as any)} class={reklassFn(picked as any, classesProps(classes, defaultClass, defaultClassList))} />;
+  }) as ReklassedComponent<VC, CS, VS>;
 
-  (Component as ReklassedComponent<VC, CS, VS>).reklass = reklassFn;
+  Component.reklass = reklassFn;
 
-  return Component as ReklassedComponent<VC, CS, VS>;
+  return Component;
 }
 
 export { klassed, reklassed };
