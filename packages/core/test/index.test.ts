@@ -5,63 +5,19 @@ import { variant, klass, revariant, reklass } from "./../src/index.ts";
 import { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn, customEnd, customAs, createArray } from "./utils.ts";
 
 describe("variant", async () => {
-  const PaddingVariant = variant({
-    sm: "padding-sm",
-    md: "padding-md",
-    lg: "padding-lg",
-  });
+  const PaddingVariant = variant({ sm: "padding-sm", md: "padding-md", lg: "padding-lg" });
 
-  const SizeVariant = variant(
-    {
-      sm: "size-sm",
-      md: "size-md",
-      lg: "size-lg",
-    },
-    "md"
-  );
+  const SizeVariant = variant({ sm: "size-sm", md: "size-md", lg: "size-lg" }, "md");
 
-  const LoadingVariant = variant({
-    true: "loading-true",
-    false: "loading-false",
-  });
+  const LoadingVariant = variant({ true: "loading-true", false: "loading-false" });
 
-  const DisableVariant = variant(
-    {
-      true: "disable-true",
-      false: "disable-false",
-    },
-    false
-  );
+  const DisableVariant = variant({ true: "disable-true", false: "disable-false" }, false);
 
-  const ZIndexVariant = variant({
-    0: "z-index-0",
-    1: "z-index-1",
-    2: "z-index-2",
-    3: "z-index-3",
-    4: "z-index-4",
-    5: "z-index-5",
-  });
+  const ZIndexVariant = variant({ 0: "z-index-0", 1: "z-index-1", 2: "z-index-2", 3: "z-index-3", 4: "z-index-4", 5: "z-index-5" });
 
-  const OrderVariant = variant(
-    {
-      0: "order-0",
-      1: "order-1",
-      2: "order-2",
-      3: "order-3",
-      4: "order-4",
-      5: "order-5",
-    },
-    0
-  );
+  const OrderVariant = variant({ 0: "order-0", 1: "order-1", 2: "order-2", 3: "order-3", 4: "order-4", 5: "order-5" }, 0);
 
-  const MixedVariant = variant({
-    "": "mix-",
-    empty: "",
-    false: "mix-false",
-    true: "mix-true",
-    0: "mix-0",
-    1: "mix-1",
-  });
+  const MixedVariant = variant({ "": "mix-", empty: "", false: "mix-false", true: "mix-true", 0: "mix-0", 1: "mix-1" });
 
   it("type of", async () => {
     expect(variant).toBeTypeOf("function");
@@ -130,103 +86,31 @@ describe("klass", async () => {
   const BoxKlass = klass({
     base: "block",
     variants: {
-      m: {
-        "1": "m-1",
-        "2": "m-2",
-        "3": "m-3",
-        "4": "m-4",
-        "5": "m-5",
-      },
-      p: {
-        "1": "p-1",
-        "2": "p-2",
-        "3": "p-3",
-        "4": "p-4",
-        "5": "p-5",
-      },
-      empty: {
-        0: "",
-        1: "",
-        true: "",
-        false: "",
-      },
+      m: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
+      p: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
+      empty: { 0: "", 1: "", true: "", false: "" },
     },
   });
 
   const ButtonKlass = klass({
     base: "inline-block outline-none",
     variants: {
-      color: {
-        red: null,
-        green: null,
-        blue: null,
-      },
-      variant: {
-        filled: "text-white",
-        outline: "bg-transparent border",
-      },
-      full: {
-        true: "w-full h-full",
-        width: "w-full",
-        height: "h-full",
-      },
-      empty: {
-        0: "",
-        1: "",
-        true: "",
-        false: "",
-      },
+      color: { red: null, green: null, blue: null },
+      variant: { filled: "text-white", outline: "bg-transparent border" },
+      full: { true: "w-full h-full", width: "w-full", height: "h-full" },
+      empty: { 0: "", 1: "", true: "", false: "" },
     },
-    defaultVariants: {
-      color: "red",
-      variant: "filled",
-    },
+    defaultVariants: { color: "red", variant: "filled" },
     compoundVariants: [
-      {
-        color: "red",
-        variant: "filled",
-        class: "bg-red-600",
-      },
-      {
-        color: "green",
-        variant: "filled",
-        class: "bg-green-600",
-      },
-      {
-        color: "blue",
-        variant: "filled",
-        class: "bg-blue-600",
-      },
-      {
-        color: "red",
-        variant: "outline",
-        class: "text-red-600 border-red-600",
-      },
-      {
-        color: "green",
-        variant: "outline",
-        class: "text-green-600 border-green-600",
-      },
-      {
-        color: "blue",
-        variant: "outline",
-        class: "text-blue-600 border-blue-600",
-      },
-      {
-        empty: true,
-        color: "red",
-        class: "",
-      },
-      {
-        empty: true,
-        color: "red",
-        class: "",
-      },
-      {
-        empty: true,
-        color: "red",
-        class: "",
-      },
+      { color: "red", variant: "filled", class: "bg-red-600" },
+      { color: "green", variant: "filled", class: "bg-green-600" },
+      { color: "blue", variant: "filled", class: "bg-blue-600" },
+      { color: "red", variant: "outline", class: "text-red-600 border-red-600" },
+      { color: "green", variant: "outline", class: "text-green-600 border-green-600" },
+      { color: "blue", variant: "outline", class: "text-blue-600 border-blue-600" },
+      { empty: true, color: "red", class: "" },
+      { empty: true, color: "red", class: "" },
+      { empty: true, color: "red", class: "" },
     ],
   });
 
@@ -238,12 +122,8 @@ describe("klass", async () => {
   });
 
   it("compound", async () => {
-    expectKlassFn(BoxKlass, {
-      keys: ["m", "p", "empty"],
-    });
-    expectKlassFn(ButtonKlass, {
-      keys: ["color", "variant", "full", "empty"],
-    });
+    expectKlassFn(BoxKlass, { keys: ["m", "p", "empty"] });
+    expectKlassFn(ButtonKlass, { keys: ["color", "variant", "full", "empty"] });
   });
 
   it("basic", async () => {
@@ -275,87 +155,18 @@ describe("klass", async () => {
 });
 
 describe("revariant", async () => {
-  const PaddingRevariant = revariant(
-    {
-      base: "",
-      sm: "sm:",
-      md: "md:",
-      lg: "lg:",
-    },
-    "base",
-    {
-      sm: "padding-sm",
-      md: "padding-md",
-      lg: "padding-lg",
-    }
-  );
+  const PaddingRevariant = revariant({ base: "", sm: "sm:", md: "md:", lg: "lg:" }, "base", { sm: "padding-sm", md: "padding-md", lg: "padding-lg" });
 
-  const LoadingRevariant = revariant(
-    {
-      base: "",
-      sm: "sm:",
-      md: "md:",
-      lg: "lg:",
-    },
-    "base",
-    {
-      true: "loading-true",
-      false: "loading-false",
-    }
-  );
+  const LoadingRevariant = revariant({ base: "", sm: "sm:", md: "md:", lg: "lg:" }, "base", { true: "loading-true", false: "loading-false" });
 
-  const ZIndexRevariant = revariant(
-    {
-      base: "",
-      sm: "sm:",
-      md: "md:",
-      lg: "lg:",
-    },
-    "base",
-    {
-      0: "z-index-0",
-      1: "z-index-1",
-      2: "z-index-2",
-      3: "z-index-3",
-      4: "z-index-4",
-      5: "z-index-5",
-    }
-  );
+  const ZIndexRevariant = revariant({ base: "", sm: "sm:", md: "md:", lg: "lg:" }, "base", { 0: "z-index-0", 1: "z-index-1", 2: "z-index-2", 3: "z-index-3", 4: "z-index-4", 5: "z-index-5" });
 
-  const MixedRevariant = revariant(
-    {
-      base: "",
-      sm: "sm:",
-      md: "md:",
-      lg: "lg:",
-    },
-    "base",
-    {
-      "": "mix-",
-      empty: "",
-      false: "mix-false",
-      true: "mix-true",
-      0: "mix-0",
-      1: "mix-1",
-    }
-  );
+  const MixedRevariant = revariant({ base: "", sm: "sm:", md: "md:", lg: "lg:" }, "base", { "": "mix-", empty: "", false: "mix-false", true: "mix-true", 0: "mix-0", 1: "mix-1" });
 
   const MixedCustomAsRevariant = revariant(
-    {
-      base: "",
-      sm: "@sm",
-      md: "@md",
-      lg: "@lg",
-    },
+    { base: "", sm: "@sm", md: "@md", lg: "@lg" },
     "base",
-    {
-      "": "mix-",
-      empty: "",
-      false: "mix-false",
-      true: "mix-true",
-      0: "mix-0",
-      1: "mix-1",
-    },
+    { "": "mix-", empty: "", false: "mix-false", true: "mix-true", 0: "mix-0", 1: "mix-1" },
     { as: customAs }
   );
 
@@ -413,45 +224,18 @@ describe("revariant", async () => {
 
 describe("reklass", async () => {
   const BoxReklass = reklass({
-    conditions: {
-      base: "",
-      sm: "sm:",
-      md: "md:",
-      lg: "lg:",
-    },
+    conditions: { base: "", sm: "sm:", md: "md:", lg: "lg:" },
     defaultCondition: "base",
     variants: {
-      m: {
-        "1": "m-1",
-        "2": "m-2",
-        "3": "m-3",
-        "4": "m-4",
-        "5": "m-5",
-      },
-      p: {
-        "1": "p-1",
-        "2": "p-2",
-        "3": "p-3",
-        "4": "p-4",
-        "5": "p-5",
-      },
-      empty: {
-        0: "",
-        1: "",
-        true: "",
-        false: "",
-      },
+      m: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
+      p: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
+      empty: { 0: "", 1: "", true: "", false: "" },
     },
   });
 
   const BoxCustomAsReklass = reklass(
     {
-      conditions: {
-        base: "",
-        sm: "@sm",
-        md: "@md",
-        lg: "@lg",
-      },
+      conditions: { base: "", sm: "@sm", md: "@md", lg: "@lg" },
       defaultCondition: "base",
       variants: BoxReklass.o.variants,
     },
@@ -466,9 +250,7 @@ describe("reklass", async () => {
   });
 
   it("compound", async () => {
-    expectReklassFn(BoxReklass, {
-      keys: ["m", "p", "empty"],
-    });
+    expectReklassFn(BoxReklass, { keys: ["m", "p", "empty"] });
   });
 
   it("basic", async () => {

@@ -72,11 +72,13 @@ describe("klassed", async () => {
 
   it("reactive", async () => {
     await render(<KlassedReactiveComponent />, async ({ fireEvent, getByTestId }) => {
-      const reactive = getByTestId("reactive");
+      let reactive = getByTestId("reactive");
       expectElement(reactive).tagName("BUTTON").className("block m-1 p-1 extra-reactive classes").textContent("ReactiveKlassed");
 
       await fireEvent.click(reactive);
-      expect(reactive.className).toEqual("block m-2 p-2 extra-reactive classes reactive");
+      expectElement((reactive = getByTestId("reactive")))
+        .tagName("A")
+        .className("block m-2 p-2 extra-reactive classes reactive");
     });
   });
 
@@ -143,11 +145,13 @@ describe("reklassed", async () => {
 
   it("reactive", async () => {
     await render(<ReklassedReactiveComponent />, async ({ fireEvent, getByTestId }) => {
-      const reactive = getByTestId("reactive");
+      let reactive = getByTestId("reactive");
       expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveReklassed");
 
       await fireEvent.click(reactive);
-      expect(reactive.className).toEqual("m-1 md:m-3 p-2 extra-reactive classes reactive");
+      expectElement((reactive = getByTestId("reactive")))
+        .tagName("A")
+        .className("m-1 md:m-3 p-2 extra-reactive classes reactive");
     });
   });
 
