@@ -42,13 +42,11 @@ const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { end
   const compounds = options.compounds,
     hasCompounds = Array.isArray(compounds) ? compounds.length > 0 : false,
     pickVariantCompounds: { [K in keyof T]?: TransformKey<keyof T[K]> }[] = [],
-    keyofVariantCompounds: string[][] = [],
     resolvedClassCompounds: string[] = [];
 
   if (hasCompounds) {
     for (const [variant, _class] of compounds!) {
       pickVariantCompounds.push(variant);
-      keyofVariantCompounds.push(Object.keys(variant));
       resolvedClassCompounds.push(clsx(_class));
     }
   }
@@ -59,24 +57,24 @@ const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { end
   const fn = ((props, classes) => {
     let result: string = "",
       i: number,
-      temp: string | undefined;
+      temp: string | undefined,
+      x: keyof T | (string & {});
 
-    for (i = 0; i < lengthKeyofVariants; i++) if ((temp = variantGroup[keyofVariants[i]](props?.[keyofVariants[i]]))) result && (result += " "), (result += temp);
+    for (i = 0; i < lengthKeyofVariants; i++) if ((temp = variantGroup[(x = keyofVariants[i])](props?.[x]))) result && (result += " "), (result += temp);
 
     if (hasCompounds) {
-      for (i = 0; i < lengthPickVariantCompounds!; i++) {
-        let v = pickVariantCompounds![i],
+      for (i = 0; i < lengthPickVariantCompounds; i++) {
+        let v = pickVariantCompounds[i],
           match: boolean = true,
-          val: (typeof v)[keyof typeof v],
-          key: string;
+          val: (typeof v)[keyof typeof v];
 
-        for (key of keyofVariantCompounds![i]) {
-          if (typeof (val = v[key as keyof typeof v]) === "undefined" || (props?.[key] ?? defaults?.[key]) !== val) {
+        for (x in v) {
+          if (typeof (val = v[x as keyof typeof v]) === "undefined" || (props?.[x] ?? defaults?.[x]) !== val) {
             match = false;
             break;
           }
         }
-        if (match && (temp = resolvedClassCompounds![i])) result && (result += " "), (result += temp);
+        if (match && (temp = resolvedClassCompounds[i])) result && (result += " "), (result += temp);
       }
     }
 
