@@ -1,6 +1,6 @@
 import { defineConfig } from "vitest/config";
 
-import { qwikVite as qwik } from "@builder.io/qwik/optimizer";
+import { qwikVite as qwik, createOptimizer } from "@builder.io/qwik/optimizer";
 
 import dts from "vite-plugin-dts";
 
@@ -13,7 +13,6 @@ const env = {
 export default defineConfig({
   ...(env.command.build ? { mode: "lib" } : {}),
   build: {
-    ...(env.unminify ? { minify: false } : {}),
     target: "esnext",
     outDir: "dist",
     lib: {
@@ -27,6 +26,12 @@ export default defineConfig({
   },
   plugins: [
     qwik(),
+    {
+      name: "minifier",
+      config: function (config) {
+        config.build!.minify = env.unminify ? false : "esbuild";
+      },
+    },
     env.command.build
       ? dts({
           include: ["src/**/*.{ts,tsx}"],

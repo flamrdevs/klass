@@ -20,7 +20,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["@klass/core", "preact", "preact/hooks"],
+      external: ["@klass/core", "preact", "preact/hooks", "preact/jsx-runtime"],
     },
   },
   plugins: [
