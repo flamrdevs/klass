@@ -73,7 +73,7 @@ const Button = klassed(
       // "class" variants are not allowed
       // "classList" variants are not allowed
     },
-    defaultVariants: {
+    defaults: {
       color: "default",
       size: "md",
     },

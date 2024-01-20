@@ -12,10 +12,10 @@ describe("group", async () => {
         color: { primary: { root: "color-primary", body: "color-primary" }, secondary: { root: "color-secondary", body: "color-secondary" } },
         size: { sm: { root: "size-sm", body: "size-sm" }, md: { root: "size-md", body: "size-md" }, lg: { root: "size-lg", body: "size-lg" } },
       },
-      defaultVariants: { color: "primary", size: "md" },
-      compoundVariants: [
-        { color: "primary", size: "lg", class: { header: "header-color-primary-size-lg" } },
-        { color: "primary", size: "lg", class: { footer: "footer-color-primary-size-lg" } },
+      defaults: { color: "primary", size: "md" },
+      compounds: [
+        [{ color: "primary", size: "lg" }, { header: "header-color-primary-size-lg" }],
+        [{ color: "primary", size: "lg" }, { footer: "footer-color-primary-size-lg" }],
       ],
     });
 
@@ -54,10 +54,10 @@ describe("group", async () => {
           color: { primary: { root: "color-primary", body: "color-primary" }, secondary: { root: "color-secondary", body: "color-secondary" } },
           size: { sm: { root: "size-sm", body: "size-sm" }, md: { root: "size-md", body: "size-md" }, lg: { root: "size-lg", body: "size-lg" } },
         },
-        defaultVariants: { color: "primary", size: "md" },
-        compoundVariants: [
-          { color: "primary", size: "lg", class: { header: "header-color-primary-size-lg" } },
-          { color: "primary", size: "lg", class: { footer: "footer-color-primary-size-lg" } },
+        defaults: { color: "primary", size: "md" },
+        compounds: [
+          [{ color: "primary", size: "lg" }, { header: "header-color-primary-size-lg" }],
+          [{ color: "primary", size: "lg" }, { footer: "footer-color-primary-size-lg" }],
         ],
       },
       { end: customEnd }

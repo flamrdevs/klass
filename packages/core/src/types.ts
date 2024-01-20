@@ -8,9 +8,7 @@ type VariantsSchema = {
   };
 };
 
-type RestrictedVariantsKey = "class";
-
-type StrictVariantsSchema<E extends string = RestrictedVariantsKey> = VariantsSchema & { [variant in E]?: undefined };
+type StrictVariantsSchema<E extends string> = VariantsSchema & { [variant in E]?: undefined };
 
 type VariantFn<T extends VariantsSchema[string]> = (value?: TransformKey<keyof T>) => string | undefined;
 
@@ -18,16 +16,16 @@ type VariantGroup<T extends VariantsSchema> = {
   [K in keyof T]: VariantFn<T[K]>;
 };
 
-type CompoundVariant<T extends VariantsSchema> = Omit<{ [K in keyof T]?: TransformKey<keyof T[K]> }, RestrictedVariantsKey> & { class: ClassValue };
+type CompoundVariant<T extends VariantsSchema> = [{ [K in keyof T]?: TransformKey<keyof T[K]> }, ClassValue];
 
-type KlassOptions<T extends StrictVariantsSchema> = {
+type KlassOptions<T extends VariantsSchema> = {
   base?: ClassValue;
   variants: T;
-  defaultVariants?: { [K in keyof T]?: TransformKey<keyof T[K]> };
-  compoundVariants?: CompoundVariant<T>[];
+  defaults?: { [K in keyof T]?: TransformKey<keyof T[K]> };
+  compounds?: CompoundVariant<T>[];
 };
 
-type KlassFn<T extends StrictVariantsSchema> = {
+type KlassFn<T extends VariantsSchema> = {
   (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }, classes?: ClassValue): string;
 } & {
   o: KlassOptions<T>;
@@ -46,8 +44,7 @@ type RevariantGroup<C extends ConditionSchema, T extends VariantsSchema> = {
 };
 
 type ReklassOptions<C extends ConditionSchema, T extends VariantsSchema> = {
-  conditions: C;
-  defaultCondition: keyof C;
+  conditions: [C, keyof C];
   variants: T;
 };
 
@@ -74,7 +71,6 @@ export type {
   EndFn,
   AsFn,
   VariantsSchema,
-  RestrictedVariantsKey,
   StrictVariantsSchema,
   VariantsOf,
   VariantFn,

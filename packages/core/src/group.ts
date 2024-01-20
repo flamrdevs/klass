@@ -1,41 +1,39 @@
 import { klass } from "./index.ts";
-import type { ClassValue, TransformKey, EndFn, RestrictedVariantsKey, KlassFn } from "./index.ts";
+import type { ClassValue, TransformKey, EndFn, KlassFn } from "./index.ts";
 
-type StrictGroupVariantsSchema<B extends string, E extends string = RestrictedVariantsKey> = {
+type StrictGroupVariantsSchema<B extends string> = {
   [variant: string]: {
     [type: string]: { [key in B]?: ClassValue };
   };
-} & {
-  [variant in E]?: undefined;
 };
 
 type ToVariantsSchema<B extends string, T extends StrictGroupVariantsSchema<B>> = {
-  [variant in keyof Omit<T, RestrictedVariantsKey>]: {
-    [type in keyof Omit<T, RestrictedVariantsKey>[variant]]: ClassValue;
+  [variant in keyof T]: {
+    [type in keyof T[variant]]: ClassValue;
   };
 };
 
-type GroupCompoundVariant<B extends string, T extends StrictGroupVariantsSchema<B>> = Omit<
+type GroupCompoundVariant<B extends string, T extends StrictGroupVariantsSchema<B>> = [
   {
     [K in keyof ToVariantsSchema<B, T>]?: TransformKey<keyof ToVariantsSchema<B, T>[K]>;
   },
-  RestrictedVariantsKey
-> & {
-  class: { [key in B]?: ClassValue };
-};
+  {
+    [key in B]?: ClassValue;
+  }
+];
 
 type GroupOptions<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   base: { [key in B]: ClassValue };
   variants: T;
-  defaultVariants?: { [K in keyof T]?: TransformKey<keyof T[K]> };
-  compoundVariants?: GroupCompoundVariant<B, T>[];
+  defaults?: { [K in keyof T]?: TransformKey<keyof T[K]> };
+  compounds?: GroupCompoundVariant<B, T>[];
 };
 
 type GroupResult<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   [key in B]: KlassFn<ToVariantsSchema<B, T>>;
 };
 
-const compoundVariantsFilterFn = <T extends { class?: unknown }>(compound: T) => typeof compound.class !== "undefined";
+const compoundsFilterFn = <T extends Readonly<[any, any]>>(value: T) => typeof value[1] !== "undefined";
 
 const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>, config?: { end?: EndFn }): GroupResult<B, T> => {
   const keyofBase = Object.keys(options.base) as B[];
@@ -54,8 +52,8 @@ const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options
           (obj, [variant, types]) => ((obj[variant] = Object.entries(types).reduce((obj, [type, bases]) => ((obj[type] = bases[base]), obj), {} as { [type: string]: ClassValue })), obj),
           {} as { [variant: string]: { [type: string]: ClassValue } }
         ) as any,
-        defaultVariants: options.defaultVariants,
-        compoundVariants: options.compoundVariants?.map(({ class: _class, ...variants }) => ({ ...variants, class: _class?.[base] })).filter(compoundVariantsFilterFn) as any,
+        defaults: options.defaults,
+        compounds: options.compounds?.map(([variants, _class]) => [variants, _class?.[base]] as const).filter(compoundsFilterFn) as any,
       },
       config
     );

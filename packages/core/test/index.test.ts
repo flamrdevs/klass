@@ -100,17 +100,17 @@ describe("klass", async () => {
       full: { true: "w-full h-full", width: "w-full", height: "h-full" },
       empty: { 0: "", 1: "", true: "", false: "" },
     },
-    defaultVariants: { color: "red", variant: "filled" },
-    compoundVariants: [
-      { color: "red", variant: "filled", class: "bg-red-600" },
-      { color: "green", variant: "filled", class: "bg-green-600" },
-      { color: "blue", variant: "filled", class: "bg-blue-600" },
-      { color: "red", variant: "outline", class: "text-red-600 border-red-600" },
-      { color: "green", variant: "outline", class: "text-green-600 border-green-600" },
-      { color: "blue", variant: "outline", class: "text-blue-600 border-blue-600" },
-      { empty: true, color: "red", class: "" },
-      { empty: true, color: "red", class: "" },
-      { empty: true, color: "red", class: "" },
+    defaults: { color: "red", variant: "filled" },
+    compounds: [
+      [{ color: "red", variant: "filled" }, "bg-red-600"],
+      [{ color: "green", variant: "filled" }, "bg-green-600"],
+      [{ color: "blue", variant: "filled" }, "bg-blue-600"],
+      [{ color: "red", variant: "outline" }, "text-red-600 border-red-600"],
+      [{ color: "green", variant: "outline" }, "text-green-600 border-green-600"],
+      [{ color: "blue", variant: "outline" }, "text-blue-600 border-blue-600"],
+      [{ empty: true, color: "red" }, ""],
+      [{ empty: true, color: "red" }, ""],
+      [{ empty: true, color: "red" }, ""],
     ],
   });
 
@@ -224,8 +224,7 @@ describe("revariant", async () => {
 
 describe("reklass", async () => {
   const BoxReklass = reklass({
-    conditions: { base: "", sm: "sm:", md: "md:", lg: "lg:" },
-    defaultCondition: "base",
+    conditions: [{ base: "", sm: "sm:", md: "md:", lg: "lg:" }, "base"],
     variants: {
       m: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
       p: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
@@ -235,8 +234,7 @@ describe("reklass", async () => {
 
   const BoxCustomAsReklass = reklass(
     {
-      conditions: { base: "", sm: "@sm", md: "@md", lg: "@lg" },
-      defaultCondition: "base",
+      conditions: [{ base: "", sm: "@sm", md: "@md", lg: "@lg" }, "base"],
       variants: BoxReklass.o.variants,
     },
     { as: customAs }
@@ -246,7 +244,7 @@ describe("reklass", async () => {
 
   it("type of", async () => {
     expect(reklass).toBeTypeOf("function");
-    expect(reklass({ conditions: { condition: "" }, defaultCondition: "condition", variants: {} })).toBeTypeOf("function");
+    expect(reklass({ conditions: [{ condition: "" }, "condition"], variants: {} })).toBeTypeOf("function");
   });
 
   it("compound", async () => {

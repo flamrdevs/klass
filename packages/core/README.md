@@ -68,9 +68,8 @@ const button = klass({
     block: {
       true: "w-full",
     },
-    // "class" variant are not allowed
   },
-  defaultVariants: {
+  defaults: {
     color: "default",
     size: "md",
   },

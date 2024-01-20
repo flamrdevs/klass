@@ -1,11 +1,11 @@
 import type { JSX } from "preact";
 
-import type { ClassValue, RestrictedVariantsKey, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
+import type { ClassValue, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
 import type { Signalish, SignalishRecord, ElementType, Classes, BaseComponent } from "./preact.ts";
 import type { PolymorphicComponentProp } from "./polymorphic.ts";
 
-type FinalRestrictedVariantsKey = RestrictedVariantsKey | Classes;
+type FinalRestrictedVariantsKey = Classes;
 type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;
 
 type ClassesValueProps = Partial<Record<Classes, Signalish<ClassValue>>>;
