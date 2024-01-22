@@ -12,8 +12,10 @@
     "typescript",
     "framework-agnostic",
     "preact",
+    "qwik",
     "react",
-    "solid"
+    "solid",
+    "vue"
   ],
   "type": "module",
   "main": "./dist/index.cjs",
