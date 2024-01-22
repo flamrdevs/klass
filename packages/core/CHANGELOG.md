@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.5
+
+### Patch Changes
+
+- Optimization
+
 ## 4.0.0-next.4
 
 ### Patch Changes
