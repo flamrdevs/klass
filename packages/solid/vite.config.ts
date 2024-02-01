@@ -15,8 +15,8 @@ export default defineConfig({
     ...(env.unminify ? { minify: false } : {}),
     target: "esnext",
     lib: {
-      entry: "src/index.tsx",
-      fileName: "index",
+      entry: ["src/index.tsx", "src/setup.tsx"],
+      fileName: (format, entry) => `${entry}.${format === "cjs" ? "cjs" : "js"}`,
       formats: ["es", "cjs"],
     },
     rollupOptions: {

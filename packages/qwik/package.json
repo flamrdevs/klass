@@ -29,9 +29,20 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.qwik.cjs"
       }
+    },
+    "./setup": {
+      "import": {
+        "types": "./dist/setup.d.ts",
+        "default": "./dist/setup.qwik.mjs"
+      },
+      "require": {
+        "types": "./dist/setup.d.ts",
+        "default": "./dist/setup.qwik.cjs"
+      }
     }
   },
   "files": [
+    "setup.d.ts",
     "dist"
   ],
   "publishConfig": {

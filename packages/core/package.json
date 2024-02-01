@@ -31,6 +31,16 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./setup": {
+      "import": {
+        "types": "./dist/setup.d.ts",
+        "default": "./dist/setup.js"
+      },
+      "require": {
+        "types": "./dist/setup.d.ts",
+        "default": "./dist/setup.cjs"
+      }
+    },
     "./group": {
       "import": {
         "types": "./dist/group.d.ts",
@@ -53,6 +63,7 @@
     }
   },
   "files": [
+    "setup.d.ts",
     "group.d.ts",
     "slots.d.ts",
     "dist"

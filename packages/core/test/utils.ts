@@ -33,10 +33,14 @@ const expectReklassFn = <C extends ConditionSchema, T extends VariantsSchema>(fn
 };
 
 const customEnd: EndFn = (value) => `end( ${value} )`;
+const expectCustomEndFormat = (className: string) => {
+  expect(`${className.slice(0, 5)}${className.slice(-2)}`).toEqual(customEnd(""));
+};
+
 const customAs: AsFn = (condition, className) => `${className}${condition}`;
 
 const createArray = <T>(length: number, map: (index: number) => T) => Array.from({ length }).map((_, index) => map(index));
 
 export { expectVariantFn, expectKlassFn, expectRevariantFn, expectReklassFn };
-export { customEnd, customAs };
+export { customEnd, expectCustomEndFormat, customAs };
 export { createArray };

@@ -16,8 +16,8 @@ export default defineConfig({
     target: "esnext",
     outDir: "dist",
     lib: {
-      entry: "src/index.tsx",
-      fileName: (format) => `index.qwik.${format === "cjs" ? "cjs" : "mjs"}`,
+      entry: ["src/index.tsx", "src/setup.tsx"],
+      fileName: (format, entry) => `${entry}.qwik.${format === "cjs" ? "cjs" : "mjs"}`,
       formats: ["es", "cjs"],
     },
     rollupOptions: {
