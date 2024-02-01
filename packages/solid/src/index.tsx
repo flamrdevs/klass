@@ -18,14 +18,14 @@ const PolymorphicKeysSplitter = ["as"] as const,
 
 function klassed<VC extends ValidComponent, VS extends FinalVariantsSchema>(
   element: VC,
-  options: KlassOptions<VS>,
+  options: KlassOptions<VS> | KlassFn<VS>,
   config: {
     dp?: PolymorphicComponentProp<VC, {}>;
     end?: EndFn;
   } = {}
 ): KlassedComponent<VC, VS> {
-  const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesProps, end } = config,
-    klassFn = klass<VS>(options, { end }),
+  const { class: defaultClass, classList: defaultClassList, ...defaultProps } = config.dp ?? ({} as ClassesProps),
+    klassFn = typeof options === "function" ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.vk);
 
   const Component = (<C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
@@ -41,15 +41,15 @@ function klassed<VC extends ValidComponent, VS extends FinalVariantsSchema>(
 
 function reklassed<VC extends ValidComponent, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: VC,
-  options: ReklassOptions<CS, VS>,
+  options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
   config: {
     dp?: PolymorphicComponentProp<VC, {}>;
     as?: AsFn;
     end?: EndFn;
   } = {}
 ): ReklassedComponent<VC, CS, VS> {
-  const { dp: { class: defaultClass, classList: defaultClassList, ...defaultProps } = {} as ClassesProps, as, end } = config,
-    reklassFn = reklass<CS, VS>(options, { as, end }),
+  const { class: defaultClass, classList: defaultClassList, ...defaultProps } = config.dp ?? ({} as ClassesProps),
+    reklassFn = typeof options === "function" ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.rvk);
 
   const Component = (<C extends ValidComponent = VC>(props: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {

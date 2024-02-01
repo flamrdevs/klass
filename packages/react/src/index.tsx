@@ -21,14 +21,14 @@ const splitRestProps = <P extends { [key: PropertyKey]: any }, K extends Propert
 
 function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   element: ET,
-  options: KlassOptions<VS>,
+  options: KlassOptions<VS> | KlassFn<VS>,
   config: {
     dp?: PolymorphicComponentPropWithRef<ET, {}>;
     end?: EndFn;
   } = {}
 ): KlassedComponent<ET, VS> {
-  const { dp: { className: defaultClassName, ...defaultProps } = {} as ClassesProps, end } = config,
-    klassFn = klass<VS>(options, { end }),
+  const { className: defaultClassName, ...defaultProps } = config.dp ?? ({} as ClassesProps),
+    klassFn = typeof options === "function" ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.vk);
 
   const Component = React.forwardRef<any, any>(
@@ -49,15 +49,15 @@ function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
 
 function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
-  options: ReklassOptions<CS, VS>,
+  options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
   config: {
     dp?: PolymorphicComponentPropWithRef<ET, {}>;
     as?: AsFn;
     end?: EndFn;
   } = {}
 ): ReklassedComponent<ET, CS, VS> {
-  const { dp: { className: defaultClassName, ...defaultProps } = {} as ClassesProps, as, end } = config,
-    reklassFn = reklass<CS, VS>(options, { as, end }),
+  const { className: defaultClassName, ...defaultProps } = config.dp ?? ({} as ClassesProps),
+    reklassFn = typeof options === "function" ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.rvk);
 
   const Component = React.forwardRef<any, any>(

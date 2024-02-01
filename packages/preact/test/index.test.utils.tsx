@@ -1,17 +1,21 @@
 import { useState } from "preact/hooks";
 import { computed, useSignal } from "@preact/signals";
 
+import { klass, reklass } from "@klass/core";
+
 import { klassed, reklassed } from "../src/index.tsx";
 
 import { customEnd, Div } from "./utils.tsx";
 
-export const BoxKlassed = klassed("div", {
+const boxKlass = klass({
   base: "block",
   variants: {
     m: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
     p: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
   },
 });
+
+export const BoxKlassed = klassed("div", boxKlass);
 
 export const ButtonKlassed = klassed(
   "button",
@@ -35,7 +39,7 @@ export const ButtonKlassed = klassed(
   { dp: { type: "button" } }
 );
 
-export const BoxElement = klassed(Div, BoxKlassed.klass.o, { end: customEnd });
+export const BoxElement = klassed(Div, boxKlass.o, { end: customEnd });
 
 export const BoxCustomEndKlassed = klassed("div", BoxKlassed.klass.o, { end: customEnd });
 
@@ -90,7 +94,7 @@ export const KlassedReactiveSignalComponent = () => {
   );
 };
 
-export const BoxReklassed = reklassed("div", {
+const boxReklass = reklass({
   conditions: [{ base: "", sm: "sm:", md: "md:", lg: "lg:" }, "base"],
   variants: {
     m: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
@@ -98,7 +102,9 @@ export const BoxReklassed = reklassed("div", {
   },
 });
 
-export const BoxCustomEndReklassed = reklassed("div", BoxReklassed.reklass.o, { end: customEnd });
+export const BoxReklassed = reklassed("div", boxReklass);
+
+export const BoxCustomEndReklassed = reklassed("div", boxReklass.o, { end: customEnd });
 
 export const ReklassedReactiveComponent = () => {
   const [as, setAs] = useState<"a" | "button">("button");
