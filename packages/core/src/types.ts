@@ -62,6 +62,7 @@ type ReklassFn<C extends ConditionSchema, T extends VariantsSchema> = {
 };
 
 type VariantsOf<T extends (...args: any[]) => any> = Exclude<Parameters<T>[0], undefined>;
+type RequiredVariantsFrom<T extends { [key: string]: unknown }, K extends keyof T> = Omit<T, K> & { [k in K]-?: T[k] };
 
 type EndFn = (className: string) => string;
 type AsFn = (condition: string, className: string) => string;
@@ -73,6 +74,7 @@ export type {
   VariantsSchema,
   StrictVariantsSchema,
   VariantsOf,
+  RequiredVariantsFrom,
   VariantFn,
   VariantGroup,
   CompoundVariant,

@@ -1,5 +1,5 @@
 import { klass } from "./index.ts";
-import type { ClassValue, TransformKey, EndFn, KlassFn } from "./index.ts";
+import type { ClassValue, TransformKey, EndFn, KlassFn, VariantsOf } from "./index.ts";
 
 type StrictGroupVariantsSchema<B extends string> = {
   [variant: string]: {
@@ -62,5 +62,7 @@ const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options
   return klasses;
 };
 
-export type { StrictGroupVariantsSchema, GroupCompoundVariant, GroupOptions, GroupResult };
+type VariantsOfGroup<T> = T extends GroupResult<infer X, StrictGroupVariantsSchema<infer X>> ? VariantsOf<T[X]> : never;
+
+export type { StrictGroupVariantsSchema, GroupCompoundVariant, GroupOptions, GroupResult, VariantsOfGroup };
 export default group;

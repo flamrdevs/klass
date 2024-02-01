@@ -1,5 +1,5 @@
 import { klass } from "./index.ts";
-import type { ClassValue, TransformKey, EndFn, KlassFn } from "./index.ts";
+import type { ClassValue, TransformKey, EndFn, KlassFn, VariantsOf } from "./index.ts";
 
 type StrictSlotsVariantsSchema<B extends string> = {
   [variant: string]: {
@@ -84,5 +84,7 @@ const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options
   return fn;
 };
 
-export type { StrictSlotsVariantsSchema, SlotsCompoundVariant, SlotsOptions, SlotsFn };
+type VariantsOfSlots<T> = T extends SlotsFn<infer X, StrictSlotsVariantsSchema<infer X>> ? VariantsOf<T["klass"][X]> : never;
+
+export type { StrictSlotsVariantsSchema, SlotsCompoundVariant, SlotsOptions, SlotsFn, VariantsOfSlots };
 export default slots;
