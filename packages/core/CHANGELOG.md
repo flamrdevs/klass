@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.6
+
+### Patch Changes
+
+- klasses function options, setup API and utils entry
+
 ## 4.0.0-next.5
 
 ### Patch Changes

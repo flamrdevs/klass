@@ -1,6 +1,6 @@
 {
   "name": "@klass/vue",
-  "version": "4.0.0-next.5",
+  "version": "4.0.0-next.6",
   "description": "Class variant utility for Vue",
   "keywords": [
     "class",
@@ -63,11 +63,11 @@
   },
   "homepage": "https://klass.pages.dev",
   "peerDependencies": {
-    "@klass/core": "4.0.0-next.5",
+    "@klass/core": "4.0.0-next.6",
     "vue": "^3.4.0"
   },
   "devDependencies": {
-    "@klass/core": "4.0.0-next.5",
+    "@klass/core": "4.0.0-next.6",
     "vue": "^3.4.15"
   }
 }

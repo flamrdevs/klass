@@ -1,6 +1,6 @@
 {
   "name": "@klass/solid",
-  "version": "4.0.0-next.5",
+  "version": "4.0.0-next.6",
   "description": "Class variant utility for Solid",
   "keywords": [
     "class",
@@ -63,11 +63,11 @@
   },
   "homepage": "https://klass.pages.dev",
   "peerDependencies": {
-    "@klass/core": "4.0.0-next.5",
+    "@klass/core": "4.0.0-next.6",
     "solid-js": "^1.8.0"
   },
   "devDependencies": {
-    "@klass/core": "4.0.0-next.5",
+    "@klass/core": "4.0.0-next.6",
     "solid-js": "^1.8.11"
   }
 }

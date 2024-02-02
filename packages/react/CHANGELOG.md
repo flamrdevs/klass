@@ -1,5 +1,13 @@
 # @klass/react
 
+## 4.0.0-next.6
+
+### Patch Changes
+
+- klasses function options, setup API and utils entry
+- Updated dependencies
+  - @klass/core@4.0.0-next.6
+
 ## 4.0.0-next.5
 
 ### Patch Changes
