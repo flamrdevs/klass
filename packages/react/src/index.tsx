@@ -4,20 +4,11 @@ import type { ElementType } from "react";
 import { klass, reklass } from "@klass/core";
 import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, EndFn, AsFn } from "@klass/core";
 
-import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
+import type { WithClassesValueProps, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
 import type { ClassesProps } from "./types/react.ts";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "./types/polymorphic.ts";
 
-const getVariantKeys__filterFn = <VS extends FinalVariantsSchema>(el: keyof VS) => el !== "className",
-  getVariantKeys = <VS extends FinalVariantsSchema>(keys: (keyof VS)[]) => keys.filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[];
-
-const splitRestProps = <P extends { [key: PropertyKey]: any }, K extends PropertyKey>(props: P, keys: K[]) => {
-  let o: /** omited */ Record<string, any> = {},
-    p: /** picked */ Record<string, any> = {},
-    key: string;
-  for (key in props) (keys.includes(key as K) ? p : o)[key] = props[key];
-  return { o, p } as const;
-};
+import { getVariantKeys, splitRestProps } from "./utils.ts";
 
 function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   element: ET,

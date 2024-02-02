@@ -5,16 +5,11 @@ import type { ValidComponent } from "solid-js";
 import { klass, reklass } from "@klass/core";
 import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, EndFn, AsFn } from "@klass/core";
 
-import type { WithClassesValueProps, FinalRestrictedVariantsKey, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
+import type { WithClassesValueProps, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
 import type { ClassesProps } from "./types/solid.ts";
 import type { PolymorphicComponentProp } from "./types/polymorphic.ts";
 
-const getVariantKeys__filterFn = <VS extends FinalVariantsSchema>(el: keyof VS) => el !== "class" && el !== "classList",
-  getVariantKeys = <VS extends FinalVariantsSchema>(keys: (keyof VS)[]) => keys.filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[];
-
-const PolymorphicKeysSplitter = ["as"] as const,
-  ClassesKeysSplitter = ["class", "classList"] as const,
-  classesProps = <P extends Partial<Record<FinalRestrictedVariantsKey, any>>>(props: P, defaultClass: any, defaultClassList: any) => [props.class ?? defaultClass, props.classList ?? defaultClassList];
+import { getVariantKeys, PolymorphicKeysSplitter, ClassesKeysSplitter, classesProps } from "./utils.ts";
 
 function klassed<VC extends ValidComponent, VS extends FinalVariantsSchema>(
   element: VC,
