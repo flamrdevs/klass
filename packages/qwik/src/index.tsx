@@ -1,7 +1,7 @@
 import { jsx } from "@builder.io/qwik";
 
 import { klass, reklass } from "@klass/core";
-import type { KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn, EndFn, AsFn } from "@klass/core";
+import type { EndFn, AsFn, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
 import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
 import type { SupportedElementType, ClassesProps } from "./types/qwik.ts";
@@ -17,7 +17,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
     end?: EndFn;
   } = {}
 ): KlassedComponent<ET, VS> {
-  const { class: defaultClass, ...defaultProps } = config.dp ?? ({} as ClassesProps),
+  const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     klassFn = typeof options === "function" ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.vk);
 
@@ -41,7 +41,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
     end?: EndFn;
   } = {}
 ): ReklassedComponent<ET, CS, VS> {
-  const { class: defaultClass, ...defaultProps } = config.dp ?? ({} as ClassesProps),
+  const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     reklassFn = typeof options === "function" ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.rvk);
 
