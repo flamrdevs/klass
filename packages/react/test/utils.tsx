@@ -1,7 +1,7 @@
 import { expect } from "vitest";
 
 import { forwardRef } from "react";
-import type { PropsWithoutRef } from "react";
+import type { JSX, PropsWithoutRef } from "react";
 
 import type { ConditionSchema, VariantsSchema } from "@klass/core";
 
