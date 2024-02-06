@@ -21,6 +21,9 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ["@klass/core", "vue"],
+      output: {
+        exports: "named",
+      },
     },
   },
   plugins: [

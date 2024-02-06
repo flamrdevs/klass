@@ -21,6 +21,9 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ["@klass/core", "solid-js", "solid-js/web"],
+      output: {
+        exports: "named",
+      },
     },
   },
   plugins: [

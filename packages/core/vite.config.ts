@@ -19,6 +19,9 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ["clsx"],
+      output: {
+        exports: "named",
+      },
     },
   },
   plugins: [

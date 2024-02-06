@@ -21,6 +21,9 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ["@klass/core", "react", "react-dom"],
+      output: {
+        exports: "named",
+      },
     },
   },
   plugins: [

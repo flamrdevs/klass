@@ -22,6 +22,9 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ["@klass/core", "@builder.io/qwik"],
+      output: {
+        exports: "named",
+      },
     },
   },
   plugins: [

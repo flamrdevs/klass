@@ -21,6 +21,9 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ["@klass/core", "preact", "preact/hooks", "preact/jsx-runtime"],
+      output: {
+        exports: "named",
+      },
     },
   },
   plugins: [
