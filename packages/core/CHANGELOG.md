@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.7
+
+### Patch Changes
+
+- Types improvements and new frameworks monomorphic feature
+
 ## 4.0.0-next.6
 
 ### Patch Changes
