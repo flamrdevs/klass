@@ -1,14 +1,18 @@
 import type { JSXChildren } from "@builder.io/qwik";
-import type { JSX } from "@builder.io/qwik/jsx-runtime";
 
-import type { ComponentProps, ElementType } from "./qwik.ts";
+import type { SupportedComponentProps, SupportedElementType } from "./qwik.ts";
 
-type PolymorphicComponentProp<ET extends ElementType, Props = {}> = (Props & { as?: ET } & {
+type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
+  ref?: P extends {
+    ref?: infer Ref;
+  }
+    ? Ref
+    : unknown;
+};
+
+export type PolymorphicComponentProps<ET extends SupportedElementType, Props = {}> = (Props & {
+  as?: ET;
+} & {
   children?: JSXChildren;
 }) &
-  Omit<
-    Omit<ComponentProps<ET>, "ref"> & { ref?: (ET extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[ET] : ComponentProps<ET>) extends { ref?: infer Ref } ? Ref : unknown },
-    "as" | keyof Props
-  >;
-
-export type { PolymorphicComponentProp };
+  Omit<ResolveRefProps<SupportedComponentProps<ET>>, "as" | keyof Props>;

@@ -1,11 +1,28 @@
-import type { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import type { ForwardedRef, ReactNode } from "react";
 
-type PolymorphicComponentProp<ET extends ElementType, Props = {}> = (Props & { as?: ET } & { children?: ReactNode }) & Omit<ComponentPropsWithoutRef<ET>, "as" | keyof Props>;
+import type { SupportedComponentProps, SupportedElementType } from "./react.ts";
 
-type PolymorphicRef<ET extends ElementType> = ComponentPropsWithRef<ET>["ref"];
-
-type PolymorphicComponentPropWithRef<ET extends ElementType, Props = {}> = PolymorphicComponentProp<ET, Props> & {
-  ref?: PolymorphicRef<ET>;
+type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
+  ref?: P extends {
+    ref?: infer Ref;
+  }
+    ? Ref
+    : unknown;
 };
 
-export type { PolymorphicRef, PolymorphicComponentPropWithRef };
+export type PolymorphicComponentProps<ET extends SupportedElementType, Props = {}> = (Props & {
+  as?: ET;
+} & {
+  children?: ReactNode;
+}) &
+  Omit<ResolveRefProps<SupportedComponentProps<ET>>, "as" | keyof Props>;
+
+type ResolvePolymorphicRef<P extends {}> = ForwardedRef<
+  P extends {
+    ref?: infer Ref;
+  }
+    ? Ref
+    : any
+>;
+
+export type PolymorphicRef<ET extends SupportedElementType> = ResolvePolymorphicRef<SupportedComponentProps<ET>>;

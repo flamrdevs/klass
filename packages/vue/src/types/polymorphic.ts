@@ -1,11 +1,16 @@
-import type { JSX } from "vue/jsx-runtime";
+import type { SupportedComponentProps, SupportedElementType } from "./vue.ts";
 
-import type { ComponentProps, ElementType } from "./vue.ts";
+type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
+  ref?: P extends {
+    ref?: infer Ref;
+  }
+    ? Ref
+    : unknown;
+};
 
-type PolymorphicComponentProp<VC extends ElementType, Props = {}> = (Props & { as?: VC }) &
-  Omit<
-    Omit<ComponentProps<VC>, "ref"> & { ref?: (VC extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[VC] : ComponentProps<VC>) extends { ref?: infer Ref } ? Ref : unknown },
-    "as" | keyof Props
-  >;
+type PolymorphicComponentProps<ET extends SupportedElementType, Props = {}> = (Props & {
+  as?: ET;
+}) &
+  Omit<ResolveRefProps<SupportedComponentProps<ET>>, "as" | keyof Props>;
 
-export type { PolymorphicComponentProp };
+export type { PolymorphicComponentProps };

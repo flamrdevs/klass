@@ -1,20 +1,19 @@
 import React from "react";
-import type { ElementType } from "react";
 
 import { klass, reklass } from "@klass/core";
-import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, EndFn, AsFn } from "@klass/core";
+import type { KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn, EndFn, AsFn } from "@klass/core";
 
-import type { WithClassesValueProps, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
-import type { ClassesProps } from "./types/react.ts";
-import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "./types/polymorphic.ts";
+import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
+import type { SupportedElementType, ClassesProps } from "./types/react.ts";
+import type { PolymorphicComponentProps, PolymorphicRef } from "./types/polymorphic.ts";
 
 import { getVariantKeys, splitRestProps } from "./utils.ts";
 
-function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
+function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
   element: ET,
   options: KlassOptions<VS> | KlassFn<VS>,
   config: {
-    dp?: PolymorphicComponentPropWithRef<ET, {}>;
+    dp?: PolymorphicComponentProps<ET, {}>;
     end?: EndFn;
   } = {}
 ): KlassedComponent<ET, VS> {
@@ -22,27 +21,22 @@ function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
     klassFn = typeof options === "function" ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.vk);
 
-  const Component = React.forwardRef<any, any>(
-    <C extends ElementType = ET>(
-      { as: As = element as unknown as C, className = defaultClassName, ...rest }: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>,
-      ref?: PolymorphicRef<C>
-    ) => {
-      const splitted = splitRestProps(rest, keys);
+  const Component = React.forwardRef<any, any>(({ as: As = element as any, className = defaultClassName, ...rest }, ref?: PolymorphicRef<SupportedElementType>) => {
+    const splitted = splitRestProps(rest, keys);
 
-      return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={klassFn(splitted.p, className)} />;
-    }
-  ) as unknown as KlassedComponent<ET, VS>;
+    return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={klassFn(splitted.p, className)} />;
+  }) as unknown as KlassedComponent<ET, VS>;
 
   Component.klass = klassFn;
 
   return Component;
 }
 
-function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
+function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
   options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
   config: {
-    dp?: PolymorphicComponentPropWithRef<ET, {}>;
+    dp?: PolymorphicComponentProps<ET, {}>;
     as?: AsFn;
     end?: EndFn;
   } = {}
@@ -51,16 +45,11 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
     reklassFn = typeof options === "function" ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.rvk);
 
-  const Component = React.forwardRef<any, any>(
-    <C extends ElementType = ET>(
-      { as: As = element as unknown as C, className = defaultClassName, ...rest }: PolymorphicComponentPropWithRef<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>,
-      ref?: PolymorphicRef<C>
-    ) => {
-      const splitted = splitRestProps(rest, keys);
+  const Component = React.forwardRef<any, any>(({ as: As = element as any, className = defaultClassName, ...rest }, ref?: PolymorphicRef<SupportedElementType>) => {
+    const splitted = splitRestProps(rest, keys);
 
-      return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={reklassFn(splitted.p, className)} />;
-    }
-  ) as unknown as ReklassedComponent<ET, CS, VS>;
+    return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={reklassFn(splitted.p, className)} />;
+  }) as unknown as ReklassedComponent<ET, CS, VS>;
 
   Component.reklass = reklassFn;
 

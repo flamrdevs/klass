@@ -1,25 +1,24 @@
 import type { FunctionComponent, Signal } from "@builder.io/qwik";
 import type { JSX } from "@builder.io/qwik/jsx-runtime";
 
-type Signalish<T> = T | Signal<T>;
+export type Signalish<T> = T | Signal<T>;
+export type SignalishRecord<T extends Record<any, any>> = {
+  [K in keyof T]: Signalish<T[K]>;
+};
 
-type SignalishRecord<T extends Record<any, any>> = { [K in keyof T]: Signalish<T[K]> };
+export type SupportedComponentType<P = {}> = FunctionComponent<P>;
 
-type ValidComponent = FunctionComponent | keyof JSX.IntrinsicElements;
+export type SupportedComponentProps<T extends SupportedComponentType | keyof JSX.IntrinsicElements> = T extends SupportedComponentType<infer P>
+  ? P
+  : T extends keyof JSX.IntrinsicElements
+  ? JSX.IntrinsicElements[T]
+  : never;
 
-type ComponentProps<T extends ValidComponent> = T extends FunctionComponent<infer P> ? P : T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : Record<string, unknown>;
-
-type ElementType<P extends Record<any, any> = Record<any, any>> =
+export type SupportedElementType<P = any> =
   | {
       [K in keyof JSX.IntrinsicElements]: P extends JSX.IntrinsicElements[K] ? K : never;
     }[keyof JSX.IntrinsicElements]
-  | FunctionComponent<P>;
+  | SupportedComponentType<P>;
 
-type Classes = "class";
-type ClassesProps = Partial<Record<Classes, Signalish<string>>>;
-
-type BaseComponent = {
-  displayName?: string;
-};
-
-export type { Signalish, SignalishRecord, ComponentProps, ElementType, Classes, ClassesProps, BaseComponent };
+export type Classes = "class";
+export type ClassesProps = Partial<Record<Classes, Signalish<string>>>;

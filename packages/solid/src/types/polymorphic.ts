@@ -1,9 +1,18 @@
-import type { ComponentProps, JSX, ValidComponent } from "solid-js";
+import type { JSX } from "solid-js";
 
-type PolymorphicComponentProp<VC extends ValidComponent, Props = {}> = (Props & { as?: VC } & { children?: JSX.Element }) &
-  Omit<
-    Omit<ComponentProps<VC>, "ref"> & { ref?: (VC extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[VC] : ComponentProps<VC>) extends { ref?: infer Ref } ? Ref : unknown },
-    "as" | keyof Props
-  >;
+import type { SupportedComponentProps, SupportedElementType } from "./solid.ts";
 
-export type { PolymorphicComponentProp };
+type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
+  ref?: P extends {
+    ref?: infer Ref;
+  }
+    ? Ref
+    : unknown;
+};
+
+export type PolymorphicComponentProps<ET extends SupportedElementType, Props = {}> = (Props & {
+  as?: ET;
+} & {
+  children?: JSX.Element;
+}) &
+  Omit<ResolveRefProps<SupportedComponentProps<ET>>, "as" | keyof Props>;

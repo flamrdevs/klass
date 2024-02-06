@@ -1,13 +1,18 @@
-import type { ComponentProps, ComponentChildren, JSX } from "preact";
+import type { ComponentChildren } from "preact";
 
-import type { ElementType } from "./preact.ts";
+import type { SupportedComponentProps, SupportedElementType } from "./preact.ts";
 
-type PolymorphicComponentProp<ET extends ElementType, Props = {}> = (Props & { as?: ET } & {
+type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
+  ref?: P extends {
+    ref?: infer Ref;
+  }
+    ? Ref
+    : unknown;
+};
+
+export type PolymorphicComponentProps<ET extends SupportedElementType, Props = {}> = (Props & {
+  as?: ET;
+} & {
   children?: ComponentChildren;
 }) &
-  Omit<
-    Omit<ComponentProps<ET>, "ref"> & { ref?: (ET extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[ET] : ComponentProps<ET>) extends { ref?: infer Ref } ? Ref : unknown },
-    "as" | keyof Props
-  >;
-
-export type { PolymorphicComponentProp };
+  Omit<ResolveRefProps<SupportedComponentProps<ET>>, "as" | keyof Props>;

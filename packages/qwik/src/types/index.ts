@@ -2,27 +2,27 @@ import type { JSX } from "@builder.io/qwik/jsx-runtime";
 
 import type { ClassValue, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
-import type { Signalish, SignalishRecord, ElementType, Classes, BaseComponent } from "./qwik.ts";
-import type { PolymorphicComponentProp } from "./polymorphic.ts";
+import type { Signalish, SignalishRecord, SupportedElementType, Classes } from "./qwik.ts";
+import type { PolymorphicComponentProps } from "./polymorphic.ts";
 
-type FinalRestrictedVariantsKey = Classes;
-type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;
+export type FinalRestrictedVariantsKey = Classes;
+export type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;
 
-type ClassesValueProps = Partial<Record<Classes, Signalish<ClassValue>>>;
-type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & ClassesValueProps;
+export type ClassesValueProps = Partial<Record<Classes, Signalish<ClassValue>>>;
+export type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & ClassesValueProps;
 
-type KlassedComponent<ET extends ElementType, VS extends FinalVariantsSchema> = {
-  <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<SignalishRecord<VariantsOf<KlassFn<VS>>>>>): JSX.Element | null;
-} & BaseComponent & {
-    klass: KlassFn<VS>;
-  };
+export type KlassedBase<VS extends FinalVariantsSchema> = {
+  klass: KlassFn<VS>;
+};
 
-type ReklassedComponent<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
-  <C extends ElementType = ET>(props: PolymorphicComponentProp<C, WithClassesValueProps<SignalishRecord<VariantsOf<ReklassFn<CS, VS>>>>>): JSX.Element | null;
-} & BaseComponent & {
-    reklass: ReklassFn<CS, VS>;
-  };
+export type ReklassedBase<CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
+  reklass: ReklassFn<CS, VS>;
+};
 
-export type { ClassesValueProps, WithClassesValueProps };
-export type { FinalRestrictedVariantsKey, FinalVariantsSchema };
-export type { KlassedComponent, ReklassedComponent };
+export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
+  <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<SignalishRecord<VariantsOf<KlassFn<VS>>>>>): JSX.Element;
+} & KlassedBase<VS>;
+
+export type ReklassedComponent<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
+  <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<SignalishRecord<VariantsOf<ReklassFn<CS, VS>>>>>): JSX.Element;
+} & ReklassedBase<CS, VS>;

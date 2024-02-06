@@ -1,19 +1,19 @@
 import { jsx } from "@builder.io/qwik";
 
 import { klass, reklass } from "@klass/core";
-import type { KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, EndFn, AsFn } from "@klass/core";
+import type { KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn, EndFn, AsFn } from "@klass/core";
 
-import type { WithClassesValueProps, FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
-import type { ElementType, ClassesProps } from "./types/qwik.ts";
-import type { PolymorphicComponentProp } from "./types/polymorphic.ts";
+import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
+import type { SupportedElementType, ClassesProps } from "./types/qwik.ts";
+import type { PolymorphicComponentProps } from "./types/polymorphic.ts";
 
 import { getVariantKeys, splitRestProps, maybeSignal } from "./utils.ts";
 
-function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
+function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
   element: ET,
   options: KlassOptions<VS> | KlassFn<VS>,
   config: {
-    dp?: PolymorphicComponentProp<ET, {}>;
+    dp?: PolymorphicComponentProps<ET, {}>;
     end?: EndFn;
   } = {}
 ): KlassedComponent<ET, VS> {
@@ -21,11 +21,7 @@ function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
     klassFn = typeof options === "function" ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.vk);
 
-  const Component = (<C extends ElementType = ET>({
-    as: As = element as unknown as C,
-    class: _class = defaultClass,
-    ...rest
-  }: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>) => {
+  const Component = (({ as: As = element as any, class: _class = defaultClass, ...rest }) => {
     const splitted = splitRestProps(rest, keys);
 
     return jsx(As, { ...defaultProps, ...(splitted.o as any), class: klassFn(splitted.p, maybeSignal(_class)) });
@@ -36,11 +32,11 @@ function klassed<ET extends ElementType, VS extends FinalVariantsSchema>(
   return Component;
 }
 
-function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
+function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
   options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
   config: {
-    dp?: PolymorphicComponentProp<ET, {}>;
+    dp?: PolymorphicComponentProps<ET, {}>;
     as?: AsFn;
     end?: EndFn;
   } = {}
@@ -49,11 +45,7 @@ function reklassed<ET extends ElementType, CS extends ConditionSchema, VS extend
     reklassFn = typeof options === "function" ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.rvk);
 
-  const Component = (<C extends ElementType = ET>({
-    as: As = element as unknown as C,
-    class: _class = defaultClass,
-    ...rest
-  }: PolymorphicComponentProp<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>) => {
+  const Component = (({ as: As = element as any, class: _class = defaultClass, ...rest }) => {
     const splitted = splitRestProps(rest, keys);
 
     return jsx(As, { ...defaultProps, ...(splitted.o as any), class: reklassFn(splitted.p, maybeSignal(_class)) });

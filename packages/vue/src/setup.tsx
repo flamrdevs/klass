@@ -2,29 +2,29 @@ import type { Config } from "@klass/core/setup";
 import type { KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
 import type { FinalVariantsSchema } from "./types/index.ts";
-import type { ElementType } from "./types/vue.ts";
-import type { PolymorphicComponentProp } from "./types/polymorphic.ts";
+import type { SupportedElementType } from "./types/vue.ts";
+import type { PolymorphicComponentProps } from "./types/polymorphic.ts";
 
 import * as main from "./index.tsx";
 
 const klassed =
   ({ end }: Config) =>
-  <ET extends ElementType, VS extends FinalVariantsSchema>(
+  <ET extends SupportedElementType, VS extends FinalVariantsSchema>(
     element: ET,
     options: KlassOptions<VS> | KlassFn<VS>,
     config?: {
-      dp?: PolymorphicComponentProp<ET, {}>;
+      dp?: PolymorphicComponentProps<ET, {}>;
     }
   ) =>
     main.klassed<ET, VS>(element, options, { dp: config?.dp, end });
 
 const reklassed =
   ({ as, end }: Config) =>
-  <ET extends ElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
+  <ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
     element: ET,
     options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
     config?: {
-      dp?: PolymorphicComponentProp<ET, {}>;
+      dp?: PolymorphicComponentProps<ET, {}>;
     }
   ) =>
     main.reklassed<ET, CS, VS>(element, options, { dp: config?.dp, as, end });
