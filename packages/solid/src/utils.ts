@@ -6,3 +6,5 @@ export const getVariantKeys = <VS extends FinalVariantsSchema>(keys: (keyof VS)[
 export const PolymorphicKeysSplitter = ["as"] as const,
   ClassesKeysSplitter = ["class", "classList"] as const,
   classesProps = <P extends Partial<Record<FinalRestrictedVariantsKey, any>>>(props: P, defaultClass: any, defaultClassList: any) => [props.class ?? defaultClass, props.classList ?? defaultClassList];
+
+export const typeofFunction = (value: unknown): value is Function => typeof value === "function";

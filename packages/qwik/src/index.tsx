@@ -7,7 +7,7 @@ import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "
 import type { SupportedElementType, ClassesProps } from "./types/qwik.ts";
 import type { PolymorphicComponentProps } from "./types/polymorphic.ts";
 
-import { getVariantKeys, splitRestProps, maybeSignal } from "./utils.ts";
+import { getVariantKeys, splitRestProps, maybeSignal, typeofFunction } from "./utils.ts";
 
 function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
   element: ET,
@@ -18,7 +18,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
   } = {}
 ): KlassedComponent<ET, VS> {
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    klassFn = typeof options === "function" ? options : klass<VS>(options, config),
+    klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.vk);
 
   const Component = (({ as: As = element as any, class: _class = defaultClass, ...rest }) => {
@@ -27,9 +27,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
     return jsx(As, { ...defaultProps, ...(splitted.o as any), class: klassFn(splitted.p, maybeSignal(_class)) });
   }) as KlassedComponent<ET, VS>;
 
-  Component.klass = klassFn;
-
-  return Component;
+  return (Component.klass = klassFn), Component;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
@@ -42,7 +40,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
   } = {}
 ): ReklassedComponent<ET, CS, VS> {
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    reklassFn = typeof options === "function" ? options : reklass<CS, VS>(options, config),
+    reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.rvk);
 
   const Component = (({ as: As = element as any, class: _class = defaultClass, ...rest }) => {
@@ -51,9 +49,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
     return jsx(As, { ...defaultProps, ...(splitted.o as any), class: reklassFn(splitted.p, maybeSignal(_class)) });
   }) as ReklassedComponent<ET, CS, VS>;
 
-  Component.reklass = reklassFn;
-
-  return Component;
+  return (Component.reklass = reklassFn), Component;
 }
 
 export { klassed, reklassed };

@@ -4,7 +4,7 @@ import type { EndFn, AsFn, VariantsOf, KlassOptions, KlassFn, ConditionSchema, R
 import { FinalVariantsSchema, WithClassesValueProps, KlassedBase, ReklassedBase } from "./types/index.ts";
 import type { SignalishRecord, SupportedComponentProps, SupportedElementType, ClassesProps } from "./types/preact.ts";
 
-import { getVariantKeys, splitRestProps, maybeSignal } from "./utils.ts";
+import { getVariantKeys, splitRestProps, maybeSignal, typeofFunction } from "./utils.ts";
 
 export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
   (props: WithClassesValueProps<SupportedComponentProps<ET> & SignalishRecord<VariantsOf<KlassFn<VS>>>>): JSX.Element;
@@ -23,7 +23,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
   } = {}
 ): KlassedComponent<ET, VS> {
   const { class: defaultClass, className: defaultClassName, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    klassFn = typeof options === "function" ? options : klass<VS>(options, config),
+    klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.vk);
 
   const Component = (({ class: _class = defaultClass, className = defaultClassName, ...rest }) => {
@@ -32,9 +32,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
     return <Element {...defaultProps} {...(splitted.o as any)} class={klassFn(splitted.p, maybeSignal(_class ?? className))} />;
   }) as KlassedComponent<ET, VS>;
 
-  Component.klass = klassFn;
-
-  return Component;
+  return (Component.klass = klassFn), Component;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
@@ -47,7 +45,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
   } = {}
 ): ReklassedComponent<ET, CS, VS> {
   const { class: defaultClass, className: defaultClassName, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    reklassFn = typeof options === "function" ? options : reklass<CS, VS>(options, config),
+    reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.rvk);
 
   const Component = (({ class: _class = defaultClass, className = defaultClassName, ...rest }) => {
@@ -56,9 +54,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
     return <Element {...defaultProps} {...(splitted.o as any)} class={reklassFn(splitted.p, maybeSignal(_class ?? className))} />;
   }) as ReklassedComponent<ET, CS, VS>;
 
-  Component.reklass = reklassFn;
-
-  return Component;
+  return (Component.reklass = reklassFn), Component;
 }
 
 export { klassed, reklassed };

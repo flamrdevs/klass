@@ -7,7 +7,7 @@ import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "
 import type { SupportedElementType, ClassesProps } from "./types/vue.ts";
 import type { PolymorphicComponentProps } from "./types/polymorphic.ts";
 
-import { getVariantKeys, splitRestProps } from "./utils.ts";
+import { getVariantKeys, splitRestProps, typeofFunction } from "./utils.ts";
 
 const defaultComponentOptions = {
   props: ["as", "class"] as any,
@@ -23,7 +23,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
   } = {}
 ): KlassedComponent<ET, VS> {
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    klassFn = typeof options === "function" ? options : klass<VS>(options, config),
+    klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.vk);
 
   const Component = defineComponent((props, { attrs, slots }) => {
@@ -32,9 +32,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
     return () => h(props.as ?? element, { ...defaultProps, ...(splitted.value.o as any), class: klassFn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
   }, defaultComponentOptions) as KlassedComponent<ET, VS>;
 
-  Component.klass = klassFn;
-
-  return Component;
+  return (Component.klass = klassFn), Component;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
@@ -47,7 +45,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
   } = {}
 ): ReklassedComponent<ET, CS, VS> {
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    reklassFn = typeof options === "function" ? options : reklass<CS, VS>(options, config),
+    reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.rvk);
 
   const Component = defineComponent((props, { attrs, slots }) => {
@@ -56,9 +54,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
     return () => h(props.as ?? element, { ...defaultProps, ...(splitted.value.o as any), class: reklassFn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
   }, defaultComponentOptions) as ReklassedComponent<ET, CS, VS>;
 
-  Component.reklass = reklassFn;
-
-  return Component;
+  return (Component.reklass = reklassFn), Component;
 }
 
 export { klassed, reklassed };

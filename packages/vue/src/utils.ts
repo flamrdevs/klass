@@ -10,3 +10,5 @@ export const splitRestProps = <P extends { [key: PropertyKey]: any }, K extends 
   for (key in props) (keys.includes(key as K) ? p : o)[key] = props[key];
   return { o, p } as const;
 };
+
+export const typeofFunction = (value: unknown): value is Function => typeof value === "function";

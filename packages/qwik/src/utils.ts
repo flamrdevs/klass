@@ -14,3 +14,5 @@ export const splitRestProps = <P extends { [key: PropertyKey]: any }, K extends 
 };
 
 export const maybeSignal = <T extends any = any>(obj: any): obj is T => (isSignal<any>(obj) ? obj.value : obj);
+
+export const typeofFunction = (value: unknown): value is Function => typeof value === "function";
