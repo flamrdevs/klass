@@ -6,19 +6,36 @@ import type { PropsWithoutRef } from "react";
 import type { ConditionSchema, VariantsSchema } from "@klass/core";
 
 import type { KlassedComponent, ReklassedComponent } from "./../src/types/index.ts";
+import type * as Mono from "./../src/mono.tsx";
 
 import { expectKlassFn, expectReklassFn } from "./../../core/test/utils.ts";
 
+const expectKlassed = (object: { klass?: any }, options: { keys: any[] }) => {
+  expect(object).toBeTypeOf("object");
+  expect(object).toHaveProperty("klass");
+  expectKlassFn(object.klass, options);
+};
+
+const expectReklassed = (object: { reklass?: any }, options: { keys: any[] }) => {
+  expect(object).toBeTypeOf("object");
+  expect(object).toHaveProperty("reklass");
+  expectReklassFn(object.reklass, options);
+};
+
 const expectKlassedComponent = <T extends VariantsSchema>(klassedComponent: KlassedComponent<any, T>, options: { keys: (keyof T)[] }) => {
-  expect(klassedComponent).toBeTypeOf("object");
-  expect(klassedComponent).toHaveProperty("klass");
-  expectKlassFn(klassedComponent.klass, options);
+  expectKlassed(klassedComponent, options);
 };
 
 const expectReklassedComponent = <C extends ConditionSchema, T extends VariantsSchema>(reklassedComponent: ReklassedComponent<any, C, T>, options: { keys: (keyof T)[] }) => {
-  expect(reklassedComponent).toBeTypeOf("object");
-  expect(reklassedComponent).toHaveProperty("reklass");
-  expectReklassFn(reklassedComponent.reklass, options);
+  expectReklassed(reklassedComponent, options);
+};
+
+const expectMonoKlassedComponent = <T extends VariantsSchema>(klassedComponent: Mono.KlassedComponent<any, T>, options: { keys: (keyof T)[] }) => {
+  expectKlassed(klassedComponent, options);
+};
+
+const expectMonoReklassedComponent = <C extends ConditionSchema, T extends VariantsSchema>(reklassedComponent: Mono.ReklassedComponent<any, C, T>, options: { keys: (keyof T)[] }) => {
+  expectReklassed(reklassedComponent, options);
 };
 
 const expectElement = <T extends Element>(el: T) => {
@@ -44,5 +61,5 @@ const Button = forwardRef<HTMLButtonElement, PropsWithoutRef<JSX.IntrinsicElemen
 const Div = forwardRef<HTMLDivElement, PropsWithoutRef<JSX.IntrinsicElements["div"]>>((props, ref) => <div ref={ref} {...props} />);
 
 export * from "./../../core/test/utils.ts";
-export { expectKlassedComponent, expectReklassedComponent, expectElement };
+export { expectKlassedComponent, expectReklassedComponent, expectMonoKlassedComponent, expectMonoReklassedComponent, expectElement };
 export { A, Button, Div };
