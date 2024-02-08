@@ -6,27 +6,15 @@
 
 <p align="center">
   <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/core?t=dark">
-      <img alt="license" src="https://none.deno.dev/npm/l/@klass/core?t=light" hspace="1">
-    </picture>
+    <img title="license" alt="license" src="https://klass.deno.dev/pkg/l/core" hspace="1">
   </a>
   <a title="version" href="https://www.npmjs.com/package/@klass/core">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/core?t=dark">
-      <img alt="version" src="https://none.deno.dev/npm/v/@klass/core?t=light" hspace="1">
-    </picture>
+    <img title="version" alt="version" src="https://klass.deno.dev/pkg/v/core" hspace="1">
   </a>
   <a title="size" href="https://bundlejs.com/?q=@klass/core">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/core?t=dark">
-      <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/core?t=light" hspace="1">
-    </picture>
+    <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/core" hspace="1">
   </a>
-  <picture title="npm monthly downloads">
-    <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/core?t=dark">
-    <img alt="size" src="https://none.deno.dev/npm/dm/@klass/core?t=light" hspace="1">
-  </picture>
+  <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/core" hspace="1">
 </p>
 
 # klass core
@@ -76,15 +64,17 @@ const button = klass({
 });
 
 const box = reklass({
-  conditions: {
-    base: "",
-    sm: "sm:",
-    md: "md:",
-    lg: "lg:",
-    xl: "xl:",
-    "2xl": "2xl:",
-  },
-  defaultCondition: "base",
+  conditions: [
+    {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+      xl: "xl:",
+      "2xl": "2xl:",
+    },
+    "base",
+  ],
   variants: {
     m: {
       "0": "m-0",
@@ -121,17 +111,6 @@ box({ m: { base: "1", md: "2" }, p: { base: "1", md: "2" } }); // "m-1 md:m-2 p-
 box.rv.m("1"); // "m-1";
 box.rv.p({ base: "1", md: "2" }); // "p-1 md:p-2"
 ```
-
-## Documentation
-
-<p>
-  <a title="docs" href="https://klass.pages.dev/klass/core.html">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/button/lucide?t=dark&i=external-link&e=Docs">
-      <img alt="docs" src="https://none.deno.dev/ui/button/lucide?t=light&i=external-link&e=Docs" hspace="1">
-    </picture>
-  </a>
-</p>
 
 ## Authors
 

@@ -6,27 +6,15 @@
 
 <p align="center">
   <a title="license" href="https://github.com/flamrdevs/klass/blob/main/LICENSE">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/l/@klass/react?t=dark">
-      <img alt="license" src="https://none.deno.dev/npm/l/@klass/react?t=light" hspace="1">
-    </picture>
+    <img title="license" alt="license" src="https://klass.deno.dev/pkg/l/react" hspace="1">
   </a>
   <a title="version" href="https://www.npmjs.com/package/@klass/react">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/v/@klass/react?t=dark">
-      <img alt="version" src="https://none.deno.dev/npm/v/@klass/react?t=light" hspace="1">
-    </picture>
+    <img title="version" alt="version" src="https://klass.deno.dev/pkg/v/react" hspace="1">
   </a>
   <a title="size" href="https://bundlejs.com/?q=@klass/react">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/bundlejs/mz/@klass/react?t=dark">
-      <img alt="size" src="https://none.deno.dev/bundlejs/mz/@klass/react?t=light" hspace="1">
-    </picture>
+    <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/react" hspace="1">
   </a>
-  <picture title="npm monthly downloads">
-    <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/npm/dm/@klass/react?t=dark">
-    <img alt="size" src="https://none.deno.dev/npm/dm/@klass/react?t=light" hspace="1">
-  </picture>
+  <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/react" hspace="1">
 </p>
 
 # klass react
@@ -87,15 +75,17 @@ const Button = klassed(
 );
 
 const Box = reklassed("div", {
-  conditions: {
-    base: "",
-    sm: "sm:",
-    md: "md:",
-    lg: "lg:",
-    xl: "xl:",
-    "2xl": "2xl:",
-  },
-  defaultCondition: "base",
+  conditions: [
+    {
+      base: "",
+      sm: "sm:",
+      md: "md:",
+      lg: "lg:",
+      xl: "xl:",
+      "2xl": "2xl:",
+    },
+    "base",
+  ],
   variants: {
     m: {
       "0": "m-0",
@@ -142,17 +132,6 @@ const App = () => {
 
 export default App;
 ```
-
-## Documentation
-
-<p>
-  <a title="docs" href="https://klass.pages.dev/klass/react.html">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/button/lucide?t=dark&i=external-link&e=Docs">
-      <img alt="docs" src="https://none.deno.dev/ui/button/lucide?t=light&i=external-link&e=Docs" hspace="1">
-    </picture>
-  </a>
-</p>
 
 ## Authors
 
