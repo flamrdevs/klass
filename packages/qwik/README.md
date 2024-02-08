@@ -1,5 +1,3 @@
-<img src="https://klass.pages.dev/cover.png" width="100%" />
-
 <p>
   <h1 align="center">klass</h1>
 </p>

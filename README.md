@@ -1,5 +1,3 @@
-<img src="https://klass.pages.dev/cover.png" width="100%" />
-
 <p>
   <img width="100%" src="https://hiiiits.deno.dev/hit/flamrdevs/klass" alt="hiiiits" title="hiiiits" />
 </p>
