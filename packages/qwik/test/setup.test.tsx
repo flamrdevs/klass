@@ -1,52 +1,25 @@
 import { describe, it } from "vitest";
 
-import * as setup from "../src/setup.tsx";
+import * as setup from "./../src/setup.tsx";
 
-import { expectKlassedComponent, expectReklassedComponent, customEnd, expectCustomEndFormat, customAs } from "./utils.tsx";
+import * as core from "./../../core/test/exports.ts";
+import * as expects from "./expects.ts";
 
 describe("setup", async () => {
   const config: setup.Config = {
-    as: customAs,
-    end: customEnd,
+    as: core.shared.customAs,
+    end: core.shared.customEnd,
   };
 
   const works = ([klassed, reklassed]: ReturnType<typeof setup.default>) => {
-    const KlassedComponent = klassed(
-      "div",
-      {
-        base: "block",
-        variants: {
-          m: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
-          p: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
-        },
-      },
-      {
-        dp: {
-          id: "klassed",
-        },
-      }
-    );
-    const ReklassedComponent = reklassed(
-      "div",
-      {
-        conditions: [{ base: "", sm: "sm:", md: "md:", lg: "lg:" }, "base"],
-        variants: {
-          m: { "1": "m-1", "2": "m-2", "3": "m-3", "4": "m-4", "5": "m-5" },
-          p: { "1": "p-1", "2": "p-2", "3": "p-3", "4": "p-4", "5": "p-5" },
-        },
-      },
-      {
-        dp: {
-          id: "reklassed",
-        },
-      }
-    );
+    const KlassedComponent = klassed("div", core.shared.klass.button.basic.options);
+    const ReklassedComponent = reklassed("div", core.shared.reklass.box.basic.options);
 
-    expectKlassedComponent(KlassedComponent, { keys: ["m", "p"] });
-    expectReklassedComponent(ReklassedComponent, { keys: ["m", "p"] });
+    expects.klassedComponent(KlassedComponent);
+    expects.reklassedComponent(ReklassedComponent);
 
-    expectCustomEndFormat(KlassedComponent.klass());
-    expectCustomEndFormat(ReklassedComponent.reklass());
+    core.expects.inCustomEnd(KlassedComponent.klass());
+    core.expects.inCustomEnd(ReklassedComponent.reklass());
   };
 
   it("works", async () => {

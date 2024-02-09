@@ -2,7 +2,8 @@ import { describe, it, expect } from "vitest";
 
 import group from "./../src/group.ts";
 
-import { expectKlassFn, customEnd } from "./utils.ts";
+import * as shared from "./shared.ts";
+import * as expects from "./expects.ts";
 
 describe("group", async () => {
   it("works", async () => {
@@ -21,12 +22,10 @@ describe("group", async () => {
 
     expect(card).toBeTypeOf("object");
 
-    const keys = ["color", "size"] as ["color", "size"];
-
-    expectKlassFn(card.root, { keys });
-    expectKlassFn(card.header, { keys });
-    expectKlassFn(card.body, { keys });
-    expectKlassFn(card.footer, { keys });
+    expects.klassFn(card.root);
+    expects.klassFn(card.header);
+    expects.klassFn(card.body);
+    expects.klassFn(card.footer);
 
     const { root, header, body, footer } = card;
 
@@ -60,33 +59,31 @@ describe("group", async () => {
           [{ color: "primary", size: "lg" }, { footer: "footer-color-primary-size-lg" }],
         ],
       },
-      { end: customEnd }
+      { end: shared.customEnd }
     );
 
     expect(card).toBeTypeOf("object");
 
-    const keys = ["color", "size"] as ["color", "size"];
-
-    expectKlassFn(card.root, { keys });
-    expectKlassFn(card.header, { keys });
-    expectKlassFn(card.body, { keys });
-    expectKlassFn(card.footer, { keys });
+    expects.klassFn(card.root);
+    expects.klassFn(card.header);
+    expects.klassFn(card.body);
+    expects.klassFn(card.footer);
 
     const { root, header, body, footer } = card;
 
-    expect(root()).toEqual(customEnd("root color-primary size-md"));
-    expect(header()).toEqual(customEnd("header"));
-    expect(body()).toEqual(customEnd("body color-primary size-md"));
-    expect(footer()).toEqual(customEnd("footer"));
+    expect(root()).toEqual(shared.customEnd("root color-primary size-md"));
+    expect(header()).toEqual(shared.customEnd("header"));
+    expect(body()).toEqual(shared.customEnd("body color-primary size-md"));
+    expect(footer()).toEqual(shared.customEnd("footer"));
 
-    expect(root()).toEqual(customEnd("root color-primary size-md"));
-    expect(header()).toEqual(customEnd("header"));
-    expect(body()).toEqual(customEnd("body color-primary size-md"));
-    expect(footer()).toEqual(customEnd("footer"));
+    expect(root()).toEqual(shared.customEnd("root color-primary size-md"));
+    expect(header()).toEqual(shared.customEnd("header"));
+    expect(body()).toEqual(shared.customEnd("body color-primary size-md"));
+    expect(footer()).toEqual(shared.customEnd("footer"));
 
-    expect(root({ color: "secondary" })).toEqual(customEnd("root color-secondary size-md"));
-    expect(header({ size: "lg" })).toEqual(customEnd("header header-color-primary-size-lg"));
-    expect(body({ size: "lg" })).toEqual(customEnd("body color-primary size-lg"));
-    expect(footer({ size: "lg" })).toEqual(customEnd("footer footer-color-primary-size-lg"));
+    expect(root({ color: "secondary" })).toEqual(shared.customEnd("root color-secondary size-md"));
+    expect(header({ size: "lg" })).toEqual(shared.customEnd("header header-color-primary-size-lg"));
+    expect(body({ size: "lg" })).toEqual(shared.customEnd("body color-primary size-lg"));
+    expect(footer({ size: "lg" })).toEqual(shared.customEnd("footer footer-color-primary-size-lg"));
   });
 });

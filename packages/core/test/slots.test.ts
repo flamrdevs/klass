@@ -2,7 +2,8 @@ import { describe, it, expect } from "vitest";
 
 import slots from "./../src/slots.ts";
 
-import { expectKlassFn, customEnd } from "./utils.ts";
+import * as shared from "./shared.ts";
+import * as expects from "./expects.ts";
 
 describe("slots", async () => {
   it("works", async () => {
@@ -25,12 +26,10 @@ describe("slots", async () => {
     expect(card.o).toBeTypeOf("object");
     expect(card.klass).toBeTypeOf("object");
 
-    const keys = ["color", "size"] as ["color", "size"];
-
-    expectKlassFn(card.klass.root, { keys });
-    expectKlassFn(card.klass.header, { keys });
-    expectKlassFn(card.klass.body, { keys });
-    expectKlassFn(card.klass.footer, { keys });
+    expects.klassFn(card.klass.root);
+    expects.klassFn(card.klass.header);
+    expects.klassFn(card.klass.body);
+    expects.klassFn(card.klass.footer);
 
     const card1 = card();
 
@@ -68,7 +67,7 @@ describe("slots", async () => {
           [{ color: "primary", size: "lg" }, { footer: "footer-color-primary-size-lg" }],
         ],
       },
-      { end: customEnd }
+      { end: shared.customEnd }
     );
 
     expect(card).toBeTypeOf("function");
@@ -77,32 +76,30 @@ describe("slots", async () => {
     expect(card.o).toBeTypeOf("object");
     expect(card.klass).toBeTypeOf("object");
 
-    const keys = ["color", "size"] as ["color", "size"];
-
-    expectKlassFn(card.klass.root, { keys });
-    expectKlassFn(card.klass.header, { keys });
-    expectKlassFn(card.klass.body, { keys });
-    expectKlassFn(card.klass.footer, { keys });
+    expects.klassFn(card.klass.root);
+    expects.klassFn(card.klass.header);
+    expects.klassFn(card.klass.body);
+    expects.klassFn(card.klass.footer);
 
     const card1 = card();
 
-    expect(card1.root()).toEqual(customEnd("root color-primary size-md"));
-    expect(card1.header()).toEqual(customEnd("header"));
-    expect(card1.body()).toEqual(customEnd("body color-primary size-md"));
-    expect(card1.footer()).toEqual(customEnd("footer"));
+    expect(card1.root()).toEqual(shared.customEnd("root color-primary size-md"));
+    expect(card1.header()).toEqual(shared.customEnd("header"));
+    expect(card1.body()).toEqual(shared.customEnd("body color-primary size-md"));
+    expect(card1.footer()).toEqual(shared.customEnd("footer"));
 
     const card2 = card({ color: "secondary" });
 
-    expect(card2.root()).toEqual(customEnd("root color-secondary size-md"));
-    expect(card2.header()).toEqual(customEnd("header"));
-    expect(card2.body()).toEqual(customEnd("body color-secondary size-md"));
-    expect(card2.footer()).toEqual(customEnd("footer"));
+    expect(card2.root()).toEqual(shared.customEnd("root color-secondary size-md"));
+    expect(card2.header()).toEqual(shared.customEnd("header"));
+    expect(card2.body()).toEqual(shared.customEnd("body color-secondary size-md"));
+    expect(card2.footer()).toEqual(shared.customEnd("footer"));
 
     const card3 = card({ color: "secondary", size: "lg" });
 
-    expect(card3.root({ color: "primary" })).toEqual(customEnd("root color-primary size-lg"));
-    expect(card3.header({ color: "primary" })).toEqual(customEnd("header header-color-primary-size-lg"));
-    expect(card3.body({ size: "md" })).toEqual(customEnd("body color-secondary size-md"));
-    expect(card3.footer({ color: "primary" })).toEqual(customEnd("footer footer-color-primary-size-lg"));
+    expect(card3.root({ color: "primary" })).toEqual(shared.customEnd("root color-primary size-lg"));
+    expect(card3.header({ color: "primary" })).toEqual(shared.customEnd("header header-color-primary-size-lg"));
+    expect(card3.body({ size: "md" })).toEqual(shared.customEnd("body color-secondary size-md"));
+    expect(card3.footer({ color: "primary" })).toEqual(shared.customEnd("footer footer-color-primary-size-lg"));
   });
 });

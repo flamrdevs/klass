@@ -1,89 +1,235 @@
-import { describe, it, expect } from "vitest";
+import { describe, it } from "vitest";
 
-import { klassed, reklassed } from "../src/mono.tsx";
+import type { JSXOutput } from "@builder.io/qwik";
 
-import { expectMonoKlassedComponent, expectMonoReklassedComponent, expectElement, customEnd, render } from "./utils.tsx";
+import { clsx } from "@klass/core";
 
-import { BoxKlassed, ButtonKlassed, BoxElement, BoxCustomEndKlassed, BoxReklassed, BoxCustomEndReklassed } from "./mono.test.utils.tsx";
+import * as expects from "./expects.ts";
+
+import { render } from "./testing-library.ts";
+
+import { shared } from "./../../core/test/exports.ts";
+
+import {
+  KlassedButtonBasic,
+  KlassedButtonBase,
+  KlassedButtonDefaults,
+  KlassedButtonCompounds,
+  KlassedButtonBasicCustomEnd,
+  KlassedButtonBaseCustomEnd,
+  KlassedButtonDefaultsCustomEnd,
+  KlassedButtonCompoundsCustomEnd,
+  ReklassedBoxBasic,
+  ReklassedBoxCustomAs,
+  ReklassedBoxBasicCustomEnd,
+  ReklassedBoxCustomAsCustomEnd,
+} from "./mono.test.utils.tsx";
+
+const PROPS = {
+  "data-testid": "root",
+  class: ["extra", "classes"],
+};
 
 describe("klassed", async () => {
-  it("type of", async () => {
-    expect(klassed).toBeTypeOf("function");
+  it("type", async () => {
+    expects.mono.klassedComponent(KlassedButtonBasic);
+    expects.mono.klassedComponent(KlassedButtonBase);
+    expects.mono.klassedComponent(KlassedButtonDefaults);
+    expects.mono.klassedComponent(KlassedButtonCompounds);
   });
 
-  it("compound", async () => {
-    expectMonoKlassedComponent(BoxKlassed, { keys: ["m", "p"] });
-  });
+  describe("equal", () => {
+    const expect = async (ui: JSXOutput, equal: string) => {
+      const { cleanup, getByTestId } = await render(ui);
+      expects.element(getByTestId("root")).tagName("BUTTON").className(clsx(equal, PROPS.class)).textContent("children");
+      cleanup();
+    };
 
-  it("basic", async () => {
-    await render(
-      <>
-        <BoxKlassed data-testid="box" m="1" p="2" class={["extra-box", "classes"]}>
-          box
-        </BoxKlassed>
-
-        <ButtonKlassed
-          data-testid="button"
-          full="width"
-          class={["extra-button", "classes"]}
-          onClick$={() => {
-            console.log("button-klassed");
-          }}
-        >
-          button
-        </ButtonKlassed>
-
-        <BoxElement data-testid="box-element">box-element</BoxElement>
-
-        <BoxCustomEndKlassed data-testid="box-it" m="1" p="2" class={["extra-box", "classes"]}>
-          box-it
-        </BoxCustomEndKlassed>
-      </>,
-      async ({ fireEvent, getByTestId }) => {
-        expectElement(getByTestId("box")).tagName("DIV").className("block m-1 p-2 extra-box classes").textContent("box");
-
-        const button = getByTestId("button");
-        expectElement(button).tagName("BUTTON").className("inline-block outline-none text-white w-full bg-red-600 extra-button classes").textContent("button");
-
-        const output: any[] = [];
-        console.log = (...args) => output.push(args);
-        await fireEvent.click(button);
-        expect(output).toEqual([["button-klassed"]]);
-
-        const boxelement = getByTestId("box-element");
-        expect(boxelement.className).toEqual(customEnd("block"));
-
-        const boxit = getByTestId("box-it");
-        expect(boxit.className).toEqual(customEnd("block m-1 p-2 extra-box classes"));
+    it("basic", async () => {
+      for await (const test of shared.klass.button.basic.test) {
+        await expect(
+          <KlassedButtonBasic {...PROPS} {...test.props}>
+            children
+          </KlassedButtonBasic>,
+          test.equal
+        );
       }
-    );
+    });
+
+    it("base", async () => {
+      for await (const test of shared.klass.button.base.test) {
+        await expect(
+          <KlassedButtonBase {...PROPS} {...test.props}>
+            children
+          </KlassedButtonBase>,
+          test.equal
+        );
+      }
+    });
+
+    it("defaults", async () => {
+      for await (const test of shared.klass.button.defaults.test) {
+        await expect(
+          <KlassedButtonDefaults {...PROPS} {...test.props}>
+            children
+          </KlassedButtonDefaults>,
+          test.equal
+        );
+      }
+    });
+
+    it("compounds", async () => {
+      for await (const test of shared.klass.button.compounds.test) {
+        await expect(
+          <KlassedButtonCompounds {...PROPS} {...test.props}>
+            children
+          </KlassedButtonCompounds>,
+          test.equal
+        );
+      }
+    });
+  });
+
+  describe("custom end", async () => {
+    it("type", async () => {
+      expects.mono.klassedComponent(KlassedButtonBasicCustomEnd);
+      expects.mono.klassedComponent(KlassedButtonBaseCustomEnd);
+      expects.mono.klassedComponent(KlassedButtonDefaultsCustomEnd);
+      expects.mono.klassedComponent(KlassedButtonCompoundsCustomEnd);
+    });
+
+    describe("equal", () => {
+      const expect = async (ui: JSXOutput, equal: string) => {
+        const { cleanup, getByTestId } = await render(ui);
+        expects
+          .element(getByTestId("root"))
+          .tagName("BUTTON")
+          .className(shared.customEnd(clsx(equal, PROPS.class)))
+          .textContent("children");
+        cleanup();
+      };
+
+      it("basic", async () => {
+        for await (const test of shared.klass.button.basic.test) {
+          await expect(
+            <KlassedButtonBasicCustomEnd {...PROPS} {...test.props}>
+              children
+            </KlassedButtonBasicCustomEnd>,
+            test.equal
+          );
+        }
+      });
+
+      it("base", async () => {
+        for await (const test of shared.klass.button.base.test) {
+          await expect(
+            <KlassedButtonBaseCustomEnd {...PROPS} {...test.props}>
+              children
+            </KlassedButtonBaseCustomEnd>,
+            test.equal
+          );
+        }
+      });
+
+      it("defaults", async () => {
+        for await (const test of shared.klass.button.defaults.test) {
+          await expect(
+            <KlassedButtonDefaultsCustomEnd {...PROPS} {...test.props}>
+              children
+            </KlassedButtonDefaultsCustomEnd>,
+            test.equal
+          );
+        }
+      });
+
+      it("compounds", async () => {
+        for await (const test of shared.klass.button.compounds.test) {
+          await expect(
+            <KlassedButtonCompoundsCustomEnd {...PROPS} {...test.props}>
+              children
+            </KlassedButtonCompoundsCustomEnd>,
+            test.equal
+          );
+        }
+      });
+    });
   });
 });
 
 describe("reklassed", async () => {
-  it("type of", async () => {
-    expect(reklassed).toBeTypeOf("function");
+  it("type", async () => {
+    expects.mono.reklassedComponent(ReklassedBoxBasic);
+    expects.mono.reklassedComponent(ReklassedBoxCustomAs);
   });
 
-  it("compound", async () => {
-    expectMonoReklassedComponent(BoxReklassed, { keys: ["m", "p"] });
-  });
+  describe("equal", () => {
+    const expect = async (ui: JSXOutput, equal: string) => {
+      const { cleanup, getByTestId } = await render(ui);
+      expects.element(getByTestId("root")).tagName("DIV").className(clsx(equal, PROPS.class)).textContent("children");
+      cleanup();
+    };
 
-  it("basic", async () => {
-    await render(
-      <>
-        <BoxReklassed data-testid="box" m="2" p={{ base: "1", md: "3" }} class={["extra-box", "classes"]}>
-          box
-        </BoxReklassed>
-
-        <BoxCustomEndReklassed data-testid="box-it" m="2" p={{ base: "1", md: "3" }} class={["extra-box", "classes"]}>
-          box-it
-        </BoxCustomEndReklassed>
-      </>,
-      async ({ getByTestId }) => {
-        expectElement(getByTestId("box")).tagName("DIV").className("m-2 p-1 md:p-3 extra-box classes").textContent("box");
-        expectElement(getByTestId("box-it")).tagName("DIV").className(customEnd("m-2 p-1 md:p-3 extra-box classes")).textContent("box-it");
+    it("basic", async () => {
+      for await (const test of shared.reklass.box.basic.test) {
+        await expect(
+          <ReklassedBoxBasic {...PROPS} {...test.props}>
+            children
+          </ReklassedBoxBasic>,
+          test.equal
+        );
       }
-    );
+    });
+
+    it("customAs", async () => {
+      for await (const test of shared.reklass.box.customAs.test) {
+        await expect(
+          <ReklassedBoxCustomAs {...PROPS} {...test.props}>
+            children
+          </ReklassedBoxCustomAs>,
+          test.equal
+        );
+      }
+    });
+  });
+
+  describe("custom end", async () => {
+    it("type", async () => {
+      expects.mono.reklassedComponent(ReklassedBoxBasicCustomEnd);
+      expects.mono.reklassedComponent(ReklassedBoxCustomAsCustomEnd);
+    });
+
+    describe("equal", () => {
+      const expect = async (ui: JSXOutput, equal: string) => {
+        const { cleanup, getByTestId } = await render(ui);
+        expects
+          .element(getByTestId("root"))
+          .tagName("DIV")
+          .className(shared.customEnd(clsx(equal, PROPS.class)))
+          .textContent("children");
+        cleanup();
+      };
+
+      it("basic", async () => {
+        for await (const test of shared.reklass.box.basic.test) {
+          await expect(
+            <ReklassedBoxBasicCustomEnd {...PROPS} {...test.props}>
+              children
+            </ReklassedBoxBasicCustomEnd>,
+            test.equal
+          );
+        }
+      });
+
+      it("customAs", async () => {
+        for await (const test of shared.reklass.box.customAs.test) {
+          await expect(
+            <ReklassedBoxCustomAsCustomEnd {...PROPS} {...test.props}>
+              children
+            </ReklassedBoxCustomAsCustomEnd>,
+            test.equal
+          );
+        }
+      });
+    });
   });
 });

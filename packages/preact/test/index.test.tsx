@@ -1,190 +1,309 @@
-import { describe, it, expect } from "vitest";
+import { describe, it } from "vitest";
 
-import { isValidElement } from "preact";
+import type { ComponentChild } from "preact";
 
-import { fireEvent, render } from "@testing-library/preact";
+import { render, cleanup, fireEvent } from "@testing-library/preact";
 
-import { klassed, reklassed } from "../src/index.tsx";
+import { clsx } from "@klass/core";
 
-import { expectKlassedComponent, expectReklassedComponent, expectElement, customEnd, A } from "./utils.tsx";
+import * as expects from "./expects.ts";
+
+import { shared } from "./../../core/test/exports.ts";
 
 import {
-  BoxKlassed,
-  ButtonKlassed,
-  BoxElement,
-  BoxCustomEndKlassed,
-  KlassedReactiveComponent,
-  KlassedReactiveSignalComponent,
-  BoxReklassed,
-  BoxCustomEndReklassed,
-  ReklassedReactiveComponent,
-  ReklassedReactiveSignalComponent,
+  KlassedButtonBasic,
+  KlassedButtonBase,
+  KlassedButtonDefaults,
+  KlassedButtonCompounds,
+  KlassedButtonBasicCustomEnd,
+  KlassedButtonBaseCustomEnd,
+  KlassedButtonDefaultsCustomEnd,
+  KlassedButtonCompoundsCustomEnd,
+  ReklassedBoxBasic,
+  ReklassedBoxCustomAs,
+  ReklassedBoxBasicCustomEnd,
+  ReklassedBoxCustomAsCustomEnd,
+  KlassedButtonBasicReactive,
+  KlassedButtonBasicSignalReactive,
+  ReklassedBoxBasicReactive,
+  ReklassedBoxBasicSignalReactive,
 } from "./index.test.utils.tsx";
 
-describe("klassed", async () => {
-  it("type of", async () => {
-    expect(klassed).toBeTypeOf("function");
-    expect(isValidElement(<ButtonKlassed />)).toBeTruthy();
+const PROPS = {
+  "data-testid": "root",
+  class: ["extra", "classes"],
+};
+
+describe("klassed", () => {
+  it("type", () => {
+    expects.klassedComponent(KlassedButtonBasic);
+    expects.klassedComponent(KlassedButtonBase);
+    expects.klassedComponent(KlassedButtonDefaults);
+    expects.klassedComponent(KlassedButtonCompounds);
   });
 
-  it("compound", async () => {
-    expectKlassedComponent(BoxKlassed, { keys: ["m", "p"] });
+  describe("equal", () => {
+    const expect = (ui: ComponentChild, equal: string) => {
+      expects.element(render(ui).getByTestId("root")).tagName("BUTTON").className(clsx(equal, PROPS.class)).textContent("children");
+      cleanup();
+    };
+
+    it("basic", () => {
+      for (const test of shared.klass.button.basic.test) {
+        expect(
+          <KlassedButtonBasic {...PROPS} {...test.props}>
+            children
+          </KlassedButtonBasic>,
+          test.equal
+        );
+      }
+    });
+
+    it("base", () => {
+      for (const test of shared.klass.button.base.test) {
+        expect(
+          <KlassedButtonBase {...PROPS} {...test.props}>
+            children
+          </KlassedButtonBase>,
+          test.equal
+        );
+      }
+    });
+
+    it("defaults", () => {
+      for (const test of shared.klass.button.defaults.test) {
+        expect(
+          <KlassedButtonDefaults {...PROPS} {...test.props}>
+            children
+          </KlassedButtonDefaults>,
+          test.equal
+        );
+      }
+    });
+
+    it("compounds", () => {
+      for (const test of shared.klass.button.compounds.test) {
+        expect(
+          <KlassedButtonCompounds {...PROPS} {...test.props}>
+            children
+          </KlassedButtonCompounds>,
+          test.equal
+        );
+      }
+    });
   });
 
-  it("basic", async () => {
-    const { getByTestId } = render(
-      <>
-        <BoxKlassed data-testid="box" m="1" p="2" class={["extra-box", "classes"]}>
-          box
-        </BoxKlassed>
+  describe("custom end", () => {
+    it("type", () => {
+      expects.klassedComponent(KlassedButtonBasicCustomEnd);
+      expects.klassedComponent(KlassedButtonBaseCustomEnd);
+      expects.klassedComponent(KlassedButtonDefaultsCustomEnd);
+      expects.klassedComponent(KlassedButtonCompoundsCustomEnd);
+    });
 
-        <ButtonKlassed
-          data-testid="button"
-          full="width"
-          class={["extra-button", "classes"]}
-          onClick={() => {
-            console.log("button-klassed");
-          }}
-        >
-          button
-        </ButtonKlassed>
+    describe("equal", () => {
+      const expect = (ui: ComponentChild, equal: string) => {
+        expects
+          .element(render(ui).getByTestId("root"))
+          .tagName("BUTTON")
+          .className(shared.customEnd(clsx(equal, PROPS.class)))
+          .textContent("children");
+        cleanup();
+      };
 
-        <BoxElement data-testid="box-element">box-element</BoxElement>
+      it("basic", () => {
+        for (const test of shared.klass.button.basic.test) {
+          expect(
+            <KlassedButtonBasicCustomEnd {...PROPS} {...test.props}>
+              children
+            </KlassedButtonBasicCustomEnd>,
+            test.equal
+          );
+        }
+      });
 
-        <BoxCustomEndKlassed data-testid="box-it" m="1" p="2" class={["extra-box", "classes"]}>
-          box-it
-        </BoxCustomEndKlassed>
-      </>
-    );
+      it("base", () => {
+        for (const test of shared.klass.button.base.test) {
+          expect(
+            <KlassedButtonBaseCustomEnd {...PROPS} {...test.props}>
+              children
+            </KlassedButtonBaseCustomEnd>,
+            test.equal
+          );
+        }
+      });
 
-    expectElement(getByTestId("box")).tagName("DIV").className("block m-1 p-2 extra-box classes").textContent("box");
+      it("defaults", () => {
+        for (const test of shared.klass.button.defaults.test) {
+          expect(
+            <KlassedButtonDefaultsCustomEnd {...PROPS} {...test.props}>
+              children
+            </KlassedButtonDefaultsCustomEnd>,
+            test.equal
+          );
+        }
+      });
 
-    const button = getByTestId("button");
-    expectElement(button).tagName("BUTTON").className("inline-block outline-none text-white w-full bg-red-600 extra-button classes").textContent("button");
-
-    const output: any[] = [];
-    console.log = (...args) => output.push(args);
-    fireEvent.click(button);
-    expect(output).toEqual([["button-klassed"]]);
-
-    const boxelement = getByTestId("box-element");
-    expect(boxelement.className).toEqual(customEnd("block"));
-
-    const boxit = getByTestId("box-it");
-    expect(boxit.className).toEqual(customEnd("block m-1 p-2 extra-box classes"));
-  });
-
-  it("reactive", async () => {
-    const { getByTestId } = render(<KlassedReactiveComponent />);
-
-    let reactive = getByTestId("reactive");
-    expectElement(reactive).tagName("BUTTON").className("block m-1 p-1 extra-reactive classes").textContent("ReactiveKlassed");
-
-    fireEvent.click(reactive);
-    expectElement((reactive = getByTestId("reactive")))
-      .tagName("A")
-      .className("block m-2 p-2 extra-reactive classes reactive");
-  });
-
-  it("reactive signal", async () => {
-    const { getByTestId } = render(<KlassedReactiveSignalComponent />);
-
-    const reactive = getByTestId("reactive");
-    expectElement(reactive).tagName("BUTTON").className("block m-1 p-1 extra-reactive classes").textContent("ReactiveSignalKlassed");
-
-    fireEvent.click(reactive);
-    expect(reactive.className).toEqual("block m-2 p-2 extra-reactive classes reactive");
-  });
-
-  it("polymorphic", async () => {
-    const { getByTestId } = render(
-      <>
-        <ButtonKlassed data-testid="button-red" color="red">
-          button-red
-        </ButtonKlassed>
-
-        <ButtonKlassed data-testid="button-green-as-a" as="a" color="green">
-          button-green-as-a
-        </ButtonKlassed>
-
-        <ButtonKlassed data-testid="anchor-button-blue" as={A} color="blue">
-          anchor-button-blue
-        </ButtonKlassed>
-      </>
-    );
-
-    expectElement(getByTestId("button-red")).tagName("BUTTON");
-    expectElement(getByTestId("button-green-as-a")).tagName("A");
-    expectElement(getByTestId("anchor-button-blue")).tagName("A");
+      it("compounds", () => {
+        for (const test of shared.klass.button.compounds.test) {
+          expect(
+            <KlassedButtonCompoundsCustomEnd {...PROPS} {...test.props}>
+              children
+            </KlassedButtonCompoundsCustomEnd>,
+            test.equal
+          );
+        }
+      });
+    });
   });
 });
 
-describe("reklassed", async () => {
-  it("type of", async () => {
-    expect(reklassed).toBeTypeOf("function");
-    expect(isValidElement(<BoxReklassed />)).toBeTruthy();
+describe("reklassed", () => {
+  it("type", () => {
+    expects.reklassedComponent(ReklassedBoxBasic);
+    expects.reklassedComponent(ReklassedBoxCustomAs);
   });
 
-  it("compound", async () => {
-    expectReklassedComponent(BoxReklassed, { keys: ["m", "p"] });
+  describe("equal", () => {
+    const expect = (ui: ComponentChild, equal: string) => {
+      expects.element(render(ui).getByTestId("root")).tagName("DIV").className(clsx(equal, PROPS.class)).textContent("children");
+      cleanup();
+    };
+
+    it("basic", () => {
+      for (const test of shared.reklass.box.basic.test) {
+        expect(
+          <ReklassedBoxBasic {...PROPS} {...test.props}>
+            children
+          </ReklassedBoxBasic>,
+          test.equal
+        );
+      }
+    });
+
+    it("customAs", () => {
+      for (const test of shared.reklass.box.customAs.test) {
+        expect(
+          <ReklassedBoxCustomAs {...PROPS} {...test.props}>
+            children
+          </ReklassedBoxCustomAs>,
+          test.equal
+        );
+      }
+    });
   });
 
-  it("basic", async () => {
-    const { getByTestId } = render(
-      <>
-        <BoxReklassed data-testid="box" m="2" p={{ base: "1", md: "3" }} class={["extra-box", "classes"]}>
-          box
-        </BoxReklassed>
+  describe("custom end", () => {
+    it("type", () => {
+      expects.reklassedComponent(ReklassedBoxBasicCustomEnd);
+      expects.reklassedComponent(ReklassedBoxCustomAsCustomEnd);
+    });
 
-        <BoxCustomEndReklassed data-testid="box-it" m="2" p={{ base: "1", md: "3" }} class={["extra-box", "classes"]}>
-          box-it
-        </BoxCustomEndReklassed>
-      </>
-    );
+    describe("equal", () => {
+      const expect = (ui: ComponentChild, equal: string) => {
+        expects
+          .element(render(ui).getByTestId("root"))
+          .tagName("DIV")
+          .className(shared.customEnd(clsx(equal, PROPS.class)))
+          .textContent("children");
+        cleanup();
+      };
 
-    expectElement(getByTestId("box")).tagName("DIV").className("m-2 p-1 md:p-3 extra-box classes").textContent("box");
-    expectElement(getByTestId("box-it")).tagName("DIV").className(customEnd("m-2 p-1 md:p-3 extra-box classes")).textContent("box-it");
+      it("basic", () => {
+        for (const test of shared.reklass.box.basic.test) {
+          expect(
+            <ReklassedBoxBasicCustomEnd {...PROPS} {...test.props}>
+              children
+            </ReklassedBoxBasicCustomEnd>,
+            test.equal
+          );
+        }
+      });
+
+      it("customAs", () => {
+        for (const test of shared.reklass.box.customAs.test) {
+          expect(
+            <ReklassedBoxCustomAsCustomEnd {...PROPS} {...test.props}>
+              children
+            </ReklassedBoxCustomAsCustomEnd>,
+            test.equal
+          );
+        }
+      });
+    });
   });
+});
 
-  it("reactive", async () => {
-    const { getByTestId } = render(<ReklassedReactiveComponent />);
+describe("reactive", () => {
+  it("klassed", () => {
+    const { getByTestId } = render(<KlassedButtonBasicReactive />);
 
-    let reactive = getByTestId("reactive");
-    expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveReklassed");
+    let element = getByTestId("reactive");
 
-    fireEvent.click(reactive);
-    expectElement((reactive = getByTestId("reactive")))
+    expects
+      .element(element)
+      .tagName("BUTTON")
+      .className(clsx("color-red", ["extra", "classes"]));
+
+    fireEvent.click(element);
+
+    expects
+      .element((element = getByTestId("reactive")))
       .tagName("A")
-      .className("m-1 md:m-3 p-2 extra-reactive classes reactive");
+      .className(clsx("color-blue", ["extra", "classes", "reactive"]));
   });
 
-  it("reactive signal", async () => {
-    const { getByTestId } = render(<ReklassedReactiveSignalComponent />);
+  it("klassed signal", () => {
+    const { getByTestId } = render(<KlassedButtonBasicSignalReactive />);
 
-    const reactive = getByTestId("reactive");
-    expectElement(reactive).tagName("BUTTON").className("m-1 p-1 extra-reactive classes").textContent("ReactiveSignalReklassed");
+    let element = getByTestId("reactive");
 
-    fireEvent.click(reactive);
-    expect(reactive.className).toEqual("m-1 md:m-3 p-2 extra-reactive classes reactive");
+    expects
+      .element(element)
+      .tagName("BUTTON")
+      .className(clsx("color-red", ["extra", "classes"]));
+
+    fireEvent.click(element);
+
+    expects
+      .element((element = getByTestId("reactive")))
+      .tagName("BUTTON")
+      .className(clsx("color-blue", ["extra", "classes", "reactive"]));
   });
 
-  it("polymorphic", async () => {
-    const { getByTestId } = render(
-      <>
-        <BoxReklassed data-testid="box">box</BoxReklassed>
+  it("reklassed", () => {
+    const { getByTestId } = render(<ReklassedBoxBasicReactive />);
 
-        <BoxReklassed data-testid="box-as-a" as="a">
-          box-as-a
-        </BoxReklassed>
+    let element = getByTestId("reactive");
 
-        <BoxReklassed data-testid="box-link" as={A}>
-          box-link
-        </BoxReklassed>
-      </>
-    );
+    expects
+      .element(element)
+      .tagName("BUTTON")
+      .className(clsx("x-1", ["extra", "classes"]));
 
-    expectElement(getByTestId("box")).tagName("DIV");
-    expectElement(getByTestId("box-as-a")).tagName("A");
-    expectElement(getByTestId("box-link")).tagName("A");
+    fireEvent.click(element);
+
+    expects
+      .element((element = getByTestId("reactive")))
+      .tagName("A")
+      .className(clsx("x-2", ["extra", "classes", "reactive"]));
+  });
+
+  it("reklassed signal", () => {
+    const { getByTestId } = render(<ReklassedBoxBasicSignalReactive />);
+
+    let element = getByTestId("reactive");
+
+    expects
+      .element(element)
+      .tagName("BUTTON")
+      .className(clsx("x-1", ["extra", "classes"]));
+
+    fireEvent.click(element);
+
+    expects
+      .element((element = getByTestId("reactive")))
+      .tagName("BUTTON")
+      .className(clsx("x-2", ["extra", "classes", "reactive"]));
   });
 });
