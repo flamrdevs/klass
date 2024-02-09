@@ -53,4 +53,5 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
   return (Component.reklass = reklassFn), Component;
 }
 
+export type { KlassedComponent, ReklassedComponent };
 export { klassed, reklassed };
