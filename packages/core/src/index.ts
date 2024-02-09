@@ -140,4 +140,4 @@ export type {
   ReklassOptions,
   ReklassFn,
 };
-export { variant, klass, revariant, reklass };
+export { clsx, variant, klass, revariant, reklass };
