@@ -59,7 +59,7 @@ Class variant utility
           <img title="license" alt="license" src="https://klass.deno.dev/pkg/l/core">
           <img title="version" alt="version" src="https://klass.deno.dev/pkg/v/core">
           <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/core">
-          <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/core">
+          <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/core">
         </div>
       </td>
       <td>
@@ -88,7 +88,7 @@ Class variant utility
           <img title="license" alt="license" src="https://klass.deno.dev/pkg/l/preact">
           <img title="version" alt="version" src="https://klass.deno.dev/pkg/v/preact">
           <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/preact">
-          <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/preact">
+          <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/preact">
         </div>
       </td>
       <td>
@@ -117,7 +117,7 @@ Class variant utility
           <img title="license" alt="license" src="https://klass.deno.dev/pkg/l/qwik">
           <img title="version" alt="version" src="https://klass.deno.dev/pkg/v/qwik">
           <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/qwik">
-          <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/qwik">
+          <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/qwik">
         </div>
       </td>
       <td>
@@ -146,7 +146,7 @@ Class variant utility
           <img title="license" alt="license" src="https://klass.deno.dev/pkg/l/react">
           <img title="version" alt="version" src="https://klass.deno.dev/pkg/v/react">
           <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/react">
-          <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/react">
+          <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/react">
         </div>
       </td>
       <td>
@@ -175,7 +175,7 @@ Class variant utility
           <img title="license" alt="license" src="https://klass.deno.dev/pkg/l/solid">
           <img title="version" alt="version" src="https://klass.deno.dev/pkg/v/solid">
           <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/solid">
-          <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/solid">
+          <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/solid">
         </div>
       </td>
       <td>
@@ -204,7 +204,7 @@ Class variant utility
           <img title="license" alt="license" src="https://klass.deno.dev/pkg/l/vue">
           <img title="version" alt="version" src="https://klass.deno.dev/pkg/v/vue">
           <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/vue">
-          <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/vue">
+          <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/vue">
         </div>
       </td>
       <td>

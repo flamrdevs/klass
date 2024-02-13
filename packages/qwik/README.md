@@ -12,7 +12,7 @@
   <a title="size" href="https://bundlejs.com/?q=@klass/qwik">
     <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/qwik" hspace="1">
   </a>
-  <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/qwik" hspace="1">
+  <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/qwik" hspace="1">
 </p>
 
 # klass qwik

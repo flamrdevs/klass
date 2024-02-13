@@ -12,7 +12,7 @@
   <a title="size" href="https://bundlejs.com/?q=@klass/react">
     <img title="size" alt="size" src="https://klass.deno.dev/pkg/mz/react" hspace="1">
   </a>
-  <img title="npm monthly downloads" alt="size" src="https://klass.deno.dev/pkg/dm/react" hspace="1">
+  <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/react" hspace="1">
 </p>
 
 # klass react
