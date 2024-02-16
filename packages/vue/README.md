@@ -1,3 +1,5 @@
+<img src="https://klass.pages.dev/cover.svg" width="100%" />
+
 <p>
   <h1 align="center">klass</h1>
 </p>
@@ -15,11 +17,17 @@
   <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/vue" hspace="1">
 </p>
 
-# klass vue
+# @klass/vue
 
 ## Introduction
 
 Class variant utility for Vue.
+
+## Documentation
+
+<a title="getting-started" href="https://klass.pages.dev">
+  <img title="getting-started" alt="license" src="https://klass.deno.dev/ui/button/lucide/rocket?text=Getting%20started" hspace="1">
+</a>
 
 ## Installation
 
@@ -56,7 +64,7 @@ const Button = klassed(
       block: {
         true: "w-full",
       },
-      // "class" variant are not allowed
+      // "class" variants are not allowed
     },
     defaults: {
       color: "default",

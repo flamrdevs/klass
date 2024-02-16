@@ -1,3 +1,5 @@
+<img src="https://klass.pages.dev/cover.svg" width="100%" />
+
 <p>
   <h1 align="center">klass</h1>
 </p>
@@ -15,11 +17,17 @@
   <img title="npm monthly downloads" alt="downloads" src="https://klass.deno.dev/pkg/dm/core" hspace="1">
 </p>
 
-# klass core
+# @klass/core
 
 ## Introduction
 
 Class variant utility
+
+## Documentation
+
+<a title="getting-started" href="https://klass.pages.dev">
+  <img title="getting-started" alt="license" src="https://klass.deno.dev/ui/button/lucide/rocket?text=Getting%20started" hspace="1">
+</a>
 
 ## Installation
 

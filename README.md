@@ -1,3 +1,5 @@
+<img src="https://klass.pages.dev/cover.svg" width="100%" />
+
 <p>
   <img width="100%" src="https://hiiiits.deno.dev/hit/flamrdevs/klass" alt="hiiiits" title="hiiiits" />
 </p>
@@ -34,10 +36,16 @@ Class variant utility
 - Base and variants
 - Compound variants
 - Conditional variants
-- Framework-agnostic
+- Frameworks-agnostic
 - TypeScript support
 - Styled-component-like API (Preact, Qwik, React, Solid & Vue)
 - Polymorphic components (Preact, Qwik, React, Solid & Vue)
+
+## Documentation
+
+<a title="documentation" href="https://klass.pages.dev">
+  <img title="documentation" alt="license" src="https://klass.deno.dev/ui/button/lucide/external-link?text=Documentation" hspace="1">
+</a>
 
 ## Packages
 
@@ -65,16 +73,10 @@ Class variant utility
       <td>
         <div style="display: flex; gap: 0.2rem;">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/core">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
-              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/github">
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/core">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
-              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/npm">
           </a>
         </div>
       </td>
@@ -94,16 +96,10 @@ Class variant utility
       <td>
         <div style="display: flex; gap: 0.2rem;">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/preact">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
-              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/github">
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/preact">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
-              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/npm">
           </a>
         </div>
       </td>
@@ -123,16 +119,10 @@ Class variant utility
       <td>
         <div style="display: flex; gap: 0.2rem;">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/qwik">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
-              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/github">
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/qwik">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
-              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/npm">
           </a>
         </div>
       </td>
@@ -152,16 +142,10 @@ Class variant utility
       <td>
         <div style="display: flex; gap: 0.2rem;">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/react">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
-              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/github">
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/react">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
-              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/npm">
           </a>
         </div>
       </td>
@@ -181,16 +165,10 @@ Class variant utility
       <td>
         <div style="display: flex; gap: 0.2rem;">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/solid">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
-              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/github">
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/solid">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
-              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/npm">
           </a>
         </div>
       </td>
@@ -210,16 +188,10 @@ Class variant utility
       <td>
         <div style="display: flex; gap: 0.2rem;">
           <a title="github" href="https://github.com/flamrdevs/klass/tree/main/packages/vue">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?t=dark&i=github">
-              <img alt="github" src="https://none.deno.dev/ui/icon-button/simple?t=light&i=github">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/github">
           </a>
           <a title="npm" href="https://www.npmjs.com/package/@klass/vue">
-            <picture>
-              <source media="(prefers-color-scheme: dark)" srcset="https://none.deno.dev/ui/icon-button/simple?c=orange&t=dark&i=npm">
-              <img alt="npm" src="https://none.deno.dev/ui/icon-button/simple?c=orange&t=light&i=npm">
-            </picture>
+            <img alt="github" src="https://klass.deno.dev/ui/icon-button/simple/npm">
           </a>
         </div>
       </td>
@@ -406,7 +378,7 @@ export default App;
 
 <p>
   <a title="github" href="https://github.com/flamrdevs/klass-examples">
-    <img title="github" alt="github" src="https://klass.deno.dev/ui/button?text=Open%20in%20GitHub">
+    <img title="github" alt="github" src="https://klass.deno.dev/ui/button/simple/github?text=Open%20in%20GitHub">
   </a>
 </p>
 
@@ -423,7 +395,7 @@ Some of the core concepts and designs are inspired by
 
 <p>
   <a title="github" href="https://github.com/flamrdevs/klass-benchmark">
-    <img title="github" alt="github" src="https://klass.deno.dev/ui/button?text=Open%20in%20GitHub">
+    <img title="github" alt="github" src="https://klass.deno.dev/ui/button/simple/github?text=Open%20in%20GitHub">
   </a>
 </p>
 
