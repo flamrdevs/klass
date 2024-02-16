@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.10
+
+### Patch Changes
+
+- Update README.md
+
 ## 4.0.0-next.9
 
 ### Patch Changes

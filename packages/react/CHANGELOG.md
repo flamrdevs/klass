@@ -1,5 +1,13 @@
 # @klass/react
 
+## 4.0.0-next.10
+
+### Patch Changes
+
+- Update README.md
+- Updated dependencies
+  - @klass/core@4.0.0-next.10
+
 ## 4.0.0-next.9
 
 ### Patch Changes
