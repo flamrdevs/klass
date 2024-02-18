@@ -269,13 +269,13 @@ const box = reklass({
 
 button({ color: "primary", block: true }); // "inline-flex items-center justify-center rounded-md outline-none bg-indigo-700 text-white px-4 py-1 h-8 text-base font-medium w-full"
 // access variant
-button.v.color("primary"); // "bg-indigo-700 text-white"
+button.g.color("primary"); // "bg-indigo-700 text-white"
 
 box({ m: "1", p: "2" }); // "m-1 p-1"
 box({ m: { base: "1", md: "2" }, p: { base: "1", md: "2" } }); // "m-1 md:m-2 p-1 md:p-2"
 // access revariant
-box.rv.m("1"); // "m-1";
-box.rv.p({ base: "1", md: "2" }); // "p-1 md:p-2"
+box.g.m("1"); // "m-1";
+box.g.p({ base: "1", md: "2" }); // "p-1 md:p-2"
 ```
 
 ### Preact / Qwik / React / Solid / Vue
