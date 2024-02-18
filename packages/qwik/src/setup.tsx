@@ -5,7 +5,7 @@ import type { FinalVariantsSchema } from "./types/index.ts";
 import type { SupportedElementType } from "./types/qwik.ts";
 import type { PolymorphicComponentProps } from "./types/polymorphic.ts";
 
-import * as main from "./index.tsx";
+import { klassed as _klassed, reklassed as _reklassed } from "./index.tsx";
 
 const klassed =
   ({ end }: Config) =>
@@ -16,7 +16,7 @@ const klassed =
       dp?: PolymorphicComponentProps<ET, {}>;
     }
   ) =>
-    main.klassed<ET, VS>(element, options, { dp: config?.dp, end });
+    _klassed<ET, VS>(element, options, { dp: config?.dp, end });
 
 const reklassed =
   ({ as, end }: Config) =>
@@ -27,7 +27,7 @@ const reklassed =
       dp?: PolymorphicComponentProps<ET, {}>;
     }
   ) =>
-    main.reklassed<ET, CS, VS>(element, options, { dp: config?.dp, as, end });
+    _reklassed<ET, CS, VS>(element, options, { dp: config?.dp, as, end });
 
 const setup = (config: Config) => [klassed(config), reklassed(config)] as [ReturnType<typeof klassed>, ReturnType<typeof reklassed>];
 
