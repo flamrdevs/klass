@@ -1,5 +1,13 @@
 # @klass/qwik
 
+## 4.0.0-next.11
+
+### Patch Changes
+
+- named import and base fn
+- Updated dependencies
+  - @klass/core@4.0.0-next.11
+
 ## 4.0.0-next.10
 
 ### Patch Changes
