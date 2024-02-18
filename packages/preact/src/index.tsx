@@ -17,7 +17,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
 ): KlassedComponent<ET, VS> {
   const { class: defaultClass, className: defaultClassName, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
-    keys = getVariantKeys<VS>(klassFn.vk);
+    keys = getVariantKeys<VS>(klassFn.k);
 
   const Component = (({ as: As = element as any, class: _class = defaultClass, className = defaultClassName, ...rest }) => {
     const splitted = splitRestProps(rest, keys);
@@ -39,7 +39,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
 ): ReklassedComponent<ET, CS, VS> {
   const { class: defaultClass, className: defaultClassName, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
-    keys = getVariantKeys<VS>(reklassFn.rvk);
+    keys = getVariantKeys<VS>(reklassFn.k);
 
   const Component = (({ as: As = element as any, class: _class = defaultClass, className = defaultClassName, ...rest }) => {
     const splitted = splitRestProps(rest, keys);

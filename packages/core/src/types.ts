@@ -18,6 +18,13 @@ type VariantGroup<T extends VariantsSchema> = {
 
 type CompoundVariant<T extends VariantsSchema> = [{ [K in keyof T]?: TransformKey<keyof T[K]> }, ClassValue];
 
+type BaseFn<T extends VariantsSchema, P, O, G> = {
+  (props?: P, classes?: ClassValue): string;
+  o: O;
+  g: G;
+  k: (keyof T)[];
+};
+
 type KlassOptions<T extends VariantsSchema> = {
   base?: ClassValue;
   variants: T;
@@ -25,13 +32,14 @@ type KlassOptions<T extends VariantsSchema> = {
   compounds?: CompoundVariant<T>[];
 };
 
-type KlassFn<T extends VariantsSchema> = {
-  (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }, classes?: ClassValue): string;
-} & {
-  o: KlassOptions<T>;
-  v: VariantGroup<T>;
-  vk: (keyof T)[];
-};
+type KlassFn<T extends VariantsSchema> = BaseFn<
+  T,
+  {
+    [K in keyof T]?: TransformKey<keyof T[K]>;
+  },
+  KlassOptions<T>,
+  VariantGroup<T>
+>;
 
 type ConditionSchema = {
   [type: string]: string;
@@ -48,18 +56,18 @@ type ReklassOptions<C extends ConditionSchema, T extends VariantsSchema> = {
   variants: T;
 };
 
-type ReklassFn<C extends ConditionSchema, T extends VariantsSchema> = {
-  (
-    props?: {
-      [K in keyof T]?: TransformKey<keyof T[K]> | { [condition in keyof C]?: TransformKey<keyof T[K]> };
-    },
-    classes?: ClassValue
-  ): string;
-} & {
-  o: ReklassOptions<C, T>;
-  rv: RevariantGroup<C, T>;
-  rvk: (keyof T)[];
-};
+type ReklassFn<C extends ConditionSchema, T extends VariantsSchema> = BaseFn<
+  T,
+  {
+    [K in keyof T]?:
+      | TransformKey<keyof T[K]>
+      | {
+          [condition in keyof C]?: TransformKey<keyof T[K]>;
+        };
+  },
+  ReklassOptions<C, T>,
+  RevariantGroup<C, T>
+>;
 
 type VariantsOf<T extends (...args: any[]) => any> = Exclude<Parameters<T>[0], undefined>;
 type RequiredVariantsFrom<T extends { [key: string]: unknown }, K extends keyof T> = Omit<T, K> & { [k in K]-?: T[k] };
@@ -75,6 +83,7 @@ export type {
   StrictVariantsSchema,
   VariantsOf,
   RequiredVariantsFrom,
+  BaseFn,
   VariantFn,
   VariantGroup,
   CompoundVariant,

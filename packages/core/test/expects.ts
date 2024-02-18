@@ -13,11 +13,12 @@ export const klassFn = <T extends VariantsSchema>(fn: KlassFn<T>) => {
   expect(fn).toHaveProperty("o");
   expect(fn.o).toBeTypeOf("object");
 
-  expect(fn).toHaveProperty("v");
-  expect(fn.v).toBeTypeOf("object");
+  expect(fn).toHaveProperty("g");
+  expect(fn).toHaveProperty("k");
+  expect(fn.g).toBeTypeOf("object");
   const keys = Object.keys(fn.o.variants) as (keyof T)[];
-  expect(fn.vk).toEqual(keys);
-  for (const key of keys) variantFn(fn.v[key]);
+  expect(fn.k).toEqual(keys);
+  for (const key of keys) variantFn(fn.g[key]);
 };
 
 export const revariantFn = <C extends ConditionSchema, T extends VariantsSchema[string]>(revariantFn: RevariantFn<C, T>) => {
@@ -29,11 +30,12 @@ export const reklassFn = <C extends ConditionSchema, T extends VariantsSchema>(f
   expect(fn).toHaveProperty("o");
   expect(fn.o).toBeTypeOf("object");
 
-  expect(fn).toHaveProperty("rv");
-  expect(fn.rv).toBeTypeOf("object");
+  expect(fn).toHaveProperty("g");
+  expect(fn).toHaveProperty("k");
+  expect(fn.g).toBeTypeOf("object");
   const keys = Object.keys(fn.o.variants) as (keyof T)[];
-  expect(fn.rvk).toEqual(keys);
-  for (const key of keys) revariantFn(fn.rv[key]);
+  expect(fn.k).toEqual(keys);
+  for (const key of keys) revariantFn(fn.g[key]);
 };
 
 export const inCustomEnd = (className: string) => {

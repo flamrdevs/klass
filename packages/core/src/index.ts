@@ -62,8 +62,8 @@ const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { end
   }) as KlassFn<T>;
 
   fn.o = options;
-  fn.v = variantGroup;
-  fn.vk = keyofVariants;
+  fn.g = variantGroup;
+  fn.k = keyofVariants;
 
   return fn;
 };
@@ -115,8 +115,8 @@ const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: R
   }) as ReklassFn<C, T>;
 
   fn.o = options;
-  fn.rv = revariantGroup;
-  fn.rvk = keyofVariants;
+  fn.g = revariantGroup;
+  fn.k = keyofVariants;
 
   return fn;
 };
