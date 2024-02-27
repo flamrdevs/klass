@@ -29,7 +29,7 @@ const reklassed =
   ) =>
     _reklassed<ET, CS, VS>(element, options, { dp: config?.dp, as, end });
 
-const setup = (config: Config) => [klassed(config), reklassed(config)] as [ReturnType<typeof klassed>, ReturnType<typeof reklassed>];
+const setup = (config: Config) => [klassed(config), reklassed(config)] as const;
 
 export type { Config };
 export { klassed, reklassed };

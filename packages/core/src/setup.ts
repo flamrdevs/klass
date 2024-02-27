@@ -16,7 +16,7 @@ const reklass =
   <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>) =>
     _reklass<C, T>(options, config);
 
-const setup = (config: Config) => [klass(config), reklass(config)] as [ReturnType<typeof klass>, ReturnType<typeof reklass>];
+const setup = (config: Config) => [klass(config), reklass(config)] as const;
 
 export type { Config };
 export { klass, reklass };
