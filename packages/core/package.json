@@ -63,9 +63,6 @@
     }
   },
   "files": [
-    "setup.d.ts",
-    "group.d.ts",
-    "slots.d.ts",
     "dist"
   ],
   "publishConfig": {

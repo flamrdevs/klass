@@ -61,8 +61,6 @@
     }
   },
   "files": [
-    "mono.d.ts",
-    "setup.d.ts",
     "dist"
   ],
   "publishConfig": {
