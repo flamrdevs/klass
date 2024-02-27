@@ -1,5 +1,13 @@
 # @klass/qwik
 
+## 4.0.0-next.12
+
+### Patch Changes
+
+- clean type, fix dts and feat new mono setup
+- Updated dependencies
+  - @klass/core@4.0.0-next.12
+
 ## 4.0.0-next.11
 
 ### Patch Changes

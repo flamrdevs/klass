@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.12
+
+### Patch Changes
+
+- clean type, fix dts and feat new mono setup
+
 ## 4.0.0-next.11
 
 ### Patch Changes
