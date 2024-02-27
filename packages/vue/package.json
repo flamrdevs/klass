@@ -48,6 +48,16 @@
         "types": "./dist/setup.d.ts",
         "default": "./dist/setup.cjs"
       }
+    },
+    "./mono.setup": {
+      "import": {
+        "types": "./dist/mono.setup.d.ts",
+        "default": "./dist/mono.setup.js"
+      },
+      "require": {
+        "types": "./dist/mono.setup.d.ts",
+        "default": "./dist/mono.setup.cjs"
+      }
     }
   },
   "files": [

@@ -16,7 +16,7 @@ export default defineConfig({
     target: "esnext",
     outDir: "dist",
     lib: {
-      entry: ["src/index.tsx", "src/utils.ts", "src/mono.tsx", "src/setup.tsx"],
+      entry: ["src/index.tsx", "src/utils.ts", "src/mono.tsx", "src/setup.tsx", "src/mono.setup.tsx"],
       fileName: (format, entry) => `${entry}.qwik.${format === "cjs" ? "cjs" : "mjs"}`,
       formats: ["es", "cjs"],
     },
