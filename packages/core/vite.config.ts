@@ -5,7 +5,6 @@ import dts from "vite-plugin-dts";
 const env = {
   command: { build: process.env["COMMAND"] === "build", test: process.env["COMMAND"] === "test" },
   unminify: process.env["UNMINIFY"] === "true",
-  watch: process.env["WATCH"] === "true",
 };
 
 export default defineConfig({
@@ -37,7 +36,7 @@ export default defineConfig({
   ],
   test: {
     include: ["test/**/*.test.ts"],
-    watch: env.watch,
+    watch: false,
     reporters: ["default", "html"],
     outputFile: "test-reports/index.html",
   },

@@ -9,7 +9,6 @@
     "build": "set COMMAND=build&&turbo run build",
     "build:unminify": "set UNMINIFY=true&&set COMMAND=build&&turbo run build",
     "test": "set COMMAND=test&&turbo run test",
-    "test:watch": "set WATCH=true&&set COMMAND=test&&turbo run test",
     "test:preview": "pnpm --parallel --filter ./packages/** exec vite preview --open --outDir test-reports"
   },
   "repository": {
