@@ -41,6 +41,7 @@ export default defineConfig({
           compilerOptions: {
             removeComments: false,
           },
+          staticImport: true,
         })
       : null,
   ],
