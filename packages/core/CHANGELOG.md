@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.14
+
+### Patch Changes
+
+- fix test & build and type improvements
+
 ## 4.0.0-next.13
 
 ### Patch Changes

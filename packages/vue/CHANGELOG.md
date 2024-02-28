@@ -1,5 +1,13 @@
 # @klass/vue
 
+## 4.0.0-next.14
+
+### Patch Changes
+
+- fix test & build and type improvements
+- Updated dependencies
+  - @klass/core@4.0.0-next.14
+
 ## 4.0.0-next.13
 
 ### Patch Changes
