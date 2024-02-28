@@ -33,11 +33,11 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
     klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.k);
 
-  const Component = defineComponent((props, { attrs, slots }) => {
+  const Component = defineComponent<WithClassesValueProps<{}>>((props, { attrs, slots }) => {
     const splitted = computed(() => splitRestProps(attrs, keys));
 
     return () => h(Element, { ...defaultProps, ...(splitted.value.o as any), class: klassFn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
-  }, defaultComponentOptions) as KlassedComponent<ET, VS>;
+  }, defaultComponentOptions) as unknown as KlassedComponent<ET, VS>;
 
   return (Component.klass = klassFn), Component;
 }
@@ -55,11 +55,11 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
     reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.k);
 
-  const Component = defineComponent((props, { attrs, slots }) => {
+  const Component = defineComponent<WithClassesValueProps<{}>>((props, { attrs, slots }) => {
     const splitted = computed(() => splitRestProps(attrs, keys));
 
     return () => h(Element, { ...defaultProps, ...(splitted.value.o as any), class: reklassFn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
-  }, defaultComponentOptions) as ReklassedComponent<ET, CS, VS>;
+  }, defaultComponentOptions) as unknown as ReklassedComponent<ET, CS, VS>;
 
   return (Component.reklass = reklassFn), Component;
 }

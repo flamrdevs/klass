@@ -28,7 +28,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
     klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.k);
 
-  const Component = React.forwardRef<any, any>(({ className = defaultClassName, ...rest }, ref) => {
+  const Component = React.forwardRef<any, WithClassesValueProps<{}>>(({ className = defaultClassName, ...rest }, ref) => {
     const splitted = splitRestProps(rest, keys);
 
     return <Element {...defaultProps} {...(splitted.o as any)} ref={ref} className={klassFn(splitted.p, className)} />;
@@ -50,7 +50,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
     reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.k);
 
-  const Component = React.forwardRef<any, any>(({ className = defaultClassName, ...rest }, ref) => {
+  const Component = React.forwardRef<any, WithClassesValueProps<{}>>(({ className = defaultClassName, ...rest }, ref) => {
     const splitted = splitRestProps(rest, keys);
 
     return <Element {...defaultProps} {...(splitted.o as any)} ref={ref} className={reklassFn(splitted.p, className)} />;

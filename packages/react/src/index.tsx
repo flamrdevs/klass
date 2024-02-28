@@ -21,11 +21,13 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
     klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
     keys = getVariantKeys<VS>(klassFn.k);
 
-  const Component = React.forwardRef<any, any>(({ as: As = element as any, className = defaultClassName, ...rest }, ref?: PolymorphicRef<SupportedElementType>) => {
-    const splitted = splitRestProps(rest, keys);
+  const Component = React.forwardRef<any, PolymorphicComponentProps<ET, ClassesProps>>(
+    ({ as: As = element as any, className = defaultClassName, ...rest }, ref?: PolymorphicRef<SupportedElementType>) => {
+      const splitted = splitRestProps(rest, keys);
 
-    return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={klassFn(splitted.p, className)} />;
-  }) as unknown as KlassedComponent<ET, VS>;
+      return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={klassFn(splitted.p, className)} />;
+    }
+  ) as unknown as KlassedComponent<ET, VS>;
 
   return (Component.klass = klassFn), Component;
 }
@@ -43,11 +45,13 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
     reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
     keys = getVariantKeys<VS>(reklassFn.k);
 
-  const Component = React.forwardRef<any, any>(({ as: As = element as any, className = defaultClassName, ...rest }, ref?: PolymorphicRef<SupportedElementType>) => {
-    const splitted = splitRestProps(rest, keys);
+  const Component = React.forwardRef<any, PolymorphicComponentProps<ET, ClassesProps>>(
+    ({ as: As = element as any, className = defaultClassName, ...rest }, ref?: PolymorphicRef<SupportedElementType>) => {
+      const splitted = splitRestProps(rest, keys);
 
-    return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={reklassFn(splitted.p, className)} />;
-  }) as unknown as ReklassedComponent<ET, CS, VS>;
+      return <As {...defaultProps} {...(splitted.o as any)} ref={ref} className={reklassFn(splitted.p, className)} />;
+    }
+  ) as unknown as ReklassedComponent<ET, CS, VS>;
 
   return (Component.reklass = reklassFn), Component;
 }
