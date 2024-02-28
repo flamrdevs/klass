@@ -1,6 +1,6 @@
 {
   "name": "@klass/qwik",
-  "version": "4.0.0-next.12",
+  "version": "4.0.0-next.13",
   "description": "Class variant utility for Qwik",
   "keywords": [
     "class",
@@ -84,10 +84,10 @@
   "homepage": "https://klass.pages.dev",
   "peerDependencies": {
     "@builder.io/qwik": "^1.4.0",
-    "@klass/core": "4.0.0-next.12"
+    "@klass/core": "4.0.0-next.13"
   },
   "devDependencies": {
     "@builder.io/qwik": "^1.4.5",
-    "@klass/core": "4.0.0-next.12"
+    "@klass/core": "4.0.0-next.13"
   }
 }

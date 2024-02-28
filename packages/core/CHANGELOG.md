@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.13
+
+### Patch Changes
+
+- refactoring typescript features
+
 ## 4.0.0-next.12
 
 ### Patch Changes
