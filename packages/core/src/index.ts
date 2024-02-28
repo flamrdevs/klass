@@ -28,19 +28,24 @@ const variant = <T extends VariantsSchema[string]>(variant: T, defaultVariant?: 
 };
 
 const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { end?: EndFn } = {}): KlassFn<T> => {
-  const { end = defaultEndFn } = config;
+  const { base, variants, defaults, compounds } = options,
+    { end = defaultEndFn } = config;
 
-  const resolvedBase = clsx(options.base);
+  const resolvedBase = clsx(base);
 
   const keyofVariants: (keyof T)[] = [],
-    defaults = options.defaults,
-    variantGroup = Object.entries(options.variants).reduce(
-      (obj, [key, value]: [keyof T, VariantsSchema[string]]) => (keyofVariants.push(key), (obj[key] = variant<T[keyof T]>(value as any, defaults?.[key] as any)), obj),
-      {} as VariantGroup<T>
-    );
+    variantGroup = {} as VariantGroup<T>;
 
-  const resolvedCompounds = options.compounds?.map(([v, c]) => ({ v, c: clsx(c) })),
-    lengthResolvedCompounds = resolvedCompounds?.length;
+  let variantsKey: keyof T;
+  for (variantsKey in variants) keyofVariants.push(variantsKey), (variantGroup[variantsKey] = variant<T[keyof T]>(variants[variantsKey] as any, defaults?.[variantsKey] as any));
+
+  let compoundsLength: boolean;
+  const resolvedCompounds: {
+    v: { [K in keyof T]?: TransformKey<keyof T[K]> | undefined };
+    c: string;
+  }[] = [];
+
+  if ((compoundsLength = !!compounds?.length)) for (const [v, c] of compounds) resolvedCompounds.push({ v, c: clsx(c) });
 
   const fn = ((props, classes) => {
     let result: string = resolvedBase,
@@ -49,7 +54,7 @@ const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { end
 
     for (x of keyofVariants) if ((temp = variantGroup[x](props?.[x]))) result && (result += " "), (result += temp);
 
-    if (lengthResolvedCompounds) {
+    if (compoundsLength) {
       compounds: for (let rc of resolvedCompounds) {
         for (x in rc.v) if ((props?.[x] ?? defaults?.[x]) !== rc.v[x as keyof typeof rc.v]) continue compounds;
         if (rc.c) result && (result += " "), (result += rc.c);
@@ -91,16 +96,18 @@ const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(
 };
 
 const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>, config: { as?: AsFn; end?: EndFn } = {}) => {
-  const { as, end = defaultEndFn } = config;
-
-  const [conditions, defaultCondition] = options.conditions;
+  const {
+      conditions: [conditions, defaultCondition],
+      variants,
+    } = options,
+    { as, end = defaultEndFn } = config;
 
   const keyofVariants: (keyof T)[] = [],
     revariantConfig = { as },
-    revariantGroup = Object.entries(options.variants).reduce(
-      (obj, [key, value]: [keyof T, VariantsSchema[string]]) => (keyofVariants.push(key), (obj[key] = revariant<C, T[keyof T]>(conditions, defaultCondition, value as any, revariantConfig)), obj),
-      {} as RevariantGroup<C, T>
-    );
+    revariantGroup = {} as RevariantGroup<C, T>;
+
+  let variantsKey: keyof T;
+  for (variantsKey in variants) keyofVariants.push(variantsKey), (revariantGroup[variantsKey] = revariant<C, T[keyof T]>(conditions, defaultCondition, variants[variantsKey] as any, revariantConfig));
 
   const fn = ((props, classes) => {
     let result = "",

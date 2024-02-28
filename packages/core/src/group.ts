@@ -1,4 +1,5 @@
 import { klass } from "./";
+
 import type { ClassValue, TransformKey, EndFn, KlassFn, VariantsOf } from "./";
 
 type StrictGroupVariantsSchema<B extends string> = {
@@ -29,31 +30,32 @@ type GroupOptions<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   compounds?: GroupCompoundVariant<B, T>[];
 };
 
+type GroupConfig = { end?: EndFn };
+
 type GroupResult<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   [key in B]: KlassFn<ToVariantsSchema<B, T>>;
 };
 
 const compoundsFilterFn = <T extends Readonly<[any, any]>>(value: T) => typeof value[1] !== "undefined";
 
-const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>, config?: { end?: EndFn }): GroupResult<B, T> => {
-  const keyofBase = Object.keys(options.base) as B[];
+const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>, config?: GroupConfig): GroupResult<B, T> => {
+  const { base: _base, variants: _variants, defaults: _defaults, compounds: _compounds } = options;
 
-  const klasses = {} as {
-    [key in B]: KlassFn<ToVariantsSchema<B, T>>;
-  };
+  const klasses = {} as GroupResult<B, T>;
 
-  const variantsEntries = Object.entries(options.variants);
+  const variantsTypesEntries: { v: keyof T; t: [string, { [key in B]?: ClassValue }][] }[] = [];
+  for (const v in _variants) variantsTypesEntries.push({ v, t: Object.entries(_variants[v]) });
 
-  for (const base of keyofBase) {
+  for (const base in _base) {
     klasses[base] = klass<ToVariantsSchema<B, T>>(
       {
-        base: options.base[base],
-        variants: variantsEntries.reduce(
-          (obj, [variant, types]) => ((obj[variant] = Object.entries(types).reduce((obj, [type, bases]) => ((obj[type] = bases[base]), obj), {} as { [type: string]: ClassValue })), obj),
-          {} as { [variant: string]: { [type: string]: ClassValue } }
+        base: _base[base],
+        variants: variantsTypesEntries.reduce(
+          (obj, { v, t }) => ((obj[v] = t.reduce((obj, [type, bases]) => ((obj[type] = bases[base]), obj), {} as { [type: string]: ClassValue })), obj),
+          {} as { [variant in keyof T]: { [type: string]: ClassValue } }
         ) as any,
-        defaults: options.defaults,
-        compounds: options.compounds?.map(([variants, _class]) => [variants, _class?.[base]] as const).filter(compoundsFilterFn) as any,
+        defaults: _defaults,
+        compounds: _compounds?.map(([variants, _class]) => [variants, _class?.[base]] as const).filter(compoundsFilterFn) as any,
       },
       config
     );
@@ -64,5 +66,5 @@ const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options
 
 type VariantsOfGroup<T> = T extends GroupResult<infer X, StrictGroupVariantsSchema<infer X>> ? VariantsOf<T[X]> : never;
 
-export type { StrictGroupVariantsSchema, GroupCompoundVariant, GroupOptions, GroupResult, VariantsOfGroup };
+export type { StrictGroupVariantsSchema, ToVariantsSchema, GroupCompoundVariant, GroupOptions, GroupConfig, GroupResult, VariantsOfGroup };
 export default group;

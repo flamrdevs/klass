@@ -1,80 +1,27 @@
-import { klass } from "./";
-import type { ClassValue, TransformKey, EndFn, KlassFn, VariantsOf } from "./";
+import type { ClassValue, TransformKey, VariantsOf } from "./";
 
-type StrictSlotsVariantsSchema<B extends string> = {
-  [variant: string]: {
-    [type: string]: { [key in B]?: ClassValue };
-  };
+import group from "./group";
+import type { StrictGroupVariantsSchema, GroupOptions, GroupConfig, GroupResult } from "./group";
+
+type KlassOnlyFn<B extends string, T extends StrictGroupVariantsSchema<B>> = (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }, classes?: ClassValue) => string;
+
+type KlassedOnly<B extends string, T extends StrictGroupVariantsSchema<B>> = {
+  [key in B]: KlassOnlyFn<B, T>;
 };
 
-type ToVariantsSchema<B extends string, T extends StrictSlotsVariantsSchema<B>> = {
-  [variant in keyof T]: {
-    [type in keyof T[variant]]: ClassValue;
-  };
-};
-
-type SlotsCompoundVariant<B extends string, T extends StrictSlotsVariantsSchema<B>> = [
-  {
-    [K in keyof ToVariantsSchema<B, T>]?: TransformKey<keyof ToVariantsSchema<B, T>[K]>;
-  },
-  {
-    [key in B]?: ClassValue;
-  }
-];
-
-type SlotsOptions<B extends string, T extends StrictSlotsVariantsSchema<B>> = {
-  base: { [key in B]: ClassValue };
-  variants: T;
-  defaults?: { [K in keyof T]?: TransformKey<keyof T[K]> };
-  compounds?: SlotsCompoundVariant<B, T>[];
-};
-
-type KlassOnlyFn<B extends string, T extends StrictSlotsVariantsSchema<B>> = (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }, classes?: ClassValue) => string;
-
-type SlotsFn<B extends string, T extends StrictSlotsVariantsSchema<B>> = {
-  (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }): {
-    [key in B]: KlassOnlyFn<B, T>;
-  };
+type SlotsFn<B extends string, T extends StrictGroupVariantsSchema<B>> = {
+  (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }): KlassedOnly<B, T>;
 } & {
-  o: SlotsOptions<B, T>;
-  klass: {
-    [key in B]: KlassFn<ToVariantsSchema<B, T>>;
-  };
+  o: GroupOptions<B, T>;
+  klass: GroupResult<B, T>;
 };
 
-const compoundsFilterFn = <T extends Readonly<[any, any]>>(value: T) => typeof value[1] !== "undefined";
-
-const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options: SlotsOptions<B, T>, config?: { end?: EndFn }): SlotsFn<B, T> => {
-  const keyofBase = Object.keys(options.base) as B[];
-
-  const klasses = {} as {
-    [key in B]: KlassFn<ToVariantsSchema<B, T>>;
-  };
-
-  const variantsEntries = Object.entries(options.variants);
-
-  for (const base of keyofBase) {
-    klasses[base] = klass<ToVariantsSchema<B, T>>(
-      {
-        base: options.base[base],
-        variants: variantsEntries.reduce(
-          (obj, [variant, types]) => ((obj[variant] = Object.entries(types).reduce((obj, [type, bases]) => ((obj[type] = bases[base]), obj), {} as { [type: string]: ClassValue })), obj),
-          {} as { [variant: string]: { [type: string]: ClassValue } }
-        ) as any,
-        defaults: options.defaults,
-        compounds: options.compounds?.map(([variants, _class]) => [variants, _class?.[base]] as const).filter(compoundsFilterFn) as any,
-      },
-      config
-    );
-  }
+const slots = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>, config?: GroupConfig): SlotsFn<B, T> => {
+  const klasses = group(options, config);
 
   const fn = ((props = {}) => {
-    const klassesonly = {} as {
-      [key in B]: KlassOnlyFn<B, T>;
-    };
-
-    for (const base of keyofBase) klassesonly[base] = (_props = {}, classes) => klasses[base]({ ...props, ..._props }, classes);
-
+    const klassesonly = {} as KlassedOnly<B, T>;
+    for (const base in klasses) klassesonly[base] = (_props = {}, classes) => klasses[base]({ ...props, ..._props }, classes);
     return klassesonly;
   }) as SlotsFn<B, T>;
 
@@ -84,7 +31,7 @@ const slots = <B extends string, T extends StrictSlotsVariantsSchema<B>>(options
   return fn;
 };
 
-type VariantsOfSlots<T> = T extends SlotsFn<infer X, StrictSlotsVariantsSchema<infer X>> ? VariantsOf<T["klass"][X]> : never;
+type VariantsOfSlots<T> = T extends SlotsFn<infer X, StrictGroupVariantsSchema<infer X>> ? VariantsOf<T["klass"][X]> : never;
 
-export type { StrictSlotsVariantsSchema, SlotsCompoundVariant, SlotsOptions, SlotsFn, VariantsOfSlots };
+export type { SlotsFn, VariantsOfSlots };
 export default slots;
