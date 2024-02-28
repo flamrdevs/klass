@@ -1,5 +1,5 @@
-import type { EndFn, AsFn, VariantsSchema, KlassOptions, ConditionSchema, ReklassOptions } from "./types.ts";
-import { klass as _klass, reklass as _reklass } from "./index.ts";
+import type { EndFn, AsFn, VariantsSchema, KlassOptions, ConditionSchema, ReklassOptions } from "./types";
+import { klass as _klass, reklass as _reklass } from "./";
 
 type Config = {
   as?: AsFn;

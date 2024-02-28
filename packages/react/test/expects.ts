@@ -2,10 +2,10 @@ import { expect } from "vitest";
 
 import type { ConditionSchema, VariantsSchema } from "@klass/core";
 
-import type { KlassedComponent, ReklassedComponent } from "./../src/types/index.ts";
-import type * as Mono from "./../src/mono.tsx";
+import type { KlassedComponent, ReklassedComponent } from "./../src/types";
+import type * as Mono from "./../src/mono";
 
-import { expects } from "./../../core/test/exports.ts";
+import { expects } from "./../../core/test/exports";
 
 const klassed = (object: { klass?: any }) => {
   expect(object).toBeTypeOf("object");

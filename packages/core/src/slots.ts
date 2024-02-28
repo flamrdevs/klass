@@ -1,5 +1,5 @@
-import { klass } from "./index.ts";
-import type { ClassValue, TransformKey, EndFn, KlassFn, VariantsOf } from "./index.ts";
+import { klass } from "./";
+import type { ClassValue, TransformKey, EndFn, KlassFn, VariantsOf } from "./";
 
 type StrictSlotsVariantsSchema<B extends string> = {
   [variant: string]: {

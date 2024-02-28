@@ -1,4 +1,4 @@
-export * as basic from "./klass.button.basic.ts";
-export * as base from "./klass.button.base.ts";
-export * as defaults from "./klass.button.defaults.ts";
-export * as compounds from "./klass.button.compounds.ts";
+export * as basic from "./klass.button.basic";
+export * as base from "./klass.button.base";
+export * as defaults from "./klass.button.defaults";
+export * as compounds from "./klass.button.compounds";

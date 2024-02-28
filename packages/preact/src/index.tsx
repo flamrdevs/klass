@@ -1,11 +1,11 @@
 import { klass, reklass } from "@klass/core";
 import type { EndFn, AsFn, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
-import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
-import type { SupportedElementType, ClassesProps } from "./types/preact.ts";
-import type { PolymorphicComponentProps } from "./types/polymorphic.ts";
+import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { SupportedElementType, ClassesProps } from "./types/preact";
+import type { PolymorphicComponentProps } from "./types/polymorphic";
 
-import { getVariantKeys, splitRestProps, maybeSignal, typeofFunction } from "./utils.ts";
+import { getVariantKeys, splitRestProps, maybeSignal, typeofFunction } from "./utils";
 
 function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
   element: ET,

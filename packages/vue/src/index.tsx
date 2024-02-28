@@ -3,11 +3,11 @@ import { computed, defineComponent, h } from "vue";
 import { klass, reklass } from "@klass/core";
 import type { ClassValue, EndFn, AsFn, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
-import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
-import type { SupportedElementType, ClassesProps } from "./types/vue.ts";
-import type { PolymorphicComponentProps } from "./types/polymorphic.ts";
+import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { SupportedElementType, ClassesProps } from "./types/vue";
+import type { PolymorphicComponentProps } from "./types/polymorphic";
 
-import { getVariantKeys, splitRestProps, typeofFunction } from "./utils.ts";
+import { getVariantKeys, splitRestProps, typeofFunction } from "./utils";
 
 const defaultComponentOptions = {
   props: ["as", "class"] as any,

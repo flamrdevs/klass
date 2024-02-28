@@ -6,9 +6,9 @@ import { render, cleanup } from "@testing-library/preact";
 
 import { clsx } from "@klass/core";
 
-import * as expects from "./expects.ts";
+import * as expects from "./expects";
 
-import { shared } from "./../../core/test/exports.ts";
+import { shared } from "./../../core/test/exports";
 
 import {
   KlassedButtonBasic,
@@ -23,7 +23,7 @@ import {
   ReklassedBoxCustomAs,
   ReklassedBoxBasicCustomEnd,
   ReklassedBoxCustomAsCustomEnd,
-} from "./mono.test.utils.tsx";
+} from "./mono.test.utils";
 
 const PROPS = {
   "data-testid": "root",

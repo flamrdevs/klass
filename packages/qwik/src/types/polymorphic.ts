@@ -1,6 +1,6 @@
 import type { JSXChildren } from "@builder.io/qwik";
 
-import type { SupportedComponentProps, SupportedElementType } from "./qwik.ts";
+import type { SupportedComponentProps, SupportedElementType } from "./qwik";
 
 type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
   ref?: P extends {

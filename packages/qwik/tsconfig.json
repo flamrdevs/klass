@@ -8,7 +8,6 @@
     "moduleResolution": "bundler",
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@builder.io/qwik",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],

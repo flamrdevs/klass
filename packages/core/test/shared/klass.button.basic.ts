@@ -1,4 +1,4 @@
-import type { Test } from "./@.ts";
+import type { Test } from "./@";
 
 export const options = {
   variants: {

@@ -4,11 +4,11 @@ import type { JSXOutput } from "@builder.io/qwik";
 
 import { clsx } from "@klass/core";
 
-import * as expects from "./expects.ts";
+import * as expects from "./expects";
 
-import { render } from "./testing-library.ts";
+import { render } from "./testing-library";
 
-import { shared } from "./../../core/test/exports.ts";
+import { shared } from "./../../core/test/exports";
 
 import {
   KlassedButtonBasic,
@@ -27,7 +27,7 @@ import {
   KlassedButtonBasicSignalReactive,
   ReklassedBoxBasicReactive,
   ReklassedBoxBasicSignalReactive,
-} from "./index.test.utils.tsx";
+} from "./index.test.utils";
 
 const PROPS = {
   "data-testid": "root",

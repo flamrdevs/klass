@@ -1,9 +1,9 @@
 import { describe, it, expect } from "vitest";
 
-import { variant, klass, revariant, reklass } from "./../src/index.ts";
+import { variant, klass, revariant, reklass } from "./../src";
 
-import * as shared from "./shared.ts";
-import * as expects from "./expects.ts";
+import * as shared from "./shared";
+import * as expects from "./expects";
 
 describe("variant", () => {
   describe("string", () => {

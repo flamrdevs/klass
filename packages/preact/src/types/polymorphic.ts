@@ -1,6 +1,6 @@
 import type { ComponentChildren } from "preact";
 
-import type { SupportedComponentProps, SupportedElementType } from "./preact.ts";
+import type { SupportedComponentProps, SupportedElementType } from "./preact";
 
 type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
   ref?: P extends {

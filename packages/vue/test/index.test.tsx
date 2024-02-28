@@ -4,9 +4,9 @@ import { render, cleanup, fireEvent } from "@testing-library/vue";
 
 import { clsx } from "@klass/core";
 
-import * as expects from "./expects.ts";
+import * as expects from "./expects";
 
-import { shared } from "./../../core/test/exports.ts";
+import { shared } from "./../../core/test/exports";
 
 import {
   KlassedButtonBasic,
@@ -23,7 +23,7 @@ import {
   ReklassedBoxCustomAsCustomEnd,
   KlassedButtonBasicReactive,
   ReklassedBoxBasicReactive,
-} from "./index.test.utils.tsx";
+} from "./index.test.utils";
 
 const PROPS = {
   "data-testid": "root",

@@ -4,11 +4,11 @@ import { mergeProps, splitProps } from "solid-js";
 import { klass, reklass } from "@klass/core";
 import type { EndFn, AsFn, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
-import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types/index.ts";
-import type { SupportedElementType, ClassesProps } from "./types/solid.ts";
-import type { PolymorphicComponentProps } from "./types/polymorphic.ts";
+import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { SupportedElementType, ClassesProps } from "./types/solid";
+import type { PolymorphicComponentProps } from "./types/polymorphic";
 
-import { getVariantKeys, PolymorphicKeysSplitter, ClassesKeysSplitter, classesProps, typeofFunction } from "./utils.ts";
+import { getVariantKeys, PolymorphicKeysSplitter, ClassesKeysSplitter, classesProps, typeofFunction } from "./utils";
 
 function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
   element: ET,

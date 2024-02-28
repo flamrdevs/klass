@@ -1,11 +1,11 @@
 import type { Config } from "@klass/core/setup";
 import type { KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
-import type { FinalVariantsSchema } from "./types/index.ts";
-import type { SupportedElementType } from "./types/react.ts";
-import type { PolymorphicComponentProps } from "./types/polymorphic.ts";
+import type { FinalVariantsSchema } from "./types";
+import type { SupportedElementType } from "./types/react";
+import type { PolymorphicComponentProps } from "./types/polymorphic";
 
-import { klassed as _klassed, reklassed as _reklassed } from "./index.tsx";
+import { klassed as _klassed, reklassed as _reklassed } from "./";
 
 const klassed =
   ({ end }: Config) =>

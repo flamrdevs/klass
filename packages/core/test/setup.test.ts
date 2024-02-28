@@ -1,9 +1,9 @@
 import { describe, it } from "vitest";
 
-import * as setup from "./../src/setup.ts";
+import * as setup from "./../src/setup";
 
-import * as shared from "./shared.ts";
-import * as expects from "./expects.ts";
+import * as shared from "./shared";
+import * as expects from "./expects";
 
 describe("setup", async () => {
   const config: setup.Config = {

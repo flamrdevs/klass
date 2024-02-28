@@ -1,4 +1,4 @@
-import type { SupportedComponentProps, SupportedElementType } from "./vue.ts";
+import type { SupportedComponentProps, SupportedElementType } from "./vue";
 
 type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
   ref?: P extends {

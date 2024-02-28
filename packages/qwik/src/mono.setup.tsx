@@ -1,10 +1,10 @@
 import type { Config } from "@klass/core/setup";
 import type { KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
-import type { FinalVariantsSchema } from "./types/index.ts";
-import type { SupportedComponentProps, SupportedElementType } from "./types/qwik.ts";
+import type { FinalVariantsSchema } from "./types";
+import type { SupportedComponentProps, SupportedElementType } from "./types/qwik";
 
-import { klassed as _klassed, reklassed as _reklassed } from "./mono.tsx";
+import { klassed as _klassed, reklassed as _reklassed } from "./mono";
 
 const klassed =
   ({ end }: Config) =>

@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import type { ClassValue } from "clsx";
 
-import type { EndFn, AsFn } from "./types.ts";
+import type { EndFn, AsFn } from "./types";
 
 export const defaultEndFn: EndFn = (value) => value;
 export const defaultAsFn: AsFn = (condition, className) => `${condition}${className}`;

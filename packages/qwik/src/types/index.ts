@@ -2,8 +2,8 @@ import type { JSX } from "@builder.io/qwik/jsx-runtime";
 
 import type { ClassValue, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
-import type { Signalish, SignalishRecord, SupportedElementType, Classes } from "./qwik.ts";
-import type { PolymorphicComponentProps } from "./polymorphic.ts";
+import type { Signalish, SignalishRecord, SupportedElementType, Classes } from "./qwik";
+import type { PolymorphicComponentProps } from "./polymorphic";
 
 export type FinalRestrictedVariantsKey = Classes;
 export type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;

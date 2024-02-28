@@ -1,9 +1,9 @@
 import { describe, it, expect } from "vitest";
 
-import group from "./../src/group.ts";
+import group from "./../src/group";
 
-import * as shared from "./shared.ts";
-import * as expects from "./expects.ts";
+import * as shared from "./shared";
+import * as expects from "./expects";
 
 describe("group", async () => {
   it("works", async () => {

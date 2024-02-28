@@ -1,4 +1,4 @@
-import type { FinalRestrictedVariantsKey, FinalVariantsSchema } from "./types/index.ts";
+import type { FinalRestrictedVariantsKey, FinalVariantsSchema } from "./types";
 
 const getVariantKeys__filterFn = <VS extends FinalVariantsSchema>(el: keyof VS) => el !== "class";
 export const getVariantKeys = <VS extends FinalVariantsSchema>(keys: (keyof VS)[]) => keys.filter(getVariantKeys__filterFn) as unknown as (keyof Exclude<VS, FinalRestrictedVariantsKey>)[];

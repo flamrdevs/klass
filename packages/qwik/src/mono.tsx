@@ -4,10 +4,10 @@ import type { JSX } from "@builder.io/qwik/jsx-runtime";
 import { klass, reklass } from "@klass/core";
 import type { EndFn, AsFn, VariantsOf, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
-import { FinalVariantsSchema, WithClassesValueProps, KlassedBase, ReklassedBase } from "./types/index.ts";
-import type { SignalishRecord, SupportedComponentProps, SupportedElementType, ClassesProps } from "./types/qwik.ts";
+import { FinalVariantsSchema, WithClassesValueProps, KlassedBase, ReklassedBase } from "./types";
+import type { SignalishRecord, SupportedComponentProps, SupportedElementType, ClassesProps } from "./types/qwik";
 
-import { getVariantKeys, splitRestProps, maybeSignal, typeofFunction } from "./utils.ts";
+import { getVariantKeys, splitRestProps, maybeSignal, typeofFunction } from "./utils";
 
 export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
   (props: WithClassesValueProps<SupportedComponentProps<ET> & SignalishRecord<VariantsOf<KlassFn<VS>>>>): JSX.Element;

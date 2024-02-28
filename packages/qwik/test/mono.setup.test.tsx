@@ -1,9 +1,9 @@
 import { describe, it } from "vitest";
 
-import * as setup from "./../src/mono.setup.tsx";
+import * as setup from "./../src/mono.setup";
 
-import * as core from "./../../core/test/exports.ts";
-import * as expects from "./expects.ts";
+import * as core from "./../../core/test/exports";
+import * as expects from "./expects";
 
 describe("setup", async () => {
   const config: setup.Config = {

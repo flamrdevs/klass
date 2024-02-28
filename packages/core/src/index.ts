@@ -18,9 +18,9 @@ import type {
   RevariantGroup,
   ReklassOptions,
   ReklassFn,
-} from "./types.ts";
+} from "./types";
 
-import { defaultEndFn, defaultAsFn, normalizeVariant } from "./utils.ts";
+import { defaultEndFn, defaultAsFn, normalizeVariant } from "./utils";
 
 const variant = <T extends VariantsSchema[string]>(variant: T, defaultVariant?: TransformKey<keyof T>): VariantFn<T> => {
   const normalizedVariant = normalizeVariant(variant);

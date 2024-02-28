@@ -3,10 +3,10 @@ import { computed, defineComponent, h } from "vue";
 import { klass, reklass } from "@klass/core";
 import type { ClassValue, EndFn, AsFn, VariantsOf, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
-import { FinalVariantsSchema, WithClassesValueProps, KlassedBase, ReklassedBase } from "./types/index.ts";
-import type { SupportedComponentProps, SupportedElementType, ClassesProps } from "./types/vue.ts";
+import { FinalVariantsSchema, WithClassesValueProps, KlassedBase, ReklassedBase } from "./types";
+import type { SupportedComponentProps, SupportedElementType, ClassesProps } from "./types/vue";
 
-import { getVariantKeys, splitRestProps, typeofFunction } from "./utils.ts";
+import { getVariantKeys, splitRestProps, typeofFunction } from "./utils";
 
 export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
   (props: WithClassesValueProps<SupportedComponentProps<ET> & VariantsOf<KlassFn<VS>>>): any;

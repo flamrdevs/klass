@@ -5,10 +5,10 @@ import type { JSX } from "solid-js";
 import { klass, reklass } from "@klass/core";
 import type { EndFn, AsFn, VariantsOf, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
-import { FinalVariantsSchema, WithClassesValueProps, KlassedBase, ReklassedBase } from "./types/index.ts";
-import type { SupportedComponentProps, SupportedElementType, ClassesProps } from "./types/solid.ts";
+import { FinalVariantsSchema, WithClassesValueProps, KlassedBase, ReklassedBase } from "./types";
+import type { SupportedComponentProps, SupportedElementType, ClassesProps } from "./types/solid";
 
-import { getVariantKeys, ClassesKeysSplitter, classesProps, typeofFunction } from "./utils.ts";
+import { getVariantKeys, ClassesKeysSplitter, classesProps, typeofFunction } from "./utils";
 
 export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
   (props: WithClassesValueProps<SupportedComponentProps<ET> & VariantsOf<KlassFn<VS>>>): JSX.Element;

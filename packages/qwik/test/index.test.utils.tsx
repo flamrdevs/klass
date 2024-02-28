@@ -2,9 +2,9 @@ import { component$, useComputed$, useSignal } from "@builder.io/qwik";
 
 import { klass, reklass } from "@klass/core";
 
-import { klassed, reklassed } from "../src/index.tsx";
+import { klassed, reklassed } from "../src";
 
-import { shared } from "./../../core/test/exports.ts";
+import { shared } from "./../../core/test/exports";
 
 const KlassButtonBasic = klass(shared.klass.button.basic.options);
 export const KlassedButtonBasic = klassed("button", KlassButtonBasic, { dp: { type: "button" } });

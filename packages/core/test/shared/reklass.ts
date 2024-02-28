@@ -1,1 +1,1 @@
-export * as box from "./reklass.box.ts";
+export * as box from "./reklass.box";

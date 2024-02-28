@@ -1,6 +1,6 @@
 import type { ForwardedRef, ReactNode } from "react";
 
-import type { SupportedComponentProps, SupportedElementType } from "./react.ts";
+import type { SupportedComponentProps, SupportedElementType } from "./react";
 
 type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
   ref?: P extends {

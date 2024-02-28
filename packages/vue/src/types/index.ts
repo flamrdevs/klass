@@ -1,7 +1,7 @@
 import type { ClassValue, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
 
-import type { SupportedElementType, Classes, BaseComponent } from "./vue.ts";
-import type { PolymorphicComponentProps } from "./polymorphic.ts";
+import type { SupportedElementType, Classes, BaseComponent } from "./vue";
+import type { PolymorphicComponentProps } from "./polymorphic";
 
 export type FinalRestrictedVariantsKey = Classes;
 export type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;

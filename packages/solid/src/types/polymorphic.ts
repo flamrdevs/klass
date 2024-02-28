@@ -1,6 +1,6 @@
 import type { JSX } from "solid-js";
 
-import type { SupportedComponentProps, SupportedElementType } from "./solid.ts";
+import type { SupportedComponentProps, SupportedElementType } from "./solid";
 
 type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
   ref?: P extends {

@@ -1,9 +1,9 @@
 import { describe, it, expect } from "vitest";
 
-import slots from "./../src/slots.ts";
+import slots from "./../src/slots";
 
-import * as shared from "./shared.ts";
-import * as expects from "./expects.ts";
+import * as shared from "./shared";
+import * as expects from "./expects";
 
 describe("slots", async () => {
   it("works", async () => {
