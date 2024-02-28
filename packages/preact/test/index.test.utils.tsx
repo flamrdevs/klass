@@ -37,7 +37,7 @@ export const KlassedButtonBasicReactive = () => {
       data-testid="reactive"
       as={as}
       color={color}
-      className={["extra", "classes", classes]}
+      class={["extra", "classes", classes]}
       onClick={() => {
         setAs("a");
         setColor("blue");
@@ -58,7 +58,7 @@ export const KlassedButtonBasicSignalReactive = () => {
       data-testid="reactive"
       as="button"
       color={color}
-      className={className}
+      class={className}
       onClick={() => {
         color.value = "blue";
         classes.value = "reactive";
@@ -79,7 +79,7 @@ export const ReklassedBoxBasicReactive = () => {
       data-testid="reactive"
       as={as}
       x={x}
-      className={["extra", "classes", classes]}
+      class={["extra", "classes", classes]}
       onClick={() => {
         setAs("a");
         setX("2");
@@ -100,7 +100,7 @@ export const ReklassedBoxBasicSignalReactive = () => {
       data-testid="reactive"
       as="button"
       x={x}
-      className={className}
+      class={className}
       onClick={() => {
         x.value = "2";
         classes.value = "reactive";
