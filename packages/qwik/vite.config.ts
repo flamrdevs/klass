@@ -1,6 +1,6 @@
 import { defineConfig } from "vitest/config";
 
-import { qwikVite as qwik, createOptimizer } from "@builder.io/qwik/optimizer";
+import { qwikVite as qwik } from "@builder.io/qwik/optimizer";
 
 import dts from "vite-plugin-dts";
 
