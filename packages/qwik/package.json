@@ -59,6 +59,24 @@
         "types": "./dist/mono.setup.d.ts",
         "default": "./dist/mono.setup.qwik.cjs"
       }
+    },
+    "./utils": {
+      "import": {
+        "types": "./dist/utils.d.ts",
+        "default": "./dist/utils.qwik.mjs"
+      },
+      "require": {
+        "types": "./dist/utils.d.ts",
+        "default": "./dist/utils.qwik.cjs"
+      }
+    }
+  },
+  "typesVersions": {
+    ">=3.1": {
+      "*": [
+        "./dist/*.d.ts",
+        "./dist/index.d.ts"
+      ]
     }
   },
   "files": [

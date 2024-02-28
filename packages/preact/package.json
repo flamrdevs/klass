@@ -58,6 +58,24 @@
         "types": "./dist/mono.setup.d.ts",
         "default": "./dist/mono.setup.cjs"
       }
+    },
+    "./utils": {
+      "import": {
+        "types": "./dist/utils.d.ts",
+        "default": "./dist/utils.js"
+      },
+      "require": {
+        "types": "./dist/utils.d.ts",
+        "default": "./dist/utils.cjs"
+      }
+    }
+  },
+  "typesVersions": {
+    ">=3.1": {
+      "*": [
+        "./dist/*.d.ts",
+        "./dist/index.d.ts"
+      ]
     }
   },
   "files": [
