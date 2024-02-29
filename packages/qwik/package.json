@@ -51,6 +51,10 @@
       "*": [
         "./dist/*.d.ts",
         "./dist/index.d.ts"
+      ],
+      "mono": [
+        "./dist/mono/*.d.ts",
+        "./dist/mono/index.d.ts"
       ]
     }
   },
