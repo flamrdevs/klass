@@ -14,7 +14,7 @@ export default defineConfig({
     ...(env.unminify ? { minify: false } : {}),
     target: "esnext",
     lib: {
-      entry: ["src/index.tsx", "src/utils.ts", "src/mono.tsx", "src/setup.tsx", "src/mono.setup.tsx"],
+      entry: ["src/utils.ts", "src/index.tsx", "src/setup.tsx", "src/mono/index.tsx", "src/mono/setup.tsx"],
       fileName: (format, entry) => `${entry}.${format === "cjs" ? "cjs" : "js"}`,
       formats: ["es", "cjs"],
     },
@@ -22,6 +22,7 @@ export default defineConfig({
       external: ["@klass/core", "vue"],
       output: {
         exports: "named",
+        preserveModules: true,
       },
     },
   },

@@ -22,54 +22,29 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.cjs"
-      }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./setup": {
-      "import": {
-        "types": "./dist/setup.d.ts",
-        "default": "./dist/setup.js"
-      },
-      "require": {
-        "types": "./dist/setup.d.ts",
-        "default": "./dist/setup.cjs"
-      }
-    },
-    "./group": {
-      "import": {
-        "types": "./dist/group.d.ts",
-        "default": "./dist/group.js"
-      },
-      "require": {
-        "types": "./dist/group.d.ts",
-        "default": "./dist/group.cjs"
-      }
-    },
-    "./slots": {
-      "import": {
-        "types": "./dist/slots.d.ts",
-        "default": "./dist/slots.js"
-      },
-      "require": {
-        "types": "./dist/slots.d.ts",
-        "default": "./dist/slots.cjs"
-      }
+      "types": "./dist/setup.d.ts",
+      "import": "./dist/setup.js",
+      "require": "./dist/setup.cjs"
     },
     "./utils": {
-      "import": {
-        "types": "./dist/utils.d.ts",
-        "default": "./dist/utils.js"
-      },
-      "require": {
-        "types": "./dist/utils.d.ts",
-        "default": "./dist/utils.cjs"
-      }
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/utils.js",
+      "require": "./dist/utils.cjs"
+    },
+    "./group": {
+      "types": "./dist/group/index.d.ts",
+      "import": "./dist/group/index.js",
+      "require": "./dist/group/index.cjs"
+    },
+    "./slots": {
+      "types": "./dist/slots/index.d.ts",
+      "import": "./dist/slots/index.js",
+      "require": "./dist/slots/index.cjs"
     }
   },
   "typesVersions": {

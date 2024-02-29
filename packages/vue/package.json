@@ -20,54 +20,29 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.cjs"
-      }
-    },
-    "./mono": {
-      "import": {
-        "types": "./dist/mono.d.ts",
-        "default": "./dist/mono.js"
-      },
-      "require": {
-        "types": "./dist/mono.d.ts",
-        "default": "./dist/mono.cjs"
-      }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./setup": {
-      "import": {
-        "types": "./dist/setup.d.ts",
-        "default": "./dist/setup.js"
-      },
-      "require": {
-        "types": "./dist/setup.d.ts",
-        "default": "./dist/setup.cjs"
-      }
-    },
-    "./mono.setup": {
-      "import": {
-        "types": "./dist/mono.setup.d.ts",
-        "default": "./dist/mono.setup.js"
-      },
-      "require": {
-        "types": "./dist/mono.setup.d.ts",
-        "default": "./dist/mono.setup.cjs"
-      }
+      "types": "./dist/setup.d.ts",
+      "import": "./dist/setup.js",
+      "require": "./dist/setup.cjs"
     },
     "./utils": {
-      "import": {
-        "types": "./dist/utils.d.ts",
-        "default": "./dist/utils.js"
-      },
-      "require": {
-        "types": "./dist/utils.d.ts",
-        "default": "./dist/utils.cjs"
-      }
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/utils.js",
+      "require": "./dist/utils.cjs"
+    },
+    "./mono": {
+      "types": "./dist/mono/index.d.ts",
+      "import": "./dist/mono/index.js",
+      "require": "./dist/mono/index.cjs"
+    },
+    "./mono/setup": {
+      "types": "./dist/mono/setup.d.ts",
+      "import": "./dist/mono/setup.js",
+      "require": "./dist/mono/setup.cjs"
     }
   },
   "typesVersions": {
