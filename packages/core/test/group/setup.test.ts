@@ -1,17 +1,21 @@
 import { describe, it } from "vitest";
 
-import group from "./../../src/group";
+import setup from "./../../src/group/setup";
 
 import * as shared from "./../shared";
 
 import { options, expectResult } from "./shared";
 
-describe("group", async () => {
+describe("group/setup", async () => {
   it("basic", async () => {
+    const group = setup({});
+
     expectResult(group(options));
   });
 
   it("custom end", async () => {
-    expectResult(group(options, { end: shared.customEnd }), shared.customEnd);
+    const group = setup({ end: shared.customEnd });
+
+    expectResult(group(options), shared.customEnd);
   });
 });
