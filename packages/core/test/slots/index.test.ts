@@ -6,12 +6,12 @@ import * as shared from "./../shared";
 
 import { options, expectResult } from "./shared";
 
-describe("slots", async () => {
-  it("basic", async () => {
+describe("slots", () => {
+  it("basic", () => {
     expectResult(slots(options));
   });
 
-  it("custom end", async () => {
+  it("custom end", () => {
     expectResult(slots(options, { end: shared.customEnd }), shared.customEnd);
   });
 });

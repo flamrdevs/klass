@@ -64,7 +64,16 @@ const group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options
   return klasses;
 };
 
+const simplify =
+  <B extends string, T extends StrictGroupVariantsSchema<B>>(group: GroupResult<B, T>) =>
+  (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }) => {
+    const result = {} as { [key in B]: string };
+    for (const base in group) result[base] = group[base](props);
+    return result;
+  };
+
 type VariantsOfGroup<T> = T extends GroupResult<infer X, StrictGroupVariantsSchema<infer X>> ? VariantsOf<T[X]> : never;
 
 export type { StrictGroupVariantsSchema, ToVariantsSchema, GroupCompoundVariant, GroupOptions, GroupConfig, GroupResult, VariantsOfGroup };
+export { simplify };
 export default group;

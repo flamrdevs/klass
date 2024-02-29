@@ -5,7 +5,7 @@ import * as setup from "./../src/setup";
 import * as shared from "./shared";
 import * as expects from "./expects";
 
-describe("setup", async () => {
+describe("setup", () => {
   const config: setup.Config = {
     as: shared.customAs,
     end: shared.customEnd,
@@ -22,7 +22,7 @@ describe("setup", async () => {
     expects.inCustomEnd(reklassFn());
   };
 
-  it("works", async () => {
+  it("works", () => {
     works(setup.default(config));
     works([setup.klass(config), setup.reklass(config)]);
   });
