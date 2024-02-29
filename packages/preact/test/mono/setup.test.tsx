@@ -5,7 +5,7 @@ import * as setup from "./../../src/mono/setup";
 import * as core from "./../../../core/test/exports";
 import * as expects from "./../expects";
 
-describe("mono.setup", async () => {
+describe("mono.setup", () => {
   const config: setup.Config = {
     as: core.shared.customAs,
     end: core.shared.customEnd,
@@ -22,7 +22,7 @@ describe("mono.setup", async () => {
     core.expects.inCustomEnd(ReklassedComponent.reklass());
   };
 
-  it("works", async () => {
+  it("works", () => {
     works(setup.default(config));
     works([setup.klassed(config), setup.reklassed(config)]);
   });

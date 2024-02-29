@@ -30,8 +30,8 @@ const PROPS = {
   class: ["extra", "classes"],
 };
 
-describe("klassed", async () => {
-  it("type", async () => {
+describe("klassed", () => {
+  it("type", () => {
     expects.mono.klassedComponent(KlassedButtonBasic);
     expects.mono.klassedComponent(KlassedButtonBase);
     expects.mono.klassedComponent(KlassedButtonDefaults);
@@ -90,8 +90,8 @@ describe("klassed", async () => {
     });
   });
 
-  describe("custom end", async () => {
-    it("type", async () => {
+  describe("custom end", () => {
+    it("type", () => {
       expects.mono.klassedComponent(KlassedButtonBasicCustomEnd);
       expects.mono.klassedComponent(KlassedButtonBaseCustomEnd);
       expects.mono.klassedComponent(KlassedButtonDefaultsCustomEnd);
@@ -156,8 +156,8 @@ describe("klassed", async () => {
   });
 });
 
-describe("reklassed", async () => {
-  it("type", async () => {
+describe("reklassed", () => {
+  it("type", () => {
     expects.mono.reklassedComponent(ReklassedBoxBasic);
     expects.mono.reklassedComponent(ReklassedBoxCustomAs);
   });
@@ -192,8 +192,8 @@ describe("reklassed", async () => {
     });
   });
 
-  describe("custom end", async () => {
-    it("type", async () => {
+  describe("custom end", () => {
+    it("type", () => {
       expects.mono.reklassedComponent(ReklassedBoxBasicCustomEnd);
       expects.mono.reklassedComponent(ReklassedBoxCustomAsCustomEnd);
     });

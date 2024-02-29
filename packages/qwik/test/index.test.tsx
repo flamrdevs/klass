@@ -34,8 +34,8 @@ const PROPS = {
   class: ["extra", "classes"],
 };
 
-describe("klassed", async () => {
-  it("type", async () => {
+describe("klassed", () => {
+  it("type", () => {
     expects.klassedComponent(KlassedButtonBasic);
     expects.klassedComponent(KlassedButtonBase);
     expects.klassedComponent(KlassedButtonDefaults);
@@ -94,8 +94,8 @@ describe("klassed", async () => {
     });
   });
 
-  describe("custom end", async () => {
-    it("type", async () => {
+  describe("custom end", () => {
+    it("type", () => {
       expects.klassedComponent(KlassedButtonBasicCustomEnd);
       expects.klassedComponent(KlassedButtonBaseCustomEnd);
       expects.klassedComponent(KlassedButtonDefaultsCustomEnd);
@@ -160,8 +160,8 @@ describe("klassed", async () => {
   });
 });
 
-describe("reklassed", async () => {
-  it("type", async () => {
+describe("reklassed", () => {
+  it("type", () => {
     expects.reklassedComponent(ReklassedBoxBasic);
     expects.reklassedComponent(ReklassedBoxCustomAs);
   });
@@ -196,8 +196,8 @@ describe("reklassed", async () => {
     });
   });
 
-  describe("custom end", async () => {
-    it("type", async () => {
+  describe("custom end", () => {
+    it("type", () => {
       expects.reklassedComponent(ReklassedBoxBasicCustomEnd);
       expects.reklassedComponent(ReklassedBoxCustomAsCustomEnd);
     });
