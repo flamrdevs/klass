@@ -1,5 +1,13 @@
 # @klass/vue
 
+## 4.0.0-next.16
+
+### Patch Changes
+
+- refactor modules fix types and feat setup
+- Updated dependencies
+  - @klass/core@4.0.0-next.16
+
 ## 4.0.0-next.15
 
 ### Patch Changes
