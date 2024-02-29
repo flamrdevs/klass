@@ -5,7 +5,7 @@ import * as setup from "./../src/mono.setup";
 import * as core from "./../../core/test/exports";
 import * as expects from "./expects";
 
-describe("setup", async () => {
+describe("mono.setup", async () => {
   const config: setup.Config = {
     as: core.shared.customAs,
     end: core.shared.customEnd,
