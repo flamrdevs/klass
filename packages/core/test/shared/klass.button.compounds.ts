@@ -76,43 +76,43 @@ export const options = {
         color: "red";
         variant: "default";
       },
-      "color-red-variant-default"
+      "color-red-variant-default",
     ],
     [
       {
         color: "green";
         variant: "default";
       },
-      "color-green-variant-default"
+      "color-green-variant-default",
     ],
     [
       {
         color: "blue";
         variant: "default";
       },
-      "color-blue-variant-default"
+      "color-blue-variant-default",
     ],
     [
       {
         color: "red";
         variant: "outline";
       },
-      "color-red-variant-outline"
+      "color-red-variant-outline",
     ],
     [
       {
         color: "green";
         variant: "outline";
       },
-      "color-green-variant-outline"
+      "color-green-variant-outline",
     ],
     [
       {
         color: "blue";
         variant: "outline";
       },
-      "color-blue-variant-outline"
-    ]
+      "color-blue-variant-outline",
+    ],
   ],
 };
 

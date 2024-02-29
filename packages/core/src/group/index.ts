@@ -20,7 +20,7 @@ type GroupCompoundVariant<B extends string, T extends StrictGroupVariantsSchema<
   },
   {
     [key in B]?: ClassValue;
-  }
+  },
 ];
 
 type GroupOptions<B extends string, T extends StrictGroupVariantsSchema<B>> = {

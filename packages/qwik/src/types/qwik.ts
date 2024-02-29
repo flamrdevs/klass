@@ -8,11 +8,8 @@ export type SignalishRecord<T extends Record<any, any>> = {
 
 export type SupportedComponentType<P = {}> = FunctionComponent<P>;
 
-export type SupportedComponentProps<T extends SupportedComponentType | keyof JSX.IntrinsicElements> = T extends SupportedComponentType<infer P>
-  ? P
-  : T extends keyof JSX.IntrinsicElements
-  ? JSX.IntrinsicElements[T]
-  : never;
+export type SupportedComponentProps<T extends SupportedComponentType | keyof JSX.IntrinsicElements> =
+  T extends SupportedComponentType<infer P> ? P : T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : never;
 
 export type SupportedElementType<P = any> =
   | {

@@ -16,7 +16,7 @@ export const options = {
       md: "@md";
       lg: "@lg";
     },
-    "base"
+    "base",
   ],
   variants: {
     x: {
