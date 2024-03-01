@@ -20,7 +20,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["@klass/core", "@builder.io/qwik"],
+      external: ["@klass/core", "@klass/core/utils", "@builder.io/qwik"],
       output: {
         exports: "named",
         preserveModules: true,

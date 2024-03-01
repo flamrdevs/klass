@@ -19,7 +19,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["@klass/core", "vue"],
+      external: ["@klass/core", "@klass/core/utils", "vue"],
       output: {
         exports: "named",
         preserveModules: true,

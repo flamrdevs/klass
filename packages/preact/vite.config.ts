@@ -19,7 +19,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["@klass/core", "preact", "preact/hooks", "preact/jsx-runtime"],
+      external: ["@klass/core", "@klass/core/utils", "preact", "preact/hooks", "preact/jsx-runtime"],
       output: {
         exports: "named",
         preserveModules: true,

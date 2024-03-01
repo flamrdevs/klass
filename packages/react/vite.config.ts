@@ -19,7 +19,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["@klass/core", "react", "react-dom"],
+      external: ["@klass/core", "@klass/core/utils", "react", "react-dom"],
       output: {
         exports: "named",
         preserveModules: true,

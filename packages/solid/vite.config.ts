@@ -19,7 +19,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["@klass/core", "solid-js", "solid-js/web"],
+      external: ["@klass/core", "@klass/core/utils", "solid-js", "solid-js/web"],
       output: {
         exports: "named",
         preserveModules: true,
