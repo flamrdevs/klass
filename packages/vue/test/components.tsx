@@ -10,19 +10,29 @@ A.inheritAttrs = false;
 Button.inheritAttrs = false;
 Div.inheritAttrs = false;
 
-export const DefineA = defineComponent<JSX.IntrinsicElements["a"]>(
+type WithRequiredProps<P> = Omit<P, "id"> & { id: string };
+
+export const RequiredA: FunctionalComponent<WithRequiredProps<JSX.IntrinsicElements["a"]>> = (_, { attrs, slots }) => h("a", attrs, slots);
+export const RequiredButton: FunctionalComponent<WithRequiredProps<JSX.IntrinsicElements["button"]>> = (_, { attrs, slots }) => h("button", attrs, slots);
+export const RequiredDiv: FunctionalComponent<WithRequiredProps<JSX.IntrinsicElements["div"]>> = (_, { attrs, slots }) => h("div", attrs, slots);
+
+RequiredA.inheritAttrs = false;
+RequiredButton.inheritAttrs = false;
+RequiredDiv.inheritAttrs = false;
+
+export const DefinedA = defineComponent<WithRequiredProps<JSX.IntrinsicElements["a"]>>(
   (_, { attrs, slots }) =>
     () =>
       h("a", attrs, slots),
   { inheritAttrs: false }
 );
-export const DefineButton = defineComponent<JSX.IntrinsicElements["button"]>(
+export const DefinedButton = defineComponent<WithRequiredProps<JSX.IntrinsicElements["button"]>>(
   (_, { attrs, slots }) =>
     () =>
       h("button", attrs, slots),
   { inheritAttrs: false }
 );
-export const DefineDiv = defineComponent<JSX.IntrinsicElements["div"]>(
+export const DefinedDiv = defineComponent<WithRequiredProps<JSX.IntrinsicElements["div"]>>(
   (_, { attrs, slots }) =>
     () =>
       h("div", attrs, slots),

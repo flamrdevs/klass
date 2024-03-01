@@ -4,14 +4,12 @@ export type SignalishRecord<T extends Record<any, any>> = {
   [K in keyof T]: JSX.Signalish<T[K]>;
 };
 
-export type Props = Record<string, any>;
-
-export type SupportedComponentType<P extends Props = {}> = FunctionComponent<P>;
+export type SupportedComponentType<P = any> = FunctionComponent<P>;
 
 export type SupportedComponentProps<T extends SupportedComponentType | keyof JSX.IntrinsicElements> =
   T extends SupportedComponentType<infer P> ? P : T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : never;
 
-export type SupportedElementType<P extends Props = {}> =
+export type SupportedElementType<P = any> =
   | {
       [K in keyof JSX.IntrinsicElements]: P extends JSX.IntrinsicElements[K] ? K : never;
     }[keyof JSX.IntrinsicElements]

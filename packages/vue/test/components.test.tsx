@@ -6,52 +6,109 @@ import * as expects from "./expects";
 
 import { klassed, reklassed } from "../src";
 
-import { A, Button, Div, DefineA, DefineButton, DefineDiv } from "./components";
+import { A, Button, Div, RequiredA, RequiredButton, RequiredDiv, DefinedA, DefinedButton, DefinedDiv } from "./components";
 
 const PROPS = {
   "data-testid": "root",
 };
 
 describe("klassed", () => {
+  const options = { variants: {} } as { variants: {} };
+  const expect = (ui: any) => expects.element(render(ui).getByTestId(PROPS["data-testid"]));
+
   it("A", () => {
-    const Klassed = klassed(A, { variants: {} });
-    expects.klassedComponent(Klassed);
-    expects.element(render(<Klassed {...PROPS} />).getByTestId("root")).tagName("A");
+    const Component = klassed(A, options);
+    expect(<Component {...PROPS} />).tagName("A");
   });
 
   it("Button", () => {
-    const Klassed = klassed(Button, { variants: {} });
-    expects.klassedComponent(Klassed);
-    expects.element(render(<Klassed {...PROPS} />).getByTestId("root")).tagName("BUTTON");
+    const Component = klassed(Button, options);
+    expect(<Component {...PROPS} />).tagName("BUTTON");
   });
 
-  describe("define klassed", () => {
+  describe("required", () => {
     it("A", () => {
-      const Klassed = klassed(DefineA, { variants: {} });
-      expects.klassedComponent(Klassed);
-      expects.element(render(<Klassed {...PROPS} />).getByTestId("root")).tagName("A");
+      const Component = klassed(RequiredA, options);
+      expect(<Component {...PROPS} id="id" />).tagName("A");
     });
 
     it("Button", () => {
-      const Klassed = klassed(DefineButton, { variants: {} });
-      expects.klassedComponent(Klassed);
-      expects.element(render(<Klassed {...PROPS} />).getByTestId("root")).tagName("BUTTON");
+      const Component = klassed(RequiredButton, options);
+      expect(<Component {...PROPS} id="id" />).tagName("BUTTON");
+    });
+
+    describe("polymorphic", () => {
+      it("A", () => {
+        const Component = klassed("span", options);
+        expect(<Component {...PROPS} as={RequiredA} id="id" />).tagName("A");
+      });
+
+      it("Button", () => {
+        const Component = klassed("span", options);
+        expect(<Component {...PROPS} as={RequiredButton} id="id" />).tagName("BUTTON");
+      });
+    });
+  });
+
+  describe("defined", () => {
+    it("A", () => {
+      const Component = klassed(DefinedA, options);
+      expect(<Component {...PROPS} id="id" />).tagName("A");
+    });
+
+    it("Button", () => {
+      const Component = klassed(DefinedButton, options);
+      expect(<Component {...PROPS} id="id" />).tagName("BUTTON");
+    });
+
+    describe("polymorphic", () => {
+      it("A", () => {
+        const Component = klassed("span", options);
+        expect(<Component {...PROPS} as={DefinedA} id="id" />).tagName("A");
+      });
+
+      it("Button", () => {
+        const Component = klassed("span", options);
+        expect(<Component {...PROPS} as={DefinedButton} id="id" />).tagName("BUTTON");
+      });
     });
   });
 });
 
 describe("reklassed", () => {
+  const options = { conditions: [{ base: "" }, "base"], variants: {} } as { conditions: [{ base: "" }, "base"]; variants: {} };
+  const expect = (ui: any) => expects.element(render(ui).getByTestId(PROPS["data-testid"]));
+
   it("Div", () => {
-    const Reklassed = reklassed(Div, { conditions: [{ base: "" }, "base"], variants: {} });
-    expects.reklassedComponent(Reklassed);
-    expects.element(render(<Reklassed {...PROPS} />).getByTestId("root")).tagName("DIV");
+    const Component = reklassed(Div, options);
+    expect(<Component {...PROPS} />).tagName("DIV");
   });
 
-  describe("define reklassed", () => {
+  describe("required", () => {
     it("Div", () => {
-      const Reklassed = reklassed(DefineDiv, { conditions: [{ base: "" }, "base"], variants: {} });
-      expects.reklassedComponent(Reklassed);
-      expects.element(render(<Reklassed {...PROPS} />).getByTestId("root")).tagName("DIV");
+      const Component = reklassed(RequiredDiv, options);
+      expect(<Component {...PROPS} id="id" />).tagName("DIV");
+    });
+
+    describe("polymorphic", () => {
+      it("Div", () => {
+        const Component = reklassed("span", options);
+        expect(<Component {...PROPS} as={RequiredDiv} id="id" />).tagName("DIV");
+      });
+    });
+  });
+
+  describe("defined", () => {
+    it("Div", () => {
+      const Component = reklassed(DefinedDiv, options);
+      expect(<Component {...PROPS} id="id" />).tagName("DIV");
+    });
+
+    describe("polymorphic", () => {
+      it("Div", () => {
+        const Component = reklassed("span", options);
+        expect(<Component {...PROPS} as={DefinedDiv} id="id" />).tagName("DIV");
+      });
     });
   });
 });

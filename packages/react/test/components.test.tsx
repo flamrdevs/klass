@@ -1,8 +1,8 @@
 import { describe, it } from "vitest";
 
-import type { ComponentChild } from "preact";
+import type { ReactElement } from "react";
 
-import { render } from "@testing-library/preact";
+import { render } from "@testing-library/react";
 
 import * as expects from "./expects";
 
@@ -16,7 +16,7 @@ const PROPS = {
 
 describe("klassed", () => {
   const options = { variants: {} } as { variants: {} };
-  const expect = (ui: ComponentChild) => expects.element(render(ui).getByTestId(PROPS["data-testid"]));
+  const expect = (ui: ReactElement) => expects.element(render(ui).getByTestId(PROPS["data-testid"]));
 
   it("A", () => {
     const Component = klassed(A, options);
@@ -55,7 +55,7 @@ describe("klassed", () => {
 
 describe("reklassed", () => {
   const options = { conditions: [{ base: "" }, "base"], variants: {} } as { conditions: [{ base: "" }, "base"]; variants: {} };
-  const expect = (ui: ComponentChild) => expects.element(render(ui).getByTestId(PROPS["data-testid"]));
+  const expect = (ui: ReactElement) => expects.element(render(ui).getByTestId(PROPS["data-testid"]));
 
   it("Div", () => {
     const Component = reklassed(Div, options);
