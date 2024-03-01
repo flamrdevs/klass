@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 4.0.0-next.17
+
+### Patch Changes
+
+- optimization
+- Updated dependencies
+  - @klass/core@4.0.0-next.17
+
 ## 4.0.0-next.16
 
 ### Patch Changes
