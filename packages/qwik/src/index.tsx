@@ -4,23 +4,23 @@ import { klass, reklass } from "@klass/core";
 import type { KlassFn, ConditionSchema, ReklassFn } from "@klass/core";
 import { typeofFunction } from "@klass/core/utils";
 
-import type { FinalVariantsSchema, KlassedOptions, ReklassedOptions, DefaultPropsConfig, KlassedConfig, ReklassedConfig, KlassedComponent, ReklassedComponent } from "./types";
+import type { FinalVariantsSchema, KlassedOptions, ReklassedOptions, DefaultPropsConfig, ForwardPropsConfig, KlassedConfig, ReklassedConfig, KlassedComponent, ReklassedComponent } from "./types";
 import type { SupportedElementType, ClassesProps } from "./types/qwik";
 
 import { getVariantKeys, splitRestProps, maybeSignal } from "./utils";
 
-function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig = {}) {
+function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     keys = getVariantKeys(fn.k);
 
   return (({ as: As = element as any, class: _class = defaultClass, ...rest }) => {
-    const splitted = splitRestProps(rest, keys);
+    const splitted = splitRestProps(rest, keys, config.fp);
 
     return jsx(As, { ...defaultProps, ...(splitted.o as any), class: fn(splitted.p, maybeSignal(_class)) });
   }) as any;
 }
 
-function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET>): KlassedComponent<ET, VS> {
+function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET, VS>): KlassedComponent<ET, VS> {
   const fn = typeofFunction(options) ? options : klass<VS>(options, config);
   const Component = create(element, fn, config) as KlassedComponent<ET, VS>;
   return (Component.klass = fn), Component;
@@ -29,7 +29,7 @@ function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
   options: ReklassedOptions<CS, VS>,
-  config?: ReklassedConfig<ET>
+  config?: ReklassedConfig<ET, VS>
 ): ReklassedComponent<ET, CS, VS> {
   const fn = typeofFunction(options) ? options : reklass<CS, VS>(options, config);
   const Component = create(element, fn, config) as ReklassedComponent<ET, CS, VS>;

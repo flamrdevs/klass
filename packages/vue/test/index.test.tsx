@@ -1,4 +1,4 @@
-import { describe, it } from "vitest";
+import { describe, it, expect } from "vitest";
 
 import { render, cleanup, fireEvent } from "@testing-library/vue";
 
@@ -149,6 +149,36 @@ describe("klassed", () => {
             test.equal
           );
         }
+      });
+    });
+  });
+
+  describe("attributes", () => {
+    describe("custom end", () => {
+      const attrs = (ui: any) => {
+        const element = render(ui).getByTestId("root");
+        expect(element.hasAttribute("type")).toBeTruthy();
+        expect(element.getAttribute("type")).toEqual("button");
+        expect(element.hasAttribute("color")).toBeTruthy();
+        expect(element.getAttribute("color")).toEqual("blue");
+        expect(element.hasAttribute("size")).toBeFalsy();
+        expect(element.getAttribute("size")).toBeNull();
+      };
+
+      it("basic", () => {
+        attrs(<KlassedButtonBasicCustomEnd data-testid="root" color="blue" />);
+      });
+
+      it("base", () => {
+        attrs(<KlassedButtonBaseCustomEnd data-testid="root" color="blue" />);
+      });
+
+      it("defaults", () => {
+        attrs(<KlassedButtonDefaultsCustomEnd data-testid="root" color="blue" />);
+      });
+
+      it("compounds", () => {
+        attrs(<KlassedButtonCompoundsCustomEnd data-testid="root" color="blue" />);
       });
     });
   });

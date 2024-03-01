@@ -15,8 +15,9 @@ export type KlassedOptions<VS extends FinalVariantsSchema> = KlassOptions<VS> | 
 export type ReklassedOptions<CS extends ConditionSchema, VS extends FinalVariantsSchema> = ReklassOptions<CS, VS> | ReklassFn<CS, VS>;
 
 export type DefaultPropsConfig<DP = Record<any, any>> = { dp?: DP };
-export type KlassedConfig<ET extends SupportedElementType> = DefaultPropsConfig<PolymorphicComponentProps<ET, {}>> & EndFnProps;
-export type ReklassedConfig<ET extends SupportedElementType> = KlassedConfig<ET> & AsFnProps;
+export type ForwardPropsConfig<T = any> = { fp?: T[] };
+export type KlassedConfig<ET extends SupportedElementType, VS extends FinalVariantsSchema> = DefaultPropsConfig<PolymorphicComponentProps<ET, {}>> & ForwardPropsConfig<keyof VS> & EndFnProps;
+export type ReklassedConfig<ET extends SupportedElementType, VS extends FinalVariantsSchema> = KlassedConfig<ET, VS> & AsFnProps;
 
 export type KlassedBase<VS extends FinalVariantsSchema> = BaseComponent & {
   klass: KlassFn<VS>;

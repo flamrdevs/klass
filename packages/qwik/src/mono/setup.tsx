@@ -7,15 +7,17 @@ import type { SupportedElementType } from "./../types/qwik";
 import { klassed as _klassed, reklassed as _reklassed } from "./";
 import type { KlassedConfig, ReklassedConfig } from "./types";
 
+type Picked = "dp" | "fp";
+
 const klassed =
   ({ end }: Config) =>
-  <ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: Pick<KlassedConfig<ET>, "dp">) =>
-    _klassed<ET, VS>(element, options, { dp: config?.dp, end });
+  <ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config: Pick<KlassedConfig<ET, VS>, Picked> = {}) =>
+    _klassed<ET, VS>(element, options, { ...config, end });
 
 const reklassed =
   ({ as, end }: Config) =>
-  <ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(element: ET, options: ReklassedOptions<CS, VS>, config?: Pick<ReklassedConfig<ET>, "dp">) =>
-    _reklassed<ET, CS, VS>(element, options, { dp: config?.dp, as, end });
+  <ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(element: ET, options: ReklassedOptions<CS, VS>, config: Pick<ReklassedConfig<ET, VS>, Picked> = {}) =>
+    _reklassed<ET, CS, VS>(element, options, { ...config, as, end });
 
 const setup = (config: Config) => [klassed(config), reklassed(config)] as const;
 

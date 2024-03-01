@@ -1,4 +1,5 @@
-import type { FinalRestrictedVariantsKey, FinalVariantsSchema } from "./types";
+import type { ClassesProps } from "./types/solid";
+import type { FinalRestrictedVariantsKey, FinalVariantsSchema, ClassesValueProps } from "./types";
 
 const getVariantKeys__filterFn = <VS extends FinalVariantsSchema>(el: keyof VS) => el !== "class" && el !== "classList";
 export const getVariantKeys = <VS extends FinalVariantsSchema>(keys: (keyof VS)[]) =>
@@ -6,4 +7,7 @@ export const getVariantKeys = <VS extends FinalVariantsSchema>(keys: (keyof VS)[
 
 export const PolymorphicKeysSplitter = ["as"] as const,
   ClassesKeysSplitter = ["class", "classList"] as const,
-  classesProps = <P extends Partial<Record<FinalRestrictedVariantsKey, any>>>(props: P, defaultClass: any, defaultClassList: any) => [props.class ?? defaultClass, props.classList ?? defaultClassList];
+  classesProps = <P extends ClassesValueProps>(props: P, defaultClass?: ClassesProps["class"], defaultClassList?: ClassesProps["classList"]) => [
+    props.class ?? defaultClass,
+    props.classList ?? defaultClassList,
+  ];

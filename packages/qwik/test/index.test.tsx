@@ -1,4 +1,4 @@
-import { describe, it } from "vitest";
+import { describe, it, expect } from "vitest";
 
 import type { JSXOutput } from "@builder.io/qwik";
 
@@ -155,6 +155,36 @@ describe("klassed", () => {
             test.equal
           );
         }
+      });
+    });
+  });
+
+  describe("attributes", () => {
+    describe("custom end", () => {
+      const attrs = async (ui: JSXOutput) => {
+        const element = (await render(ui)).getByTestId("root");
+        expect(element.hasAttribute("type")).toBeTruthy();
+        expect(element.getAttribute("type")).toEqual("button");
+        expect(element.hasAttribute("color")).toBeTruthy();
+        expect(element.getAttribute("color")).toEqual("blue");
+        expect(element.hasAttribute("size")).toBeFalsy();
+        expect(element.getAttribute("size")).toBeNull();
+      };
+
+      it("basic", async () => {
+        await attrs(<KlassedButtonBasicCustomEnd data-testid="root" color="blue" />);
+      });
+
+      it("base", async () => {
+        await attrs(<KlassedButtonBaseCustomEnd data-testid="root" color="blue" />);
+      });
+
+      it("defaults", async () => {
+        await attrs(<KlassedButtonDefaultsCustomEnd data-testid="root" color="blue" />);
+      });
+
+      it("compounds", async () => {
+        await attrs(<KlassedButtonCompoundsCustomEnd data-testid="root" color="blue" />);
       });
     });
   });
