@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.18
+
+### Patch Changes
+
+- fix build
+
 ## 4.0.0-next.17
 
 ### Patch Changes

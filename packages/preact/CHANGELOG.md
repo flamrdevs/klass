@@ -1,5 +1,13 @@
 # @klass/preact
 
+## 4.0.0-next.18
+
+### Patch Changes
+
+- fix build
+- Updated dependencies
+  - @klass/core@4.0.0-next.18
+
 ## 4.0.0-next.17
 
 ### Patch Changes
