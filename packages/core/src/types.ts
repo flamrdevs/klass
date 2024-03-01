@@ -75,10 +75,15 @@ type RequiredVariantsFrom<T extends { [key: string]: unknown }, K extends keyof 
 type EndFn = (className: string) => string;
 type AsFn = (condition: string, className: string) => string;
 
+type EndFnProps = { end?: EndFn };
+type AsFnProps = { as?: AsFn };
+
 export type {
   TransformKey,
   EndFn,
   AsFn,
+  EndFnProps,
+  AsFnProps,
   VariantsSchema,
   StrictVariantsSchema,
   VariantsOf,

@@ -1,6 +1,6 @@
 import { klass } from "./../";
 
-import type { ClassValue, TransformKey, EndFn, KlassFn, VariantsOf } from "./../";
+import type { ClassValue, TransformKey, EndFnProps, KlassFn, VariantsOf } from "./../";
 
 type StrictGroupVariantsSchema<B extends string> = {
   [variant: string]: {
@@ -30,7 +30,7 @@ type GroupOptions<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   compounds?: GroupCompoundVariant<B, T>[];
 };
 
-type GroupConfig = { end?: EndFn };
+type GroupConfig = EndFnProps;
 
 type GroupResult<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   [key in B]: KlassFn<ToVariantsSchema<B, T>>;

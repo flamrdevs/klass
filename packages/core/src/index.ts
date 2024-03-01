@@ -5,6 +5,8 @@ import type {
   TransformKey,
   EndFn,
   AsFn,
+  EndFnProps,
+  AsFnProps,
   VariantsSchema,
   StrictVariantsSchema,
   VariantsOf,
@@ -27,7 +29,7 @@ const variant = <T extends VariantsSchema[string]>(variant: T, defaultVariant?: 
   return ((props?: TransformKey<keyof T>) => normalizedVariant[props ?? (defaultVariant as keyof T)]) as VariantFn<T>;
 };
 
-const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { end?: EndFn } = {}): KlassFn<T> => {
+const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: EndFnProps = {}): KlassFn<T> => {
   const { base, variants, defaults, compounds } = options,
     { end = defaultEndFn } = config;
 
@@ -73,7 +75,7 @@ const klass = <T extends VariantsSchema>(options: KlassOptions<T>, config: { end
   return fn;
 };
 
-const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(conditions: C, defaultCondition: keyof C, variant: T, config: { as?: AsFn } = {}) => {
+const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(conditions: C, defaultCondition: keyof C, variant: T, config: AsFnProps = {}) => {
   const { as = defaultAsFn } = config;
 
   const keyofConditions = Object.keys(conditions) as (keyof C)[];
@@ -95,7 +97,7 @@ const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(
   }) as RevariantFn<C, T>;
 };
 
-const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>, config: { as?: AsFn; end?: EndFn } = {}) => {
+const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>, config: AsFnProps & EndFnProps = {}) => {
   const {
       conditions: [conditions, defaultCondition],
       variants,
@@ -133,6 +135,8 @@ export type {
   TransformKey,
   EndFn,
   AsFn,
+  EndFnProps,
+  AsFnProps,
   VariantsSchema,
   StrictVariantsSchema,
   VariantsOf,

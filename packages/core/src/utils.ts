@@ -12,3 +12,5 @@ export const normalizeVariant = <T extends { [type: string]: ClassValue }>(varia
   for (key in variant) result[key] = clsx(variant[key]);
   return result;
 };
+
+export const typeofFunction = (value: unknown): value is Function => typeof value === "function";

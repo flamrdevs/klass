@@ -3,7 +3,7 @@ import { expect } from "vitest";
 import type { ConditionSchema, VariantsSchema } from "@klass/core";
 
 import type { KlassedComponent, ReklassedComponent } from "./../src/types";
-import type * as Mono from "./../src/mono";
+import type { MonoKlassedComponent, MonoReklassedComponent } from "./../src/mono";
 
 import { expects } from "./../../core/test/exports";
 
@@ -26,10 +26,10 @@ export const reklassedComponent = <C extends ConditionSchema, T extends Variants
 };
 
 export const mono = {
-  klassedComponent: <T extends VariantsSchema>(klassedComponent: Mono.KlassedComponent<any, T>) => {
+  klassedComponent: <T extends VariantsSchema>(klassedComponent: MonoKlassedComponent<any, T>) => {
     klassed(klassedComponent);
   },
-  reklassedComponent: <C extends ConditionSchema, T extends VariantsSchema>(reklassedComponent: Mono.ReklassedComponent<any, C, T>) => {
+  reklassedComponent: <C extends ConditionSchema, T extends VariantsSchema>(reklassedComponent: MonoReklassedComponent<any, C, T>) => {
     reklassed(reklassedComponent);
   },
 };

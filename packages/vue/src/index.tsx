@@ -1,60 +1,45 @@
 import { computed, defineComponent, h } from "vue";
 
 import { klass, reklass } from "@klass/core";
-import type { ClassValue, EndFn, AsFn, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
+import type { ClassValue, KlassFn, ConditionSchema, ReklassFn } from "@klass/core";
+import { typeofFunction } from "@klass/core/utils";
 
-import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { FinalVariantsSchema, KlassedOptions, ReklassedOptions, DefaultPropsConfig, KlassedConfig, ReklassedConfig, KlassedComponent, ReklassedComponent } from "./types";
 import type { SupportedElementType, ClassesProps } from "./types/vue";
 import type { PolymorphicComponentProps } from "./types/polymorphic";
 
-import { getVariantKeys, splitRestProps, typeofFunction } from "./utils";
+import { getVariantKeys, splitRestProps } from "./utils";
 
 const defaultComponentOptions = {
   props: ["as", "class"] as any,
   inheritAttrs: false,
 };
 
-function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
-  element: ET,
-  options: KlassOptions<VS> | KlassFn<VS>,
-  config: {
-    dp?: PolymorphicComponentProps<ET, {}>;
-    end?: EndFn;
-  } = {}
-): KlassedComponent<ET, VS> {
+function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig = {}) {
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
-    keys = getVariantKeys<VS>(klassFn.k);
+    keys = getVariantKeys(fn.k);
 
-  const Component = defineComponent<PolymorphicComponentProps<ET, ClassesProps>>((props, { attrs, slots }) => {
+  return defineComponent<PolymorphicComponentProps<ET, ClassesProps>>((props, { attrs, slots }) => {
     const splitted = computed(() => splitRestProps(attrs, keys));
 
-    return () => h(props.as ?? element, { ...defaultProps, ...(splitted.value.o as any), class: klassFn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
-  }, defaultComponentOptions) as unknown as KlassedComponent<ET, VS>;
+    return () => h(props.as ?? element, { ...defaultProps, ...(splitted.value.o as any), class: fn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
+  }, defaultComponentOptions) as any;
+}
 
-  return (Component.klass = klassFn), Component;
+function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET>): KlassedComponent<ET, VS> {
+  const fn = typeofFunction(options) ? options : klass<VS>(options, config);
+  const Component = create(element, fn, config) as unknown as KlassedComponent<ET, VS>;
+  return (Component.klass = fn), Component;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
-  options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
-  config: {
-    dp?: PolymorphicComponentProps<ET, {}>;
-    as?: AsFn;
-    end?: EndFn;
-  } = {}
+  options: ReklassedOptions<CS, VS>,
+  config?: ReklassedConfig<ET>
 ): ReklassedComponent<ET, CS, VS> {
-  const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
-    keys = getVariantKeys<VS>(reklassFn.k);
-
-  const Component = defineComponent<PolymorphicComponentProps<ET, ClassesProps>>((props, { attrs, slots }) => {
-    const splitted = computed(() => splitRestProps(attrs, keys));
-
-    return () => h(props.as ?? element, { ...defaultProps, ...(splitted.value.o as any), class: reklassFn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
-  }, defaultComponentOptions) as unknown as ReklassedComponent<ET, CS, VS>;
-
-  return (Component.reklass = reklassFn), Component;
+  const fn = typeofFunction(options) ? options : reklass<CS, VS>(options, config);
+  const Component = create(element, fn, config) as unknown as ReklassedComponent<ET, CS, VS>;
+  return (Component.reklass = fn), Component;
 }
 
 export type { KlassedComponent, ReklassedComponent };

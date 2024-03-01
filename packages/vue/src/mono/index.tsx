@@ -1,67 +1,47 @@
 import { computed, defineComponent, h } from "vue";
 
 import { klass, reklass } from "@klass/core";
-import type { ClassValue, EndFn, AsFn, VariantsOf, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
+import type { ClassValue, KlassFn, ConditionSchema, ReklassFn } from "@klass/core";
+import { typeofFunction } from "@klass/core/utils";
 
-import { FinalVariantsSchema, WithClassesValueProps, KlassedBase, ReklassedBase } from "./../types";
-import type { SupportedComponentProps, SupportedElementType, ClassesProps } from "./../types/vue";
+import { FinalVariantsSchema, WithClassesValueProps, KlassedOptions, ReklassedOptions, DefaultPropsConfig } from "./../types";
+import type { SupportedElementType, ClassesProps } from "./../types/vue";
 
-import { getVariantKeys, splitRestProps, typeofFunction } from "./../utils";
+import { getVariantKeys, splitRestProps } from "./../utils";
 
-export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
-  (props: WithClassesValueProps<SupportedComponentProps<ET> & VariantsOf<KlassFn<VS>>>): any;
-} & KlassedBase<VS>;
-
-export type ReklassedComponent<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
-  (props: WithClassesValueProps<SupportedComponentProps<ET> & VariantsOf<ReklassFn<CS, VS>>>): any;
-} & ReklassedBase<CS, VS>;
+import type { KlassedConfig, ReklassedConfig, MonoKlassedComponent, MonoReklassedComponent } from "./types";
 
 const defaultComponentOptions = {
-  props: ["as", "class"] as any,
+  props: ["class"] as any,
   inheritAttrs: false,
 };
 
-function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
-  Element: ET,
-  options: KlassOptions<VS> | KlassFn<VS>,
-  config: {
-    dp?: SupportedComponentProps<ET>;
-    end?: EndFn;
-  } = {}
-): KlassedComponent<ET, VS> {
+function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig = {}) {
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
-    keys = getVariantKeys<VS>(klassFn.k);
+    keys = getVariantKeys(fn.k);
 
-  const Component = defineComponent<WithClassesValueProps<{}>>((props, { attrs, slots }) => {
+  return defineComponent<WithClassesValueProps<{}>>((props, { attrs, slots }) => {
     const splitted = computed(() => splitRestProps(attrs, keys));
 
-    return () => h(Element, { ...defaultProps, ...(splitted.value.o as any), class: klassFn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
-  }, defaultComponentOptions) as unknown as KlassedComponent<ET, VS>;
+    return () => h(element, { ...defaultProps, ...(splitted.value.o as any), class: fn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
+  }, defaultComponentOptions) as any;
+}
 
-  return (Component.klass = klassFn), Component;
+function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET>): MonoKlassedComponent<ET, VS> {
+  const fn = typeofFunction(options) ? options : klass<VS>(options, config);
+  const Component = create(element, fn, config) as unknown as MonoKlassedComponent<ET, VS>;
+  return (Component.klass = fn), Component;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
-  Element: ET,
-  options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
-  config: {
-    dp?: SupportedComponentProps<ET>;
-    as?: AsFn;
-    end?: EndFn;
-  } = {}
-): ReklassedComponent<ET, CS, VS> {
-  const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
-    keys = getVariantKeys<VS>(reklassFn.k);
-
-  const Component = defineComponent<WithClassesValueProps<{}>>((props, { attrs, slots }) => {
-    const splitted = computed(() => splitRestProps(attrs, keys));
-
-    return () => h(Element, { ...defaultProps, ...(splitted.value.o as any), class: reklassFn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
-  }, defaultComponentOptions) as unknown as ReklassedComponent<ET, CS, VS>;
-
-  return (Component.reklass = reklassFn), Component;
+  element: ET,
+  options: ReklassedOptions<CS, VS>,
+  config?: ReklassedConfig<ET>
+): MonoReklassedComponent<ET, CS, VS> {
+  const fn = typeofFunction(options) ? options : reklass<CS, VS>(options, config);
+  const Component = create(element, fn, config) as unknown as MonoReklassedComponent<ET, CS, VS>;
+  return (Component.reklass = fn), Component;
 }
 
+export type { MonoKlassedComponent, MonoReklassedComponent };
 export { klassed, reklassed };

@@ -1,55 +1,39 @@
 import { jsx } from "@builder.io/qwik";
 
 import { klass, reklass } from "@klass/core";
-import type { EndFn, AsFn, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
+import type { KlassFn, ConditionSchema, ReklassFn } from "@klass/core";
+import { typeofFunction } from "@klass/core/utils";
 
-import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { FinalVariantsSchema, KlassedOptions, ReklassedOptions, DefaultPropsConfig, KlassedConfig, ReklassedConfig, KlassedComponent, ReklassedComponent } from "./types";
 import type { SupportedElementType, ClassesProps } from "./types/qwik";
-import type { PolymorphicComponentProps } from "./types/polymorphic";
 
-import { getVariantKeys, splitRestProps, maybeSignal, typeofFunction } from "./utils";
+import { getVariantKeys, splitRestProps, maybeSignal } from "./utils";
 
-function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
-  element: ET,
-  options: KlassOptions<VS> | KlassFn<VS>,
-  config: {
-    dp?: PolymorphicComponentProps<ET, {}>;
-    end?: EndFn;
-  } = {}
-): KlassedComponent<ET, VS> {
+function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig = {}) {
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
-    keys = getVariantKeys<VS>(klassFn.k);
+    keys = getVariantKeys(fn.k);
 
-  const Component = (({ as: As = element as any, class: _class = defaultClass, ...rest }) => {
+  return (({ as: As = element as any, class: _class = defaultClass, ...rest }) => {
     const splitted = splitRestProps(rest, keys);
 
-    return jsx(As, { ...defaultProps, ...(splitted.o as any), class: klassFn(splitted.p, maybeSignal(_class)) });
-  }) as KlassedComponent<ET, VS>;
+    return jsx(As, { ...defaultProps, ...(splitted.o as any), class: fn(splitted.p, maybeSignal(_class)) });
+  }) as any;
+}
 
-  return (Component.klass = klassFn), Component;
+function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET>): KlassedComponent<ET, VS> {
+  const fn = typeofFunction(options) ? options : klass<VS>(options, config);
+  const Component = create(element, fn, config) as KlassedComponent<ET, VS>;
+  return (Component.klass = fn), Component;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
-  options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
-  config: {
-    dp?: PolymorphicComponentProps<ET, {}>;
-    as?: AsFn;
-    end?: EndFn;
-  } = {}
+  options: ReklassedOptions<CS, VS>,
+  config?: ReklassedConfig<ET>
 ): ReklassedComponent<ET, CS, VS> {
-  const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
-    keys = getVariantKeys<VS>(reklassFn.k);
-
-  const Component = (({ as: As = element as any, class: _class = defaultClass, ...rest }) => {
-    const splitted = splitRestProps(rest, keys);
-
-    return jsx(As, { ...defaultProps, ...(splitted.o as any), class: reklassFn(splitted.p, maybeSignal(_class)) });
-  }) as ReklassedComponent<ET, CS, VS>;
-
-  return (Component.reklass = reklassFn), Component;
+  const fn = typeofFunction(options) ? options : reklass<CS, VS>(options, config);
+  const Component = create(element, fn, config) as ReklassedComponent<ET, CS, VS>;
+  return (Component.reklass = fn), Component;
 }
 
 export type { KlassedComponent, ReklassedComponent };

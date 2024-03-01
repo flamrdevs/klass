@@ -1,62 +1,42 @@
 import React from "react";
 
 import { klass, reklass } from "@klass/core";
-import type { EndFn, AsFn, VariantsOf, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
+import type { KlassFn, ConditionSchema, ReklassFn } from "@klass/core";
+import { typeofFunction } from "@klass/core/utils";
 
-import { FinalVariantsSchema, WithClassesValueProps, KlassedBase, ReklassedBase } from "./../types";
-import type { SupportedComponentProps, SupportedElementType, ClassesProps } from "./../types/react";
+import { FinalVariantsSchema, WithClassesValueProps, KlassedOptions, ReklassedOptions, DefaultPropsConfig } from "./../types";
+import type { SupportedElementType, ClassesProps } from "./../types/react";
 
-import { getVariantKeys, splitRestProps, typeofFunction } from "./../utils";
+import { getVariantKeys, splitRestProps } from "./../utils";
 
-export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
-  (props: WithClassesValueProps<SupportedComponentProps<ET> & VariantsOf<KlassFn<VS>>>): JSX.Element;
-} & KlassedBase<VS>;
+import type { KlassedConfig, ReklassedConfig, MonoKlassedComponent, MonoReklassedComponent } from "./types";
 
-export type ReklassedComponent<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
-  (props: WithClassesValueProps<SupportedComponentProps<ET> & VariantsOf<ReklassFn<CS, VS>>>): JSX.Element;
-} & ReklassedBase<CS, VS>;
-
-function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
-  Element: ET,
-  options: KlassOptions<VS> | KlassFn<VS>,
-  config: {
-    dp?: SupportedComponentProps<ET>;
-    end?: EndFn;
-  } = {}
-): KlassedComponent<ET, VS> {
+function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(Element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig = {}) {
   const { className: defaultClassName, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
-    keys = getVariantKeys<VS>(klassFn.k);
+    keys = getVariantKeys(fn.k);
 
-  const Component = React.forwardRef<any, WithClassesValueProps<{}>>(({ className = defaultClassName, ...rest }, ref) => {
+  return React.forwardRef<any, WithClassesValueProps<{}>>(({ className = defaultClassName, ...rest }, ref) => {
     const splitted = splitRestProps(rest, keys);
 
-    return <Element {...defaultProps} {...(splitted.o as any)} ref={ref} className={klassFn(splitted.p, className)} />;
-  }) as unknown as KlassedComponent<ET, VS>;
+    return <Element {...defaultProps} {...(splitted.o as any)} ref={ref} className={fn(splitted.p, className)} />;
+  });
+}
 
-  return (Component.klass = klassFn), Component;
+function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET>): MonoKlassedComponent<ET, VS> {
+  const fn = typeofFunction(options) ? options : klass<VS>(options, config);
+  const Component = create(element, fn, config) as unknown as MonoKlassedComponent<ET, VS>;
+  return (Component.klass = fn), Component;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
-  Element: ET,
-  options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
-  config: {
-    dp?: SupportedComponentProps<ET>;
-    as?: AsFn;
-    end?: EndFn;
-  } = {}
-): ReklassedComponent<ET, CS, VS> {
-  const { className: defaultClassName, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
-    keys = getVariantKeys<VS>(reklassFn.k);
-
-  const Component = React.forwardRef<any, WithClassesValueProps<{}>>(({ className = defaultClassName, ...rest }, ref) => {
-    const splitted = splitRestProps(rest, keys);
-
-    return <Element {...defaultProps} {...(splitted.o as any)} ref={ref} className={reklassFn(splitted.p, className)} />;
-  }) as unknown as ReklassedComponent<ET, CS, VS>;
-
-  return (Component.reklass = reklassFn), Component;
+  element: ET,
+  options: ReklassedOptions<CS, VS>,
+  config?: ReklassedConfig<ET>
+): MonoReklassedComponent<ET, CS, VS> {
+  const fn = typeofFunction(options) ? options : reklass<CS, VS>(options, config);
+  const Component = create(element, fn, config) as unknown as MonoReklassedComponent<ET, CS, VS>;
+  return (Component.reklass = fn), Component;
 }
 
+export type { MonoKlassedComponent, MonoReklassedComponent };
 export { klassed, reklassed };

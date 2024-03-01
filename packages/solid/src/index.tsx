@@ -2,55 +2,39 @@ import { Dynamic } from "solid-js/web";
 import { mergeProps, splitProps } from "solid-js";
 
 import { klass, reklass } from "@klass/core";
-import type { EndFn, AsFn, KlassOptions, KlassFn, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
+import type { KlassFn, ConditionSchema, ReklassFn } from "@klass/core";
+import { typeofFunction } from "@klass/core/utils";
 
-import type { FinalVariantsSchema, KlassedComponent, ReklassedComponent } from "./types";
+import type { FinalVariantsSchema, KlassedOptions, ReklassedOptions, DefaultPropsConfig, KlassedConfig, ReklassedConfig, KlassedComponent, ReklassedComponent } from "./types";
 import type { SupportedElementType, ClassesProps } from "./types/solid";
-import type { PolymorphicComponentProps } from "./types/polymorphic";
 
-import { getVariantKeys, PolymorphicKeysSplitter, ClassesKeysSplitter, classesProps, typeofFunction } from "./utils";
+import { getVariantKeys, PolymorphicKeysSplitter, ClassesKeysSplitter, classesProps } from "./utils";
 
-function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(
-  element: ET,
-  options: KlassOptions<VS> | KlassFn<VS>,
-  config: {
-    dp?: PolymorphicComponentProps<ET, {}>;
-    end?: EndFn;
-  } = {}
-): KlassedComponent<ET, VS> {
+function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig = {}) {
   const { class: defaultClass, classList: defaultClassList, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    klassFn = typeofFunction(options) ? options : klass<VS>(options, config),
-    keys = getVariantKeys<VS>(klassFn.k);
+    keys = getVariantKeys(fn.k);
 
-  const Component = ((props) => {
+  return ((props: any) => {
     const [polymorphic, classes, picked, omited] = splitProps(props, PolymorphicKeysSplitter, ClassesKeysSplitter, keys as any);
 
-    return <Dynamic component={polymorphic.as ?? element} {...(mergeProps(defaultProps, omited) as any)} class={klassFn(picked as any, classesProps(classes, defaultClass, defaultClassList))} />;
-  }) as KlassedComponent<ET, VS>;
+    return <Dynamic component={polymorphic.as ?? element} {...(mergeProps(defaultProps, omited) as any)} class={fn(picked as any, classesProps(classes, defaultClass, defaultClassList))} />;
+  }) as any;
+}
 
-  return (Component.klass = klassFn), Component;
+function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET>): KlassedComponent<ET, VS> {
+  const fn = typeofFunction(options) ? options : klass<VS>(options, config);
+  const Component = create(element, fn, config) as KlassedComponent<ET, VS>;
+  return (Component.klass = fn), Component;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
   element: ET,
-  options: ReklassOptions<CS, VS> | ReklassFn<CS, VS>,
-  config: {
-    dp?: PolymorphicComponentProps<ET, {}>;
-    as?: AsFn;
-    end?: EndFn;
-  } = {}
+  options: ReklassedOptions<CS, VS>,
+  config?: ReklassedConfig<ET>
 ): ReklassedComponent<ET, CS, VS> {
-  const { class: defaultClass, classList: defaultClassList, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    reklassFn = typeofFunction(options) ? options : reklass<CS, VS>(options, config),
-    keys = getVariantKeys<VS>(reklassFn.k);
-
-  const Component = ((props) => {
-    const [polymorphic, classes, picked, omited] = splitProps(props, PolymorphicKeysSplitter, ClassesKeysSplitter, keys as any);
-
-    return <Dynamic component={polymorphic.as ?? element} {...(mergeProps(defaultProps, omited) as any)} class={reklassFn(picked as any, classesProps(classes, defaultClass, defaultClassList))} />;
-  }) as ReklassedComponent<ET, CS, VS>;
-
-  return (Component.reklass = reklassFn), Component;
+  const fn = typeofFunction(options) ? options : reklass<CS, VS>(options, config);
+  const Component = create(element, fn, config) as ReklassedComponent<ET, CS, VS>;
+  return (Component.reklass = fn), Component;
 }
 
 export type { KlassedComponent, ReklassedComponent };

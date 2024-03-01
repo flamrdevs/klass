@@ -1,6 +1,6 @@
 import type { JSX } from "preact";
 
-import type { ClassValue, StrictVariantsSchema, KlassFn, VariantsOf, ConditionSchema, ReklassFn } from "@klass/core";
+import type { ClassValue, EndFnProps, AsFnProps, StrictVariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
 
 import type { SignalishRecord, SupportedElementType, Classes, BaseComponent } from "./preact";
 import type { PolymorphicComponentProps } from "./polymorphic";
@@ -10,6 +10,13 @@ export type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKe
 
 export type ClassesValueProps = Partial<Record<Classes, JSX.Signalish<ClassValue>>>;
 export type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProps> & ClassesValueProps;
+
+export type KlassedOptions<VS extends FinalVariantsSchema> = KlassOptions<VS> | KlassFn<VS>;
+export type ReklassedOptions<CS extends ConditionSchema, VS extends FinalVariantsSchema> = ReklassOptions<CS, VS> | ReklassFn<CS, VS>;
+
+export type DefaultPropsConfig<DP = Record<any, any>> = { dp?: DP };
+export type KlassedConfig<ET extends SupportedElementType> = DefaultPropsConfig<PolymorphicComponentProps<ET, {}>> & EndFnProps;
+export type ReklassedConfig<ET extends SupportedElementType> = KlassedConfig<ET> & AsFnProps;
 
 export type KlassedBase<VS extends FinalVariantsSchema> = BaseComponent & {
   klass: KlassFn<VS>;
