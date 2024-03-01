@@ -1,5 +1,13 @@
 # @klass/preact
 
+## 4.0.0-next.19
+
+### Patch Changes
+
+- frameworks compatibility
+- Updated dependencies
+  - @klass/core@4.0.0-next.19
+
 ## 4.0.0-next.18
 
 ### Patch Changes

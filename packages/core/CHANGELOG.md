@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.19
+
+### Patch Changes
+
+- frameworks compatibility
+
 ## 4.0.0-next.18
 
 ### Patch Changes
