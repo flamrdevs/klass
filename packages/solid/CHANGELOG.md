@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 4.0.0-next.20
+
+### Patch Changes
+
+- fix polymorphism
+- Updated dependencies
+  - @klass/core@4.0.0-next.20
+
 ## 4.0.0-next.19
 
 ### Patch Changes
