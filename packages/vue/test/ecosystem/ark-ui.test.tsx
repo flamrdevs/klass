@@ -4,9 +4,9 @@ import { render } from "@testing-library/vue";
 
 import group from "@klass/core/group";
 
-import { klassed } from "../../src/mono";
+import { klassed } from "./../../src/mono";
 
-import * as expects from "../expects";
+import * as expects from "./../~expects";
 
 import { Avatar } from "@ark-ui/vue";
 

@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 
 import { variant, klass, revariant, reklass } from "./../src";
 
-import * as shared from "./shared";
-import * as expects from "./expects";
+import * as shared from "./~shared";
+import * as expects from "./~expects";
 
 describe("variant", () => {
   describe("string", () => {
@@ -122,10 +122,10 @@ describe("klass", () => {
   });
 
   describe("custom end", () => {
-    const klass_button_basic = klass(shared.klass.button.basic.options, { end: shared.customEnd });
-    const klass_button_base = klass(shared.klass.button.base.options, { end: shared.customEnd });
-    const klass_button_defaults = klass(shared.klass.button.defaults.options, { end: shared.customEnd });
-    const klass_button_compounds = klass(shared.klass.button.compounds.options, { end: shared.customEnd });
+    const klass_button_basic = klass(shared.klass.button.basic.options, shared.custom.endProps);
+    const klass_button_base = klass(shared.klass.button.base.options, shared.custom.endProps);
+    const klass_button_defaults = klass(shared.klass.button.defaults.options, shared.custom.endProps);
+    const klass_button_compounds = klass(shared.klass.button.compounds.options, shared.custom.endProps);
 
     it("type", () => {
       expects.klassFn(klass_button_basic);
@@ -136,19 +136,19 @@ describe("klass", () => {
 
     describe("equal", () => {
       it("basic", () => {
-        for (const test of shared.klass.button.basic.test) expect(klass_button_basic(test.props)).toEqual(shared.customEnd(test.equal));
+        for (const test of shared.klass.button.basic.test) expect(klass_button_basic(test.props)).toEqual(shared.custom.end(test.equal));
       });
 
       it("base", () => {
-        for (const test of shared.klass.button.base.test) expect(klass_button_base(test.props)).toEqual(shared.customEnd(test.equal));
+        for (const test of shared.klass.button.base.test) expect(klass_button_base(test.props)).toEqual(shared.custom.end(test.equal));
       });
 
       it("defaults", () => {
-        for (const test of shared.klass.button.defaults.test) expect(klass_button_defaults(test.props)).toEqual(shared.customEnd(test.equal));
+        for (const test of shared.klass.button.defaults.test) expect(klass_button_defaults(test.props)).toEqual(shared.custom.end(test.equal));
       });
 
       it("compounds", () => {
-        for (const test of shared.klass.button.compounds.test) expect(klass_button_compounds(test.props)).toEqual(shared.customEnd(test.equal));
+        for (const test of shared.klass.button.compounds.test) expect(klass_button_compounds(test.props)).toEqual(shared.custom.end(test.equal));
       });
     });
   });
@@ -228,7 +228,7 @@ describe("revariant", () => {
 
 describe("reklass", () => {
   const reklass_box_basic = reklass(shared.reklass.box.basic.options);
-  const reklass_box_customAs = reklass(shared.reklass.box.customAs.options, { as: shared.customAs });
+  const reklass_box_customAs = reklass(shared.reklass.box.customAs.options, shared.custom.asProps);
 
   it("type", () => {
     expects.reklassFn(reklass_box_basic);
@@ -246,8 +246,8 @@ describe("reklass", () => {
   });
 
   describe("custom end", () => {
-    const reklass_box_basic = reklass(shared.reklass.box.basic.options, { end: shared.customEnd });
-    const reklass_box_customAs = reklass(shared.reklass.box.customAs.options, { end: shared.customEnd, as: shared.customAs });
+    const reklass_box_basic = reklass(shared.reklass.box.basic.options, shared.custom.endProps);
+    const reklass_box_customAs = reklass(shared.reklass.box.customAs.options, { end: shared.custom.end, as: shared.custom.as });
 
     it("type", () => {
       expects.reklassFn(reklass_box_basic);
@@ -256,11 +256,11 @@ describe("reklass", () => {
 
     describe("equal", () => {
       it("basic", () => {
-        for (const test of shared.reklass.box.basic.test) expect(reklass_box_basic(test.props)).toEqual(shared.customEnd(test.equal));
+        for (const test of shared.reklass.box.basic.test) expect(reklass_box_basic(test.props)).toEqual(shared.custom.end(test.equal));
       });
 
       it("customAs", () => {
-        for (const test of shared.reklass.box.customAs.test) expect(reklass_box_customAs(test.props)).toEqual(shared.customEnd(test.equal));
+        for (const test of shared.reklass.box.customAs.test) expect(reklass_box_customAs(test.props)).toEqual(shared.custom.end(test.equal));
       });
     });
   });

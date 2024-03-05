@@ -4,11 +4,11 @@ import type { JSXOutput } from "@builder.io/qwik";
 
 import { clsx } from "@klass/core";
 
-import * as expects from "./../expects";
+import * as expects from "./../~expects";
 
 import { render } from "./../testing-library";
 
-import { shared } from "./../../../core/test/exports";
+import { shared } from "./../../../core/test/~";
 
 import {
   KlassedButtonBasic,
@@ -23,7 +23,7 @@ import {
   ReklassedBoxCustomAs,
   ReklassedBoxBasicCustomEnd,
   ReklassedBoxCustomAsCustomEnd,
-} from "./index.test.utils";
+} from "./~res";
 
 const PROPS = {
   "data-testid": "root",
@@ -104,7 +104,7 @@ describe("klassed", () => {
         expects
           .element(getByTestId("root"))
           .tagName("BUTTON")
-          .className(shared.customEnd(clsx(equal, PROPS.class)))
+          .className(shared.custom.end(clsx(equal, PROPS.class)))
           .textContent("children");
         cleanup();
       };
@@ -234,7 +234,7 @@ describe("reklassed", () => {
         expects
           .element(getByTestId("root"))
           .tagName("DIV")
-          .className(shared.customEnd(clsx(equal, PROPS.class)))
+          .className(shared.custom.end(clsx(equal, PROPS.class)))
           .textContent("children");
         cleanup();
       };

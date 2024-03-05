@@ -2,7 +2,7 @@ import { describe, it } from "vitest";
 
 import setup from "./../../src/group/setup";
 
-import * as shared from "./../shared";
+import * as shared from "./../~shared";
 
 import { options, expectResult, expectSimplifyResult } from "./shared";
 
@@ -14,9 +14,9 @@ describe("group/setup", () => {
   });
 
   it("custom end", () => {
-    const group = setup({ end: shared.customEnd });
+    const group = setup(shared.custom.endProps);
 
-    expectResult(group(options), shared.customEnd);
+    expectResult(group(options), shared.custom.end);
   });
 
   describe("simplify", () => {
@@ -27,9 +27,9 @@ describe("group/setup", () => {
     });
 
     it("custom end", () => {
-      const group = setup({ end: shared.customEnd });
+      const group = setup(shared.custom.endProps);
 
-      expectSimplifyResult(group(options), shared.customEnd);
+      expectSimplifyResult(group(options), shared.custom.end);
     });
   });
 });

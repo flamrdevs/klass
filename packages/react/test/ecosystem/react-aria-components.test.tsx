@@ -2,9 +2,9 @@ import { describe, it } from "vitest";
 
 import { render } from "@testing-library/react";
 
-import { klassed } from "../../src/mono";
+import { klassed } from "./../../src/mono";
 
-import * as expects from "../expects";
+import * as expects from "./../~expects";
 
 import { Button } from "react-aria-components";
 

@@ -5,7 +5,7 @@ import { defaultEndFn } from "./../../src/utils";
 
 import { simplify } from "./../../src/group";
 
-import * as expects from "./../expects";
+import * as expects from "./../~expects";
 
 export const options = {
   base: { root: "root", header: "header", body: "body", footer: "footer" },

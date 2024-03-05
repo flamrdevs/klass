@@ -2,11 +2,11 @@ import { describe, it } from "vitest";
 
 import { render } from "@testing-library/vue";
 
-import * as expects from "./expects";
+import * as expects from "./~expects";
 
-import { klassed, reklassed } from "../src";
+import { klassed, reklassed } from "./../src";
 
-import { A, Button, Div, RequiredA, RequiredButton, RequiredDiv, DefinedA, DefinedButton, DefinedDiv } from "./components";
+import { A, Button, Div, RequiredA, RequiredButton, RequiredDiv, DefinedA, DefinedButton, DefinedDiv } from "./~res/components";
 
 const PROPS = {
   "data-testid": "root",

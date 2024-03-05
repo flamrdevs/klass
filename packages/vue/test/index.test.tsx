@@ -4,9 +4,9 @@ import { render, cleanup, fireEvent } from "@testing-library/vue";
 
 import { clsx } from "@klass/core";
 
-import * as expects from "./expects";
+import * as expects from "./~expects";
 
-import { shared } from "./../../core/test/exports";
+import { shared } from "./../../core/test/~";
 
 import {
   KlassedButtonBasic,
@@ -23,7 +23,8 @@ import {
   ReklassedBoxCustomAsCustomEnd,
   KlassedButtonBasicReactive,
   ReklassedBoxBasicReactive,
-} from "./index.test.utils";
+} from "./~res";
+import { SFCKlassedButtonBasicReactive, SFCReklassedBoxBasicReactive } from "./~res/index/sfc";
 
 const PROPS = {
   "data-testid": "root",
@@ -102,7 +103,7 @@ describe("klassed", () => {
         expects
           .element(render(ui).getByTestId("root"))
           .tagName("BUTTON")
-          .className(shared.customEnd(clsx(equal, PROPS.class)))
+          .className(shared.custom.end(clsx(equal, PROPS.class)))
           .textContent("children");
         cleanup();
       };
@@ -230,7 +231,7 @@ describe("reklassed", () => {
         expects
           .element(render(ui).getByTestId("root"))
           .tagName("DIV")
-          .className(shared.customEnd(clsx(equal, PROPS.class)))
+          .className(shared.custom.end(clsx(equal, PROPS.class)))
           .textContent("children");
         cleanup();
       };
@@ -295,5 +296,43 @@ describe("reactive", () => {
       .element((element = getByTestId("reactive")))
       .tagName("A")
       .className(clsx("x-2", ["extra", "classes", "reactive"]));
+  });
+
+  describe("sfc", () => {
+    it("klassed", async () => {
+      const { getByTestId } = render(<SFCKlassedButtonBasicReactive />);
+
+      let element = getByTestId("reactive");
+
+      expects
+        .element(element)
+        .tagName("BUTTON")
+        .className(clsx("color-red", ["extra", "classes"]));
+
+      await fireEvent.click(element);
+
+      expects
+        .element((element = getByTestId("reactive")))
+        .tagName("A")
+        .className(clsx("color-blue", ["extra", "classes", "reactive"]));
+    });
+
+    it("reklassed", async () => {
+      const { getByTestId } = render(<SFCReklassedBoxBasicReactive />);
+
+      let element = getByTestId("reactive");
+
+      expects
+        .element(element)
+        .tagName("BUTTON")
+        .className(clsx("x-1", ["extra", "classes"]));
+
+      await fireEvent.click(element);
+
+      expects
+        .element((element = getByTestId("reactive")))
+        .tagName("A")
+        .className(clsx("x-2", ["extra", "classes", "reactive"]));
+    });
   });
 });

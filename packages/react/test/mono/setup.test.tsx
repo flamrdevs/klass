@@ -2,14 +2,11 @@ import { describe, it } from "vitest";
 
 import * as setup from "./../../src/mono/setup";
 
-import * as core from "./../../../core/test/exports";
-import * as expects from "./../expects";
+import * as core from "./../../../core/test/~";
+import * as expects from "./../~expects";
 
 describe("mono.setup", () => {
-  const config: setup.Config = {
-    as: core.shared.customAs,
-    end: core.shared.customEnd,
-  };
+  const config: setup.Config = core.shared.custom.configEndAsProps;
 
   const works = ([klassed, reklassed]: ReturnType<typeof setup.default>) => {
     const KlassedComponent = klassed("div", core.shared.klass.button.basic.options);

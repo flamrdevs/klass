@@ -4,9 +4,9 @@ import type { ButtonHTMLAttributes } from "react";
 
 import { render } from "@testing-library/react";
 
-import { klassed } from "../../src/mono";
+import { klassed } from "./../../src/mono";
 
-import * as expects from "../expects";
+import * as expects from "./../~expects";
 
 import { Separator } from "@radix-ui/react-separator";
 import { Slot } from "@radix-ui/react-slot";

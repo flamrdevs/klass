@@ -2,9 +2,9 @@ import { describe, it } from "vitest";
 
 import { render } from "@solidjs/testing-library";
 
-import { klassed } from "../../src/mono";
+import { klassed } from "./../../src/mono";
 
-import * as expects from "../expects";
+import * as expects from "./../~expects";
 
 import { As, Separator } from "@kobalte/core";
 

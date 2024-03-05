@@ -5,9 +5,9 @@ import type { ButtonHTMLAttributes, FunctionalComponent } from "vue";
 
 import { render } from "@testing-library/vue";
 
-import { klassed } from "../../src/mono";
+import { klassed } from "./../../src/mono";
 
-import * as expects from "../expects";
+import * as expects from "./../~expects";
 
 import { Separator, Slot } from "radix-vue";
 import type { SeparatorProps } from "radix-vue";

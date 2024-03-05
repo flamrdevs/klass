@@ -1,13 +1,12 @@
-import { defineConfig } from "vitest/config";
+import { defineConfig } from "vite";
 
-import vue from "@vitejs/plugin-vue-jsx";
+import jsx from "@vitejs/plugin-vue-jsx";
 
 import dts from "vite-plugin-dts";
 
-const env = {
-  command: { build: process.env["COMMAND"] === "build", test: process.env["COMMAND"] === "test" },
-  unminify: process.env["UNMINIFY"] === "true",
-};
+import $env from "./../core/env";
+
+const env = $env();
 
 export default defineConfig({
   build: {
@@ -27,28 +26,13 @@ export default defineConfig({
     },
   },
   plugins: [
-    vue(),
-    env.command.build
-      ? dts({
-          include: ["src/**/*.{ts,tsx}"],
-          compilerOptions: {
-            removeComments: false,
-          },
-          staticImport: true,
-        })
-      : null,
-  ],
-  test: {
-    environment: "jsdom",
-    setupFiles: "vitest.setup.ts",
-    include: ["test/**/*.test.{ts,tsx}"],
-    watch: false,
-    reporters: ["default", "html"],
-    outputFile: "test-reports/index.html",
-    server: {
-      deps: {
-        inline: [/vue/],
+    jsx(),
+    dts({
+      include: ["src/**/*.{ts,tsx}"],
+      compilerOptions: {
+        removeComments: false,
       },
-    },
-  },
+      staticImport: true,
+    }),
+  ],
 });

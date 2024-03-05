@@ -2,7 +2,7 @@ import { describe, it } from "vitest";
 
 import slots from "./../../src/slots";
 
-import * as shared from "./../shared";
+import * as shared from "./../~shared";
 
 import { options, expectResult } from "./shared";
 
@@ -12,6 +12,6 @@ describe("slots", () => {
   });
 
   it("custom end", () => {
-    expectResult(slots(options, { end: shared.customEnd }), shared.customEnd);
+    expectResult(slots(options, shared.custom.endProps), shared.custom.end);
   });
 });

@@ -6,9 +6,9 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "clean": "turbo run clean",
-    "build": "set COMMAND=build&&turbo run build",
-    "build:unminify": "set UNMINIFY=true&&set COMMAND=build&&turbo run build",
-    "test": "set COMMAND=test&&turbo run test",
+    "build": "turbo run build",
+    "build:unminify": "set UNMINIFY=true&&turbo run build",
+    "test": "turbo run test",
     "test:preview": "pnpm --parallel --filter ./packages/** exec vite preview --open --outDir test-reports",
     "format": "prettier . --write --cache"
   },
@@ -42,6 +42,7 @@
     "@types/react": "^18.2.60",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vitest/ui": "^1.3.1",
     "babel-plugin-transform-hook-names": "^1.0.2",

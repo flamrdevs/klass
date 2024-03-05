@@ -3,7 +3,7 @@ import { expect } from "vitest";
 import type { EndFn } from "./../../src/types";
 import { defaultEndFn } from "./../../src/utils";
 
-import * as expects from "./../expects";
+import * as expects from "./../~expects";
 
 export const options = {
   base: { root: "root", header: "header", body: "body", footer: "footer" },

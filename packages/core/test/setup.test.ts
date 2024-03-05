@@ -2,14 +2,11 @@ import { describe, it } from "vitest";
 
 import * as setup from "./../src/setup";
 
-import * as shared from "./shared";
-import * as expects from "./expects";
+import * as shared from "./~shared";
+import * as expects from "./~expects";
 
 describe("setup", () => {
-  const config: setup.Config = {
-    as: shared.customAs,
-    end: shared.customEnd,
-  };
+  const config: setup.Config = shared.custom.configEndAsProps;
 
   const works = ([klass, reklass]: ReturnType<typeof setup.default>) => {
     const klassFn = klass(shared.klass.button.basic.options);

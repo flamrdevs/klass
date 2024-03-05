@@ -1,11 +1,10 @@
-import { defineConfig } from "vitest/config";
+import { defineConfig } from "vite";
 
 import dts from "vite-plugin-dts";
 
-const env = {
-  command: { build: process.env["COMMAND"] === "build", test: process.env["COMMAND"] === "test" },
-  unminify: process.env["UNMINIFY"] === "true",
-};
+import $env from "./env";
+
+const env = $env();
 
 export default defineConfig({
   build: {
@@ -25,20 +24,12 @@ export default defineConfig({
     },
   },
   plugins: [
-    env.command.build
-      ? dts({
-          include: ["src/**/*.ts"],
-          compilerOptions: {
-            removeComments: false,
-          },
-          staticImport: true,
-        })
-      : null,
+    dts({
+      include: ["src/**/*.ts"],
+      compilerOptions: {
+        removeComments: false,
+      },
+      staticImport: true,
+    }),
   ],
-  test: {
-    include: ["test/**/*.test.ts"],
-    watch: false,
-    reporters: ["default", "html"],
-    outputFile: "test-reports/index.html",
-  },
 });

@@ -2,13 +2,13 @@ import { describe, it } from "vitest";
 
 import type { JSXOutput } from "@builder.io/qwik";
 
-import * as expects from "./expects";
+import * as expects from "./~expects";
 
 import { render } from "./testing-library";
 
-import { klassed, reklassed } from "../src";
+import { klassed, reklassed } from "./../src";
 
-import { A, Button, Div, RequiredA, RequiredButton, RequiredDiv } from "./components";
+import { A, Button, Div, RequiredA, RequiredButton, RequiredDiv } from "./~res/components";
 
 const PROPS = {
   "data-testid": "root",

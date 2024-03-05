@@ -1,16 +1,15 @@
-import { defineConfig } from "vitest/config";
+import { defineConfig } from "vite";
 
 import { qwikVite as qwik } from "@builder.io/qwik/optimizer";
 
 import dts from "vite-plugin-dts";
 
-const env = {
-  command: { build: process.env["COMMAND"] === "build", test: process.env["COMMAND"] === "test" },
-  unminify: process.env["UNMINIFY"] === "true",
-};
+import $env from "./../core/env";
+
+const env = $env();
 
 export default defineConfig({
-  ...(env.command.build ? { mode: "lib" } : {}),
+  mode: "lib",
   build: {
     target: "esnext",
     outDir: "dist",
@@ -35,25 +34,12 @@ export default defineConfig({
         config.build!.minify = env.unminify ? false : "esbuild";
       },
     },
-    env.command.build
-      ? dts({
-          include: ["src/**/*.{ts,tsx}"],
-          compilerOptions: {
-            removeComments: false,
-          },
-          staticImport: true,
-        })
-      : null,
-  ],
-  test: {
-    include: ["test/**/*.test.{ts,tsx}"],
-    watch: false,
-    reporters: ["default", "html"],
-    outputFile: "test-reports/index.html",
-    server: {
-      deps: {
-        inline: [/@builder.io\/qwik/],
+    dts({
+      include: ["src/**/*.{ts,tsx}"],
+      compilerOptions: {
+        removeComments: false,
       },
-    },
-  },
+      staticImport: true,
+    }),
+  ],
 });

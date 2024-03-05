@@ -5,7 +5,7 @@ import type { ConditionSchema, VariantsSchema } from "@klass/core";
 import type { KlassedComponent, ReklassedComponent } from "./../src/types";
 import type { MonoKlassedComponent, MonoReklassedComponent } from "./../src/mono";
 
-import { expects } from "./../../core/test/exports";
+import { expects } from "./../../core/test/~";
 
 const klassed = (object: { klass?: any }) => {
   expect(object).toBeTypeOf("function");

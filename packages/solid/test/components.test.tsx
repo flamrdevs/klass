@@ -4,11 +4,11 @@ import type { JSX } from "solid-js";
 
 import { render } from "@solidjs/testing-library";
 
-import * as expects from "./expects";
+import * as expects from "./~expects";
 
-import { klassed, reklassed } from "../src";
+import { klassed, reklassed } from "./../src";
 
-import { A, Button, Div, RequiredA, RequiredButton, RequiredDiv } from "./components";
+import { A, Button, Div, RequiredA, RequiredButton, RequiredDiv } from "./~res/components";
 
 const PROPS = {
   "data-testid": "root",

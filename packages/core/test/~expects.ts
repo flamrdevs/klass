@@ -2,7 +2,7 @@ import { expect } from "vitest";
 
 import type { ConditionSchema, VariantsSchema, VariantFn, KlassFn, RevariantFn, ReklassFn } from "./../src/types";
 
-import { customEnd } from "./shared";
+import { custom } from "./~shared";
 
 export const variantFn = <T extends VariantsSchema[string]>(variantFn: VariantFn<T>) => {
   expect(variantFn).toBeTypeOf("function");
@@ -39,5 +39,5 @@ export const reklassFn = <C extends ConditionSchema, T extends VariantsSchema>(f
 };
 
 export const inCustomEnd = (className: string) => {
-  expect(`${className.slice(0, 5)}${className.slice(-2)}`).toEqual(customEnd(""));
+  expect(`${className.slice(0, 5)}${className.slice(-2)}`).toEqual(custom.end(""));
 };

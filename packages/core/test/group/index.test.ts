@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import group, { simplify } from "./../../src/group";
 
-import * as shared from "./../shared";
+import * as shared from "./../~shared";
 
 import { options, expectResult, expectSimplifyResult } from "./shared";
 
@@ -12,7 +12,7 @@ describe("group", () => {
   });
 
   it("custom end", () => {
-    expectResult(group(options, { end: shared.customEnd }), shared.customEnd);
+    expectResult(group(options, shared.custom.endProps), shared.custom.end);
   });
 
   describe("simplify", () => {
@@ -21,7 +21,7 @@ describe("group", () => {
     });
 
     it("custom end", () => {
-      expectSimplifyResult(group(options, { end: shared.customEnd }), shared.customEnd);
+      expectSimplifyResult(group(options, shared.custom.endProps), shared.custom.end);
     });
   });
 });
