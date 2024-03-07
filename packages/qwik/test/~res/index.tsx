@@ -2,6 +2,8 @@ import { component$, useComputed$, useSignal } from "@builder.io/qwik";
 
 import { klass, reklass } from "@klass/core";
 
+import { A$ } from "./components";
+
 import { klassed, reklassed } from "./../../src";
 
 import { shared } from "./../../../core/test/~";
@@ -30,7 +32,7 @@ export const ReklassedBoxCustomAs = reklassed("div", shared.reklass.box.customAs
 export const ReklassedBoxCustomAsCustomEnd = reklassed("div", shared.reklass.box.customAs.options, shared.custom.configEndAsProps);
 
 export const KlassedButtonBasicReactive = component$(() => {
-  const as = useSignal<"a" | "button">("button");
+  const as = useSignal<typeof A$ | "button">("button");
   const color = useSignal<"red" | "green" | "blue">("red");
   const classes = useSignal<string | null>(null);
 
@@ -41,7 +43,7 @@ export const KlassedButtonBasicReactive = component$(() => {
       color={color}
       class={["extra", "classes", classes.value]}
       onClick$={() => {
-        as.value = "a";
+        as.value = A$;
         color.value = "blue";
         classes.value = "reactive";
       }}
@@ -72,7 +74,7 @@ export const KlassedButtonBasicSignalReactive = component$(() => {
 });
 
 export const ReklassedBoxBasicReactive = component$(() => {
-  const as = useSignal<"a" | "button">("button");
+  const as = useSignal<typeof A$ | "button">("button");
   const x = useSignal<"1" | "2" | "2">("1");
   const classes = useSignal<string | null>(null);
 
@@ -83,7 +85,7 @@ export const ReklassedBoxBasicReactive = component$(() => {
       x={x}
       class={["extra", "classes", classes.value]}
       onClick$={() => {
-        as.value = "a";
+        as.value = A$;
         x.value = "2";
         classes.value = "reactive";
       }}

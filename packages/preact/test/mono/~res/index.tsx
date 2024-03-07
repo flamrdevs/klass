@@ -1,3 +1,6 @@
+import { useState } from "preact/hooks";
+import { computed, useSignal } from "@preact/signals";
+
 import { klass, reklass } from "@klass/core";
 
 import { klassed, reklassed } from "./../../../src/mono";
@@ -26,3 +29,79 @@ export const ReklassedBoxBasicCustomEnd = reklassed("div", shared.reklass.box.ba
 
 export const ReklassedBoxCustomAs = reklassed("div", shared.reklass.box.customAs.options, shared.custom.asProps);
 export const ReklassedBoxCustomAsCustomEnd = reklassed("div", shared.reklass.box.customAs.options, shared.custom.configEndAsProps);
+
+export const KlassedButtonBasicReactive = () => {
+  const [color, setColor] = useState<"red" | "green" | "blue">("red");
+  const [classes, setClasses] = useState<string | null>(null);
+
+  return (
+    <KlassedButtonBasic
+      data-testid="reactive"
+      color={color}
+      class={["extra", "classes", classes]}
+      onClick={() => {
+        setColor("blue");
+        setClasses("reactive");
+      }}
+    >
+      children
+    </KlassedButtonBasic>
+  );
+};
+export const KlassedButtonBasicSignalReactive = () => {
+  const color = useSignal<"red" | "green" | "blue">("red");
+  const classes = useSignal<string | null>(null);
+  const className = computed(() => ["extra", "classes", classes.value]);
+
+  return (
+    <KlassedButtonBasic
+      data-testid="reactive"
+      color={color}
+      class={className}
+      onClick={() => {
+        color.value = "blue";
+        classes.value = "reactive";
+      }}
+    >
+      children
+    </KlassedButtonBasic>
+  );
+};
+
+export const ReklassedBoxBasicReactive = () => {
+  const [x, setX] = useState<"1" | "2" | "2">("1");
+  const [classes, setClasses] = useState<string | null>(null);
+
+  return (
+    <ReklassedBoxBasic
+      data-testid="reactive"
+      x={x}
+      class={["extra", "classes", classes]}
+      onClick={() => {
+        setX("2");
+        setClasses("reactive");
+      }}
+    >
+      children
+    </ReklassedBoxBasic>
+  );
+};
+export const ReklassedBoxBasicSignalReactive = () => {
+  const x = useSignal<"1" | "2" | "2">("1");
+  const classes = useSignal<string | null>(null);
+  const className = computed(() => ["extra", "classes", classes.value]);
+
+  return (
+    <ReklassedBoxBasic
+      data-testid="reactive"
+      x={x}
+      class={className}
+      onClick={() => {
+        x.value = "2";
+        classes.value = "reactive";
+      }}
+    >
+      children
+    </ReklassedBoxBasic>
+  );
+};

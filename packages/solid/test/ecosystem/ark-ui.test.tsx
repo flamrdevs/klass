@@ -4,84 +4,81 @@ import { render } from "@solidjs/testing-library";
 
 import group from "@klass/core/group";
 
-import { klassed } from "./../../src/mono";
+import * as mono from "./../../src/mono";
 
 import * as expects from "./../~expects";
 
-import { Avatar } from "@ark-ui/solid";
+import { Switch } from "@ark-ui/solid";
 
-describe("Separator", () => {
-  const variant = group({
-    base: {
-      root: "root-base",
-      fallback: "fallback-base",
-      image: "image-base",
-    },
-    variants: {
-      color: {
-        red: {
-          root: "root-color-red",
-          fallback: "fallback-color-red",
-          image: "image-color-red",
-        },
-        green: {
-          root: "root-color-green",
-          fallback: "fallback-color-green",
-          image: "image-color-green",
-        },
-        blue: {
-          root: "root-color-blue",
-          fallback: "fallback-color-blue",
-          image: "image-color-blue",
+describe("mono", () => {
+  describe("Switch", () => {
+    const variant = group({
+      base: {
+        root: "root-base",
+        control: "control-base",
+        thumb: "thumb-base",
+        label: "label-base",
+      },
+      variants: {
+        color: {
+          red: {
+            root: "root-color-red",
+            control: "control-color-red",
+            thumb: "thumb-color-red",
+            label: "label-color-red",
+          },
+          green: {
+            root: "root-color-green",
+            control: "control-color-green",
+            thumb: "thumb-color-green",
+            label: "label-color-green",
+          },
+          blue: {
+            root: "root-color-blue",
+            control: "control-color-blue",
+            thumb: "thumb-color-blue",
+            label: "label-color-blue",
+          },
         },
       },
-    },
-    defaults: {
-      color: "red",
-    },
-  });
+      defaults: {
+        color: "red",
+      },
+    });
 
-  const KlassedRoot = klassed(Avatar.Root, variant.root);
-  const KlassedFallback = klassed(Avatar.Fallback, variant.fallback);
-  const KlassedImage = klassed(Avatar.Image, variant.image);
+    const KlassedRoot = mono.klassed(Switch.Root, variant.root);
+    const KlassedControl = mono.klassed(Switch.Control, variant.control);
+    const KlassedThumb = mono.klassed(Switch.Thumb, variant.thumb);
+    const KlassedLabel = mono.klassed(Switch.Label, variant.label);
 
-  it("type", () => {
-    expects.klassedComponent(KlassedRoot);
-    expects.klassedComponent(KlassedFallback);
-    expects.klassedComponent(KlassedImage);
-  });
+    it("type", () => {
+      expects.klassedComponent(KlassedRoot);
+      expects.klassedComponent(KlassedControl);
+      expects.klassedComponent(KlassedThumb);
+      expects.klassedComponent(KlassedLabel);
+    });
 
-  it("equal", () => {
-    const { getByTestId } = render(() => (
-      <KlassedRoot data-testid="root">
-        <KlassedFallback data-testid="fallback" />
-        <KlassedImage data-testid="image" />
-      </KlassedRoot>
-    ));
+    it("equal & own polymorphic", () => {
+      const { getByTestId } = render(() => (
+        <KlassedRoot data-testid="root">
+          <KlassedControl data-testid="control">
+            <KlassedThumb data-testid="thumb" />
+          </KlassedControl>
+          <KlassedLabel data-testid="label" as="p">
+            label
+          </KlassedLabel>
+        </KlassedRoot>
+      ));
 
-    const root = getByTestId("root");
-    const fallback = getByTestId("fallback");
-    const image = getByTestId("image");
+      const root = getByTestId("root");
+      const control = getByTestId("control");
+      const thumb = getByTestId("thumb");
+      const label = getByTestId("label");
 
-    expects.element(root).tagName("DIV").className("root-base root-color-red");
-    expects.element(fallback).tagName("SPAN").className("fallback-base fallback-color-red");
-    expects.element(image).tagName("IMG").className("image-base image-color-red");
-  });
-
-  it("equal - own polymorphic", () => {
-    const { getByTestId } = render(() => (
-      <KlassedRoot data-testid="root" as="a" color="blue" class="as">
-        <KlassedFallback data-testid="fallback" color="blue" />
-        <KlassedImage data-testid="image" color="blue" />
-      </KlassedRoot>
-    ));
-
-    const root = getByTestId("root");
-    const fallback = getByTestId("fallback");
-    const image = getByTestId("image");
-
-    expects.element(root).tagName("A").className("root-base root-color-blue as");
-    expects.element(fallback).tagName("SPAN").className("fallback-base fallback-color-blue");
-    expects.element(image).tagName("IMG").className("image-base image-color-blue");
+      expects.element(root).tagName("LABEL").className("root-base root-color-red");
+      expects.element(control).tagName("SPAN").className("control-base control-color-red");
+      expects.element(thumb).tagName("SPAN").className("thumb-base thumb-color-red");
+      expects.element(label).tagName("P").className("label-base label-color-red");
+    });
   });
 });

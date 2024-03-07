@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { klass, reklass } from "@klass/core";
 
 import { klassed, reklassed } from "./../../../src/mono";
@@ -26,3 +28,41 @@ export const ReklassedBoxBasicCustomEnd = reklassed("div", shared.reklass.box.ba
 
 export const ReklassedBoxCustomAs = reklassed("div", shared.reklass.box.customAs.options, shared.custom.asProps);
 export const ReklassedBoxCustomAsCustomEnd = reklassed("div", shared.reklass.box.customAs.options, shared.custom.configEndAsProps);
+
+export const KlassedButtonBasicReactive = () => {
+  const [color, setColor] = useState<"red" | "green" | "blue">("red");
+  const [classes, setClasses] = useState<string | null>(null);
+
+  return (
+    <KlassedButtonBasic
+      data-testid="reactive"
+      color={color}
+      className={["extra", "classes", classes]}
+      onClick={() => {
+        setColor("blue");
+        setClasses("reactive");
+      }}
+    >
+      children
+    </KlassedButtonBasic>
+  );
+};
+
+export const ReklassedBoxBasicReactive = () => {
+  const [x, setX] = useState<"1" | "2" | "2">("1");
+  const [classes, setClasses] = useState<string | null>(null);
+
+  return (
+    <ReklassedBoxBasic
+      data-testid="reactive"
+      x={x}
+      className={["extra", "classes", classes]}
+      onClick={() => {
+        setX("2");
+        setClasses("reactive");
+      }}
+    >
+      children
+    </ReklassedBoxBasic>
+  );
+};

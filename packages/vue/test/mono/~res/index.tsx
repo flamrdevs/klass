@@ -1,3 +1,5 @@
+import { defineComponent, ref } from "vue";
+
 import { klass, reklass } from "@klass/core";
 
 import { klassed, reklassed } from "./../../../src/mono";
@@ -26,3 +28,41 @@ export const ReklassedBoxBasicCustomEnd = reklassed("div", shared.reklass.box.ba
 
 export const ReklassedBoxCustomAs = reklassed("div", shared.reklass.box.customAs.options, shared.custom.asProps);
 export const ReklassedBoxCustomAsCustomEnd = reklassed("div", shared.reklass.box.customAs.options, shared.custom.configEndAsProps);
+
+export const KlassedButtonBasicReactive = defineComponent(() => {
+  const color = ref<"red" | "green" | "blue">("red");
+  const classes = ref<string | null>(null);
+
+  return () => (
+    <KlassedButtonBasic
+      data-testid="reactive"
+      color={color.value}
+      class={["extra", "classes", classes.value]}
+      onClick={() => {
+        color.value = "blue";
+        classes.value = "reactive";
+      }}
+    >
+      children
+    </KlassedButtonBasic>
+  );
+});
+
+export const ReklassedBoxBasicReactive = defineComponent(() => {
+  const x = ref<"1" | "2" | "2">("1");
+  const classes = ref<string | null>(null);
+
+  return () => (
+    <ReklassedBoxBasic
+      data-testid="reactive"
+      x={x.value}
+      class={["extra", "classes", classes.value]}
+      onClick={() => {
+        x.value = "2";
+        classes.value = "reactive";
+      }}
+    >
+      children
+    </ReklassedBoxBasic>
+  );
+});

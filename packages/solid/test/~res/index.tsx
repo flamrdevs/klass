@@ -2,6 +2,8 @@ import { createSignal } from "solid-js";
 
 import { klass, reklass } from "@klass/core";
 
+import { A } from "./components";
+
 import { klassed, reklassed } from "./../../src";
 
 import { shared } from "./../../../core/test/~";
@@ -30,7 +32,7 @@ export const ReklassedBoxCustomAs = reklassed("div", shared.reklass.box.customAs
 export const ReklassedBoxCustomAsCustomEnd = reklassed("div", shared.reklass.box.customAs.options, shared.custom.configEndAsProps);
 
 export const KlassedButtonBasicReactive = () => {
-  const [as, setAs] = createSignal<"a" | "button">("button");
+  const [as, setAs] = createSignal<typeof A | "button">("button");
   const [color, setColor] = createSignal<"red" | "green" | "blue">("red");
   const [classes, setClasses] = createSignal<string | null>(null);
 
@@ -41,7 +43,7 @@ export const KlassedButtonBasicReactive = () => {
       color={color()}
       class={["extra", "classes", classes()]}
       onClick={() => {
-        setAs("a");
+        setAs(() => A);
         setColor("blue");
         setClasses("reactive");
       }}
@@ -52,7 +54,7 @@ export const KlassedButtonBasicReactive = () => {
 };
 
 export const ReklassedBoxBasicReactive = () => {
-  const [as, setAs] = createSignal<"a" | "button">("button");
+  const [as, setAs] = createSignal<typeof A | "button">("button");
   const [x, setX] = createSignal<"1" | "2" | "2">("1");
   const [classes, setClasses] = createSignal<string | null>(null);
 
@@ -63,7 +65,7 @@ export const ReklassedBoxBasicReactive = () => {
       x={x()}
       class={["extra", "classes", classes()]}
       onClick={() => {
-        setAs("a");
+        setAs(() => A);
         setX("2");
         setClasses("reactive");
       }}

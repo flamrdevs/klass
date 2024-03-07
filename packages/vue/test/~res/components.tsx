@@ -20,19 +20,38 @@ RequiredA.inheritAttrs = false;
 RequiredButton.inheritAttrs = false;
 RequiredDiv.inheritAttrs = false;
 
-export const DefinedA = defineComponent<WithRequiredProps<JSX.IntrinsicElements["a"]>>(
+export const DefinedA = defineComponent<WithRequiredProps<JSX.IntrinsicElements["a"]>>({
+  setup(_, { attrs, slots }) {
+    return () => h("a", attrs, slots);
+  },
+  inheritAttrs: false,
+});
+export const DefinedButton = defineComponent<WithRequiredProps<JSX.IntrinsicElements["button"]>>({
+  setup(_, { attrs, slots }) {
+    return () => h("button", attrs, slots);
+  },
+  inheritAttrs: false,
+});
+export const DefinedDiv = defineComponent<WithRequiredProps<JSX.IntrinsicElements["div"]>>({
+  setup(_, { attrs, slots }) {
+    return () => h("div", attrs, slots);
+  },
+  inheritAttrs: false,
+});
+
+export const DefinedSetupFnA = defineComponent<WithRequiredProps<JSX.IntrinsicElements["a"]>>(
   (_, { attrs, slots }) =>
     () =>
       h("a", attrs, slots),
   { inheritAttrs: false }
 );
-export const DefinedButton = defineComponent<WithRequiredProps<JSX.IntrinsicElements["button"]>>(
+export const DefinedSetupFnButton = defineComponent<WithRequiredProps<JSX.IntrinsicElements["button"]>>(
   (_, { attrs, slots }) =>
     () =>
       h("button", attrs, slots),
   { inheritAttrs: false }
 );
-export const DefinedDiv = defineComponent<WithRequiredProps<JSX.IntrinsicElements["div"]>>(
+export const DefinedSetupFnDiv = defineComponent<WithRequiredProps<JSX.IntrinsicElements["div"]>>(
   (_, { attrs, slots }) =>
     () =>
       h("div", attrs, slots),

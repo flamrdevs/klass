@@ -3,7 +3,7 @@ import type { Component, JSX } from "solid-js";
 export type SupportedComponentType<P = any> = Component<P>;
 
 export type SupportedComponentProps<T extends SupportedComponentType | keyof JSX.IntrinsicElements> =
-  T extends SupportedComponentType<infer P> ? P : T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : never;
+  T extends SupportedComponentType<infer P> ? P : T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : {};
 
 export type SupportedElementType<P = any> =
   | {

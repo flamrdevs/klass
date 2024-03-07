@@ -6,7 +6,7 @@ import * as mono from "./../../src/mono";
 
 import * as expects from "./../~expects";
 
-import { Button } from "react-aria-components";
+import { Button } from "@ariakit/react";
 
 describe("mono", () => {
   describe("Button", () => {
@@ -32,6 +32,13 @@ describe("mono", () => {
       expects
         .element(render(<Klassed data-testid="root" />).getByTestId("root"))
         .tagName("BUTTON")
+        .className("base color-red");
+    });
+
+    it("equal & own polymorphic", () => {
+      expects
+        .element(render(<Klassed data-testid="root" render={<a />} />).getByTestId("root"))
+        .tagName("A")
         .className("base color-red");
     });
   });

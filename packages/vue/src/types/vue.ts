@@ -1,10 +1,12 @@
 import type { DefineSetupFnComponent, FunctionalComponent } from "vue";
 import type { JSX } from "vue/jsx-runtime";
 
-export type SupportedComponentType<P = any> = FunctionalComponent<P> | DefineSetupFnComponent<P extends Record<string, any> ? P : never>;
+type SimpleComponent<P> = new () => { $props: P };
+
+export type SupportedComponentType<P = any> = SimpleComponent<P> | FunctionalComponent<P> | (P extends Record<string, any> ? DefineSetupFnComponent<P> : never);
 
 export type SupportedComponentProps<T extends SupportedComponentType | keyof JSX.IntrinsicElements> =
-  T extends SupportedComponentType<infer P> ? P : T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : never;
+  T extends SupportedComponentType<infer P> ? P : T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : {};
 
 export type SupportedElementType<P = any> =
   | {

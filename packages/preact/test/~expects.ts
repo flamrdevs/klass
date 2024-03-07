@@ -1,10 +1,5 @@
 import { expect } from "vitest";
 
-import type { ConditionSchema, VariantsSchema } from "@klass/core";
-
-import type { KlassedComponent, ReklassedComponent } from "./../src/types";
-import type { MonoKlassedComponent, MonoReklassedComponent } from "./../src/mono";
-
 import { expects } from "./../../core/test/~";
 
 const klassed = (object: { klass?: any }) => {
@@ -18,20 +13,11 @@ const reklassed = (object: { reklass?: any }) => {
   expects.reklassFn(object.reklass);
 };
 
-export const klassedComponent = <T extends VariantsSchema>(klassedComponent: KlassedComponent<any, T>) => {
-  klassed(klassedComponent);
+export const klassedComponent = (object: { klass?: any }) => {
+  klassed(object);
 };
-export const reklassedComponent = <C extends ConditionSchema, T extends VariantsSchema>(reklassedComponent: ReklassedComponent<any, C, T>) => {
-  reklassed(reklassedComponent);
-};
-
-export const mono = {
-  klassedComponent: <T extends VariantsSchema>(klassedComponent: MonoKlassedComponent<any, T>) => {
-    klassed(klassedComponent);
-  },
-  reklassedComponent: <C extends ConditionSchema, T extends VariantsSchema>(reklassedComponent: MonoReklassedComponent<any, C, T>) => {
-    reklassed(reklassedComponent);
-  },
+export const reklassedComponent = (object: { reklass?: any }) => {
+  reklassed(object);
 };
 
 export const element = <T extends Element>(el: T) => {

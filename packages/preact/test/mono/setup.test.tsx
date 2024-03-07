@@ -12,8 +12,8 @@ describe("mono.setup", () => {
     const KlassedComponent = klassed("div", core.shared.klass.button.basic.options);
     const ReklassedComponent = reklassed("div", core.shared.reklass.box.basic.options);
 
-    expects.mono.klassedComponent(KlassedComponent);
-    expects.mono.reklassedComponent(ReklassedComponent);
+    expects.klassedComponent(KlassedComponent);
+    expects.reklassedComponent(ReklassedComponent);
 
     core.expects.inCustomEnd(KlassedComponent.klass());
     core.expects.inCustomEnd(ReklassedComponent.reklass());

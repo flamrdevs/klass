@@ -23,6 +23,7 @@
   },
   "homepage": "https://klass.pages.dev",
   "devDependencies": {
+    "@ariakit/react": "^0.4.3",
     "@ark-ui/react": "^2.2.3",
     "@ark-ui/solid": "^2.2.0",
     "@ark-ui/vue": "^0.11.0",
@@ -35,6 +36,7 @@
     "@preact/signals": "^1.2.2",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-switch": "^1.0.3",
     "@solidjs/testing-library": "^0.8.6",
     "@testing-library/preact": "^3.2.3",
     "@testing-library/react": "^14.2.1",

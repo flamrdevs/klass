@@ -2,6 +2,8 @@ import { defineComponent, ref } from "vue";
 
 import { klass, reklass } from "@klass/core";
 
+import { A } from "./components";
+
 import { klassed, reklassed } from "./../../src";
 
 import { shared } from "./../../../core/test/~";
@@ -30,7 +32,7 @@ export const ReklassedBoxCustomAs = reklassed("div", shared.reklass.box.customAs
 export const ReklassedBoxCustomAsCustomEnd = reklassed("div", shared.reklass.box.customAs.options, shared.custom.configEndAsProps);
 
 export const KlassedButtonBasicReactive = defineComponent(() => {
-  const as = ref<"a" | "button">("button");
+  const as = ref<typeof A | "button">("button");
   const color = ref<"red" | "green" | "blue">("red");
   const classes = ref<string | null>(null);
 
@@ -41,7 +43,7 @@ export const KlassedButtonBasicReactive = defineComponent(() => {
       color={color.value}
       class={["extra", "classes", classes.value]}
       onClick={() => {
-        as.value = "a";
+        as.value = A;
         color.value = "blue";
         classes.value = "reactive";
       }}
@@ -52,7 +54,7 @@ export const KlassedButtonBasicReactive = defineComponent(() => {
 });
 
 export const ReklassedBoxBasicReactive = defineComponent(() => {
-  const as = ref<"a" | "button">("button");
+  const as = ref<typeof A | "button">("button");
   const x = ref<"1" | "2" | "2">("1");
   const classes = ref<string | null>(null);
 
@@ -63,7 +65,7 @@ export const ReklassedBoxBasicReactive = defineComponent(() => {
       x={x.value}
       class={["extra", "classes", classes.value]}
       onClick={() => {
-        as.value = "a";
+        as.value = A;
         x.value = "2";
         classes.value = "reactive";
       }}

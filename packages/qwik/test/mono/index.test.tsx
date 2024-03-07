@@ -23,6 +23,10 @@ import {
   ReklassedBoxCustomAs,
   ReklassedBoxBasicCustomEnd,
   ReklassedBoxCustomAsCustomEnd,
+  KlassedButtonBasicReactive,
+  KlassedButtonBasicSignalReactive,
+  ReklassedBoxBasicReactive,
+  ReklassedBoxBasicSignalReactive,
 } from "./~res";
 
 const PROPS = {
@@ -32,10 +36,10 @@ const PROPS = {
 
 describe("klassed", () => {
   it("type", () => {
-    expects.mono.klassedComponent(KlassedButtonBasic);
-    expects.mono.klassedComponent(KlassedButtonBase);
-    expects.mono.klassedComponent(KlassedButtonDefaults);
-    expects.mono.klassedComponent(KlassedButtonCompounds);
+    expects.klassedComponent(KlassedButtonBasic);
+    expects.klassedComponent(KlassedButtonBase);
+    expects.klassedComponent(KlassedButtonDefaults);
+    expects.klassedComponent(KlassedButtonCompounds);
   });
 
   describe("equal", () => {
@@ -92,10 +96,10 @@ describe("klassed", () => {
 
   describe("custom end", () => {
     it("type", () => {
-      expects.mono.klassedComponent(KlassedButtonBasicCustomEnd);
-      expects.mono.klassedComponent(KlassedButtonBaseCustomEnd);
-      expects.mono.klassedComponent(KlassedButtonDefaultsCustomEnd);
-      expects.mono.klassedComponent(KlassedButtonCompoundsCustomEnd);
+      expects.klassedComponent(KlassedButtonBasicCustomEnd);
+      expects.klassedComponent(KlassedButtonBaseCustomEnd);
+      expects.klassedComponent(KlassedButtonDefaultsCustomEnd);
+      expects.klassedComponent(KlassedButtonCompoundsCustomEnd);
     });
 
     describe("equal", () => {
@@ -188,8 +192,8 @@ describe("klassed", () => {
 
 describe("reklassed", () => {
   it("type", () => {
-    expects.mono.reklassedComponent(ReklassedBoxBasic);
-    expects.mono.reklassedComponent(ReklassedBoxCustomAs);
+    expects.reklassedComponent(ReklassedBoxBasic);
+    expects.reklassedComponent(ReklassedBoxCustomAs);
   });
 
   describe("equal", () => {
@@ -224,8 +228,8 @@ describe("reklassed", () => {
 
   describe("custom end", () => {
     it("type", () => {
-      expects.mono.reklassedComponent(ReklassedBoxBasicCustomEnd);
-      expects.mono.reklassedComponent(ReklassedBoxCustomAsCustomEnd);
+      expects.reklassedComponent(ReklassedBoxBasicCustomEnd);
+      expects.reklassedComponent(ReklassedBoxCustomAsCustomEnd);
     });
 
     describe("equal", () => {
@@ -261,5 +265,79 @@ describe("reklassed", () => {
         }
       });
     });
+  });
+});
+
+describe("reactive", () => {
+  it("klassed", async () => {
+    const { getByTestId, fireEvent } = await render(<KlassedButtonBasicReactive />);
+
+    let element = getByTestId("reactive");
+
+    expects
+      .element(element)
+      .tagName("BUTTON")
+      .className(clsx("color-red", ["extra", "classes"]));
+
+    await fireEvent.click(element);
+
+    expects
+      .element((element = getByTestId("reactive")))
+      .tagName("BUTTON")
+      .className(clsx("color-blue", ["extra", "classes", "reactive"]));
+  });
+
+  it("klassed signal", async () => {
+    const { getByTestId, fireEvent } = await render(<KlassedButtonBasicSignalReactive />);
+
+    let element = getByTestId("reactive");
+
+    expects
+      .element(element)
+      .tagName("BUTTON")
+      .className(clsx("color-red", ["extra", "classes"]));
+
+    await fireEvent.click(element);
+
+    expects
+      .element((element = getByTestId("reactive")))
+      .tagName("BUTTON")
+      .className(clsx("color-blue", ["extra", "classes", "reactive"]));
+  });
+
+  it("reklassed", async () => {
+    const { getByTestId, fireEvent } = await render(<ReklassedBoxBasicReactive />);
+
+    let element = getByTestId("reactive");
+
+    expects
+      .element(element)
+      .tagName("DIV")
+      .className(clsx("x-1", ["extra", "classes"]));
+
+    await fireEvent.click(element);
+
+    expects
+      .element((element = getByTestId("reactive")))
+      .tagName("DIV")
+      .className(clsx("x-2", ["extra", "classes", "reactive"]));
+  });
+
+  it("reklassed signal", async () => {
+    const { getByTestId, fireEvent } = await render(<ReklassedBoxBasicSignalReactive />);
+
+    let element = getByTestId("reactive");
+
+    expects
+      .element(element)
+      .tagName("DIV")
+      .className(clsx("x-1", ["extra", "classes"]));
+
+    await fireEvent.click(element);
+
+    expects
+      .element((element = getByTestId("reactive")))
+      .tagName("DIV")
+      .className(clsx("x-2", ["extra", "classes", "reactive"]));
   });
 });
