@@ -80,11 +80,11 @@
   },
   "homepage": "https://klass.pages.dev",
   "peerDependencies": {
-    "@builder.io/qwik": "^1.4.0",
+    "@builder.io/qwik": "1.5.0 - 2.0.0",
     "@klass/core": "4.0.0-next.21"
   },
   "devDependencies": {
-    "@builder.io/qwik": "^1.4.5",
+    "@builder.io/qwik": "^1.5.1",
     "@klass/core": "4.0.0-next.21"
   }
 }

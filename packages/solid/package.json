@@ -80,7 +80,7 @@
   "homepage": "https://klass.pages.dev",
   "peerDependencies": {
     "@klass/core": "4.0.0-next.21",
-    "solid-js": "^1.8.0"
+    "solid-js": "1.8.0 - 2.0.0"
   },
   "devDependencies": {
     "@klass/core": "4.0.0-next.21",

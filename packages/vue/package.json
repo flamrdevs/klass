@@ -80,7 +80,7 @@
   "homepage": "https://klass.pages.dev",
   "peerDependencies": {
     "@klass/core": "4.0.0-next.21",
-    "vue": "^3.4.0"
+    "vue": "3.4.0 - 4.0.0"
   },
   "devDependencies": {
     "@klass/core": "4.0.0-next.21",
