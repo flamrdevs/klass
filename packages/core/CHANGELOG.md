@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.22
+
+### Patch Changes
+
+- improves compatibility
+
 ## 4.0.0-next.21
 
 ### Patch Changes
