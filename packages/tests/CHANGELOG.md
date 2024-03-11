@@ -1,5 +1,11 @@
 # @klass/tests
 
+## 0.0.1-next.1
+
+### Patch Changes
+
+- experimental compose
+
 ## 0.0.1-next.0
 
 ### Patch Changes
