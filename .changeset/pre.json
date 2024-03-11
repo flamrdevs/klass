@@ -7,7 +7,8 @@
     "@klass/react": "3.4.11",
     "@klass/solid": "3.4.11",
     "@klass/qwik": "4.0.0-next.1",
-    "@klass/vue": "4.0.0-next.1"
+    "@klass/vue": "4.0.0-next.1",
+    "@klass/tests": "0.0.0"
   },
   "changesets": [
     "afraid-bottles-burn",
@@ -20,6 +21,7 @@
     "eleven-colts-run",
     "khaki-bees-rule",
     "lucky-gifts-do",
+    "moody-cougars-switch",
     "odd-falcons-trade",
     "old-shrimps-yawn",
     "old-toes-sniff",

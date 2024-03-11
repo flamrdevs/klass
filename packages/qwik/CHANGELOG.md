@@ -1,5 +1,13 @@
 # @klass/qwik
 
+## 4.0.0-next.23
+
+### Patch Changes
+
+- remove o property and rename component to fx property
+- Updated dependencies
+  - @klass/core@4.0.0-next.23
+
 ## 4.0.0-next.22
 
 ### Patch Changes
