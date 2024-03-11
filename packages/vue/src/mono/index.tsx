@@ -20,17 +20,17 @@ function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     keys = getVariantKeys(fn.k);
 
-  return defineComponent<WithClassesValueProps<{}>>((props, { attrs, slots }) => {
+  const Comp = defineComponent<WithClassesValueProps<{}>>((props, { attrs, slots }) => {
     const splitted = computed(() => splitRestProps(attrs, keys, config.fp));
 
     return () => h(element, { ...defaultProps, ...(splitted.value.o as any), class: fn(splitted.value.p, (props.class ?? defaultClass) as ClassValue) }, slots);
   }, defaultComponentOptions) as any;
+
+  return (Comp.fx = fn), Comp;
 }
 
 function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET, VS>): MonoKlassedComponent<ET, VS> {
-  const fn = typeofFunction(options) ? options : klass<VS>(options, config);
-  const Component = create(element, fn, config) as unknown as MonoKlassedComponent<ET, VS>;
-  return (Component.klass = fn), Component;
+  return create(element, typeofFunction(options) ? options : klass<VS>(options, config), config) as unknown as MonoKlassedComponent<ET, VS>;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
@@ -38,9 +38,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
   options: ReklassedOptions<CS, VS>,
   config?: ReklassedConfig<ET, VS>
 ): MonoReklassedComponent<ET, CS, VS> {
-  const fn = typeofFunction(options) ? options : reklass<CS, VS>(options, config);
-  const Component = create(element, fn, config) as unknown as MonoReklassedComponent<ET, CS, VS>;
-  return (Component.reklass = fn), Component;
+  return create(element, typeofFunction(options) ? options : reklass<CS, VS>(options, config), config) as unknown as MonoReklassedComponent<ET, CS, VS>;
 }
 
 export type { MonoKlassedComponent, MonoReklassedComponent };

@@ -7,6 +7,7 @@ import { render, cleanup, fireEvent } from "@solidjs/testing-library";
 import { clsx } from "@klass/core";
 
 import * as expects from "./~expects";
+import * as tests from "./../../tests";
 
 import { shared } from "./../../core/test/~";
 
@@ -42,7 +43,7 @@ describe("klassed", () => {
 
   describe("equal", () => {
     const expect = (ui: () => JSX.Element, equal: string) => {
-      expects.element(render(ui).getByTestId("root")).tagName("BUTTON").className(clsx(equal, PROPS.class)).textContent("children");
+      tests.expects.element(render(ui).getByTestId("root")).tagName("BUTTON").className(clsx(equal, PROPS.class)).textContent("children");
       cleanup();
     };
 
@@ -109,7 +110,7 @@ describe("klassed", () => {
 
     describe("equal", () => {
       const expect = (ui: () => JSX.Element, equal: string) => {
-        expects
+        tests.expects
           .element(render(ui).getByTestId("root"))
           .tagName("BUTTON")
           .className(shared.custom.end(clsx(equal, PROPS.class)))
@@ -210,7 +211,7 @@ describe("reklassed", () => {
 
   describe("equal", () => {
     const expect = (ui: () => JSX.Element, equal: string) => {
-      expects.element(render(ui).getByTestId("root")).tagName("DIV").className(clsx(equal, PROPS.class)).textContent("children");
+      tests.expects.element(render(ui).getByTestId("root")).tagName("DIV").className(clsx(equal, PROPS.class)).textContent("children");
       cleanup();
     };
 
@@ -249,7 +250,7 @@ describe("reklassed", () => {
 
     describe("equal", () => {
       const expect = (ui: () => JSX.Element, equal: string) => {
-        expects
+        tests.expects
           .element(render(ui).getByTestId("root"))
           .tagName("DIV")
           .className(shared.custom.end(clsx(equal, PROPS.class)))
@@ -292,14 +293,14 @@ describe("reactive", () => {
 
     let element = getByTestId("reactive");
 
-    expects
+    tests.expects
       .element(element)
       .tagName("BUTTON")
       .className(clsx("color-red", ["extra", "classes"]));
 
     fireEvent.click(element);
 
-    expects
+    tests.expects
       .element((element = getByTestId("reactive")))
       .tagName("A")
       .className(clsx("color-blue", ["extra", "classes", "reactive"]));
@@ -310,14 +311,14 @@ describe("reactive", () => {
 
     let element = getByTestId("reactive");
 
-    expects
+    tests.expects
       .element(element)
       .tagName("BUTTON")
       .className(clsx("x-1", ["extra", "classes"]));
 
     fireEvent.click(element);
 
-    expects
+    tests.expects
       .element((element = getByTestId("reactive")))
       .tagName("A")
       .className(clsx("x-2", ["extra", "classes", "reactive"]));

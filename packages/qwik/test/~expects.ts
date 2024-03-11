@@ -1,39 +1,16 @@
-import { expect } from "vitest";
+import { expectTypeOf } from "vitest";
 
 import { expects } from "./../../core/test/~";
 
-const klassed = (object: { klass?: any }) => {
-  expect(object).toBeTypeOf("function");
-  expect(object).toHaveProperty("klass");
-  expects.klassFn(object.klass);
-};
-const reklassed = (object: { reklass?: any }) => {
-  expect(object).toBeTypeOf("function");
-  expect(object).toHaveProperty("reklass");
-  expects.reklassFn(object.reklass);
-};
+import * as tests from "./../../tests";
 
-export const klassedComponent = (object: { klass?: any }) => {
-  klassed(object);
+export const klassedComponent = (object: { (...any: any[]): any; fx?: any }) => {
+  expectTypeOf(object).toBeFunction();
+  tests.expects.hasFxProperty(object);
+  expects.klassFn(object.fx);
 };
-export const reklassedComponent = (object: { reklass?: any }) => {
-  reklassed(object);
-};
-
-export const element = <T extends Element>(el: T) => {
-  expect(el).toBeDefined();
-  return {
-    className(className: string) {
-      expect(el.className).toEqual(className);
-      return this;
-    },
-    tagName(tagName: string) {
-      expect(el.tagName).toEqual(tagName);
-      return this;
-    },
-    textContent(textContent: string) {
-      expect(el.textContent).toEqual(textContent);
-      return this;
-    },
-  };
+export const reklassedComponent = (object: { (...any: any[]): any; fx?: any }) => {
+  expectTypeOf(object).toBeFunction();
+  tests.expects.hasFxProperty(object);
+  expects.reklassFn(object.fx);
 };

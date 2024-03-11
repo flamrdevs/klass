@@ -15,8 +15,8 @@ describe("mono.setup", () => {
     expects.klassedComponent(KlassedComponent);
     expects.reklassedComponent(ReklassedComponent);
 
-    core.expects.inCustomEnd(KlassedComponent.klass());
-    core.expects.inCustomEnd(ReklassedComponent.reklass());
+    core.expects.inCustomEnd(KlassedComponent.fx());
+    core.expects.inCustomEnd(ReklassedComponent.fx());
   };
 
   it("works", () => {

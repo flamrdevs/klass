@@ -20,11 +20,11 @@ export type KlassedConfig<ET extends SupportedElementType, VS extends FinalVaria
 export type ReklassedConfig<ET extends SupportedElementType, VS extends FinalVariantsSchema> = KlassedConfig<ET, VS> & AsFnProps;
 
 export type KlassedBase<VS extends FinalVariantsSchema> = {
-  klass: KlassFn<VS>;
+  fx: KlassFn<VS>;
 };
 
 export type ReklassedBase<CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
-  reklass: ReklassFn<CS, VS>;
+  fx: ReklassFn<CS, VS>;
 };
 
 export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {

@@ -18,9 +18,8 @@ type VariantGroup<T extends VariantsSchema> = {
 
 type CompoundVariant<T extends VariantsSchema> = [{ [K in keyof T]?: TransformKey<keyof T[K]> }, ClassValue];
 
-type BaseFn<T extends VariantsSchema, P, O, G> = {
+type BaseFn<T extends VariantsSchema, P, G> = {
   (props?: P, classes?: ClassValue): string;
-  o: O;
   g: G;
   k: (keyof T)[];
 };
@@ -37,7 +36,6 @@ type KlassFn<T extends VariantsSchema> = BaseFn<
   {
     [K in keyof T]?: TransformKey<keyof T[K]>;
   },
-  KlassOptions<T>,
   VariantGroup<T>
 >;
 
@@ -65,7 +63,6 @@ type ReklassFn<C extends ConditionSchema, T extends VariantsSchema> = BaseFn<
           [condition in keyof C]?: TransformKey<keyof T[K]>;
         };
   },
-  ReklassOptions<C, T>,
   RevariantGroup<C, T>
 >;
 

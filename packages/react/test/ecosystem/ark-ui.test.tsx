@@ -7,6 +7,7 @@ import group from "@klass/core/group";
 import * as mono from "./../../src/mono";
 
 import * as expects from "./../~expects";
+import * as tests from "./../../../tests";
 
 import { Switch } from "@ark-ui/react";
 
@@ -75,10 +76,10 @@ describe("mono", () => {
       const thumb = getByTestId("thumb");
       const label = getByTestId("label");
 
-      expects.element(root).tagName("LABEL").className("root-base root-color-red");
-      expects.element(control).tagName("SPAN").className("control-base control-color-red");
-      expects.element(thumb).tagName("SPAN").className("thumb-base thumb-color-red");
-      expects.element(label).tagName("P").className("label-base label-color-red");
+      tests.expects.element(root).tagName("LABEL").className("root-base root-color-red");
+      tests.expects.element(control).tagName("SPAN").className("control-base control-color-red");
+      tests.expects.element(thumb).tagName("SPAN").className("thumb-base thumb-color-red");
+      tests.expects.element(label).tagName("P").className("label-base label-color-red");
     });
   });
 });

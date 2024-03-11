@@ -5,6 +5,7 @@ import { render } from "@testing-library/react";
 import * as mono from "./../../src/mono";
 
 import * as expects from "./../~expects";
+import * as tests from "./../../../tests";
 
 import { Button } from "react-aria-components";
 
@@ -29,7 +30,7 @@ describe("mono", () => {
     });
 
     it("equal", () => {
-      expects
+      tests.expects
         .element(render(<Klassed data-testid="root" />).getByTestId("root"))
         .tagName("BUTTON")
         .className("base color-red");

@@ -9,6 +9,7 @@ import group from "@klass/core/group";
 import * as mono from "./../../src/mono";
 
 import * as expects from "./../~expects";
+import * as tests from "./../../../tests";
 
 import { Separator } from "@radix-ui/react-separator";
 import * as Switch from "@radix-ui/react-switch";
@@ -35,14 +36,14 @@ describe("mono", () => {
     });
 
     it("equal", () => {
-      expects
+      tests.expects
         .element(render(<Klassed data-testid="root" />).getByTestId("root"))
         .tagName("DIV")
         .className("base color-red");
     });
 
     it("equal - own polymorphic", () => {
-      expects
+      tests.expects
         .element(
           render(
             <Klassed asChild data-testid="root" color="blue">
@@ -102,8 +103,8 @@ describe("mono", () => {
       const root = getByTestId("root");
       const thumb = getByTestId("thumb");
 
-      expects.element(root).tagName("BUTTON").className("root-base root-color-red");
-      expects.element(thumb).tagName("DIV").className("thumb-base thumb-color-red");
+      tests.expects.element(root).tagName("BUTTON").className("root-base root-color-red");
+      tests.expects.element(thumb).tagName("DIV").className("thumb-base thumb-color-red");
     });
   });
 
@@ -132,14 +133,14 @@ describe("mono", () => {
     });
 
     it("equal", () => {
-      expects
+      tests.expects
         .element(render(<Klassed data-testid="root" />).getByTestId("root"))
         .tagName("BUTTON")
         .className("base color-red");
     });
 
     it("equal - own polymorphic", () => {
-      expects
+      tests.expects
         .element(
           render(
             <Klassed asChild data-testid="root" color="blue">

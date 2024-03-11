@@ -12,7 +12,6 @@ type KlassedOnly<B extends string, T extends StrictGroupVariantsSchema<B>> = {
 type SlotsFn<B extends string, T extends StrictGroupVariantsSchema<B>> = {
   (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }): KlassedOnly<B, T>;
 } & {
-  o: GroupOptions<B, T>;
   klass: GroupResult<B, T>;
 };
 
@@ -25,7 +24,6 @@ const slots = <B extends string, T extends StrictGroupVariantsSchema<B>>(options
     return klassesonly;
   }) as SlotsFn<B, T>;
 
-  fn.o = options;
   fn.klass = klasses;
 
   return fn;

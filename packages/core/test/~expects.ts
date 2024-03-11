@@ -1,41 +1,36 @@
-import { expect } from "vitest";
+import { expect, expectTypeOf } from "vitest";
 
 import type { ConditionSchema, VariantsSchema, VariantFn, KlassFn, RevariantFn, ReklassFn } from "./../src/types";
 
 import { custom } from "./~shared";
 
+import * as tests from "./../../tests";
+
+const baseFn = (fn: { (...any: any[]): any; g: Record<any, any>; k: any[] }) => {
+  expectTypeOf(fn).toBeFunction();
+  tests.expects.hasGProperty(fn);
+  tests.expects.hasKProperty(fn);
+  expectTypeOf(fn.g).toBeObject();
+  expectTypeOf(fn.k).toBeArray();
+  expect(Object.keys(fn.g)).toEqual(fn.k);
+};
+
 export const variantFn = <T extends VariantsSchema[string]>(variantFn: VariantFn<T>) => {
-  expect(variantFn).toBeTypeOf("function");
+  expectTypeOf(variantFn).toBeFunction();
 };
 
 export const klassFn = <T extends VariantsSchema>(fn: KlassFn<T>) => {
-  expect(fn).toBeTypeOf("function");
-  expect(fn).toHaveProperty("o");
-  expect(fn.o).toBeTypeOf("object");
-
-  expect(fn).toHaveProperty("g");
-  expect(fn).toHaveProperty("k");
-  expect(fn.g).toBeTypeOf("object");
-  const keys = Object.keys(fn.o.variants) as (keyof T)[];
-  expect(fn.k).toEqual(keys);
-  for (const key of keys) variantFn(fn.g[key]);
+  baseFn(fn);
+  for (const key of fn.k) variantFn(fn.g[key]);
 };
 
 export const revariantFn = <C extends ConditionSchema, T extends VariantsSchema[string]>(revariantFn: RevariantFn<C, T>) => {
-  expect(revariantFn).toBeTypeOf("function");
+  expectTypeOf(revariantFn).toBeFunction();
 };
 
 export const reklassFn = <C extends ConditionSchema, T extends VariantsSchema>(fn: ReklassFn<C, T>) => {
-  expect(fn).toBeTypeOf("function");
-  expect(fn).toHaveProperty("o");
-  expect(fn.o).toBeTypeOf("object");
-
-  expect(fn).toHaveProperty("g");
-  expect(fn).toHaveProperty("k");
-  expect(fn.g).toBeTypeOf("object");
-  const keys = Object.keys(fn.o.variants) as (keyof T)[];
-  expect(fn.k).toEqual(keys);
-  for (const key of keys) revariantFn(fn.g[key]);
+  baseFn(fn);
+  for (const key of fn.k) revariantFn(fn.g[key]);
 };
 
 export const inCustomEnd = (className: string) => {

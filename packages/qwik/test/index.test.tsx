@@ -5,6 +5,7 @@ import type { JSXOutput } from "@builder.io/qwik";
 import { clsx } from "@klass/core";
 
 import * as expects from "./~expects";
+import * as tests from "./../../tests";
 
 import { render } from "./testing-library";
 
@@ -45,7 +46,7 @@ describe("klassed", () => {
   describe("equal", () => {
     const expect = async (ui: JSXOutput, equal: string) => {
       const { cleanup, getByTestId } = await render(ui);
-      expects.element(getByTestId("root")).tagName("BUTTON").className(clsx(equal, PROPS.class)).textContent("children");
+      tests.expects.element(getByTestId("root")).tagName("BUTTON").className(clsx(equal, PROPS.class)).textContent("children");
       cleanup();
     };
 
@@ -105,7 +106,7 @@ describe("klassed", () => {
     describe("equal", () => {
       const expect = async (ui: JSXOutput, equal: string) => {
         const { cleanup, getByTestId } = await render(ui);
-        expects
+        tests.expects
           .element(getByTestId("root"))
           .tagName("BUTTON")
           .className(shared.custom.end(clsx(equal, PROPS.class)))
@@ -199,7 +200,7 @@ describe("reklassed", () => {
   describe("equal", () => {
     const expect = async (ui: JSXOutput, equal: string) => {
       const { cleanup, getByTestId } = await render(ui);
-      expects.element(getByTestId("root")).tagName("DIV").className(clsx(equal, PROPS.class)).textContent("children");
+      tests.expects.element(getByTestId("root")).tagName("DIV").className(clsx(equal, PROPS.class)).textContent("children");
       cleanup();
     };
 
@@ -235,7 +236,7 @@ describe("reklassed", () => {
     describe("equal", () => {
       const expect = async (ui: JSXOutput, equal: string) => {
         const { cleanup, getByTestId } = await render(ui);
-        expects
+        tests.expects
           .element(getByTestId("root"))
           .tagName("DIV")
           .className(shared.custom.end(clsx(equal, PROPS.class)))
@@ -274,14 +275,14 @@ describe("reactive", () => {
 
     let element = getByTestId("reactive");
 
-    expects
+    tests.expects
       .element(element)
       .tagName("BUTTON")
       .className(clsx("color-red", ["extra", "classes"]));
 
     await fireEvent.click(element);
 
-    expects
+    tests.expects
       .element((element = getByTestId("reactive")))
       .tagName("A")
       .className(clsx("color-blue", ["extra", "classes", "reactive"]));
@@ -292,14 +293,14 @@ describe("reactive", () => {
 
     let element = getByTestId("reactive");
 
-    expects
+    tests.expects
       .element(element)
       .tagName("BUTTON")
       .className(clsx("color-red", ["extra", "classes"]));
 
     await fireEvent.click(element);
 
-    expects
+    tests.expects
       .element((element = getByTestId("reactive")))
       .tagName("BUTTON")
       .className(clsx("color-blue", ["extra", "classes", "reactive"]));
@@ -310,14 +311,14 @@ describe("reactive", () => {
 
     let element = getByTestId("reactive");
 
-    expects
+    tests.expects
       .element(element)
       .tagName("BUTTON")
       .className(clsx("x-1", ["extra", "classes"]));
 
     await fireEvent.click(element);
 
-    expects
+    tests.expects
       .element((element = getByTestId("reactive")))
       .tagName("A")
       .className(clsx("x-2", ["extra", "classes", "reactive"]));
@@ -328,14 +329,14 @@ describe("reactive", () => {
 
     let element = getByTestId("reactive");
 
-    expects
+    tests.expects
       .element(element)
       .tagName("BUTTON")
       .className(clsx("x-1", ["extra", "classes"]));
 
     await fireEvent.click(element);
 
-    expects
+    tests.expects
       .element((element = getByTestId("reactive")))
       .tagName("BUTTON")
       .className(clsx("x-2", ["extra", "classes", "reactive"]));

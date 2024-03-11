@@ -1,4 +1,4 @@
-import { expect } from "vitest";
+import { expect, expectTypeOf } from "vitest";
 
 import type { EndFn } from "./../../src/types";
 import { defaultEndFn } from "./../../src/utils";
@@ -27,11 +27,9 @@ export const options = {
 };
 
 export const expectResult = (result: any, end: EndFn = defaultEndFn) => {
-  expect(result).toBeTypeOf("function");
-  expect(result).toHaveProperty("o");
+  expectTypeOf(result as (...any: any[]) => any).toBeFunction();
   expect(result).toHaveProperty("klass");
-  expect(result.o).toBeTypeOf("object");
-  expect(result.klass).toBeTypeOf("object");
+  expectTypeOf(result.klass as Record<any, any>).toBeObject();
 
   expects.klassFn(result.klass.root);
   expects.klassFn(result.klass.header);

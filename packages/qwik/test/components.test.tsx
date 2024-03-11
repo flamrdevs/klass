@@ -2,7 +2,7 @@ import { describe, it } from "vitest";
 
 import type { JSXOutput } from "@builder.io/qwik";
 
-import * as expects from "./~expects";
+import * as tests from "./../../tests";
 
 import { render } from "./testing-library";
 
@@ -19,7 +19,7 @@ const REKLASS_OPTIONS = shared.reklass.abstract.options;
 
 describe("poly", () => {
   describe("klassed", () => {
-    const expect = async (ui: JSXOutput) => expects.element((await render(ui)).getByTestId(PROPS["data-testid"]));
+    const expect = async (ui: JSXOutput) => tests.expects.element((await render(ui)).getByTestId(PROPS["data-testid"]));
 
     it("A", async () => {
       const Component = poly.klassed(A, KLASS_OPTIONS);
@@ -69,7 +69,7 @@ describe("poly", () => {
   });
 
   describe("reklassed", () => {
-    const expect = async (ui: JSXOutput) => expects.element((await render(ui)).getByTestId(PROPS["data-testid"]));
+    const expect = async (ui: JSXOutput) => tests.expects.element((await render(ui)).getByTestId(PROPS["data-testid"]));
 
     it("Div", async () => {
       const Component = poly.reklassed(Div, REKLASS_OPTIONS);
@@ -101,7 +101,7 @@ describe("poly", () => {
 
 describe("mono", () => {
   describe("klassed", () => {
-    const expect = async (ui: JSXOutput) => expects.element((await render(ui)).getByTestId(PROPS["data-testid"]));
+    const expect = async (ui: JSXOutput) => tests.expects.element((await render(ui)).getByTestId(PROPS["data-testid"]));
 
     it("A", async () => {
       const Component = mono.klassed(A, KLASS_OPTIONS);
@@ -139,7 +139,7 @@ describe("mono", () => {
   });
 
   describe("reklassed", () => {
-    const expect = async (ui: JSXOutput) => expects.element((await render(ui)).getByTestId(PROPS["data-testid"]));
+    const expect = async (ui: JSXOutput) => tests.expects.element((await render(ui)).getByTestId(PROPS["data-testid"]));
 
     it("Div", async () => {
       const Component = mono.reklassed(Div, REKLASS_OPTIONS);
