@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { variant, klass, revariant, reklass } from "./../src";
+import { variant, klass, revariant, reklass, compose } from "./../src";
 
 import * as shared from "./~shared";
 import * as expects from "./~expects";
@@ -263,5 +263,43 @@ describe("reklass", () => {
         for (const test of shared.reklass.box.customAs.test) expect(reklass_box_customAs(test.props)).toEqual(shared.custom.end(test.equal));
       });
     });
+  });
+});
+
+describe("compose", () => {
+  it("works", () => {
+    const color = klass(shared.compose.klass.color.options);
+    const size = klass(shared.compose.klass.size.options);
+    const margin = reklass(shared.compose.reklass.margin.options);
+    const padding = reklass(shared.compose.reklass.padding.options);
+
+    const fn = compose(color, size, margin, padding);
+
+    expect(fn.k).toEqual(["color", "size", "m", "mx", "my", "p", "px", "py"]);
+
+    expect(fn()).toEqual("color-base size-base");
+    expect(fn({}, ["extra", "classes"])).toEqual("color-base size-base extra classes");
+    expect(
+      fn(
+        {
+          color: "blue",
+          size: "lg",
+          m: "xs",
+          p: "xs",
+        },
+        ["extra", "classes"]
+      )
+    ).toEqual("color-base color-blue size-base size-lg m-1 p-1 extra classes");
+    expect(
+      fn(
+        {
+          color: "blue",
+          size: "lg",
+          m: { base: "xs", md: "xl" },
+          p: { base: "xs", md: "xl" },
+        },
+        ["extra", "classes"]
+      )
+    ).toEqual("color-base color-blue size-base size-lg m-1 md:m-5 p-1 md:p-5 extra classes");
   });
 });

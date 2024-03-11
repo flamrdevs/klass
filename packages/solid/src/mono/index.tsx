@@ -12,7 +12,7 @@ import { getVariantKeys, ClassesKeysSplitter, classesProps } from "./../utils";
 
 import type { KlassedConfig, ReklassedConfig, MonoKlassedComponent, MonoReklassedComponent } from "./types";
 
-function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
+function create<ET extends SupportedElementType>(element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
   const { class: defaultClass, classList: defaultClassList, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     keys = getVariantKeys(fn.k),
     fp = config.fp ?? [];

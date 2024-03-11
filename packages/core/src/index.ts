@@ -128,6 +128,34 @@ const reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: R
   return fn;
 };
 
+type UnionToIntersection<U> = (U extends unknown ? (dU: U) => void : never) extends (mI: infer I) => void ? I & U : never;
+
+type Fx = {
+  (props?: Record<string, unknown>): string;
+  k: string[];
+};
+
+type ComposeFn<Fn extends Fx> = {
+  (props?: UnionToIntersection<VariantsOf<Fn>>, classes?: ClassValue): string;
+  k: Fx["k"][number][];
+};
+
+const compose = <T extends Fx[]>(...fx: [...T]) => {
+  const k: string[] = [];
+
+  for (const fn of fx) k.push(...fn.k);
+
+  const fn = ((props, classes) => {
+    let result: string = "",
+      temp: string | undefined;
+    for (const fn of fx) if ((temp = fn(props))) result && (result += " "), (result += temp);
+    if (typeof classes !== "undefined" && (temp = clsx(classes))) result && (result += " "), (result += temp);
+    return result;
+  }) as ComposeFn<T[number]>;
+
+  return (fn.k = k), fn;
+};
+
 export type {
   ClassValue,
   TransformKey,
@@ -148,5 +176,8 @@ export type {
   RevariantGroup,
   ReklassOptions,
   ReklassFn,
+  UnionToIntersection,
+  Fx,
+  ComposeFn,
 };
-export { clsx, variant, klass, revariant, reklass };
+export { clsx, variant, klass, revariant, reklass, compose };

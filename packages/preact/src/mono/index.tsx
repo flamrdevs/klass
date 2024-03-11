@@ -9,7 +9,7 @@ import { getVariantKeys, splitRestProps, maybeSignal } from "./../utils";
 
 import type { KlassedConfig, ReklassedConfig, MonoKlassedComponent, MonoReklassedComponent } from "./types";
 
-function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(Element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
+function create<ET extends SupportedElementType>(Element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
   const { class: defaultClass, className: defaultClassName, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     keys = getVariantKeys(fn.k);
 

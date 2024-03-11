@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 
-import type { ClassValue, EndFnProps, AsFnProps, StrictVariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn } from "@klass/core";
+import type { ClassValue, EndFnProps, AsFnProps, StrictVariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, Fx, ComposeFn } from "@klass/core";
 
 import type { SupportedElementType, Classes, BaseComponent } from "./react";
 import type { PolymorphicComponentProps } from "./polymorphic";
@@ -18,19 +18,18 @@ export type DefaultPropsConfig<DP = Record<any, any>> = { dp?: DP };
 export type ForwardPropsConfig<T = any> = { fp?: T[] };
 export type KlassedConfig<ET extends SupportedElementType, VS extends FinalVariantsSchema> = DefaultPropsConfig<PolymorphicComponentProps<ET, {}>> & ForwardPropsConfig<keyof VS> & EndFnProps;
 export type ReklassedConfig<ET extends SupportedElementType, VS extends FinalVariantsSchema> = KlassedConfig<ET, VS> & AsFnProps;
+export type ComposedConfig<ET extends SupportedElementType, Fn extends Fx> = DefaultPropsConfig<PolymorphicComponentProps<ET, {}>> & ForwardPropsConfig<Fn["k"][number]>;
 
-export type KlassedBase<VS extends FinalVariantsSchema> = BaseComponent & {
-  fx: KlassFn<VS>;
-};
-
-export type ReklassedBase<CS extends ConditionSchema, VS extends FinalVariantsSchema> = BaseComponent & {
-  fx: ReklassFn<CS, VS>;
-};
+export type Base<F> = BaseComponent & { fx: F };
 
 export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
   <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element;
-} & KlassedBase<VS>;
+} & Base<KlassFn<VS>>;
 
 export type ReklassedComponent<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
   <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): JSX.Element;
-} & ReklassedBase<CS, VS>;
+} & Base<ReklassFn<CS, VS>>;
+
+export type ComposedComponent<ET extends SupportedElementType, Fn extends Fx> = {
+  <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ComposeFn<Fn>>>>): JSX.Element;
+} & Base<ComposeFn<Fn>>;

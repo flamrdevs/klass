@@ -2,7 +2,9 @@ import { describe, it, expect } from "vitest";
 
 import { render, cleanup, fireEvent } from "@testing-library/vue";
 
-import { clsx } from "@klass/core";
+import { clsx, klass, reklass, compose } from "@klass/core";
+
+import { composed } from "./../src";
 
 import * as expects from "./~expects";
 import * as tests from "./../../tests";
@@ -335,5 +337,37 @@ describe("reactive", () => {
         .tagName("A")
         .className(clsx("x-2", ["extra", "classes", "reactive"]));
     });
+  });
+});
+
+describe("composed", () => {
+  const color = klass(shared.compose.klass.color.options);
+  const size = klass(shared.compose.klass.size.options);
+  const margin = reklass(shared.compose.reklass.margin.options);
+  const padding = reklass(shared.compose.reklass.padding.options);
+
+  const fx = compose(color, size, margin, padding);
+
+  it("works", () => {
+    const Composed = composed("div", fx, {
+      dp: {
+        id: "composed",
+      },
+      fp: ["color"],
+    });
+
+    const { getByTestId } = render(<Composed {...PROPS} color="blue" size="lg" />);
+
+    let element = getByTestId("root");
+
+    tests.expects
+      .element(element)
+      .tagName("DIV")
+      .className(clsx("color-base color-blue size-base size-lg", ["extra", "classes"]));
+
+    expect(element.hasAttribute("id")).toBeTruthy();
+    expect(element.getAttribute("id")).toEqual("composed");
+    expect(element.hasAttribute("color")).toBeTruthy();
+    expect(element.getAttribute("color")).toEqual("blue");
   });
 });

@@ -11,7 +11,7 @@ import { getVariantKeys, splitRestProps } from "./../utils";
 
 import type { KlassedConfig, ReklassedConfig, MonoKlassedComponent, MonoReklassedComponent } from "./types";
 
-function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>(Element: ET, fn: KlassFn<VS> | ReklassFn<any, VS>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
+function create<ET extends SupportedElementType>(Element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
   const { className: defaultClassName, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     keys = getVariantKeys(fn.k);
 
@@ -25,7 +25,7 @@ function create<ET extends SupportedElementType, VS extends FinalVariantsSchema>
 }
 
 function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET, VS>): MonoKlassedComponent<ET, VS> {
-  return create(element, typeofFunction(options) ? options : klass<VS>(options, config), config) as unknown as MonoKlassedComponent<ET, VS>;
+  return create(element, typeofFunction(options) ? options : klass<VS>(options, config), config) as MonoKlassedComponent<ET, VS>;
 }
 
 function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
@@ -33,7 +33,7 @@ function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, 
   options: ReklassedOptions<CS, VS>,
   config?: ReklassedConfig<ET, VS>
 ): MonoReklassedComponent<ET, CS, VS> {
-  return create(element, typeofFunction(options) ? options : reklass<CS, VS>(options, config), config) as unknown as MonoReklassedComponent<ET, CS, VS>;
+  return create(element, typeofFunction(options) ? options : reklass<CS, VS>(options, config), config) as MonoReklassedComponent<ET, CS, VS>;
 }
 
 export type { MonoKlassedComponent, MonoReklassedComponent };
