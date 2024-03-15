@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.25
+
+### Patch Changes
+
+- stricts customization only with top-level configurations
+
 ## 4.0.0-next.24
 
 ### Patch Changes
