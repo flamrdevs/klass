@@ -24,10 +24,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./setup": {
-      "types": "./dist/setup.d.ts",
-      "import": "./dist/setup.js",
-      "require": "./dist/setup.cjs"
+    "./create": {
+      "types": "./dist/create.d.ts",
+      "import": "./dist/create.js",
+      "require": "./dist/create.cjs"
     },
     "./utils": {
       "types": "./dist/utils.d.ts",
@@ -39,10 +39,10 @@
       "import": "./dist/mono/index.js",
       "require": "./dist/mono/index.cjs"
     },
-    "./mono/setup": {
-      "types": "./dist/mono/setup.d.ts",
-      "import": "./dist/mono/setup.js",
-      "require": "./dist/mono/setup.cjs"
+    "./mono/create": {
+      "types": "./dist/mono/create.d.ts",
+      "import": "./dist/mono/create.js",
+      "require": "./dist/mono/create.cjs"
     }
   },
   "typesVersions": {

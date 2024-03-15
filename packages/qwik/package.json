@@ -25,10 +25,10 @@
       "import": "./dist/index.qwik.mjs",
       "require": "./dist/index.qwik.cjs"
     },
-    "./setup": {
-      "types": "./dist/setup.d.ts",
-      "import": "./dist/setup.qwik.mjs",
-      "require": "./dist/setup.qwik.cjs"
+    "./create": {
+      "types": "./dist/create.d.ts",
+      "import": "./dist/create.qwik.mjs",
+      "require": "./dist/create.qwik.cjs"
     },
     "./utils": {
       "types": "./dist/utils.d.ts",
@@ -40,10 +40,10 @@
       "import": "./dist/mono/index.qwik.mjs",
       "require": "./dist/mono/index.qwik.cjs"
     },
-    "./mono/setup": {
-      "types": "./dist/mono/setup.d.ts",
-      "import": "./dist/mono/setup.qwik.mjs",
-      "require": "./dist/mono/setup.qwik.cjs"
+    "./mono/create": {
+      "types": "./dist/mono/create.d.ts",
+      "import": "./dist/mono/create.qwik.mjs",
+      "require": "./dist/mono/create.qwik.cjs"
     }
   },
   "typesVersions": {

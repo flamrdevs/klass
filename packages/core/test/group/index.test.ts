@@ -2,8 +2,6 @@ import { describe, it, expect } from "vitest";
 
 import group, { simplify } from "./../../src/group";
 
-import * as shared from "./../~shared";
-
 import { options, expectResult, expectSimplifyResult } from "./shared";
 
 describe("group", () => {
@@ -11,17 +9,9 @@ describe("group", () => {
     expectResult(group(options));
   });
 
-  it("custom end", () => {
-    expectResult(group(options, shared.custom.endProps), shared.custom.end);
-  });
-
   describe("simplify", () => {
     it("basic", () => {
       expectSimplifyResult(group(options));
-    });
-
-    it("custom end", () => {
-      expectSimplifyResult(group(options, shared.custom.endProps), shared.custom.end);
     });
   });
 });

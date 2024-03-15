@@ -39,6 +39,8 @@ type KlassFn<T extends VariantsSchema> = BaseFn<
   VariantGroup<T>
 >;
 
+type Klass = <T extends VariantsSchema>(options: KlassOptions<T>) => KlassFn<T>;
+
 type ConditionSchema = {
   [type: string]: string;
 };
@@ -66,6 +68,8 @@ type ReklassFn<C extends ConditionSchema, T extends VariantsSchema> = BaseFn<
   RevariantGroup<C, T>
 >;
 
+type Reklass = <C extends ConditionSchema, T extends VariantsSchema>(options: ReklassOptions<C, T>) => ReklassFn<C, T>;
+
 type VariantsOf<T extends (...args: any[]) => any> = Exclude<Parameters<T>[0], undefined>;
 type RequiredVariantsFrom<T extends { [key: string]: unknown }, K extends keyof T> = Omit<T, K> & { [k in K]-?: T[k] };
 
@@ -74,6 +78,20 @@ type AsFn = (condition: string, className: string) => string;
 
 type EndFnProps = { end?: EndFn };
 type AsFnProps = { as?: AsFn };
+
+type UnionToIntersection<U> = (U extends unknown ? (dU: U) => void : never) extends (mI: infer I) => void ? I & U : never;
+
+type Fx = {
+  (props?: Record<string, unknown>): string;
+  k: string[];
+};
+
+type ComposeFn<Fn extends Fx> = {
+  (props?: UnionToIntersection<VariantsOf<Fn>>, classes?: ClassValue): string;
+  k: Fx["k"][number][];
+};
+
+type Compose = <T extends Fx[]>(...fx: [...T]) => ComposeFn<T[number]>;
 
 export type {
   TransformKey,
@@ -91,9 +109,15 @@ export type {
   CompoundVariant,
   KlassOptions,
   KlassFn,
+  Klass,
   ConditionSchema,
   RevariantFn,
   RevariantGroup,
   ReklassOptions,
   ReklassFn,
+  Reklass,
+  UnionToIntersection,
+  Fx,
+  ComposeFn,
+  Compose,
 };

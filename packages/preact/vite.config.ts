@@ -13,7 +13,7 @@ export default defineConfig({
     ...(env.unminify ? { minify: false } : {}),
     target: "esnext",
     lib: {
-      entry: ["src/utils.ts", "src/index.tsx", "src/setup.tsx", "src/mono/index.tsx", "src/mono/setup.tsx"],
+      entry: ["src/utils.ts", "src/index.tsx", "src/create.tsx", "src/mono/index.tsx", "src/mono/create.tsx"],
       fileName: (format, entry) => `${entry}.${format === "cjs" ? "cjs" : "js"}`,
       formats: ["es", "cjs"],
     },

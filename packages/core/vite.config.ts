@@ -11,7 +11,7 @@ export default defineConfig({
     ...(env.unminify ? { minify: false } : {}),
     target: "esnext",
     lib: {
-      entry: ["src/utils.ts", "src/index.ts", "src/setup.ts", "src/group/index.ts", "src/group/setup.ts", "src/slots/index.ts", "src/slots/setup.ts"],
+      entry: ["src/utils.ts", "src/index.ts", "src/create.ts", "src/group/index.ts", "src/group/create.ts", "src/slots/index.ts", "src/slots/create.ts"],
       fileName: (format, entry) => `${entry}.${format === "cjs" ? "cjs" : "js"}`,
       formats: ["es", "cjs"],
     },

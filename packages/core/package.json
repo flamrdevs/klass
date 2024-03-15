@@ -26,10 +26,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./setup": {
-      "types": "./dist/setup.d.ts",
-      "import": "./dist/setup.js",
-      "require": "./dist/setup.cjs"
+    "./create": {
+      "types": "./dist/create.d.ts",
+      "import": "./dist/create.js",
+      "require": "./dist/create.cjs"
     },
     "./utils": {
       "types": "./dist/utils.d.ts",
@@ -41,20 +41,20 @@
       "import": "./dist/group/index.js",
       "require": "./dist/group/index.cjs"
     },
-    "./group/setup": {
-      "types": "./dist/group/setup.d.ts",
-      "import": "./dist/group/setup.js",
-      "require": "./dist/group/setup.cjs"
+    "./group/create": {
+      "types": "./dist/group/create.d.ts",
+      "import": "./dist/group/create.js",
+      "require": "./dist/group/create.cjs"
     },
     "./slots": {
       "types": "./dist/slots/index.d.ts",
       "import": "./dist/slots/index.js",
       "require": "./dist/slots/index.cjs"
     },
-    "./slots/setup": {
-      "types": "./dist/slots/setup.d.ts",
-      "import": "./dist/slots/setup.js",
-      "require": "./dist/slots/setup.cjs"
+    "./slots/create": {
+      "types": "./dist/slots/create.d.ts",
+      "import": "./dist/slots/create.js",
+      "require": "./dist/slots/create.cjs"
     }
   },
   "typesVersions": {

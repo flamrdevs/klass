@@ -1,33 +1,45 @@
 import { defineComponent, ref } from "vue";
 
 import { klass, reklass } from "@klass/core";
+import { createKlass, createReklass } from "@klass/core/create";
 
 import { klassed, reklassed } from "./../../../src/mono";
+import { createKlassed, createReklassed } from "./../../../src/mono/create";
 
 import { shared } from "./../../../../core/test/~";
 
 const dp = { type: "button" as const };
 const fp = ["color" as const];
 
+const klassCustomEnd = createKlass(shared.custom.endProps);
+const reklassCustomEnd = createReklass(shared.custom.endProps);
+const reklassCustomAs = createReklass(shared.custom.asProps);
+const reklassCustomAsCustomEnd = createReklass(shared.custom.configEndAsProps);
+
+const klassedCustomEnd = createKlassed(klassCustomEnd);
+const reklassedCustomEnd = createReklassed(reklassCustomEnd);
+const reklassedCustomAs = createReklassed(reklassCustomAs);
+const reklassedCustomAsCustomEnd = createReklassed(reklassCustomAsCustomEnd);
+
 const KlassButtonBasic = klass(shared.klass.button.basic.options);
 export const KlassedButtonBasic = klassed("button", KlassButtonBasic, { dp });
-export const KlassedButtonBasicCustomEnd = klassed("button", shared.klass.button.basic.options, { dp, fp, end: shared.custom.end });
+export const KlassedButtonBasicCustomEnd = klassedCustomEnd("button", shared.klass.button.basic.options, { dp, fp });
 
 export const KlassedButtonBase = klassed("button", shared.klass.button.base.options, { dp });
-export const KlassedButtonBaseCustomEnd = klassed("button", shared.klass.button.base.options, { dp, fp, end: shared.custom.end });
+export const KlassedButtonBaseCustomEnd = klassedCustomEnd("button", shared.klass.button.base.options, { dp, fp });
 
 export const KlassedButtonDefaults = klassed("button", shared.klass.button.defaults.options, { dp });
-export const KlassedButtonDefaultsCustomEnd = klassed("button", shared.klass.button.defaults.options, { dp, fp, end: shared.custom.end });
+export const KlassedButtonDefaultsCustomEnd = klassedCustomEnd("button", shared.klass.button.defaults.options, { dp, fp });
 
 export const KlassedButtonCompounds = klassed("button", shared.klass.button.compounds.options, { dp });
-export const KlassedButtonCompoundsCustomEnd = klassed("button", shared.klass.button.compounds.options, { dp, fp, end: shared.custom.end });
+export const KlassedButtonCompoundsCustomEnd = klassedCustomEnd("button", shared.klass.button.compounds.options, { dp, fp });
 
 const ReklassBoxBasic = reklass(shared.reklass.box.basic.options);
 export const ReklassedBoxBasic = reklassed("div", ReklassBoxBasic);
-export const ReklassedBoxBasicCustomEnd = reklassed("div", shared.reklass.box.basic.options, shared.custom.endProps);
+export const ReklassedBoxBasicCustomEnd = reklassedCustomEnd("div", shared.reklass.box.basic.options);
 
-export const ReklassedBoxCustomAs = reklassed("div", shared.reklass.box.customAs.options, shared.custom.asProps);
-export const ReklassedBoxCustomAsCustomEnd = reklassed("div", shared.reklass.box.customAs.options, shared.custom.configEndAsProps);
+export const ReklassedBoxCustomAs = reklassedCustomAs("div", shared.reklass.box.customAs.options);
+export const ReklassedBoxCustomAsCustomEnd = reklassedCustomAsCustomEnd("div", shared.reklass.box.customAs.options);
 
 export const KlassedButtonBasicReactive = defineComponent(() => {
   const color = ref<"red" | "green" | "blue">("red");

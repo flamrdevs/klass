@@ -1,43 +1,68 @@
-import { Dynamic } from "solid-js/web";
-import { mergeProps, splitProps } from "solid-js";
+import { klass, reklass, compose } from "@klass/core";
+import type {
+  TransformKey,
+  EndFn,
+  AsFn,
+  EndFnProps,
+  AsFnProps,
+  VariantsSchema,
+  StrictVariantsSchema,
+  VariantsOf,
+  RequiredVariantsFrom,
+  BaseFn,
+  VariantFn,
+  VariantGroup,
+  CompoundVariant,
+  KlassOptions,
+  KlassFn,
+  Klass,
+  ConditionSchema,
+  RevariantFn,
+  RevariantGroup,
+  ReklassOptions,
+  ReklassFn,
+  Reklass,
+  UnionToIntersection,
+  Fx,
+  ComposeFn,
+  Compose,
+} from "@klass/core";
 
-import { klass, reklass } from "@klass/core";
-import type { KlassFn, ConditionSchema, ReklassFn } from "@klass/core";
-import { typeofFunction } from "@klass/core/utils";
+import { createKlassed, createReklassed, createComposed } from "./create";
 
-import { FinalVariantsSchema, KlassedOptions, ReklassedOptions, DefaultPropsConfig, ForwardPropsConfig } from "./../types";
-import type { SupportedElementType, ClassesProps } from "./../types/solid";
+const klassed = createKlassed(klass);
 
-import { getVariantKeys, ClassesKeysSplitter, classesProps } from "./../utils";
+const reklassed = createReklassed(reklass);
 
-import type { KlassedConfig, ReklassedConfig, MonoKlassedComponent, MonoReklassedComponent } from "./types";
+const composed = createComposed(compose);
 
-function create<ET extends SupportedElementType>(element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
-  const { class: defaultClass, classList: defaultClassList, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
-    keys = getVariantKeys(fn.k),
-    fp = config.fp ?? [];
-
-  const Comp = ((props: any) => {
-    const [classes, picked, omited] = splitProps(props, ClassesKeysSplitter, keys as any);
-    const [forward] = splitProps(picked, fp);
-
-    return <Dynamic component={element} {...(mergeProps(defaultProps, omited) as any)} {...forward} class={fn(picked as any, classesProps(classes, defaultClass, defaultClassList))} />;
-  }) as any;
-
-  return (Comp.fx = fn), Comp;
-}
-
-function klassed<ET extends SupportedElementType, VS extends FinalVariantsSchema>(element: ET, options: KlassedOptions<VS>, config?: KlassedConfig<ET, VS>): MonoKlassedComponent<ET, VS> {
-  return create(element, typeofFunction(options) ? options : klass<VS>(options, config), config) as MonoKlassedComponent<ET, VS>;
-}
-
-function reklassed<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema>(
-  element: ET,
-  options: ReklassedOptions<CS, VS>,
-  config?: ReklassedConfig<ET, VS>
-): MonoReklassedComponent<ET, CS, VS> {
-  return create(element, typeofFunction(options) ? options : reklass<CS, VS>(options, config), config) as MonoReklassedComponent<ET, CS, VS>;
-}
-
-export type { MonoKlassedComponent, MonoReklassedComponent };
-export { klassed, reklassed };
+export type {
+  TransformKey,
+  EndFn,
+  AsFn,
+  EndFnProps,
+  AsFnProps,
+  VariantsSchema,
+  StrictVariantsSchema,
+  VariantsOf,
+  RequiredVariantsFrom,
+  BaseFn,
+  VariantFn,
+  VariantGroup,
+  CompoundVariant,
+  KlassOptions,
+  KlassFn,
+  Klass,
+  ConditionSchema,
+  RevariantFn,
+  RevariantGroup,
+  ReklassOptions,
+  ReklassFn,
+  Reklass,
+  UnionToIntersection,
+  Fx,
+  ComposeFn,
+  Compose,
+};
+export type { MonoKlassedComponent, MonoReklassedComponent, MonoComposedComponent } from "./types";
+export { klassed, reklassed, composed };
