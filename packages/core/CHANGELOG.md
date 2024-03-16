@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.26
+
+### Patch Changes
+
+- build improvements
+
 ## 4.0.0-next.25
 
 ### Patch Changes

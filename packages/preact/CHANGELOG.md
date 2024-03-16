@@ -1,5 +1,13 @@
 # @klass/preact
 
+## 4.0.0-next.26
+
+### Patch Changes
+
+- build improvements
+- Updated dependencies
+  - @klass/core@4.0.0-next.26
+
 ## 4.0.0-next.25
 
 ### Patch Changes

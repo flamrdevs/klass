@@ -140,7 +140,7 @@ importers:
   packages/preact:
     devDependencies:
       "@klass/core":
-        specifier: 4.0.0-next.25
+        specifier: 4.0.0-next.26
         version: link:../core
       preact:
         specifier: ^10.19.6
@@ -152,13 +152,13 @@ importers:
         specifier: ^1.5.1
         version: 1.5.1(undici@6.7.0)
       "@klass/core":
-        specifier: 4.0.0-next.25
+        specifier: 4.0.0-next.26
         version: link:../core
 
   packages/react:
     devDependencies:
       "@klass/core":
-        specifier: 4.0.0-next.25
+        specifier: 4.0.0-next.26
         version: link:../core
       "@types/react":
         specifier: ^18.2.64
@@ -176,7 +176,7 @@ importers:
   packages/solid:
     devDependencies:
       "@klass/core":
-        specifier: 4.0.0-next.25
+        specifier: 4.0.0-next.26
         version: link:../core
       solid-js:
         specifier: ^1.8.15
@@ -187,7 +187,7 @@ importers:
   packages/vue:
     devDependencies:
       "@klass/core":
-        specifier: 4.0.0-next.25
+        specifier: 4.0.0-next.26
         version: link:../core
       vue:
         specifier: ^3.4.20
