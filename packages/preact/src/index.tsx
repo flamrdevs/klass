@@ -64,5 +64,5 @@ export type {
   ComposeFn,
   Compose,
 };
-export type { KlassedComponent, ReklassedComponent, ComposedComponent } from "./types";
+export type { ClassesValueProps, WithClassesValueProps, KlassedComponent, ReklassedComponent, ComposedComponent } from "./types";
 export { klassed, reklassed, composed };
