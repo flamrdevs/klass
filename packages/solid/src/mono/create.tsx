@@ -11,6 +11,7 @@ import { getVariantKeys, ClassesKeysSplitter, classesProps } from "./../utils";
 
 import type { ComponentConfig, ComposedComponentConfig, MonoKlassedComponent, MonoReklassedComponent, MonoComposedComponent } from "./types";
 
+/* @__PURE__ */
 function create<ET extends SupportedElementType>(element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>> | ComposeFn<any>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
   const { class: defaultClass, classList: defaultClassList, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     keys = getVariantKeys(fn.k),
@@ -39,17 +40,26 @@ type Reklassed = <ET extends SupportedElementType, CS extends ConditionSchema, V
 type Composed = <ET extends SupportedElementType, Fn extends Fx>(element: ET, options: ComposedOptions<Fn>, config?: ComposedComponentConfig<ET, Fn>) => MonoComposedComponent<ET, Fn>;
 
 const createKlassed =
-  (klass: Klass): Klassed =>
-  (element, options, config) =>
-    create(element, typeofFunction(options) ? options : klass(options), config) as any;
+  /* @__PURE__ */
+
+
+    (klass: Klass): Klassed =>
+    (element, options, config) =>
+      create(element, typeofFunction(options) ? options : klass(options), config) as any;
 const createReklassed =
-  (reklass: Reklass): Reklassed =>
-  (element, options, config) =>
-    create(element, typeofFunction(options) ? options : reklass(options), config) as any;
+  /* @__PURE__ */
+
+
+    (reklass: Reklass): Reklassed =>
+    (element, options, config) =>
+      create(element, typeofFunction(options) ? options : reklass(options), config) as any;
 const createComposed =
-  (compose: Compose): Composed =>
-  (element, options, config) =>
-    create(element, typeofFunction(options) ? options : compose(...options), config) as any;
+  /* @__PURE__ */
+
+
+    (compose: Compose): Composed =>
+    (element, options, config) =>
+      create(element, typeofFunction(options) ? options : compose(...options), config) as any;
 
 export type { MonoKlassedComponent, MonoReklassedComponent, MonoComposedComponent };
 export { createKlassed, createReklassed, createComposed };

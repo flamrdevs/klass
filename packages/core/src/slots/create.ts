@@ -2,7 +2,7 @@ import type { StrictGroupVariantsSchema, GroupOptions, Group } from "./../group"
 
 import type { KlassedOnly, SlotsFn, Slots } from "./types";
 
-const createSlots = (group: Group): Slots => {
+const createSlots = /* @__PURE__ */ (group: Group): Slots => {
   return <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>): SlotsFn<B, T> => {
     const klasses = group(options);
 

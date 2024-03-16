@@ -2,9 +2,9 @@ import { clsx } from "clsx";
 
 import { createKlass, createReklass, createCompose } from "./create";
 
-const klass = createKlass();
-const reklass = createReklass();
-const compose = createCompose();
+const klass = /* @__PURE__ */ createKlass();
+const reklass = /* @__PURE__ */ createReklass();
+const compose = /* @__PURE__ */ createCompose();
 
 export type * from "./types";
 export type { ClassValue } from "clsx";

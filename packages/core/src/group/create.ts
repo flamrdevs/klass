@@ -4,7 +4,7 @@ import type { StrictGroupVariantsSchema, ToVariantsSchema, GroupOptions, GroupRe
 
 const compoundsFilterFn = <T extends Readonly<[any, any]>>(value: T) => typeof value[1] !== "undefined";
 
-const createGroup = (klass: Klass): Group => {
+const createGroup = /* @__PURE__ */ (klass: Klass): Group => {
   return <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>): GroupResult<B, T> => {
     const { base: _base, variants: _variants, defaults: _defaults, compounds: _compounds } = options;
 

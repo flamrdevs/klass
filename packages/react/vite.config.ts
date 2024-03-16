@@ -18,7 +18,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["@klass/core", "@klass/core/utils", "react", "react-dom"],
+      external: ["@klass/core", "@klass/core/utils", "react", "react/jsx-runtime", "react-dom"],
       output: {
         exports: "named",
         preserveModules: true,
@@ -26,7 +26,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    react({ jsxRuntime: "classic" }),
+    react(),
     dts({
       include: ["src/**/*.{ts,tsx}"],
       compilerOptions: {

@@ -30,11 +30,11 @@ import type {
 
 import { createKlassed, createReklassed, createComposed } from "./create";
 
-const klassed = createKlassed(klass);
+const klassed = /* @__PURE__ */ createKlassed(klass);
 
-const reklassed = createReklassed(reklass);
+const reklassed = /* @__PURE__ */ createReklassed(reklass);
 
-const composed = createComposed(compose);
+const composed = /* @__PURE__ */ createComposed(compose);
 
 export type {
   TransformKey,

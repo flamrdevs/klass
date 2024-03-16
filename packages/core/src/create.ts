@@ -23,7 +23,7 @@ import type {
 
 import { defaultEndFn, defaultAsFn, normalizeVariant } from "./utils";
 
-const createKlass = (options: EndFnProps = {}): Klass => {
+const createKlass = /* @__PURE__ */ (options: EndFnProps = {}): Klass => {
   const { end = defaultEndFn } = options;
 
   const variant = <T extends VariantsSchema[string]>(variant: T, defaultVariant?: TransformKey<keyof T>): VariantFn<T> => {
@@ -76,7 +76,7 @@ const createKlass = (options: EndFnProps = {}): Klass => {
   };
 };
 
-const createReklass = (options: AsFnProps & EndFnProps = {}): Reklass => {
+const createReklass = /* @__PURE__ */ (options: AsFnProps & EndFnProps = {}): Reklass => {
   const { as = defaultAsFn, end = defaultEndFn } = options;
 
   const revariant = <C extends ConditionSchema, T extends VariantsSchema[string]>(conditions: C, defaultCondition: keyof C, variant: T) => {
@@ -130,7 +130,7 @@ const createReklass = (options: AsFnProps & EndFnProps = {}): Reklass => {
   };
 };
 
-const createCompose = (options: EndFnProps = {}): Compose => {
+const createCompose = /* @__PURE__ */ (options: EndFnProps = {}): Compose => {
   const { end = defaultEndFn } = options;
   return <T extends Fx[]>(...fx: [...T]) => {
     const k: string[] = [];
