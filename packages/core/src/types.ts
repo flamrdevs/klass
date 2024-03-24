@@ -86,12 +86,15 @@ type Fx = {
   k: string[];
 };
 
+type Fxs = string | Fx;
+type FxFrom<T extends Fxs> = Exclude<T, string>;
+
 type ComposeFn<Fn extends Fx> = {
   (props?: UnionToIntersection<VariantsOf<Fn>>, classes?: ClassValue): string;
-  k: Fx["k"][number][];
+  k: Fn["k"][number][];
 };
 
-type Compose = <T extends Fx[]>(...fx: [...T]) => ComposeFn<T[number]>;
+type Compose = <T extends Fxs[]>(...fx: [...T]) => ComposeFn<FxFrom<T[number]>>;
 
 export type {
   TransformKey,
@@ -118,6 +121,8 @@ export type {
   Reklass,
   UnionToIntersection,
   Fx,
+  Fxs,
+  FxFrom,
   ComposeFn,
   Compose,
 };

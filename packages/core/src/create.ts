@@ -16,12 +16,13 @@ import type {
   ReklassOptions,
   ReklassFn,
   Reklass,
-  Fx,
+  Fxs,
+  FxFrom,
   ComposeFn,
   Compose,
 } from "./types";
 
-import { defaultEndFn, defaultAsFn, normalizeVariant } from "./utils";
+import { defaultEndFn, defaultAsFn, normalizeVariant, typeofFunction } from "./utils";
 
 const createKlass = /* @__PURE__ */ (options: EndFnProps = {}): Klass => {
   const { end = defaultEndFn } = options;
@@ -132,18 +133,18 @@ const createReklass = /* @__PURE__ */ (options: AsFnProps & EndFnProps = {}): Re
 
 const createCompose = /* @__PURE__ */ (options: EndFnProps = {}): Compose => {
   const { end = defaultEndFn } = options;
-  return <T extends Fx[]>(...fx: [...T]) => {
+  return <T extends Fxs[]>(...fx: [...T]) => {
     const k: string[] = [];
 
-    for (const fn of fx) k.push(...fn.k);
+    for (const fn of fx) typeofFunction(fn) && k.push(...fn.k);
 
     const fn = ((props, classes) => {
       let result: string = "",
         temp: string | undefined;
-      for (const fn of fx) if ((temp = fn(props))) result && (result += " "), (result += temp);
+      for (const fn of fx) if ((temp = typeofFunction(fn) ? fn(props) : fn)) result && (result += " "), (result += temp);
       if (typeof classes !== "undefined" && (temp = clsx(classes))) result && (result += " "), (result += temp);
       return end(result);
-    }) as ComposeFn<T[number]>;
+    }) as ComposeFn<FxFrom<T[number]>>;
 
     return (fn.k = k), fn;
   };

@@ -24,6 +24,8 @@ import type {
   Reklass,
   UnionToIntersection,
   Fx,
+  Fxs,
+  FxFrom,
   ComposeFn,
   Compose,
 } from "@klass/core";
@@ -61,6 +63,8 @@ export type {
   Reklass,
   UnionToIntersection,
   Fx,
+  Fxs,
+  FxFrom,
   ComposeFn,
   Compose,
 };

@@ -1,6 +1,6 @@
 import { computed, defineComponent, h } from "vue";
 
-import type { KlassFn, Klass, ConditionSchema, ReklassFn, Reklass, Fx, ComposeFn, Compose } from "@klass/core";
+import type { KlassFn, Klass, ConditionSchema, ReklassFn, Reklass, Fxs, FxFrom, ComposeFn, Compose } from "@klass/core";
 import { typeofFunction } from "@klass/core/utils";
 
 import type {
@@ -23,7 +23,6 @@ import { getVariantKeys, splitRestProps } from "./utils";
 
 const defaultComponentOptions = { props: ["as", "class"] as any, inheritAttrs: false };
 
-/* @__PURE__ */
 function create<ET extends SupportedElementType>(element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>> | ComposeFn<any>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
   const { class: defaultClass, ...defaultProps } = (config.dp ?? {}) as ClassesProps,
     keys = getVariantKeys(fn.k);
@@ -43,28 +42,19 @@ type Reklassed = <ET extends SupportedElementType, CS extends ConditionSchema, V
   options: ReklassedOptions<CS, VS>,
   config?: ComponentConfig<ET, VS>
 ) => ReklassedComponent<ET, CS, VS>;
-type Composed = <ET extends SupportedElementType, Fn extends Fx>(element: ET, options: ComposedOptions<Fn>, config?: ComposedComponentConfig<ET, Fn>) => ComposedComponent<ET, Fn>;
+type Composed = <ET extends SupportedElementType, Fn extends Fxs>(element: ET, options: ComposedOptions<Fn>, config?: ComposedComponentConfig<ET, FxFrom<Fn>>) => ComposedComponent<ET, FxFrom<Fn>>;
 
 const createKlassed =
-  /* @__PURE__ */
-
-
-    (klass: Klass): Klassed =>
-    (element, options, config) =>
-      create(element, typeofFunction(options) ? options : klass(options), config) as any;
+  (klass: Klass): Klassed =>
+  (element, options, config) =>
+    /* @__PURE__ */ create(element, typeofFunction(options) ? options : klass(options), config) as any;
 const createReklassed =
-  /* @__PURE__ */
-
-
-    (reklass: Reklass): Reklassed =>
-    (element, options, config) =>
-      create(element, typeofFunction(options) ? options : reklass(options), config) as any;
+  (reklass: Reklass): Reklassed =>
+  (element, options, config) =>
+    /* @__PURE__ */ create(element, typeofFunction(options) ? options : reklass(options), config) as any;
 const createComposed =
-  /* @__PURE__ */
-
-
-    (compose: Compose): Composed =>
-    (element, options, config) =>
-      create(element, typeofFunction(options) ? options : compose(...options), config) as any;
+  (compose: Compose): Composed =>
+  (element, options, config) =>
+    /* @__PURE__ */ create(element, typeofFunction(options) ? options : compose(...options), config) as any;
 
 export { createKlassed, createReklassed, createComposed };

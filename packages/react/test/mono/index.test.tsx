@@ -308,29 +308,45 @@ describe("composed", () => {
   const size = klass(shared.compose.klass.size.options);
   const margin = reklass(shared.compose.reklass.margin.options);
   const padding = reklass(shared.compose.reklass.padding.options);
+  const state = compose(klass(shared.compose.klass.disabled.options));
 
-  const fx = compose(color, size, margin, padding);
-
-  it("works", () => {
-    const Composed = composed("div", fx, {
-      dp: {
-        id: "composed",
-      },
-      fp: ["color"],
-    });
-
-    const { getByTestId } = render(<Composed {...PROPS} color="blue" size="lg" />);
+  const test = (Composed: any) => {
+    const { getByTestId } = render(<Composed {...PROPS} color="blue" size="lg" disabled />);
 
     let element = getByTestId("root");
 
     tests.expects
       .element(element)
       .tagName("DIV")
-      .className(clsx("color-base color-blue size-base size-lg", ["extra", "classes"]));
+      .className(clsx("compose-base color-base color-blue size-base size-lg disabled-true", ["extra", "classes"]));
 
     expect(element.hasAttribute("id")).toBeTruthy();
     expect(element.getAttribute("id")).toEqual("composed");
     expect(element.hasAttribute("color")).toBeTruthy();
     expect(element.getAttribute("color")).toEqual("blue");
+
+    cleanup();
+  };
+
+  it("works", () => {
+    const Composed = composed("div", ["compose-base", color, size, margin, padding, state], {
+      dp: {
+        id: "composed",
+      },
+      fp: ["color"],
+    });
+
+    test(Composed);
+
+    const fx = compose("compose-base", color, size, margin, padding, state);
+
+    const ComposedFx = composed("div", fx, {
+      dp: {
+        id: "composed",
+      },
+      fp: ["color"],
+    });
+
+    test(ComposedFx);
   });
 });

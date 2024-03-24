@@ -57,13 +57,14 @@ describe("compose", () => {
     const size = klass(shared.compose.klass.size.options);
     const margin = reklass(shared.compose.reklass.margin.options);
     const padding = reklass(shared.compose.reklass.padding.options);
+    const state = compose(klass(shared.compose.klass.disabled.options));
 
-    const fn = compose(color, size, margin, padding);
+    const fn = compose("compose-base", color, size, margin, padding, state);
 
-    expect(fn.k).toEqual(["color", "size", "m", "mx", "my", "p", "px", "py"]);
+    expect(fn.k).toEqual(["color", "size", "m", "mx", "my", "p", "px", "py", "disabled"]);
 
-    expect(fn()).toEqual("color-base size-base");
-    expect(fn({}, ["extra", "classes"])).toEqual("color-base size-base extra classes");
+    expect(fn()).toEqual("compose-base color-base size-base");
+    expect(fn({}, ["extra", "classes"])).toEqual("compose-base color-base size-base extra classes");
     expect(
       fn(
         {
@@ -74,7 +75,7 @@ describe("compose", () => {
         },
         ["extra", "classes"]
       )
-    ).toEqual("color-base color-blue size-base size-lg m-1 p-1 extra classes");
+    ).toEqual("compose-base color-base color-blue size-base size-lg m-1 p-1 extra classes");
     expect(
       fn(
         {
@@ -82,9 +83,10 @@ describe("compose", () => {
           size: "lg",
           m: { base: "xs", md: "xl" },
           p: { base: "xs", md: "xl" },
+          disabled: true,
         },
         ["extra", "classes"]
       )
-    ).toEqual("color-base color-blue size-base size-lg m-1 md:m-5 p-1 md:p-5 extra classes");
+    ).toEqual("compose-base color-base color-blue size-base size-lg m-1 md:m-5 p-1 md:p-5 disabled-true extra classes");
   });
 });

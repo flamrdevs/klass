@@ -1,6 +1,6 @@
 import type { JSX } from "@builder.io/qwik/jsx-runtime";
 
-import type { ClassValue, StrictVariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, Fx, ComposeFn } from "@klass/core";
+import type { ClassValue, StrictVariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, Fx, Fxs, FxFrom, ComposeFn } from "@klass/core";
 
 import type { Signalish, SignalishRecord, SupportedElementType, Classes } from "./qwik";
 import type { PolymorphicComponentProps } from "./polymorphic";
@@ -13,7 +13,7 @@ export type WithClassesValueProps<P extends {}> = Omit<P, keyof ClassesValueProp
 
 export type KlassedOptions<VS extends FinalVariantsSchema> = KlassOptions<VS> | KlassFn<VS>;
 export type ReklassedOptions<CS extends ConditionSchema, VS extends FinalVariantsSchema> = ReklassOptions<CS, VS> | ReklassFn<CS, VS>;
-export type ComposedOptions<Fn extends Fx> = Fn[] | ComposeFn<Fn>;
+export type ComposedOptions<Fn extends Fxs> = Fn[] | ComposeFn<FxFrom<Fn>>;
 
 export type DefaultPropsConfig<DP = Record<any, any>> = { dp?: DP };
 export type ForwardPropsConfig<T = any> = { fp?: T[] };
