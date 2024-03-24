@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 4.0.0-next.27
+
+### Patch Changes
+
+- compose with string
+- Updated dependencies
+  - @klass/core@4.0.0-next.27
+
 ## 4.0.0-next.26
 
 ### Patch Changes

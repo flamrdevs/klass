@@ -1,5 +1,11 @@
 # @klass/tests
 
+## 0.0.1-next.4
+
+### Patch Changes
+
+- compose with string
+
 ## 0.0.1-next.3
 
 ### Patch Changes
