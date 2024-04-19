@@ -7,4 +7,4 @@
 "@klass/vue": patch
 ---
 
-build improvements
+fix types
