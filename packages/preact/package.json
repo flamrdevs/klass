@@ -80,10 +80,10 @@
   "homepage": "https://klass.pages.dev",
   "peerDependencies": {
     "@klass/core": "4.0.0-next.27",
-    "preact": "10.19.0 - 11.0.0"
+    "preact": "10.20.0 - 11.0.0"
   },
   "devDependencies": {
     "@klass/core": "4.0.0-next.27",
-    "preact": "^10.19.6"
+    "preact": "^10.20.2"
   }
 }

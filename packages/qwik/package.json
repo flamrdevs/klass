@@ -84,7 +84,7 @@
     "@klass/core": "4.0.0-next.27"
   },
   "devDependencies": {
-    "@builder.io/qwik": "^1.5.1",
+    "@builder.io/qwik": "^1.5.2",
     "@klass/core": "4.0.0-next.27"
   }
 }
