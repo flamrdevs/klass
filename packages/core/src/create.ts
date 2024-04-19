@@ -29,7 +29,7 @@ const createKlass = /* @__PURE__ */ (options: EndFnProps = {}): Klass => {
 
   const variant = <T extends VariantsSchema[string]>(variant: T, defaultVariant?: TransformKey<keyof T>): VariantFn<T> => {
     const normalizedVariant = normalizeVariant(variant);
-    return ((props?: TransformKey<keyof T>) => normalizedVariant[props ?? (defaultVariant as keyof T)]) as VariantFn<T>;
+    return ((props?: TransformKey<keyof T>) => normalizedVariant[(props ?? defaultVariant) as keyof T]) as VariantFn<T>;
   };
 
   return <T extends VariantsSchema>(options: KlassOptions<T>): KlassFn<T> => {
