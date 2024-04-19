@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.28
+
+### Patch Changes
+
+- fix types
+
 ## 4.0.0-next.27
 
 ### Patch Changes

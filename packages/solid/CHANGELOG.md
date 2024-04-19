@@ -1,5 +1,13 @@
 # @klass/solid
 
+## 4.0.0-next.28
+
+### Patch Changes
+
+- fix types
+- Updated dependencies
+  - @klass/core@4.0.0-next.28
+
 ## 4.0.0-next.27
 
 ### Patch Changes
