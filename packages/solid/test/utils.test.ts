@@ -15,6 +15,6 @@ describe("classesProps", () => {
   it("equals", () => {
     expect(clsx(classesProps({ class: "p-class", classList: { "p-class-list": true } }))).toEqual("p-class p-class-list");
     expect(clsx(classesProps({ class: "p-class" }, undefined, { "d-class-list": true }))).toEqual("p-class d-class-list");
-    expect(clsx(classesProps({ classList: { "p-class-list": true } }, "d-class", undefined))).toEqual("p-class-list d-class");
+    expect(clsx(classesProps({ classList: { "p-class-list": true } }, "d-class", undefined))).toEqual("d-class p-class-list");
   });
 });

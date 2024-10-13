@@ -10,7 +10,7 @@ export const getVariantKeys = /* @__PURE__ */ <VS extends FinalVariantsSchema>(k
 export const PolymorphicKeysSplitter = ["as"] as const;
 export const ClassesKeysSplitter = ["class", "classList"] as const;
 
-export const classesProps: <P extends ClassesValueProps>(props: P, defaultClass?: ClassesProps["class"], defaultClassList?: ClassesProps["classList"]) => [ClassValue, ClassValue] = /* @__PURE__ */ (
+export const classesProps: (props: ClassesValueProps, defaultClass?: ClassesProps["class"], defaultClassList?: ClassesProps["classList"]) => [ClassValue, ClassValue] = /* @__PURE__ */ (
   props,
   defaultClass,
   defaultClassList
