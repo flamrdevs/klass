@@ -13,18 +13,8 @@ describe("getVariantKeys", () => {
 
 describe("classesProps", () => {
   it("equals", () => {
-    expect(clsx(classesProps({ class: "props-class" }))).toEqual("props-class");
-    expect(
-      clsx(
-        classesProps(
-          {
-            classList: {
-              "props-class-list": true,
-            },
-          },
-          "default-class"
-        )
-      )
-    ).toEqual("default-class props-class-list");
+    expect(clsx(classesProps({ class: "p-class", classList: { "p-class-list": true } }))).toEqual("p-class p-class-list");
+    expect(clsx(classesProps({ class: "p-class" }, undefined, { "d-class-list": true }))).toEqual("p-class d-class-list");
+    expect(clsx(classesProps({ classList: { "p-class-list": true } }, "d-class", undefined))).toEqual("p-class-list d-class");
   });
 });
