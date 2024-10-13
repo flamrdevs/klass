@@ -8,6 +8,8 @@ import { A } from "./components";
 import { klassed, reklassed } from "./../../src";
 import { createKlassed, createReklassed } from "./../../src/create";
 
+import { DATA_TESTID_REACTIVE_PROPS } from "./../../../tests";
+
 import { shared } from "./../../../core/test/~";
 
 const dp = { type: "button" as const };
@@ -50,7 +52,7 @@ export const KlassedButtonBasicReactive = () => {
 
   return (
     <KlassedButtonBasic
-      data-testid="reactive"
+      {...DATA_TESTID_REACTIVE_PROPS}
       as={as}
       color={color}
       className={["extra", "classes", classes]}
@@ -72,7 +74,7 @@ export const ReklassedBoxBasicReactive = () => {
 
   return (
     <ReklassedBoxBasic
-      data-testid="reactive"
+      {...DATA_TESTID_REACTIVE_PROPS}
       as={as}
       x={x}
       className={["extra", "classes", classes]}

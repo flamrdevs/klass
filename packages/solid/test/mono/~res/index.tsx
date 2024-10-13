@@ -6,6 +6,8 @@ import { createKlass, createReklass } from "@klass/core/create";
 import { klassed, reklassed } from "./../../../src/mono";
 import { createKlassed, createReklassed } from "./../../../src/mono/create";
 
+import { DATA_TESTID_REACTIVE_PROPS } from "./../../../../tests";
+
 import { shared } from "./../../../../core/test/~";
 
 const dp = { type: "button" as const };
@@ -47,7 +49,7 @@ export const KlassedButtonBasicReactive = () => {
 
   return (
     <KlassedButtonBasic
-      data-testid="reactive"
+      {...DATA_TESTID_REACTIVE_PROPS}
       color={color()}
       class={["extra", "classes", classes()]}
       onClick={() => {
@@ -66,7 +68,7 @@ export const ReklassedBoxBasicReactive = () => {
 
   return (
     <ReklassedBoxBasic
-      data-testid="reactive"
+      {...DATA_TESTID_REACTIVE_PROPS}
       x={x()}
       class={["extra", "classes", classes()]}
       onClick={() => {

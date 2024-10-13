@@ -7,8 +7,8 @@ export const render = async (jsxElement: JSXOutput) => {
   return {
     cleanup,
     fireEvent: {
-      click: async (element: Element) => await userEvent(element, "click"),
+      click: (element: Element) => userEvent(element, "click"),
     },
-    getByTestId: (id: string) => screen.querySelector(`[data-testid=${id}]`)!,
+    getByTestId: (id: string) => screen.querySelector(`[data-testid=${id}]`)! as HTMLElement,
   };
 };

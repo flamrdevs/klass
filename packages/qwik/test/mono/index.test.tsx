@@ -7,6 +7,7 @@ import { clsx, klass, reklass, compose } from "@klass/core";
 import { composed } from "./../../src/mono";
 
 import * as expects from "./../~expects";
+import * as utils from "./../~utils";
 import * as tests from "./../../../tests";
 
 import { render } from "./../testing-library";
@@ -32,10 +33,7 @@ import {
   ReklassedBoxBasicSignalReactive,
 } from "./~res";
 
-const PROPS = {
-  "data-testid": "root",
-  class: ["extra", "classes"],
-};
+const PROPS = { ...tests.DATA_TESTID_ROOT_PROPS, class: ["extra", "classes"] };
 
 describe("klassed", () => {
   it("type", () => {
@@ -47,8 +45,8 @@ describe("klassed", () => {
 
   describe("equal", () => {
     const expect = async (ui: JSXOutput, equal: string) => {
-      const { cleanup, getByTestId } = await render(ui);
-      tests.expects.element(getByTestId("root")).tagName("BUTTON").className(clsx(equal, PROPS.class)).textContent("children");
+      const { cleanup, element } = await utils.renderRoot(ui);
+      tests.expects.element(element).tagName("BUTTON").className(clsx(equal, PROPS.class)).textContent("children");
       cleanup();
     };
 
@@ -107,9 +105,9 @@ describe("klassed", () => {
 
     describe("equal", () => {
       const expect = async (ui: JSXOutput, equal: string) => {
-        const { cleanup, getByTestId } = await render(ui);
+        const { cleanup, element } = await utils.renderRoot(ui);
         tests.expects
-          .element(getByTestId("root"))
+          .element(element)
           .tagName("BUTTON")
           .className(shared.custom.end(clsx(equal, PROPS.class)))
           .textContent("children");
@@ -165,7 +163,7 @@ describe("klassed", () => {
   describe("attributes", () => {
     describe("custom end", () => {
       const attrs = async (ui: JSXOutput) => {
-        const element = (await render(ui)).getByTestId("root");
+        const { element } = await utils.renderRoot(ui);
         expect(element.hasAttribute("type")).toBeTruthy();
         expect(element.getAttribute("type")).toEqual("button");
         expect(element.hasAttribute("color")).toBeTruthy();
@@ -175,19 +173,19 @@ describe("klassed", () => {
       };
 
       it("basic", async () => {
-        await attrs(<KlassedButtonBasicCustomEnd data-testid="root" color="blue" />);
+        await attrs(<KlassedButtonBasicCustomEnd {...PROPS} color="blue" />);
       });
 
       it("base", async () => {
-        await attrs(<KlassedButtonBaseCustomEnd data-testid="root" color="blue" />);
+        await attrs(<KlassedButtonBaseCustomEnd {...PROPS} color="blue" />);
       });
 
       it("defaults", async () => {
-        await attrs(<KlassedButtonDefaultsCustomEnd data-testid="root" color="blue" />);
+        await attrs(<KlassedButtonDefaultsCustomEnd {...PROPS} color="blue" />);
       });
 
       it("compounds", async () => {
-        await attrs(<KlassedButtonCompoundsCustomEnd data-testid="root" color="blue" />);
+        await attrs(<KlassedButtonCompoundsCustomEnd {...PROPS} color="blue" />);
       });
     });
   });
@@ -201,8 +199,8 @@ describe("reklassed", () => {
 
   describe("equal", () => {
     const expect = async (ui: JSXOutput, equal: string) => {
-      const { cleanup, getByTestId } = await render(ui);
-      tests.expects.element(getByTestId("root")).tagName("DIV").className(clsx(equal, PROPS.class)).textContent("children");
+      const { cleanup, element } = await utils.renderRoot(ui);
+      tests.expects.element(element).tagName("DIV").className(clsx(equal, PROPS.class)).textContent("children");
       cleanup();
     };
 
@@ -237,9 +235,9 @@ describe("reklassed", () => {
 
     describe("equal", () => {
       const expect = async (ui: JSXOutput, equal: string) => {
-        const { cleanup, getByTestId } = await render(ui);
+        const { cleanup, element } = await utils.renderRoot(ui);
         tests.expects
-          .element(getByTestId("root"))
+          .element(element)
           .tagName("DIV")
           .className(shared.custom.end(clsx(equal, PROPS.class)))
           .textContent("children");
@@ -272,76 +270,53 @@ describe("reklassed", () => {
 });
 
 describe("reactive", () => {
+  const renderGetReactiveElement = async (ui: JSXOutput) => {
+    const result = await render(ui);
+    return { ...result, getElement: () => result.getByTestId(tests.DATA_TESTID_REACTIVE) };
+  };
+
   it("klassed", async () => {
-    const { getByTestId, fireEvent } = await render(<KlassedButtonBasicReactive />);
+    const { fireEvent, getElement } = await renderGetReactiveElement(<KlassedButtonBasicReactive />);
 
-    let element = getByTestId("reactive");
-
-    tests.expects
-      .element(element)
-      .tagName("BUTTON")
-      .className(clsx("color-red", ["extra", "classes"]));
-
-    await fireEvent.click(element);
-
-    tests.expects
-      .element((element = getByTestId("reactive")))
-      .tagName("BUTTON")
-      .className(clsx("color-blue", ["extra", "classes", "reactive"]));
+    await utils.expectElementFireClick(
+      fireEvent,
+      getElement,
+      (before) => before.tagName("BUTTON").className(clsx("color-red", ["extra", "classes"])),
+      (after) => after.tagName("BUTTON").className(clsx("color-blue", ["extra", "classes", "reactive"]))
+    );
   });
 
   it("klassed signal", async () => {
-    const { getByTestId, fireEvent } = await render(<KlassedButtonBasicSignalReactive />);
+    const { fireEvent, getElement } = await renderGetReactiveElement(<KlassedButtonBasicSignalReactive />);
 
-    let element = getByTestId("reactive");
-
-    tests.expects
-      .element(element)
-      .tagName("BUTTON")
-      .className(clsx("color-red", ["extra", "classes"]));
-
-    await fireEvent.click(element);
-
-    tests.expects
-      .element((element = getByTestId("reactive")))
-      .tagName("BUTTON")
-      .className(clsx("color-blue", ["extra", "classes", "reactive"]));
+    await utils.expectElementFireClick(
+      fireEvent,
+      getElement,
+      (before) => before.tagName("BUTTON").className(clsx("color-red", ["extra", "classes"])),
+      (after) => after.tagName("BUTTON").className(clsx("color-blue", ["extra", "classes", "reactive"]))
+    );
   });
 
   it("reklassed", async () => {
-    const { getByTestId, fireEvent } = await render(<ReklassedBoxBasicReactive />);
+    const { fireEvent, getElement } = await renderGetReactiveElement(<ReklassedBoxBasicReactive />);
 
-    let element = getByTestId("reactive");
-
-    tests.expects
-      .element(element)
-      .tagName("DIV")
-      .className(clsx("x-1", ["extra", "classes"]));
-
-    await fireEvent.click(element);
-
-    tests.expects
-      .element((element = getByTestId("reactive")))
-      .tagName("DIV")
-      .className(clsx("x-2", ["extra", "classes", "reactive"]));
+    await utils.expectElementFireClick(
+      fireEvent,
+      getElement,
+      (before) => before.tagName("DIV").className(clsx("x-1", ["extra", "classes"])),
+      (after) => after.tagName("DIV").className(clsx("x-2", ["extra", "classes", "reactive"]))
+    );
   });
 
   it("reklassed signal", async () => {
-    const { getByTestId, fireEvent } = await render(<ReklassedBoxBasicSignalReactive />);
+    const { fireEvent, getElement } = await renderGetReactiveElement(<ReklassedBoxBasicSignalReactive />);
 
-    let element = getByTestId("reactive");
-
-    tests.expects
-      .element(element)
-      .tagName("DIV")
-      .className(clsx("x-1", ["extra", "classes"]));
-
-    await fireEvent.click(element);
-
-    tests.expects
-      .element((element = getByTestId("reactive")))
-      .tagName("DIV")
-      .className(clsx("x-2", ["extra", "classes", "reactive"]));
+    await utils.expectElementFireClick(
+      fireEvent,
+      getElement,
+      (before) => before.tagName("DIV").className(clsx("x-1", ["extra", "classes"])),
+      (after) => after.tagName("DIV").className(clsx("x-2", ["extra", "classes", "reactive"]))
+    );
   });
 });
 
@@ -353,9 +328,7 @@ describe("composed", () => {
   const state = compose(klass(shared.compose.klass.disabled.options));
 
   const test = async (Composed: any) => {
-    const { getByTestId, cleanup } = await render(<Composed {...PROPS} color="blue" size="lg" disabled />);
-
-    let element = getByTestId("root");
+    const { element, cleanup } = await utils.renderRoot(<Composed {...PROPS} color="blue" size="lg" disabled />);
 
     tests.expects
       .element(element)

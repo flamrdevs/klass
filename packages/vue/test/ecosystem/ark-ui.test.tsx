@@ -61,7 +61,7 @@ describe("mono", () => {
 
     it("equal & own polymorphic", () => {
       const { getByTestId } = render(
-        <KlassedRoot data-testid="root">
+        <KlassedRoot {...tests.DATA_TESTID_ROOT_PROPS}>
           <KlassedControl data-testid="control">
             <KlassedThumb data-testid="thumb" />
           </KlassedControl>
@@ -71,15 +71,10 @@ describe("mono", () => {
         </KlassedRoot>
       );
 
-      const root = getByTestId("root");
-      const control = getByTestId("control");
-      const thumb = getByTestId("thumb");
-      const label = getByTestId("label");
-
-      tests.expects.element(root).tagName("LABEL").className("root-base root-color-red");
-      tests.expects.element(control).tagName("SPAN").className("control-base control-color-red");
-      tests.expects.element(thumb).tagName("SPAN").className("thumb-base thumb-color-red");
-      tests.expects.element(label).tagName("P").className("label-base label-color-red");
+      tests.expects.element(getByTestId("root")).tagName("LABEL").className("root-base root-color-red");
+      tests.expects.element(getByTestId("control")).tagName("SPAN").className("control-base control-color-red");
+      tests.expects.element(getByTestId("thumb")).tagName("SPAN").className("thumb-base thumb-color-red");
+      tests.expects.element(getByTestId("label")).tagName("P").className("label-base label-color-red");
     });
   });
 });

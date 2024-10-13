@@ -9,6 +9,7 @@ import group from "@klass/core/group";
 import * as mono from "./../../src/mono";
 
 import * as expects from "./../~expects";
+import * as utils from "./../~utils";
 import * as tests from "./../../../tests";
 
 import { Separator } from "@radix-ui/react-separator";
@@ -36,20 +37,18 @@ describe("mono", () => {
     });
 
     it("equal", () => {
-      tests.expects
-        .element(render(<Klassed data-testid="root" />).getByTestId("root"))
+      utils
+        .expectElementRoot(<Klassed {...tests.DATA_TESTID_ROOT_PROPS} />)
         .tagName("DIV")
         .className("base color-red");
     });
 
     it("equal - own polymorphic", () => {
-      tests.expects
-        .element(
-          render(
-            <Klassed asChild data-testid="root" color="blue">
-              <span className="as-child"></span>
-            </Klassed>
-          ).getByTestId("root")
+      utils
+        .expectElementRoot(
+          <Klassed asChild {...tests.DATA_TESTID_ROOT_PROPS} color="blue">
+            <span className="as-child"></span>
+          </Klassed>
         )
         .tagName("SPAN")
         .className("base color-blue as-child");
@@ -93,18 +92,15 @@ describe("mono", () => {
 
     it("equal & own polymorphic", () => {
       const { getByTestId } = render(
-        <KlassedRoot data-testid="root">
+        <KlassedRoot {...tests.DATA_TESTID_ROOT_PROPS}>
           <KlassedThumb data-testid="thumb" asChild>
             <div />
           </KlassedThumb>
         </KlassedRoot>
       );
 
-      const root = getByTestId("root");
-      const thumb = getByTestId("thumb");
-
-      tests.expects.element(root).tagName("BUTTON").className("root-base root-color-red");
-      tests.expects.element(thumb).tagName("DIV").className("thumb-base thumb-color-red");
+      tests.expects.element(getByTestId("root")).tagName("BUTTON").className("root-base root-color-red");
+      tests.expects.element(getByTestId("thumb")).tagName("DIV").className("thumb-base thumb-color-red");
     });
   });
 
@@ -133,20 +129,18 @@ describe("mono", () => {
     });
 
     it("equal", () => {
-      tests.expects
-        .element(render(<Klassed data-testid="root" />).getByTestId("root"))
+      utils
+        .expectElementRoot(<Klassed {...tests.DATA_TESTID_ROOT_PROPS} />)
         .tagName("BUTTON")
         .className("base color-red");
     });
 
     it("equal - own polymorphic", () => {
-      tests.expects
-        .element(
-          render(
-            <Klassed asChild data-testid="root" color="blue">
-              <a className="as-child"></a>
-            </Klassed>
-          ).getByTestId("root")
+      utils
+        .expectElementRoot(
+          <Klassed asChild {...tests.DATA_TESTID_ROOT_PROPS} color="blue">
+            <a className="as-child"></a>
+          </Klassed>
         )
         .tagName("A")
         .className("base color-blue as-child");

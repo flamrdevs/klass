@@ -1,17 +1,5 @@
 import { expect } from "vitest";
 
-export const hasGProperty = (object: Record<any, any>) => {
-  expect(object).toHaveProperty("g");
-};
-
-export const hasKProperty = (object: Record<any, any>) => {
-  expect(object).toHaveProperty("k");
-};
-
-export const hasFxProperty = (object: Record<any, any>) => {
-  expect(object).toHaveProperty("fx");
-};
-
 export const element = <T extends Element>(el: T) => {
   expect(el).toBeDefined();
   return {
@@ -29,3 +17,5 @@ export const element = <T extends Element>(el: T) => {
     },
   };
 };
+
+export type ElementReturn = ReturnType<typeof element>;

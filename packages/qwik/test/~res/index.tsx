@@ -8,6 +8,8 @@ import { A$ } from "./components";
 import { klassed, reklassed } from "./../../src";
 import { createKlassed, createReklassed } from "./../../src/create";
 
+import { DATA_TESTID_REACTIVE_PROPS } from "./../../../tests";
+
 import { shared } from "./../../../core/test/~";
 
 const dp = { type: "button" as const };
@@ -50,8 +52,8 @@ export const KlassedButtonBasicReactive = component$(() => {
 
   return (
     <KlassedButtonBasic
-      data-testid="reactive"
-      as={as.value}
+      {...DATA_TESTID_REACTIVE_PROPS}
+      as={as.value as "button"}
       color={color}
       class={["extra", "classes", classes.value]}
       onClick$={() => {
@@ -71,7 +73,7 @@ export const KlassedButtonBasicSignalReactive = component$(() => {
 
   return (
     <KlassedButtonBasic
-      data-testid="reactive"
+      {...DATA_TESTID_REACTIVE_PROPS}
       as="button"
       color={color}
       class={className}
@@ -92,8 +94,8 @@ export const ReklassedBoxBasicReactive = component$(() => {
 
   return (
     <ReklassedBoxBasic
-      data-testid="reactive"
-      as={as.value}
+      {...DATA_TESTID_REACTIVE_PROPS}
+      as={as.value as "button"}
       x={x}
       class={["extra", "classes", classes.value]}
       onClick$={() => {
@@ -113,7 +115,7 @@ export const ReklassedBoxBasicSignalReactive = component$(() => {
 
   return (
     <ReklassedBoxBasic
-      data-testid="reactive"
+      {...DATA_TESTID_REACTIVE_PROPS}
       as="button"
       x={x}
       class={className}

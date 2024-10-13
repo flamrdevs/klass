@@ -4,14 +4,15 @@ import type { ConditionSchema, VariantsSchema, VariantFn, KlassFn, RevariantFn, 
 
 import { custom } from "./~shared";
 
-import * as tests from "./../../tests";
-
 const baseFn = (fn: { (...any: any[]): any; g: Record<any, any>; k: any[] }) => {
   expectTypeOf(fn).toBeFunction();
-  tests.expects.hasGProperty(fn);
-  tests.expects.hasKProperty(fn);
+
+  expect(fn).toHaveProperty("g");
   expectTypeOf(fn.g).toBeObject();
+
+  expect(fn).toHaveProperty("k");
   expectTypeOf(fn.k).toBeArray();
+
   expect(Object.keys(fn.g)).toEqual(fn.k);
 };
 

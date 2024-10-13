@@ -1,10 +1,9 @@
 import { describe, it } from "vitest";
 
-import { render } from "@testing-library/react";
-
 import * as mono from "./../../src/mono";
 
 import * as expects from "./../~expects";
+import * as utils from "./../~utils";
 import * as tests from "./../../../tests";
 
 import { Button } from "react-aria-components";
@@ -30,8 +29,8 @@ describe("mono", () => {
     });
 
     it("equal", () => {
-      tests.expects
-        .element(render(<Klassed data-testid="root" />).getByTestId("root"))
+      utils
+        .expectElementRoot(<Klassed {...tests.DATA_TESTID_ROOT_PROPS} />)
         .tagName("BUTTON")
         .className("base color-red");
     });

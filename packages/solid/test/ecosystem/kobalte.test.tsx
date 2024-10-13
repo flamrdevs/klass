@@ -1,10 +1,9 @@
 import { describe, it } from "vitest";
 
-import { render } from "@solidjs/testing-library";
-
 import * as mono from "./../../src/mono";
 
 import * as expects from "./../~expects";
+import * as utils from "./../~utils";
 import * as tests from "./../../../tests";
 
 import { Separator } from "@kobalte/core";
@@ -30,15 +29,15 @@ describe("mono", () => {
     });
 
     it("equal", () => {
-      tests.expects
-        .element(render(() => <Klassed data-testid="root" />).getByTestId("root"))
+      utils
+        .expectElementRoot(() => <Klassed {...tests.DATA_TESTID_ROOT_PROPS} />)
         .tagName("HR")
         .className("base color-red");
     });
 
     it("equal & own polymorphic", () => {
-      tests.expects
-        .element(render(() => <Klassed data-testid="root" as="span" color="blue" />).getByTestId("root"))
+      utils
+        .expectElementRoot(() => <Klassed {...tests.DATA_TESTID_ROOT_PROPS} as="span" color="blue" />)
         .tagName("SPAN")
         .className("base color-blue");
     });
