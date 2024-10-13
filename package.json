@@ -10,7 +10,8 @@
     "build:unminify": "set UNMINIFY=true&&turbo run build",
     "test": "turbo run test",
     "test:preview": "pnpm --parallel --filter ./packages/** exec vite preview --open --outDir test-reports",
-    "format": "prettier . --write --cache"
+    "format": "prettier . --write --cache",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "@vitejs/plugin-vue-jsx": "^4.0.1",
     "@vitest/ui": "^2.1.2",
     "babel-plugin-transform-hook-names": "^1.0.2",
+    "husky": "^9.1.6",
     "jsdom": "^25.0.1",
     "preact": "^10.24.2",
     "prettier": "^3.3.3",
