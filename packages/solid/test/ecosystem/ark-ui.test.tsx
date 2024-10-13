@@ -65,9 +65,7 @@ describe("mono", () => {
           <KlassedControl data-testid="control">
             <KlassedThumb data-testid="thumb" />
           </KlassedControl>
-          <KlassedLabel data-testid="label" as="p">
-            label
-          </KlassedLabel>
+          <KlassedLabel data-testid="label" asChild={(props) => <p {...props()}>label</p>} />
         </KlassedRoot>
       ));
 

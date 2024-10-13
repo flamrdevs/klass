@@ -7,7 +7,7 @@ import * as mono from "./../../src/mono";
 import * as expects from "./../~expects";
 import * as tests from "./../../../tests";
 
-import { As, Separator } from "@kobalte/core";
+import { Separator } from "@kobalte/core";
 
 describe("mono", () => {
   describe("Separator", () => {
@@ -36,17 +36,11 @@ describe("mono", () => {
         .className("base color-red");
     });
 
-    it("equal - own polymorphic", () => {
+    it("equal & own polymorphic", () => {
       tests.expects
-        .element(
-          render(() => (
-            <Klassed asChild data-testid="root" color="blue">
-              <As component="span" class="as-child" />
-            </Klassed>
-          )).getByTestId("root")
-        )
+        .element(render(() => <Klassed data-testid="root" as="span" color="blue" />).getByTestId("root"))
         .tagName("SPAN")
-        .className("base color-blue as-child");
+        .className("base color-blue");
     });
   });
 });
