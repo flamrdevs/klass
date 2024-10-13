@@ -84,6 +84,6 @@
   },
   "devDependencies": {
     "@klass/core": "4.0.0-next.28",
-    "preact": "^10.20.2"
+    "preact": "^10.22.0"
   }
 }

@@ -84,6 +84,6 @@
   },
   "devDependencies": {
     "@klass/core": "4.0.0-next.28",
-    "vue": "^3.4.23"
+    "vue": "^3.4.27"
   }
 }
