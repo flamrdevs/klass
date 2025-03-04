@@ -1,9 +1,6 @@
 import { describe, it } from "vitest";
 
-import { h } from "vue";
-import type { ButtonHTMLAttributes, FunctionalComponent } from "vue";
-
-import { render } from "@testing-library/vue";
+import { render } from "@testing-library/react";
 
 import group from "@klass/core/group";
 
@@ -13,7 +10,7 @@ import * as expects from "./../~expects";
 import * as utils from "./../~utils";
 import * as tests from "./../../../tests";
 
-import { Separator, SwitchRoot, SwitchThumb, Slot } from "radix-vue";
+import { Separator, Switch } from "@base-ui-components/react";
 
 describe("mono", () => {
   describe("Separator", () => {
@@ -44,13 +41,9 @@ describe("mono", () => {
 
     it("equal - own polymorphic", () => {
       utils
-        .expectElementRoot(
-          <Klassed asChild {...tests.DATA_TESTID_ROOT_PROPS} color="blue">
-            <span class="as-child"></span>
-          </Klassed>
-        )
+        .expectElementRoot(<Klassed render={<span />} {...tests.DATA_TESTID_ROOT_PROPS} color="blue" />)
         .tagName("SPAN")
-        .className("base color-blue as-child");
+        .className("base color-blue");
     });
   });
 
@@ -81,8 +74,8 @@ describe("mono", () => {
       },
     });
 
-    const KlassedRoot = mono.klassed(SwitchRoot, variant.root);
-    const KlassedThumb = mono.klassed(SwitchThumb, variant.thumb);
+    const KlassedRoot = mono.klassed(Switch.Root, variant.root);
+    const KlassedThumb = mono.klassed(Switch.Thumb, variant.thumb);
 
     it("type", () => {
       expects.klassedComponent(KlassedRoot);
@@ -92,56 +85,12 @@ describe("mono", () => {
     it("equal & own polymorphic", () => {
       const { getByTestId } = render(
         <KlassedRoot {...tests.DATA_TESTID_ROOT_PROPS}>
-          <KlassedThumb data-testid="thumb" asChild>
-            <div />
-          </KlassedThumb>
+          <KlassedThumb data-testid="thumb" render={<div />} />
         </KlassedRoot>
       );
 
       tests.expects.element(getByTestId("root")).tagName("BUTTON").className("root-base root-color-red");
       tests.expects.element(getByTestId("thumb")).tagName("DIV").className("thumb-base thumb-color-red");
-    });
-  });
-
-  describe("Slot", () => {
-    const Component: FunctionalComponent<ButtonHTMLAttributes & { asChild?: boolean }> = ({ asChild }, { attrs, slots }) => h(asChild ? Slot : "button", attrs as any, slots);
-    Component.props = ["asChild"];
-    Component.inheritAttrs = false;
-
-    const Klassed = mono.klassed(Component, {
-      base: "base",
-      variants: {
-        color: {
-          red: "color-red",
-          green: "color-green",
-          blue: "color-blue",
-        },
-      },
-      defaults: {
-        color: "red",
-      },
-    });
-
-    it("type", () => {
-      expects.klassedComponent(Klassed);
-    });
-
-    it("equal", () => {
-      utils
-        .expectElementRoot(<Klassed {...tests.DATA_TESTID_ROOT_PROPS} />)
-        .tagName("BUTTON")
-        .className("base color-red");
-    });
-
-    it("equal - own polymorphic", () => {
-      utils
-        .expectElementRoot(
-          <Klassed asChild {...tests.DATA_TESTID_ROOT_PROPS} color="blue">
-            <a class="as-child"></a>
-          </Klassed>
-        )
-        .tagName("A")
-        .className("base color-blue as-child");
     });
   });
 });
