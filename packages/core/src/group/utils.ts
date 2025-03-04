@@ -5,7 +5,7 @@ import { StrictGroupVariantsSchema, GroupResult } from "./types";
 const simplify =
   /* @__PURE__ */
 
-    <B extends string, T extends StrictGroupVariantsSchema<B>>(group: GroupResult<B, T>) =>
+  <B extends string, T extends StrictGroupVariantsSchema<B>>(group: GroupResult<B, T>) =>
     (props?: { [K in keyof T]?: TransformKey<keyof T[K]> }) => {
       const result = {} as { [key in B]: string };
       for (const base in group) result[base] = group[base](props);
