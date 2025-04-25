@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "clean": "turbo run clean",
     "build": "turbo run build",
     "build:unminify": "set UNMINIFY=true&&turbo run build",
     "test": "turbo run test",
@@ -48,7 +47,6 @@
     "react-aria-components": "1.8.0",
     "react-dom": "19.1.0",
     "reka-ui": "2.2.0",
-    "rimraf": "6.0.1",
     "solid-js": "1.9.5",
     "turbo": "2.5.2",
     "typescript": "5.8.3",

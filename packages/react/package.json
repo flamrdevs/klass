@@ -71,7 +71,6 @@
     "directory": "packages/react"
   },
   "scripts": {
-    "clean": "rimraf dist",
     "build": "vite build",
     "test": "vitest"
   },
