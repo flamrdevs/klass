@@ -15,6 +15,10 @@
     "styled",
     "polymorphic"
   ],
+  "license": "MIT",
+  "author": {
+    "name": "flamrdevs"
+  },
   "type": "module",
   "main": "./dist/index.qwik.cjs",
   "qwik": "./dist/index.qwik.mjs",
@@ -61,30 +65,26 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public"
+  "homepage": "https://klass.pages.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flamrdevs/klass.git",
+    "directory": "packages/qwik"
   },
   "scripts": {
     "clean": "rimraf dist",
     "build": "vite build",
     "test": "vitest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flamrdevs/klass.git"
-  },
-  "author": "flamrdevs",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/flamrdevs/klass/issues"
-  },
-  "homepage": "https://klass.pages.dev",
   "peerDependencies": {
-    "@builder.io/qwik": "1.x",
+    "@builder.io/qwik": "^1",
     "@klass/core": "4.0.0-next.28"
   },
   "devDependencies": {
-    "@builder.io/qwik": "1.12.1",
+    "@builder.io/qwik": "^1",
     "@klass/core": "4.0.0-next.28"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

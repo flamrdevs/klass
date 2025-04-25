@@ -15,6 +15,10 @@
     "styled",
     "polymorphic"
   ],
+  "license": "MIT",
+  "author": {
+    "name": "flamrdevs"
+  },
   "type": "module",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
@@ -60,30 +64,26 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public"
+  "homepage": "https://klass.pages.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flamrdevs/klass.git",
+    "directory": "packages/preact"
   },
   "scripts": {
     "clean": "rimraf dist",
     "build": "vite build",
     "test": "vitest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flamrdevs/klass.git"
-  },
-  "author": "flamrdevs",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/flamrdevs/klass/issues"
-  },
-  "homepage": "https://klass.pages.dev",
   "peerDependencies": {
     "@klass/core": "4.0.0-next.28",
-    "preact": "10.x"
+    "preact": "^10"
   },
   "devDependencies": {
     "@klass/core": "4.0.0-next.28",
-    "preact": "10.26.4"
+    "preact": "^10"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
