@@ -46,45 +46,45 @@ export const ReklassedBoxCustomAs = reklassedCustomAs("div", shared.reklass.box.
 export const ReklassedBoxCustomAsCustomEnd = reklassedCustomAsCustomEnd("div", shared.reklass.box.customAs.options);
 
 export const KlassedButtonBasicReactive = () => {
-  const [as, setAs] = createSignal<typeof A | "button">("button");
-  const [color, setColor] = createSignal<"red" | "green" | "blue">("red");
-  const [classes, setClasses] = createSignal<string | null>(null);
+	const [as, setAs] = createSignal<typeof A | "button">("button");
+	const [color, setColor] = createSignal<"red" | "green" | "blue">("red");
+	const [classes, setClasses] = createSignal<string | null>(null);
 
-  return (
-    <KlassedButtonBasic
-      {...DATA_TESTID_REACTIVE_PROPS}
-      as={as()}
-      color={color()}
-      class={["extra", "classes", classes()]}
-      onClick={() => {
-        setAs(() => A);
-        setColor("blue");
-        setClasses("reactive");
-      }}
-    >
-      children
-    </KlassedButtonBasic>
-  );
+	return (
+		<KlassedButtonBasic
+			{...DATA_TESTID_REACTIVE_PROPS}
+			as={as()}
+			color={color()}
+			class={["extra", "classes", classes()]}
+			onClick={() => {
+				setAs(() => A);
+				setColor("blue");
+				setClasses("reactive");
+			}}
+		>
+			children
+		</KlassedButtonBasic>
+	);
 };
 
 export const ReklassedBoxBasicReactive = () => {
-  const [as, setAs] = createSignal<typeof A | "button">("button");
-  const [x, setX] = createSignal<"1" | "2" | "2">("1");
-  const [classes, setClasses] = createSignal<string | null>(null);
+	const [as, setAs] = createSignal<typeof A | "button">("button");
+	const [x, setX] = createSignal<"1" | "2" | "2">("1");
+	const [classes, setClasses] = createSignal<string | null>(null);
 
-  return (
-    <ReklassedBoxBasic
-      {...DATA_TESTID_REACTIVE_PROPS}
-      as={as()}
-      x={x()}
-      class={["extra", "classes", classes()]}
-      onClick={() => {
-        setAs(() => A);
-        setX("2");
-        setClasses("reactive");
-      }}
-    >
-      children
-    </ReklassedBoxBasic>
-  );
+	return (
+		<ReklassedBoxBasic
+			{...DATA_TESTID_REACTIVE_PROPS}
+			as={as()}
+			x={x()}
+			class={["extra", "classes", classes()]}
+			onClick={() => {
+				setAs(() => A);
+				setX("2");
+				setClasses("reactive");
+			}}
+		>
+			children
+		</ReklassedBoxBasic>
+	);
 };

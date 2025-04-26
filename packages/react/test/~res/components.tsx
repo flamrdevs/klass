@@ -12,17 +12,17 @@ export const RequiredButton = forwardRef<HTMLButtonElement, WithRequiredProps<Pr
 export const RequiredDiv = forwardRef<HTMLDivElement, WithRequiredProps<PropsWithoutRef<JSX.IntrinsicElements["div"]>>>((props, ref) => <div ref={ref} {...props} />);
 
 export class ClassAWithoutRef extends Component<WithRequiredProps<PropsWithoutRef<JSX.IntrinsicElements["a"]>>> {
-  render() {
-    return <a {...this.props} />;
-  }
+	render() {
+		return <a {...this.props} />;
+	}
 }
 export class ClassButtonWithoutRef extends Component<WithRequiredProps<PropsWithoutRef<JSX.IntrinsicElements["button"]>>> {
-  render() {
-    return <button {...this.props} />;
-  }
+	render() {
+		return <button {...this.props} />;
+	}
 }
 export class ClassDivWithoutRef extends Component<WithRequiredProps<PropsWithoutRef<JSX.IntrinsicElements["div"]>>> {
-  render() {
-    return <div {...this.props} />;
-  }
+	render() {
+		return <div {...this.props} />;
+	}
 }

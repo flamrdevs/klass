@@ -2,9 +2,9 @@ import { defineConfig } from "vite";
 
 import preact from "@preact/preset-vite";
 
-import { dts, build } from "../vite-config";
+import { build, dts } from "../vite-config";
 
 export default defineConfig({
-  plugins: [preact(), dts(["src/**/*.{ts,tsx}"])],
-  build: build(["utils.ts", "index.tsx", "create.tsx", "mono/index.tsx", "mono/create.tsx"]),
+	plugins: [preact(), dts(["src/**/*.{ts,tsx}"])],
+	build: build(["utils.ts", "index.tsx", "create.tsx", "mono/index.tsx", "mono/create.tsx"]),
 });

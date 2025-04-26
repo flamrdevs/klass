@@ -9,8 +9,8 @@ const x = ref<"1" | "2" | "2">("1");
 const classes = ref<string | null>(null);
 
 const handleClick = () => {
-  x.value = "2";
-  classes.value = "reactive";
+	x.value = "2";
+	classes.value = "reactive";
 };
 </script>
 

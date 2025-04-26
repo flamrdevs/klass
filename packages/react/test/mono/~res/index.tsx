@@ -44,39 +44,39 @@ export const ReklassedBoxCustomAs = reklassedCustomAs("div", shared.reklass.box.
 export const ReklassedBoxCustomAsCustomEnd = reklassedCustomAsCustomEnd("div", shared.reklass.box.customAs.options);
 
 export const KlassedButtonBasicReactive = () => {
-  const [color, setColor] = useState<"red" | "green" | "blue">("red");
-  const [classes, setClasses] = useState<string | null>(null);
+	const [color, setColor] = useState<"red" | "green" | "blue">("red");
+	const [classes, setClasses] = useState<string | null>(null);
 
-  return (
-    <KlassedButtonBasic
-      {...DATA_TESTID_REACTIVE_PROPS}
-      color={color}
-      className={["extra", "classes", classes]}
-      onClick={() => {
-        setColor("blue");
-        setClasses("reactive");
-      }}
-    >
-      children
-    </KlassedButtonBasic>
-  );
+	return (
+		<KlassedButtonBasic
+			{...DATA_TESTID_REACTIVE_PROPS}
+			color={color}
+			className={["extra", "classes", classes]}
+			onClick={() => {
+				setColor("blue");
+				setClasses("reactive");
+			}}
+		>
+			children
+		</KlassedButtonBasic>
+	);
 };
 
 export const ReklassedBoxBasicReactive = () => {
-  const [x, setX] = useState<"1" | "2" | "2">("1");
-  const [classes, setClasses] = useState<string | null>(null);
+	const [x, setX] = useState<"1" | "2" | "2">("1");
+	const [classes, setClasses] = useState<string | null>(null);
 
-  return (
-    <ReklassedBoxBasic
-      {...DATA_TESTID_REACTIVE_PROPS}
-      x={x}
-      className={["extra", "classes", classes]}
-      onClick={() => {
-        setX("2");
-        setClasses("reactive");
-      }}
-    >
-      children
-    </ReklassedBoxBasic>
-  );
+	return (
+		<ReklassedBoxBasic
+			{...DATA_TESTID_REACTIVE_PROPS}
+			x={x}
+			className={["extra", "classes", classes]}
+			onClick={() => {
+				setX("2");
+				setClasses("reactive");
+			}}
+		>
+			children
+		</ReklassedBoxBasic>
+	);
 };

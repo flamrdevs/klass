@@ -1,88 +1,68 @@
 {
-  "name": "@klass/qwik",
-  "version": "4.0.0-next.28",
-  "description": "Class variant utility for Qwik",
-  "keywords": [
-    "class",
-    "classname",
-    "variant",
-    "variants",
-    "utility",
-    "responsive",
-    "typescript",
-    "qwik",
-    "component",
-    "styled",
-    "polymorphic"
-  ],
-  "license": "MIT",
-  "author": {
-    "name": "flamrdevs"
-  },
-  "type": "module",
-  "main": "./dist/index.qwik.cjs",
-  "qwik": "./dist/index.qwik.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.qwik.mjs",
-      "require": "./dist/index.qwik.cjs"
-    },
-    "./create": {
-      "types": "./dist/create.d.ts",
-      "import": "./dist/create.qwik.mjs",
-      "require": "./dist/create.qwik.cjs"
-    },
-    "./utils": {
-      "types": "./dist/utils.d.ts",
-      "import": "./dist/utils.qwik.mjs",
-      "require": "./dist/utils.qwik.cjs"
-    },
-    "./mono": {
-      "types": "./dist/mono/index.d.ts",
-      "import": "./dist/mono/index.qwik.mjs",
-      "require": "./dist/mono/index.qwik.cjs"
-    },
-    "./mono/create": {
-      "types": "./dist/mono/create.d.ts",
-      "import": "./dist/mono/create.qwik.mjs",
-      "require": "./dist/mono/create.qwik.cjs"
-    }
-  },
-  "typesVersions": {
-    ">=3.1": {
-      "*": [
-        "./dist/*.d.ts",
-        "./dist/index.d.ts"
-      ],
-      "mono": [
-        "./dist/mono/*.d.ts",
-        "./dist/mono/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://klass.pages.dev",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flamrdevs/klass.git",
-    "directory": "packages/qwik"
-  },
-  "scripts": {
-    "build": "vite build"
-  },
-  "peerDependencies": {
-    "@builder.io/qwik": "^1",
-    "@klass/core": "4.0.0-next.28"
-  },
-  "devDependencies": {
-    "@builder.io/qwik": "^1",
-    "@klass/core": "4.0.0-next.28"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "@klass/qwik",
+	"version": "4.0.0-next.28",
+	"description": "Class variant utility for Qwik",
+	"keywords": ["class", "classname", "variant", "variants", "utility", "responsive", "typescript", "qwik", "component", "styled", "polymorphic"],
+	"license": "MIT",
+	"author": {
+		"name": "flamrdevs"
+	},
+	"type": "module",
+	"main": "./dist/index.qwik.cjs",
+	"qwik": "./dist/index.qwik.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.qwik.mjs",
+			"require": "./dist/index.qwik.cjs"
+		},
+		"./create": {
+			"types": "./dist/create.d.ts",
+			"import": "./dist/create.qwik.mjs",
+			"require": "./dist/create.qwik.cjs"
+		},
+		"./utils": {
+			"types": "./dist/utils.d.ts",
+			"import": "./dist/utils.qwik.mjs",
+			"require": "./dist/utils.qwik.cjs"
+		},
+		"./mono": {
+			"types": "./dist/mono/index.d.ts",
+			"import": "./dist/mono/index.qwik.mjs",
+			"require": "./dist/mono/index.qwik.cjs"
+		},
+		"./mono/create": {
+			"types": "./dist/mono/create.d.ts",
+			"import": "./dist/mono/create.qwik.mjs",
+			"require": "./dist/mono/create.qwik.cjs"
+		}
+	},
+	"typesVersions": {
+		">=3.1": {
+			"*": ["./dist/*.d.ts", "./dist/index.d.ts"],
+			"mono": ["./dist/mono/*.d.ts", "./dist/mono/index.d.ts"]
+		}
+	},
+	"files": ["dist"],
+	"homepage": "https://klass.pages.dev",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/flamrdevs/klass.git",
+		"directory": "packages/qwik"
+	},
+	"scripts": {
+		"build": "vite build"
+	},
+	"peerDependencies": {
+		"@builder.io/qwik": "^1",
+		"@klass/core": "4.0.0-next.28"
+	},
+	"devDependencies": {
+		"@builder.io/qwik": "^1",
+		"@klass/core": "4.0.0-next.28"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

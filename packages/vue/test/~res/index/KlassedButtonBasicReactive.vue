@@ -10,9 +10,9 @@ const color = ref<"red" | "green" | "blue">("red");
 const classes = ref<string | null>(null);
 
 const handleClick = () => {
-  as.value = "a";
-  color.value = "blue";
-  classes.value = "reactive";
+	as.value = "a";
+	color.value = "blue";
+	classes.value = "reactive";
 };
 </script>
 

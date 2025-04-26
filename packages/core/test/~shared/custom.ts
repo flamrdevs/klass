@@ -1,4 +1,4 @@
-import { EndFn, EndFnProps, AsFn, AsFnProps } from "./../../src/types";
+import { AsFn, AsFnProps, EndFn, EndFnProps } from "./../../src/types";
 
 export const end: EndFn = (value) => `end( ${value} )`;
 export const as: AsFn = (condition, className) => `${className}${condition}`;

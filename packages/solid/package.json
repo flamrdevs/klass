@@ -1,87 +1,67 @@
 {
-  "name": "@klass/solid",
-  "version": "4.0.0-next.28",
-  "description": "Class variant utility for Solid",
-  "keywords": [
-    "class",
-    "classname",
-    "variant",
-    "variants",
-    "utility",
-    "responsive",
-    "typescript",
-    "solid",
-    "component",
-    "styled",
-    "polymorphic"
-  ],
-  "license": "MIT",
-  "author": {
-    "name": "flamrdevs"
-  },
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./create": {
-      "types": "./dist/create.d.ts",
-      "import": "./dist/create.js",
-      "require": "./dist/create.cjs"
-    },
-    "./utils": {
-      "types": "./dist/utils.d.ts",
-      "import": "./dist/utils.js",
-      "require": "./dist/utils.cjs"
-    },
-    "./mono": {
-      "types": "./dist/mono/index.d.ts",
-      "import": "./dist/mono/index.js",
-      "require": "./dist/mono/index.cjs"
-    },
-    "./mono/create": {
-      "types": "./dist/mono/create.d.ts",
-      "import": "./dist/mono/create.js",
-      "require": "./dist/mono/create.cjs"
-    }
-  },
-  "typesVersions": {
-    ">=3.1": {
-      "*": [
-        "./dist/*.d.ts",
-        "./dist/index.d.ts"
-      ],
-      "mono": [
-        "./dist/mono/*.d.ts",
-        "./dist/mono/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://klass.pages.dev",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flamrdevs/klass.git",
-    "directory": "packages/solid"
-  },
-  "scripts": {
-    "build": "vite build"
-  },
-  "peerDependencies": {
-    "@klass/core": "4.0.0-next.28",
-    "solid-js": "^1"
-  },
-  "devDependencies": {
-    "@klass/core": "4.0.0-next.28",
-    "solid-js": "^1"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "@klass/solid",
+	"version": "4.0.0-next.28",
+	"description": "Class variant utility for Solid",
+	"keywords": ["class", "classname", "variant", "variants", "utility", "responsive", "typescript", "solid", "component", "styled", "polymorphic"],
+	"license": "MIT",
+	"author": {
+		"name": "flamrdevs"
+	},
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		},
+		"./create": {
+			"types": "./dist/create.d.ts",
+			"import": "./dist/create.js",
+			"require": "./dist/create.cjs"
+		},
+		"./utils": {
+			"types": "./dist/utils.d.ts",
+			"import": "./dist/utils.js",
+			"require": "./dist/utils.cjs"
+		},
+		"./mono": {
+			"types": "./dist/mono/index.d.ts",
+			"import": "./dist/mono/index.js",
+			"require": "./dist/mono/index.cjs"
+		},
+		"./mono/create": {
+			"types": "./dist/mono/create.d.ts",
+			"import": "./dist/mono/create.js",
+			"require": "./dist/mono/create.cjs"
+		}
+	},
+	"typesVersions": {
+		">=3.1": {
+			"*": ["./dist/*.d.ts", "./dist/index.d.ts"],
+			"mono": ["./dist/mono/*.d.ts", "./dist/mono/index.d.ts"]
+		}
+	},
+	"files": ["dist"],
+	"homepage": "https://klass.pages.dev",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/flamrdevs/klass.git",
+		"directory": "packages/solid"
+	},
+	"scripts": {
+		"build": "vite build"
+	},
+	"peerDependencies": {
+		"@klass/core": "4.0.0-next.28",
+		"solid-js": "^1"
+	},
+	"devDependencies": {
+		"@klass/core": "4.0.0-next.28",
+		"solid-js": "^1"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

@@ -44,77 +44,77 @@ export const ReklassedBoxCustomAs = reklassedCustomAs("div", shared.reklass.box.
 export const ReklassedBoxCustomAsCustomEnd = reklassedCustomAsCustomEnd("div", shared.reklass.box.customAs.options);
 
 export const KlassedButtonBasicReactive = component$(() => {
-  const color = useSignal<"red" | "green" | "blue">("red");
-  const classes = useSignal<string | null>(null);
+	const color = useSignal<"red" | "green" | "blue">("red");
+	const classes = useSignal<string | null>(null);
 
-  return (
-    <KlassedButtonBasic
-      {...DATA_TESTID_REACTIVE_PROPS}
-      color={color}
-      class={["extra", "classes", classes.value]}
-      onClick$={() => {
-        color.value = "blue";
-        classes.value = "reactive";
-      }}
-    >
-      children
-    </KlassedButtonBasic>
-  );
+	return (
+		<KlassedButtonBasic
+			{...DATA_TESTID_REACTIVE_PROPS}
+			color={color}
+			class={["extra", "classes", classes.value]}
+			onClick$={() => {
+				color.value = "blue";
+				classes.value = "reactive";
+			}}
+		>
+			children
+		</KlassedButtonBasic>
+	);
 });
 export const KlassedButtonBasicSignalReactive = component$(() => {
-  const color = useSignal<"red" | "green" | "blue">("red");
-  const classes = useSignal<string | null>(null);
-  const className = useComputed$(() => ["extra", "classes", classes.value]);
+	const color = useSignal<"red" | "green" | "blue">("red");
+	const classes = useSignal<string | null>(null);
+	const className = useComputed$(() => ["extra", "classes", classes.value]);
 
-  return (
-    <KlassedButtonBasic
-      {...DATA_TESTID_REACTIVE_PROPS}
-      color={color}
-      class={className}
-      onClick$={() => {
-        color.value = "blue";
-        classes.value = "reactive";
-      }}
-    >
-      children
-    </KlassedButtonBasic>
-  );
+	return (
+		<KlassedButtonBasic
+			{...DATA_TESTID_REACTIVE_PROPS}
+			color={color}
+			class={className}
+			onClick$={() => {
+				color.value = "blue";
+				classes.value = "reactive";
+			}}
+		>
+			children
+		</KlassedButtonBasic>
+	);
 });
 
 export const ReklassedBoxBasicReactive = component$(() => {
-  const x = useSignal<"1" | "2" | "2">("1");
-  const classes = useSignal<string | null>(null);
+	const x = useSignal<"1" | "2" | "2">("1");
+	const classes = useSignal<string | null>(null);
 
-  return (
-    <ReklassedBoxBasic
-      {...DATA_TESTID_REACTIVE_PROPS}
-      x={x}
-      class={["extra", "classes", classes.value]}
-      onClick$={() => {
-        x.value = "2";
-        classes.value = "reactive";
-      }}
-    >
-      children
-    </ReklassedBoxBasic>
-  );
+	return (
+		<ReklassedBoxBasic
+			{...DATA_TESTID_REACTIVE_PROPS}
+			x={x}
+			class={["extra", "classes", classes.value]}
+			onClick$={() => {
+				x.value = "2";
+				classes.value = "reactive";
+			}}
+		>
+			children
+		</ReklassedBoxBasic>
+	);
 });
 export const ReklassedBoxBasicSignalReactive = component$(() => {
-  const x = useSignal<"1" | "2" | "2">("1");
-  const classes = useSignal<string | null>(null);
-  const className = useComputed$(() => ["extra", "classes", classes.value]);
+	const x = useSignal<"1" | "2" | "2">("1");
+	const classes = useSignal<string | null>(null);
+	const className = useComputed$(() => ["extra", "classes", classes.value]);
 
-  return (
-    <ReklassedBoxBasic
-      {...DATA_TESTID_REACTIVE_PROPS}
-      x={x}
-      class={className}
-      onClick$={() => {
-        x.value = "2";
-        classes.value = "reactive";
-      }}
-    >
-      children
-    </ReklassedBoxBasic>
-  );
+	return (
+		<ReklassedBoxBasic
+			{...DATA_TESTID_REACTIVE_PROPS}
+			x={x}
+			class={className}
+			onClick$={() => {
+				x.value = "2";
+				classes.value = "reactive";
+			}}
+		>
+			children
+		</ReklassedBoxBasic>
+	);
 });

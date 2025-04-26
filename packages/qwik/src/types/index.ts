@@ -1,9 +1,9 @@
 import type { JSX } from "@builder.io/qwik/jsx-runtime";
 
-import type { ClassValue, StrictVariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, Fx, Fxs, FxFrom, ComposeFn } from "@klass/core";
+import type { ClassValue, ComposeFn, ConditionSchema, Fx, FxFrom, Fxs, KlassFn, KlassOptions, ReklassFn, ReklassOptions, StrictVariantsSchema, VariantsOf } from "@klass/core";
 
-import type { Signalish, SignalishRecord, SupportedElementType, Classes } from "./qwik";
 import type { PolymorphicComponentProps } from "./polymorphic";
+import type { Classes, Signalish, SignalishRecord, SupportedElementType } from "./qwik";
 
 export type FinalRestrictedVariantsKey = Classes;
 export type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;
@@ -23,13 +23,13 @@ export type ComposedComponentConfig<ET extends SupportedElementType, Fn extends 
 export type Base<F> = { fx: F };
 
 export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
-  <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<SignalishRecord<VariantsOf<KlassFn<VS>>>>>): JSX.Element;
+	<C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<SignalishRecord<VariantsOf<KlassFn<VS>>>>>): JSX.Element;
 } & Base<KlassFn<VS>>;
 
 export type ReklassedComponent<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
-  <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<SignalishRecord<VariantsOf<ReklassFn<CS, VS>>>>>): JSX.Element;
+	<C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<SignalishRecord<VariantsOf<ReklassFn<CS, VS>>>>>): JSX.Element;
 } & Base<ReklassFn<CS, VS>>;
 
 export type ComposedComponent<ET extends SupportedElementType, Fn extends Fx> = {
-  <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<SignalishRecord<VariantsOf<ComposeFn<Fn>>>>>): JSX.Element;
+	<C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<SignalishRecord<VariantsOf<ComposeFn<Fn>>>>>): JSX.Element;
 } & Base<ComposeFn<Fn>>;

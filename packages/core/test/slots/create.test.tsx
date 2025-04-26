@@ -6,14 +6,14 @@ import { createSlots } from "./../../src/slots/create";
 
 import * as shared from "./../~shared";
 
-import { options, expectResult } from "./shared";
+import { expectResult, options } from "./shared";
 
 describe("slots/create", () => {
-  const klass = createKlass(shared.custom.endProps);
-  const group = createGroup(klass);
-  const slots = createSlots(group);
+	const klass = createKlass(shared.custom.endProps);
+	const group = createGroup(klass);
+	const slots = createSlots(group);
 
-  it("basic", () => {
-    expectResult(slots(options), shared.custom.end);
-  });
+	it("basic", () => {
+		expectResult(slots(options), shared.custom.end);
+	});
 });

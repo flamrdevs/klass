@@ -3,16 +3,16 @@ import type { JSX } from "solid-js";
 import type { SupportedComponentProps, SupportedElementType } from "./solid";
 
 type ResolveRefProps<P extends {}> = Omit<P, "ref"> & {
-  ref?: P extends {
-    ref?: infer Ref;
-  }
-    ? Ref
-    : unknown;
+	ref?: P extends {
+		ref?: infer Ref;
+	}
+		? Ref
+		: unknown;
 };
 
 export type PolymorphicComponentProps<ET extends SupportedElementType, Props = {}> = (Props & {
-  as?: ET;
+	as?: ET;
 } & {
-  children?: JSX.Element;
+	children?: JSX.Element;
 }) &
-  Omit<ResolveRefProps<SupportedComponentProps<ET>>, "as" | keyof Props>;
+	Omit<ResolveRefProps<SupportedComponentProps<ET>>, "as" | keyof Props>;
