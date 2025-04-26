@@ -6,7 +6,7 @@
     "target": "ESNext",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "declaration": true,
-    "removeComments": true,
+    "removeComments": false,
     "noEmit": true,
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,

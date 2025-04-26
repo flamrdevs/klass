@@ -1,17 +1,18 @@
-import { defineConfig } from "vitest/config";
+import { defineProject } from "vitest/config";
 
 import vue from "@vitejs/plugin-vue";
 import jsx from "@vitejs/plugin-vue-jsx";
 
-export default defineConfig({
+import { base } from "../vitest-config";
+
+export default defineProject({
+  ...base,
   plugins: [vue(), jsx()],
   test: {
+    ...base.test,
     environment: "jsdom",
     setupFiles: "vitest.setup.ts",
     include: ["test/**/*.test.{ts,tsx}"],
-    watch: false,
-    reporters: ["default", "html"],
-    outputFile: "test-reports/index.html",
     server: {
       deps: {
         inline: [/vue/],

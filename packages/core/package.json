@@ -87,8 +87,7 @@
     "directory": "packages/core"
   },
   "scripts": {
-    "build": "vite build",
-    "test": "vitest"
+    "build": "vite build"
   },
   "dependencies": {
     "clsx": "^2"

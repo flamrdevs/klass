@@ -5,9 +5,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
-    "build:unminify": "set UNMINIFY=true&&turbo run build",
-    "test": "turbo run test",
-    "test:preview": "pnpm --parallel --filter ./packages/** exec vite preview --open --outDir test-reports",
+    "test": "vitest run",
     "format": "prettier . --write --cache",
     "prepare": "husky"
   },
@@ -48,6 +46,7 @@
     "react-dom": "19.1.0",
     "reka-ui": "2.2.0",
     "solid-js": "1.9.5",
+    "terser": "5.39.0",
     "turbo": "2.5.2",
     "typescript": "5.8.3",
     "vite": "6.3.3",

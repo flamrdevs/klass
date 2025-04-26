@@ -5,11 +5,6 @@
       "cache": true,
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
-    },
-    "test": {
-      "cache": true,
-      "dependsOn": ["^test"],
-      "outputs": ["test-reports/**"]
     }
   }
 }

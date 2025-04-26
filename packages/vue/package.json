@@ -71,8 +71,7 @@
     "directory": "packages/vue"
   },
   "scripts": {
-    "build": "vite build",
-    "test": "vitest"
+    "build": "vite build"
   },
   "peerDependencies": {
     "@klass/core": "4.0.0-next.28",

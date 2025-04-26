@@ -72,8 +72,7 @@
     "directory": "packages/qwik"
   },
   "scripts": {
-    "build": "vite build",
-    "test": "vitest"
+    "build": "vite build"
   },
   "peerDependencies": {
     "@builder.io/qwik": "^1",

@@ -1,11 +1,12 @@
-import { defineConfig } from "vitest/config";
+import { defineProject } from "vitest/config";
 
-export default defineConfig({
+import { base } from "../vitest-config";
+
+export default defineProject({
+  ...base,
   plugins: [],
   test: {
+    ...base.test,
     include: ["test/**/*.test.ts"],
-    watch: false,
-    reporters: ["default", "html"],
-    outputFile: "test-reports/index.html",
   },
 });
