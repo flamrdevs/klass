@@ -1,0 +1,16 @@
+{
+	"name": "@test/react-18",
+	"type": "module",
+	"private": true,
+	"dependencies": {
+		"@klass/core": "workspace:*",
+		"@klass/react": "workspace:*",
+		"@test/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"react": "^18",
+		"react-dom": "^18"
+	}
+}

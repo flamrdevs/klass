@@ -1,0 +1,13 @@
+{
+	"name": "@test/preact",
+	"type": "module",
+	"private": true,
+	"dependencies": {
+		"@klass/core": "workspace:*",
+		"@klass/preact": "workspace:*",
+		"@test/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"preact": "^10"
+	}
+}

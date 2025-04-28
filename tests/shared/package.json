@@ -1,0 +1,8 @@
+{
+	"name": "@test/shared",
+	"type": "module",
+	"private": true,
+	"dependencies": {
+		"@klass/core": "workspace:*"
+	}
+}

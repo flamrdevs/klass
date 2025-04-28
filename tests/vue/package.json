@@ -1,0 +1,15 @@
+{
+	"name": "@test/vue",
+	"type": "module",
+	"private": true,
+	"dependencies": {
+		"@klass/core": "workspace:*",
+		"@klass/vue": "workspace:*",
+		"@test/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"@ark-ui/vue": "5.7.0",
+		"reka-ui": "2.2.0",
+		"vue": "^3"
+	}
+}

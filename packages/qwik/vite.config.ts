@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 
 import { qwikVite as qwik } from "@builder.io/qwik/optimizer";
 
-import { build, dts } from "../vite-config";
+import { build, dts } from "../config";
 
 const _build = build(["utils.ts", "index.tsx", "create.tsx", "mono/index.tsx", "mono/create.tsx"], (options) => {
 	options.lib.fileName = (format, entry) => `${entry}.qwik.${format === "cjs" ? "cjs" : "mjs"}`;

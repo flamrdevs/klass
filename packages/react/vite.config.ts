@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 
 import react from "@vitejs/plugin-react";
 
-import { build, dts } from "../vite-config";
+import { build, dts } from "../config";
 
 export default defineConfig({
 	plugins: [react(), dts(["src/**/*.{ts,tsx}"])],

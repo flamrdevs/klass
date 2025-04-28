@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 
-import { build, dts } from "../vite-config";
+import { build, dts } from "../config";
 
 export default defineConfig({
 	plugins: [dts(["src/**/*.ts"])],

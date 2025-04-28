@@ -4,8 +4,8 @@
 	"commit": false,
 	"fixed": [["@klass/core", "@klass/preact", "@klass/qwik", "@klass/react", "@klass/solid", "@klass/vue"]],
 	"linked": [],
-	"access": "public",
+	"access": "restricted",
 	"baseBranch": "main",
 	"updateInternalDependencies": "patch",
-	"ignore": ["@klass/tests"]
+	"ignore": []
 }
