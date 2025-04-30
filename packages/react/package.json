@@ -54,12 +54,12 @@
 		"build": "vite build"
 	},
 	"peerDependencies": {
-		"@klass/core": "4.0.0-next.28",
+		"@klass/core": "workspace:*",
 		"react": "^18 || ^19",
 		"react-dom": "^18 || ^19"
 	},
 	"devDependencies": {
-		"@klass/core": "4.0.0-next.28",
+		"@klass/core": "workspace:*",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"react": "^19",

@@ -54,11 +54,11 @@
 		"build": "vite build"
 	},
 	"peerDependencies": {
-		"@klass/core": "4.0.0-next.28",
+		"@klass/core": "workspace:*",
 		"solid-js": "^1"
 	},
 	"devDependencies": {
-		"@klass/core": "4.0.0-next.28",
+		"@klass/core": "workspace:*",
 		"solid-js": "^1"
 	},
 	"publishConfig": {
