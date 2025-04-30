@@ -5,7 +5,7 @@ import type { ComponentPublicInstance } from "vue";
 import * as fixtures from "@test/shared/fixtures";
 import { cleanupable, expectGetElementToBeInTheDocument } from "@test/shared/utils";
 
-import { klassed, reklassed, composed } from "@klass/vue";
+import { composed, klassed, reklassed } from "@klass/vue";
 
 import { mount } from "~/utils";
 

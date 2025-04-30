@@ -2,69 +2,44 @@
 	"name": "@klass/qwik",
 	"version": "4.0.0-next.29",
 	"description": "Class variant utility for Qwik",
-	"keywords": [
-		"class",
-		"classname",
-		"variant",
-		"variants",
-		"utility",
-		"responsive",
-		"typescript",
-		"qwik",
-		"component",
-		"styled",
-		"polymorphic"
-	],
+	"keywords": ["class", "classname", "variant", "variants", "utility", "responsive", "typescript", "qwik", "component", "styled", "polymorphic"],
 	"license": "MIT",
 	"author": {
 		"name": "flamrdevs"
 	},
 	"type": "module",
-	"main": "./dist/index.qwik.cjs",
+	"main": "./dist/index.qwik.mjs",
 	"qwik": "./dist/index.qwik.mjs",
 	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"import": "./dist/index.qwik.mjs",
-			"require": "./dist/index.qwik.cjs"
+			"default": "./dist/index.qwik.mjs"
 		},
 		"./create": {
 			"types": "./dist/create.d.ts",
-			"import": "./dist/create.qwik.mjs",
-			"require": "./dist/create.qwik.cjs"
+			"default": "./dist/create.qwik.mjs"
 		},
 		"./utils": {
 			"types": "./dist/utils.d.ts",
-			"import": "./dist/utils.qwik.mjs",
-			"require": "./dist/utils.qwik.cjs"
+			"default": "./dist/utils.qwik.mjs"
 		},
 		"./mono": {
 			"types": "./dist/mono/index.d.ts",
-			"import": "./dist/mono/index.qwik.mjs",
-			"require": "./dist/mono/index.qwik.cjs"
+			"default": "./dist/mono/index.qwik.mjs"
 		},
 		"./mono/create": {
 			"types": "./dist/mono/create.d.ts",
-			"import": "./dist/mono/create.qwik.mjs",
-			"require": "./dist/mono/create.qwik.cjs"
+			"default": "./dist/mono/create.qwik.mjs"
 		}
 	},
 	"typesVersions": {
 		">=3.1": {
-			"*": [
-				"./dist/*.d.ts",
-				"./dist/index.d.ts"
-			],
-			"mono": [
-				"./dist/mono/*.d.ts",
-				"./dist/mono/index.d.ts"
-			]
+			"*": ["./dist/*.d.ts", "./dist/index.d.ts"],
+			"mono": ["./dist/mono/*.d.ts", "./dist/mono/index.d.ts"]
 		}
 	},
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"homepage": "https://klass.pages.dev",
 	"repository": {
 		"type": "git",

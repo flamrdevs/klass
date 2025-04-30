@@ -1,4 +1,4 @@
-import { act, type ReactNode } from "react";
+import { type ReactNode, act } from "react";
 import { createRoot } from "react-dom/client";
 
 let init = false;

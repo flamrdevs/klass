@@ -2,7 +2,7 @@ import * as vt from "vitest";
 
 import * as fixtures from "@test/shared/fixtures";
 
-import { klass, reklass, compose } from "@klass/core";
+import { compose, klass, reklass } from "@klass/core";
 
 vt.describe("klass", () => {
 	vt.describe("basic", () => {

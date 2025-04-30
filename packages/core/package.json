@@ -2,84 +2,52 @@
 	"name": "@klass/core",
 	"version": "4.0.0-next.29",
 	"description": "Class variant utility",
-	"keywords": [
-		"class",
-		"classname",
-		"variant",
-		"variants",
-		"utility",
-		"responsive",
-		"typescript",
-		"framework-agnostic",
-		"preact",
-		"qwik",
-		"react",
-		"solid",
-		"vue"
-	],
+	"keywords": ["class", "classname", "variant", "variants", "utility", "responsive", "typescript", "framework-agnostic", "preact", "qwik", "react", "solid", "vue"],
 	"license": "MIT",
 	"author": {
 		"name": "flamrdevs"
 	},
 	"type": "module",
-	"main": "./dist/index.cjs",
+	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs"
+			"default": "./dist/index.js"
 		},
 		"./create": {
 			"types": "./dist/create.d.ts",
-			"import": "./dist/create.js",
-			"require": "./dist/create.cjs"
+			"default": "./dist/create.js"
 		},
 		"./utils": {
 			"types": "./dist/utils.d.ts",
-			"import": "./dist/utils.js",
-			"require": "./dist/utils.cjs"
+			"default": "./dist/utils.js"
 		},
 		"./group": {
 			"types": "./dist/group/index.d.ts",
-			"import": "./dist/group/index.js",
-			"require": "./dist/group/index.cjs"
+			"default": "./dist/group/index.js"
 		},
 		"./group/create": {
 			"types": "./dist/group/create.d.ts",
-			"import": "./dist/group/create.js",
-			"require": "./dist/group/create.cjs"
+			"default": "./dist/group/create.js"
 		},
 		"./slots": {
 			"types": "./dist/slots/index.d.ts",
-			"import": "./dist/slots/index.js",
-			"require": "./dist/slots/index.cjs"
+			"default": "./dist/slots/index.js"
 		},
 		"./slots/create": {
 			"types": "./dist/slots/create.d.ts",
-			"import": "./dist/slots/create.js",
-			"require": "./dist/slots/create.cjs"
+			"default": "./dist/slots/create.js"
 		}
 	},
 	"typesVersions": {
 		">=3.1": {
-			"*": [
-				"./dist/*.d.ts",
-				"./dist/index.d.ts"
-			],
-			"group": [
-				"./dist/group/*.d.ts",
-				"./dist/group/index.d.ts"
-			],
-			"slots": [
-				"./dist/slots/*.d.ts",
-				"./dist/slots/index.d.ts"
-			]
+			"*": ["./dist/*.d.ts", "./dist/index.d.ts"],
+			"group": ["./dist/group/*.d.ts", "./dist/group/index.d.ts"],
+			"slots": ["./dist/slots/*.d.ts", "./dist/slots/index.d.ts"]
 		}
 	},
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"homepage": "https://klass.pages.dev",
 	"repository": {
 		"type": "git",

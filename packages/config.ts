@@ -20,8 +20,8 @@ export const build = (src: string[], mutate?: (options: MutableOptions) => void)
 		minify: "terser",
 		lib: {
 			entry: src.map((e) => `src/${e}`),
-			fileName: (format, entry) => `${entry}.${format === "cjs" ? "cjs" : "js"}`,
-			formats: ["es", "cjs"],
+			fileName: (_, entry) => `${entry}.js`,
+			formats: ["es"],
 		},
 		rollupOptions: {
 			external: (() => {

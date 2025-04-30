@@ -3,7 +3,7 @@ import * as vt from "vitest";
 import * as fixtures from "@test/shared/fixtures";
 import { cleanupable, expectGetElementToBeInTheDocument } from "@test/shared/utils";
 
-import { klassed, reklassed, composed } from "@klass/solid";
+import { composed, klassed, reklassed } from "@klass/solid";
 
 import { render } from "~/utils";
 
