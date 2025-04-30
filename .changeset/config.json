@@ -1,11 +1,11 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
-  "changelog": "@changesets/cli/changelog",
-  "commit": false,
-  "fixed": [["@klass/core", "@klass/preact", "@klass/qwik", "@klass/react", "@klass/solid", "@klass/vue"]],
-  "linked": [],
-  "access": "public",
-  "baseBranch": "main",
-  "updateInternalDependencies": "patch",
-  "ignore": ["@klass/tests"]
+	"$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
+	"changelog": "@changesets/cli/changelog",
+	"commit": false,
+	"fixed": [["@klass/core", "@klass/preact", "@klass/qwik", "@klass/react", "@klass/solid", "@klass/vue"]],
+	"linked": [],
+	"access": "restricted",
+	"baseBranch": "main",
+	"updateInternalDependencies": "patch",
+	"ignore": ["@test/core", "@test/preact", "@test/qwik", "@test/react", "@test/react-18", "@test/shared", "@test/solid", "@test/vue"]
 }

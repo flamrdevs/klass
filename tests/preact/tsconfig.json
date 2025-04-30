@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"target": "ESNext",
+		"module": "ESNext",
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"moduleResolution": "bundler",
+		"esModuleInterop": true,
+		"allowImportingTsExtensions": true,
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strictNullChecks": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "preact",
+		"baseUrl": "./",
+		"paths": {
+			"~/*": ["./*"]
+		}
+	}
+}

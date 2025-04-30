@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 
-import { createKlass, createReklass, createCompose } from "./create";
+import { createCompose, createKlass, createReklass } from "./create";
 
 const klass = /* @__PURE__ */ createKlass();
 const reklass = /* @__PURE__ */ createReklass();

@@ -8,7 +8,15 @@
     "@klass/solid": "3.4.11",
     "@klass/qwik": "4.0.0-next.1",
     "@klass/vue": "4.0.0-next.1",
-    "@klass/tests": "0.0.0"
+    "@klass/tests": "0.0.0",
+    "@test/core": "0.0.0",
+    "@test/preact": "0.0.0",
+    "@test/qwik": "0.0.0",
+    "@test/react": "0.0.0",
+    "@test/react-18": "0.0.0",
+    "@test/shared": "0.0.0",
+    "@test/solid": "0.0.0",
+    "@test/vue": "0.0.0"
   },
   "changesets": [
     "afraid-bottles-burn",
@@ -21,6 +29,7 @@
     "eleven-colts-run",
     "fair-insects-dress",
     "khaki-bees-rule",
+    "loud-eyes-search",
     "lucky-gifts-do",
     "moody-cougars-switch",
     "odd-falcons-trade",

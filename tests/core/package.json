@@ -1,0 +1,10 @@
+{
+	"name": "@test/core",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"dependencies": {
+		"@klass/core": "workspace:*",
+		"@test/shared": "workspace:*"
+	}
+}

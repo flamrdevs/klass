@@ -1,0 +1,16 @@
+{
+	"name": "@test/solid",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"dependencies": {
+		"@klass/core": "workspace:*",
+		"@klass/solid": "workspace:*",
+		"@test/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"@ark-ui/solid": "5.7.0",
+		"@kobalte/core": "0.13.9",
+		"solid-js": "^1"
+	}
+}

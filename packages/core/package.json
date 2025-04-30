@@ -1,100 +1,98 @@
 {
-  "name": "@klass/core",
-  "version": "4.0.0-next.28",
-  "description": "Class variant utility",
-  "keywords": [
-    "class",
-    "classname",
-    "variant",
-    "variants",
-    "utility",
-    "responsive",
-    "typescript",
-    "framework-agnostic",
-    "preact",
-    "qwik",
-    "react",
-    "solid",
-    "vue"
-  ],
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./create": {
-      "types": "./dist/create.d.ts",
-      "import": "./dist/create.js",
-      "require": "./dist/create.cjs"
-    },
-    "./utils": {
-      "types": "./dist/utils.d.ts",
-      "import": "./dist/utils.js",
-      "require": "./dist/utils.cjs"
-    },
-    "./group": {
-      "types": "./dist/group/index.d.ts",
-      "import": "./dist/group/index.js",
-      "require": "./dist/group/index.cjs"
-    },
-    "./group/create": {
-      "types": "./dist/group/create.d.ts",
-      "import": "./dist/group/create.js",
-      "require": "./dist/group/create.cjs"
-    },
-    "./slots": {
-      "types": "./dist/slots/index.d.ts",
-      "import": "./dist/slots/index.js",
-      "require": "./dist/slots/index.cjs"
-    },
-    "./slots/create": {
-      "types": "./dist/slots/create.d.ts",
-      "import": "./dist/slots/create.js",
-      "require": "./dist/slots/create.cjs"
-    }
-  },
-  "typesVersions": {
-    ">=3.1": {
-      "*": [
-        "./dist/*.d.ts",
-        "./dist/index.d.ts"
-      ],
-      "group": [
-        "./dist/group/*.d.ts",
-        "./dist/group/index.d.ts"
-      ],
-      "slots": [
-        "./dist/slots/*.d.ts",
-        "./dist/slots/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "clean": "rimraf dist",
-    "build": "vite build",
-    "test": "vitest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flamrdevs/klass.git"
-  },
-  "author": "flamrdevs",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/flamrdevs/klass/issues"
-  },
-  "homepage": "https://klass.pages.dev",
-  "dependencies": {
-    "clsx": "^2.0.0"
-  }
+	"name": "@klass/core",
+	"version": "4.0.0-next.29",
+	"description": "Class variant utility",
+	"keywords": [
+		"class",
+		"classname",
+		"variant",
+		"variants",
+		"utility",
+		"responsive",
+		"typescript",
+		"framework-agnostic",
+		"preact",
+		"qwik",
+		"react",
+		"solid",
+		"vue"
+	],
+	"license": "MIT",
+	"author": {
+		"name": "flamrdevs"
+	},
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		},
+		"./create": {
+			"types": "./dist/create.d.ts",
+			"import": "./dist/create.js",
+			"require": "./dist/create.cjs"
+		},
+		"./utils": {
+			"types": "./dist/utils.d.ts",
+			"import": "./dist/utils.js",
+			"require": "./dist/utils.cjs"
+		},
+		"./group": {
+			"types": "./dist/group/index.d.ts",
+			"import": "./dist/group/index.js",
+			"require": "./dist/group/index.cjs"
+		},
+		"./group/create": {
+			"types": "./dist/group/create.d.ts",
+			"import": "./dist/group/create.js",
+			"require": "./dist/group/create.cjs"
+		},
+		"./slots": {
+			"types": "./dist/slots/index.d.ts",
+			"import": "./dist/slots/index.js",
+			"require": "./dist/slots/index.cjs"
+		},
+		"./slots/create": {
+			"types": "./dist/slots/create.d.ts",
+			"import": "./dist/slots/create.js",
+			"require": "./dist/slots/create.cjs"
+		}
+	},
+	"typesVersions": {
+		">=3.1": {
+			"*": [
+				"./dist/*.d.ts",
+				"./dist/index.d.ts"
+			],
+			"group": [
+				"./dist/group/*.d.ts",
+				"./dist/group/index.d.ts"
+			],
+			"slots": [
+				"./dist/slots/*.d.ts",
+				"./dist/slots/index.d.ts"
+			]
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"homepage": "https://klass.pages.dev",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/flamrdevs/klass.git",
+		"directory": "packages/core"
+	},
+	"scripts": {
+		"build": "vite build"
+	},
+	"dependencies": {
+		"clsx": "^2"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

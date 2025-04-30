@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.29
+
+### Patch Changes
+
+- 7867f62: better workspaces
+
 ## 4.0.0-next.28
 
 ### Patch Changes

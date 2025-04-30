@@ -1,9 +1,9 @@
 import type { JSX } from "react";
 
-import type { ClassValue, StrictVariantsSchema, KlassOptions, KlassFn, VariantsOf, ConditionSchema, ReklassOptions, ReklassFn, Fx, Fxs, FxFrom, ComposeFn } from "@klass/core";
+import type { ClassValue, ComposeFn, ConditionSchema, Fx, FxFrom, Fxs, KlassFn, KlassOptions, ReklassFn, ReklassOptions, StrictVariantsSchema, VariantsOf } from "@klass/core";
 
-import type { SupportedElementType, Classes, BaseComponent } from "./react";
 import type { PolymorphicComponentProps } from "./polymorphic";
+import type { BaseComponent, Classes, SupportedElementType } from "./react";
 
 export type FinalRestrictedVariantsKey = Classes;
 export type FinalVariantsSchema = StrictVariantsSchema<FinalRestrictedVariantsKey>;
@@ -23,13 +23,13 @@ export type ComposedComponentConfig<ET extends SupportedElementType, Fn extends 
 export type Base<F> = BaseComponent & { fx: F };
 
 export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
-  <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element;
+	<C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element;
 } & Base<KlassFn<VS>>;
 
 export type ReklassedComponent<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
-  <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): JSX.Element;
+	<C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): JSX.Element;
 } & Base<ReklassFn<CS, VS>>;
 
 export type ComposedComponent<ET extends SupportedElementType, Fn extends Fx> = {
-  <C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ComposeFn<Fn>>>>): JSX.Element;
+	<C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ComposeFn<Fn>>>>): JSX.Element;
 } & Base<ComposeFn<Fn>>;

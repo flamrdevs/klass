@@ -1,0 +1,14 @@
+{
+	"name": "@test/qwik",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"dependencies": {
+		"@klass/core": "workspace:*",
+		"@klass/qwik": "workspace:*",
+		"@test/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"@builder.io/qwik": "^1"
+	}
+}

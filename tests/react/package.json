@@ -1,0 +1,25 @@
+{
+	"name": "@test/react",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"dependencies": {
+		"@klass/core": "workspace:*",
+		"@klass/react": "workspace:*",
+		"@test/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"@ariakit/react": "0.4.17",
+		"@ark-ui/react": "5.7.0",
+		"@base-ui-components/react": "1.0.0-alpha.8",
+		"@headlessui/react": "2.2.2",
+		"@radix-ui/react-separator": "1.1.4",
+		"@radix-ui/react-slot": "1.2.0",
+		"@radix-ui/react-switch": "1.2.2",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"react": "^19",
+		"react-aria-components": "1.8.0",
+		"react-dom": "^19"
+	}
+}
