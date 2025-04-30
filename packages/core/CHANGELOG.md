@@ -1,5 +1,11 @@
 # @klass/core
 
+## 4.0.0-next.30
+
+### Patch Changes
+
+- 74e61ce: ESM only
+
 ## 4.0.0-next.29
 
 ### Patch Changes

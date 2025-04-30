@@ -1,8 +1,20 @@
 {
 	"name": "@klass/solid",
-	"version": "4.0.0-next.29",
+	"version": "4.0.0-next.30",
 	"description": "Class variant utility for Solid",
-	"keywords": ["class", "classname", "variant", "variants", "utility", "responsive", "typescript", "solid", "component", "styled", "polymorphic"],
+	"keywords": [
+		"class",
+		"classname",
+		"variant",
+		"variants",
+		"utility",
+		"responsive",
+		"typescript",
+		"solid",
+		"component",
+		"styled",
+		"polymorphic"
+	],
 	"license": "MIT",
 	"author": {
 		"name": "flamrdevs"
@@ -34,11 +46,19 @@
 	},
 	"typesVersions": {
 		">=3.1": {
-			"*": ["./dist/*.d.ts", "./dist/index.d.ts"],
-			"mono": ["./dist/mono/*.d.ts", "./dist/mono/index.d.ts"]
+			"*": [
+				"./dist/*.d.ts",
+				"./dist/index.d.ts"
+			],
+			"mono": [
+				"./dist/mono/*.d.ts",
+				"./dist/mono/index.d.ts"
+			]
 		}
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"homepage": "https://klass.pages.dev",
 	"repository": {
 		"type": "git",

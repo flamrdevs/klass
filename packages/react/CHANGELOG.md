@@ -1,5 +1,13 @@
 # @klass/react
 
+## 4.0.0-next.30
+
+### Patch Changes
+
+- 74e61ce: ESM only
+- Updated dependencies [74e61ce]
+  - @klass/core@4.0.0-next.30
+
 ## 4.0.0-next.29
 
 ### Patch Changes
