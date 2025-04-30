@@ -7,5 +7,5 @@
 	"access": "restricted",
 	"baseBranch": "main",
 	"updateInternalDependencies": "patch",
-	"ignore": []
+	"ignore": ["@test/core", "@test/preact", "@test/qwik", "@test/react", "@test/react-18", "@test/shared", "@test/solid", "@test/vue"]
 }
