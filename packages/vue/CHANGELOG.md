@@ -1,5 +1,13 @@
 # @klass/vue
 
+## 4.0.0-next.29
+
+### Patch Changes
+
+- 7867f62: better workspaces
+- Updated dependencies [7867f62]
+  - @klass/core@4.0.0-next.29
+
 ## 4.0.0-next.28
 
 ### Patch Changes

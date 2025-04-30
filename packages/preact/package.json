@@ -1,8 +1,20 @@
 {
 	"name": "@klass/preact",
-	"version": "4.0.0-next.28",
+	"version": "4.0.0-next.29",
 	"description": "Class variant utility for Preact",
-	"keywords": ["class", "classname", "variant", "variants", "utility", "responsive", "typescript", "preact", "component", "styled", "polymorphic"],
+	"keywords": [
+		"class",
+		"classname",
+		"variant",
+		"variants",
+		"utility",
+		"responsive",
+		"typescript",
+		"preact",
+		"component",
+		"styled",
+		"polymorphic"
+	],
 	"license": "MIT",
 	"author": {
 		"name": "flamrdevs"
@@ -39,11 +51,19 @@
 	},
 	"typesVersions": {
 		">=3.1": {
-			"*": ["./dist/*.d.ts", "./dist/index.d.ts"],
-			"mono": ["./dist/mono/*.d.ts", "./dist/mono/index.d.ts"]
+			"*": [
+				"./dist/*.d.ts",
+				"./dist/index.d.ts"
+			],
+			"mono": [
+				"./dist/mono/*.d.ts",
+				"./dist/mono/index.d.ts"
+			]
 		}
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"homepage": "https://klass.pages.dev",
 	"repository": {
 		"type": "git",

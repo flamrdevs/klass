@@ -1,8 +1,22 @@
 {
 	"name": "@klass/core",
-	"version": "4.0.0-next.28",
+	"version": "4.0.0-next.29",
 	"description": "Class variant utility",
-	"keywords": ["class", "classname", "variant", "variants", "utility", "responsive", "typescript", "framework-agnostic", "preact", "qwik", "react", "solid", "vue"],
+	"keywords": [
+		"class",
+		"classname",
+		"variant",
+		"variants",
+		"utility",
+		"responsive",
+		"typescript",
+		"framework-agnostic",
+		"preact",
+		"qwik",
+		"react",
+		"solid",
+		"vue"
+	],
 	"license": "MIT",
 	"author": {
 		"name": "flamrdevs"
@@ -49,12 +63,23 @@
 	},
 	"typesVersions": {
 		">=3.1": {
-			"*": ["./dist/*.d.ts", "./dist/index.d.ts"],
-			"group": ["./dist/group/*.d.ts", "./dist/group/index.d.ts"],
-			"slots": ["./dist/slots/*.d.ts", "./dist/slots/index.d.ts"]
+			"*": [
+				"./dist/*.d.ts",
+				"./dist/index.d.ts"
+			],
+			"group": [
+				"./dist/group/*.d.ts",
+				"./dist/group/index.d.ts"
+			],
+			"slots": [
+				"./dist/slots/*.d.ts",
+				"./dist/slots/index.d.ts"
+			]
 		}
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"homepage": "https://klass.pages.dev",
 	"repository": {
 		"type": "git",
