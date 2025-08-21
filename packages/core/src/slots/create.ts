@@ -1,5 +1,4 @@
 import type { Group, GroupOptions, StrictGroupVariantsSchema } from "./../group";
-
 import type { KlassedOnly, Slots, SlotsFn } from "./types";
 
 const createSlots = /* @__PURE__ */ (group: Group): Slots => {

@@ -1,5 +1,8 @@
 {
 	"editor.defaultFormatter": "biomejs.biome",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.biome": "explicit"
+	},
 	"javascript.preferences.importModuleSpecifier": "non-relative",
 	"typescript.preferences.importModuleSpecifier": "non-relative"
 }

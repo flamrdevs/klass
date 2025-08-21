@@ -1,11 +1,10 @@
 import * as vt from "vitest";
 
-import * as fixtures from "@test/shared/fixtures";
-import { cleanupable, expectGetElementsToBeInTheDocument } from "@test/shared/utils";
-
 import * as mono from "@klass/react/mono";
 
 import { Avatar } from "@ark-ui/react/avatar";
+import * as fixtures from "@test/shared/fixtures";
+import { cleanupable, expectGetElementsToBeInTheDocument } from "@test/shared/utils";
 
 import { render } from "./../utils";
 

@@ -1,5 +1,5 @@
-import { render as _render } from "preact";
 import type { ComponentChild } from "preact";
+import { render as _render } from "preact";
 
 export const render = (vnode: ComponentChild) => {
 	const container = document.createElement("div");

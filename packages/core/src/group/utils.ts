@@ -1,6 +1,5 @@
 import type { TransformKey } from "./../";
-
-import { GroupResult, StrictGroupVariantsSchema } from "./types";
+import type { GroupResult, StrictGroupVariantsSchema } from "./types";
 
 const simplify =
 	/* @__PURE__ */

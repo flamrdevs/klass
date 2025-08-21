@@ -22,6 +22,6 @@ export const splitRestProps = /* @__PURE__ */ <P extends Record<string, any>>(pr
 	return { o, p } as const;
 };
 
-export const isSignal = /* @__PURE__ */ <T extends any>(obj: any): obj is JSX.SignalLike<T> => obj !== null && typeof obj === "object" && obj.brand === Symbol.for("preact-signals");
+export const isSignal = /* @__PURE__ */ <T>(obj: any): obj is JSX.SignalLike<T> => obj !== null && typeof obj === "object" && obj.brand === Symbol.for("preact-signals");
 
-export const maybeSignal = /* @__PURE__ */ <T extends any = any>(obj: any): obj is T => (isSignal<any>(obj) ? obj.value : obj);
+export const maybeSignal = /* @__PURE__ */ <T = any>(obj: any): obj is T => (isSignal<any>(obj) ? obj.value : obj);

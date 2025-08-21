@@ -1,6 +1,5 @@
-import { createSlots } from "./create";
-
 import group from "./../group";
+import { createSlots } from "./create";
 
 const slots = /* @__PURE__ */ createSlots(group);
 

@@ -2,12 +2,11 @@ import * as vt from "vitest";
 
 import type { ComponentPublicInstance } from "vue";
 
-import * as fixtures from "@test/shared/fixtures";
-import { cleanupable, expectGetElementsToBeInTheDocument } from "@test/shared/utils";
-
 import * as mono from "@klass/vue/mono";
 
 import { Avatar } from "@ark-ui/vue/avatar";
+import * as fixtures from "@test/shared/fixtures";
+import { cleanupable, expectGetElementsToBeInTheDocument } from "@test/shared/utils";
 
 import { mount } from "./../utils";
 

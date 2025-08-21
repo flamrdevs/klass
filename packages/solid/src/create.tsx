@@ -18,8 +18,7 @@ import type {
 	ReklassedOptions,
 } from "./types";
 import type { ClassesProps, SupportedElementType } from "./types/solid";
-
-import { ClassesKeysSplitter, PolymorphicKeysSplitter, classesProps, getVariantKeys } from "./utils";
+import { ClassesKeysSplitter, classesProps, getVariantKeys, PolymorphicKeysSplitter } from "./utils";
 
 function create<ET extends SupportedElementType>(element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>> | ComposeFn<any>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {
 	const { class: defaultClass, classList: defaultClassList, ...defaultProps } = (config.dp ?? {}) as ClassesProps,

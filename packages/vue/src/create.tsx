@@ -18,7 +18,6 @@ import type {
 } from "./types";
 import type { PolymorphicComponentProps } from "./types/polymorphic";
 import type { ClassesProps, SupportedElementType } from "./types/vue";
-
 import { getVariantKeys, splitRestProps } from "./utils";
 
 const defaultComponentOptions = { props: ["as", "class"] as any, inheritAttrs: false };

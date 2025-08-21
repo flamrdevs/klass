@@ -34,6 +34,7 @@ type GroupResult<B extends string, T extends StrictGroupVariantsSchema<B>> = {
 
 type Group = <B extends string, T extends StrictGroupVariantsSchema<B>>(options: GroupOptions<B, T>) => GroupResult<B, T>;
 
+// biome-ignore lint/suspicious/noRedeclare: check
 type VariantsOfGroup<T> = T extends GroupResult<infer X, StrictGroupVariantsSchema<infer X>> ? VariantsOf<T[X]> : never;
 
 export type { StrictGroupVariantsSchema, ToVariantsSchema, GroupCompoundVariant, GroupOptions, GroupResult, Group, VariantsOfGroup };

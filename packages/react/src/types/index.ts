@@ -22,14 +22,17 @@ export type ComposedComponentConfig<ET extends SupportedElementType, Fn extends 
 
 export type Base<F> = BaseComponent & { fx: F };
 
-export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = {
-	<C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>): JSX.Element;
-} & Base<KlassFn<VS>>;
+export type KlassedComponent<ET extends SupportedElementType, VS extends FinalVariantsSchema> = (<C extends SupportedElementType = ET>(
+	props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<KlassFn<VS>>>>
+) => JSX.Element) &
+	Base<KlassFn<VS>>;
 
-export type ReklassedComponent<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = {
-	<C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>): JSX.Element;
-} & Base<ReklassFn<CS, VS>>;
+export type ReklassedComponent<ET extends SupportedElementType, CS extends ConditionSchema, VS extends FinalVariantsSchema> = (<C extends SupportedElementType = ET>(
+	props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ReklassFn<CS, VS>>>>
+) => JSX.Element) &
+	Base<ReklassFn<CS, VS>>;
 
-export type ComposedComponent<ET extends SupportedElementType, Fn extends Fx> = {
-	<C extends SupportedElementType = ET>(props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ComposeFn<Fn>>>>): JSX.Element;
-} & Base<ComposeFn<Fn>>;
+export type ComposedComponent<ET extends SupportedElementType, Fn extends Fx> = (<C extends SupportedElementType = ET>(
+	props: PolymorphicComponentProps<C, WithClassesValueProps<VariantsOf<ComposeFn<Fn>>>>
+) => JSX.Element) &
+	Base<ComposeFn<Fn>>;

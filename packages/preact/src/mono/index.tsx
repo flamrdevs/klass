@@ -1,4 +1,3 @@
-import { compose, klass, reklass } from "@klass/core";
 import type {
 	AsFn,
 	AsFnProps,
@@ -29,6 +28,7 @@ import type {
 	VariantsOf,
 	VariantsSchema,
 } from "@klass/core";
+import { compose, klass, reklass } from "@klass/core";
 
 import { createComposed, createKlassed, createReklassed } from "./create";
 
@@ -68,5 +68,6 @@ export type {
 	ComposeFn,
 	Compose,
 };
-export type { MonoKlassedComponent, MonoReklassedComponent, MonoComposedComponent } from "./types";
+
+export type { MonoComposedComponent, MonoKlassedComponent, MonoReklassedComponent } from "./types";
 export { klassed, reklassed, composed };

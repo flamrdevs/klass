@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-
 import jsx from "@vitejs/plugin-vue-jsx";
 
 import { build, dts } from "../config";

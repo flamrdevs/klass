@@ -1,5 +1,5 @@
-import { klass, reklass } from "@klass/core";
 import type { KlassOptions, ReklassOptions } from "@klass/core";
+import { klass, reklass } from "@klass/core";
 
 type Options = KlassOptions<Record<string, Record<string, string>>> | ReklassOptions<Record<"initial" | "sm" | "md" | "lg", string>, Record<string, Record<string, string>>>;
 

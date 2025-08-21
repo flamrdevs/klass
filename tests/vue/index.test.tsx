@@ -2,10 +2,10 @@ import * as vt from "vitest";
 
 import type { ComponentPublicInstance } from "vue";
 
+import { composed, klassed, reklassed } from "@klass/vue";
+
 import * as fixtures from "@test/shared/fixtures";
 import { cleanupable, expectGetElementToBeInTheDocument } from "@test/shared/utils";
-
-import { composed, klassed, reklassed } from "@klass/vue";
 
 import { mount } from "~/utils";
 

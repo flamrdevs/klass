@@ -1,11 +1,9 @@
 import type { Compose, ComposeFn, ConditionSchema, FxFrom, Fxs, Klass, KlassFn, Reklass, ReklassFn } from "@klass/core";
 import { typeofFunction } from "@klass/core/utils";
 
-import { ComposedOptions, DefaultPropsConfig, FinalVariantsSchema, ForwardPropsConfig, KlassedOptions, ReklassedOptions } from "./../types";
+import type { ComposedOptions, DefaultPropsConfig, FinalVariantsSchema, ForwardPropsConfig, KlassedOptions, ReklassedOptions } from "./../types";
 import type { ClassesProps, SupportedElementType } from "./../types/preact";
-
 import { getVariantKeys, maybeSignal, splitRestProps } from "./../utils";
-
 import type { ComponentConfig, ComposedComponentConfig, MonoComposedComponent, MonoKlassedComponent, MonoReklassedComponent } from "./types";
 
 function create<ET extends SupportedElementType>(Element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>> | ComposeFn<any>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {

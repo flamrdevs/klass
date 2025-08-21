@@ -18,7 +18,6 @@ import type {
 } from "./types";
 import type { PolymorphicComponentProps, PolymorphicRef } from "./types/polymorphic";
 import type { ClassesProps, SupportedElementType } from "./types/react";
-
 import { getVariantKeys, splitRestProps } from "./utils";
 
 function create<ET extends SupportedElementType>(element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>> | ComposeFn<any>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {

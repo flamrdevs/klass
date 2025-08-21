@@ -1,5 +1,5 @@
-import { createApp } from "vue";
 import type { Component } from "vue";
+import { createApp } from "vue";
 
 export const mount = (component: Component) => {
 	const container = document.createElement("div");

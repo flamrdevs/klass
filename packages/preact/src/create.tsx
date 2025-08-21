@@ -15,7 +15,6 @@ import type {
 	ReklassedOptions,
 } from "./types";
 import type { ClassesProps, SupportedElementType } from "./types/preact";
-
 import { getVariantKeys, maybeSignal, splitRestProps } from "./utils";
 
 function create<ET extends SupportedElementType>(element: ET, fn: KlassFn<Record<any, any>> | ReklassFn<any, Record<any, any>> | ComposeFn<any>, config: DefaultPropsConfig & ForwardPropsConfig = {}) {

@@ -1,6 +1,5 @@
-import { createGroup } from "./create";
-
 import { klass } from "./../";
+import { createGroup } from "./create";
 
 const group = /* @__PURE__ */ createGroup(klass);
 

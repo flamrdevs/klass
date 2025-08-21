@@ -1,5 +1,4 @@
 import type { ClassValue, Klass } from "./../";
-
 import type { Group, GroupOptions, GroupResult, StrictGroupVariantsSchema, ToVariantsSchema } from "./types";
 
 const compoundsFilterFn = <T extends Readonly<[any, any]>>(value: T) => typeof value[1] !== "undefined";

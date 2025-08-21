@@ -1,9 +1,9 @@
 import * as vt from "vitest";
 
+import { composed, klassed, reklassed } from "@klass/preact";
+
 import * as fixtures from "@test/shared/fixtures";
 import { cleanupable, expectGetElementToBeInTheDocument } from "@test/shared/utils";
-
-import { composed, klassed, reklassed } from "@klass/preact";
 
 import { render } from "~/utils";
 

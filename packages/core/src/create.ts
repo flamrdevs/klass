@@ -21,7 +21,6 @@ import type {
 	VariantGroup,
 	VariantsSchema,
 } from "./types";
-
 import { defaultAsFn, defaultEndFn, normalizeVariant, typeofFunction } from "./utils";
 
 const createKlass = /* @__PURE__ */ (options: EndFnProps = {}): Klass => {
@@ -59,7 +58,7 @@ const createKlass = /* @__PURE__ */ (options: EndFnProps = {}): Klass => {
 			for (x of keyofVariants) if ((temp = variantGroup[x](props?.[x]))) result && (result += " "), (result += temp);
 
 			if (compoundsLength) {
-				compounds: for (let rc of resolvedCompounds) {
+				compounds: for (const rc of resolvedCompounds) {
 					for (x in rc.v) if ((props?.[x] ?? defaults?.[x]) !== rc.v[x as keyof typeof rc.v]) continue compounds;
 					if (rc.c) result && (result += " "), (result += rc.c);
 				}

@@ -22,4 +22,4 @@ export const splitRestProps = /* @__PURE__ */ <P extends Record<string, any>>(pr
 	return { o, p } as const;
 };
 
-export const maybeSignal = /* @__PURE__ */ <T extends any = any>(obj: any): obj is T => (isSignal<any>(obj) ? obj.value : obj);
+export const maybeSignal = /* @__PURE__ */ <T = any>(obj: any): obj is T => (isSignal<any>(obj) ? obj.value : obj);
